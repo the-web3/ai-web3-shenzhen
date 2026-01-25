@@ -1,0 +1,5 @@
+# LlamaFactory API 服务配置 (HuggingFace 后端)
+model_name_or_path: /root/autodl-tmp/TheWeb3/web3_rag/models/qwen3-4b
+template: qwen3_nothink
+infer_backend: huggingface
+trust_remote_code: true

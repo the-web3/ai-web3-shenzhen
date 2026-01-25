@@ -1,0 +1,8 @@
+# LlamaFactory API 服务配置 (vLLM 高性能后端)
+model_name_or_path: /root/autodl-tmp/TheWeb3/web3_rag/models/qwen3-4b
+template: qwen3_nothink
+infer_backend: vllm
+trust_remote_code: true
+vllm_enforce_eager: true
+vllm_maxlen: 12288
+vllm_gpu_util: 0.9
