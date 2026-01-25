@@ -1,0 +1,1 @@
+export { VendorSwitcher } from "./VendorSwitcher";

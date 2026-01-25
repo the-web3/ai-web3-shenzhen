@@ -1,0 +1,116 @@
+{
+    "build": {
+        "args": {
+            "NODE_VERSION": "latest"
+        },
+        "dockerfile": "Dockerfile"
+    },
+    "containerEnv": {
+        "SSH_AUTH_SOCK": "/ssh-agent"
+    },
+    "customizations": {
+        "jetbrains": {
+            "backend": "WS",
+            "plugins": [
+                "com.github.catppuccin.jetbrains_icons",
+                "izhangzhihao.rainbow.brackets",
+                "me.serce.solidity",
+                "dev.alloy.bun",
+                "ru.adelf.idea.dotenv",
+                "org.toml.lang",
+                "gapstyle.color.scheme",
+                "com.nasller.CodeGlancePro"
+            ]
+        },
+        "vscode": {
+            "extensions": [
+                "JuanBlanco.solidity",
+                "tamasfe.even-better-toml",
+                "github.vscode-github-actions",
+                "ms-vscode.js-debug",
+                "ritwickdey.LiveServer",
+                "hbenl.vscode-mocha-test-adapter",
+                "esbenp.prettier-vscode",
+                "hbenl.vscode-test-adapter-converter",
+                "hbenl.vscode-test-explorer",
+                "Gruntfuggly.todo-tree",
+                "streetsidesoftware.code-spell-checker"
+            ]
+        }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installOhMyZsh": true,
+            "installZsh": true,
+            "upgradePackages": true
+        },
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "version": "latest"
+        }
+    },
+    "forwardPorts": [
+        8547,
+        3003,
+        9231,
+        2224
+    ],
+    "mounts": [
+        "source=${localEnv:HOME}/.codex/AGENTS.md,target=/tmp/codex-agents.md,type=bind,readonly",
+        "source=${localEnv:HOME}/.codex/auth.json,target=/tmp/codex-auth.json,type=bind,readonly",
+        "source=${localEnv:HOME}/.codex/config.toml,target=/tmp/codex-config.toml,type=bind,readonly",
+        "source=${localEnv:HOME}/.config/anthropic-cc/cred.sh,target=/tmp/anthropic-cred.sh,type=bind,readonly",
+        "source=${localEnv:HOME}/Dev/Utils/ClaudeCodeConfig/Standard Workflow.md,target=/tmp/claude-workflow.md,type=bind,readonly",
+        "source=${localEnv:HOME}/.ssh/forwarded-agent.sock,target=/ssh-agent,type=bind",
+        "source=${localEnv:HOME}/.ssh/authorized_keys,target=/tmp/ssh-authorized-keys,type=bind,readonly"
+    ],
+    "name": "${localWorkspaceFolderBasename}",
+    "portsAttributes": {
+        "3003": {
+            "label": "Frontend/DApp",
+            "onAutoForward": "notify"
+        },
+        "8547": {
+            "label": "Hardhat/Anvil Node",
+            "onAutoForward": "notify"
+        },
+        "9231": {
+            "label": "Node Debugger",
+            "onAutoForward": "silent"
+        }
+    },
+    "postCreateCommand": "bash .devcontainer/setup.sh",
+    "postStartCommand": "bash .devcontainer/startup.sh",
+    "remoteEnv": {
+        "ANTHROPIC_AUTH_TOKEN": "${localEnv:ANTHROPIC_AUTH_TOKEN}",
+        "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
+        "GIT_AUTHOR_EMAIL": "m15388108558_1@163.com",
+        "GIT_AUTHOR_NAME": "CocoaPuffs",
+        "GIT_COMMITTER_EMAIL": "m15388108558_1@163.com",
+        "GIT_COMMITTER_NAME": "CocoaPuffs",
+        "SSH_AUTH_SOCK": "/ssh-agent"
+    },
+    "remoteUser": "node",
+    "runArgs": [
+        "--name=v-${localWorkspaceFolderBasename}-dev",
+        "--label=owner=v",
+        "--label=creator=v",
+        "--label=project=${localWorkspaceFolderBasename}",
+        "--hostname=${localWorkspaceFolderBasename}-dev",
+        "--sysctl=net.ipv4.tcp_keepalive_time=300",
+        "--sysctl=net.ipv4.tcp_keepalive_intvl=30",
+        "--sysctl=net.ipv4.tcp_keepalive_probes=5",
+        "--sysctl=net.ipv4.tcp_fin_timeout=30",
+        "--label=devcontainer.user=node",
+        "--label=dc.project.uid=1bf1566d80d8",
+        "--label=dc.project.user=node",
+        "--publish=192.168.2.3:8547:8545",
+        "--publish=192.168.2.3:3003:3000",
+        "--publish=192.168.2.3:2224:22"
+    ],
+    "shutdownAction": "stopContainer",
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind"
+}
