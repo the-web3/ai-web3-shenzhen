@@ -1,0 +1,9 @@
+{
+  "network": "hardhat",
+  "chainId": "31337",
+  "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "deploymentTime": "2026-01-20T05:24:45.278Z",
+  "blockNumber": 1,
+  "transactionHash": "0x2a3b29571bf19a3bf266826b88e4ed492bfd92ee5c19254b3b86fdfc51955bf3"
+}
