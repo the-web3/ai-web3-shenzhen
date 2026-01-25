@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - DEEPSEEK_BASE_URL=${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+      - DEFAULT_MODEL=${DEFAULT_MODEL:-deepseek-chat}
+      - MINERU_API_KEY=${MINERU_API_KEY}
+      - MINERU_API_BASE=${MINERU_API_BASE:-https://mineru.net/api/v4}
+      - DASHSCOPE_API_KEY=${DASHSCOPE_API_KEY}
+      - DASHSCOPE_BASE_URL=${DASHSCOPE_BASE_URL:-https://dashscope.aliyuncs.com/compatible-mode/v1}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-text-embedding-v4}
+      - CHROMA_PERSIST_DIR=/app/chroma_db
+      - KNOWLEDGE_STORE_PATH=/app/data/knowledge_store.json
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3000,http://localhost:5173}
+    volumes:
+      - ./backend/cache:/app/cache
+      - ./backend/chroma_db:/app/chroma_db
+      - ./backend/data:/app/data
+      - ./backend/uploads:/app/uploads
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_BASE_URL=${VITE_API_BASE_URL:-http://localhost:8000/api}
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
