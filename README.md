@@ -1,297 +1,139 @@
-# Voice-to-Pay (语音支付系统)
+# 🐟 FishCake: Multi-Chain Smart Account & Advanced Oracle Paymaster
 
-AI 驱动的 Web3 语音支付系统，通过自然语言语音交互完成区块链商品购买。
+**FishCake** 是一款基于 **ERC-4337 (v0.7.0)** 最新标准构建的多链聚合智能账户解决方案。本项目通过 **CREATE2** 技术实现多链同地址部署，并配套了从基础白名单到金融级预言机计费的两代 Paymaster 架构，旨在提供无缝且可持续的 Web3 支付体验。
 
-## 快速开始
+---
 
-### 前置要求
-- Python 3.10+
-- Node.js 18+
-- MetaMask 钱包扩展
+## 🚀 项目核心亮点
 
-### 一键启动（推荐）
+### 1. 架构演进：从 V1 到 V2
+我们展示了 Paymaster 机制的两次重大技术迭代，体现了从“营销工具”到“金融协议”的深度思考：
 
-**Windows 用户：**
-```cmd
-# 双击运行或在命令行执行
-start.bat
+* **V1: FishCakePaymaster (Whitelist Edition)**
+    * **核心功能**：基于白名单的 Gas 代付。
+    * **适用场景**：新用户获客（如“首笔交易免费”）。
+    * **技术栈**：ERC-4337 v0.6 逻辑，手动定义 `UserOperation` 结构。
+
+* **V2: FishCakeOraclePaymaster (DeFi Edition)** 🌟
+    * **核心功能**：用户使用 ERC20 代币（如 USDC）支付 Gas。
+    * **技术标准**：全面适配 **ERC-4337 v0.7.0** 生产标准。
+    * **预言机集成**：接入 **Chainlink AggregatorV3**，实现 ETH/USD 实时动态汇率结算。
+    * **盈利模型**：内置 `PRICE_MARKUP` 机制，自动赚取 10% 服务费，实现协议自增长。
+
+---
+
+## 🛠️ 技术深度 (Technical Deep Dive)
+
+### 为什么我们选择 ERC-4337 v0.7.0？
+本项目攻克了 v0.7.0 重构带来的核心挑战，确保代码处于行业最前沿：
+
+* **PackedUserOperation**: 优化了数据结构，将 Gas 参数打包压缩，显著降低了用户的链上成本。
+* **4-Param `_postOp`**: 适配了最新的结算签名，通过 `actualUserOpFeePerGas` 参数实现极高精度的费用分摊。
+* **Atomic Access Control**: 采用原子化构造函数 `BasePaymaster(entryPoint, owner)`，从部署瞬间杜绝权限抢占风险。
+
+
+
+### 预言机安全实践
+在 `FishCakeOraclePaymaster` 中，我们实施了严格的工业级预言机防御：
+```solidity
+// 检查预言机数据的时效性，防止 Stale Price (过时喂价) 攻击
+require(timeStamp > 0, "Chainlink: stale price");
+require(price > 0, "Chainlink: invalid price");
+
 ```
 
-脚本会自动：
-1. ✓ 检查环境
-2. ✓ 安装依赖
-3. ✓ 启动 AI 服务 (端口 8000)
-4. ✓ 启动 Web3 服务 (端口 3001)
-5. ✓ 启动前端界面 (端口 5173)
+---
 
-启动完成后，在浏览器中打开 `http://localhost:5173` 即可使用。
+## 🏗️ 仓库目录结构
 
-### 手动启动
+```text
+.
+├── src/
+│   ├── FishCakeSmartAccount.sol   # 核心智能钱包逻辑
+│   ├── FishCakeFactory.sol        # 基于 CREATE2 的多链同地址工厂
+│   └── paymasters/
+│       ├── FishCakePaymaster.sol       # [Legacy] V1 - 基础白名单代付
+│       └── FishCakeOraclePaymaster.sol # [Advanced] V2 - 预言机代币支付 (v0.7)
+├── lib/                           # 依赖库 (Account Abstraction v0.7, OpenZeppelin)
+└── test/                          # 自动化测试脚本
 
-如果需要手动控制：
+---
+
+## ⚙️ 快速开始
+
+### 安装依赖
 
 ```bash
-# 1. 安装依赖
-cd ai_service && python -m venv .venv && .venv\Scripts\activate && pip install -r requirements.txt && cd ..
-cd web3_service && npm install && cd ..
-cd web_frontend && npm install && cd ..
-
-# 2. 启动服务（分别在不同的终端）
-cd ai_service && .venv\Scripts\activate && python main.py
-cd web3_service && npm run dev
-cd web_frontend && npm run dev
-```
-
-## 使用说明
-
-1. **连接钱包** - 点击右上角"连接钱包"按钮
-2. **语音输入** - 点击麦克风图标说话，例如："我想买一个 NFT"
-3. **选择商品** - 从搜索结果中选择商品
-4. **确认支付** - 查看详情并确认支付
-5. **等待确认** - 等待区块链确认交易
-
-## 项目结构
+forge install eth-infinitism/account-abstraction@v0.7.0 --no-commit
+forge install smartcontractkit/chainlink-brownie-contracts --no-commit
 
 ```
-voice_to_pay/
-├── ai_service/              # Python AI 服务 (端口 8000)
-│   ├── main.py             # 服务入口
-│   ├── asr_engine.py       # 语音识别 (Whisper)
-│   ├── semantic_parser.py  # 语义解析 (LangChain)
-│   ├── knowledge_base.py   # 商品知识库 (Pinecone)
-│   └── session_manager.py  # 会话管理 (Redis)
-│
-├── web3_service/           # TypeScript Web3 服务 (端口 3001)
-│   └── src/
-│       ├── main.ts         # 服务入口
-│       ├── wallet-sdk.ts   # 钱包交互
-│       ├── transaction-module.ts  # 交易执行
-│       └── payment-orchestrator.ts # 支付编排
-│
-├── web_frontend/           # React 前端 (端口 5173)
-│   └── src/
-│       ├── App.tsx         # 主应用
-│       └── components/     # UI 组件
-│
-├── start.bat               # 一键启动脚本
-└── check_env.bat          # 环境检查脚本
-```
 
-## 技术栈
+### 编译项目
 
-### AI 语义层 (Python)
-- **语音识别**: Whisper
-- **语义解析**: 自研解析器 + 多模型适配器
-- **模型适配**: OpenAI / 智谱 / 通义千问（自动切换）
-- **知识库**: Pinecone 向量数据库
-- **会话管理**: Redis
-
-### Web3 执行层 (TypeScript)
-- **钱包交互**: Ethers.js + MetaMask
-- **区块链**: Polygon (支持多链)
-- **交易监听**: 实时状态轮询
-
-### 前端界面 (React)
-- **框架**: React 18 + TypeScript + Vite
-- **设计**: 金色/琥珀色主题 + 深色背景
-- **字体**: Orbitron (标题) + Exo 2 (正文)
-- **语音**: Web Speech API
-
-## 配置说明
-
-### 环境变量
-
-复制 `.env.example` 到 `.env` 并填入以下配置：
-
-```env
-# AI 服务
-LLM_PROVIDER=openai
-OPENAI_API_KEY=your_openai_api_key
-ZHIPU_API_KEY=your_zhipu_api_key
-QWEN_API_KEY=your_qwen_api_key
-PINECONE_API_KEY=your_pinecone_api_key
-PINECONE_INDEX_NAME=voice-to-pay-products
-
-# Web3 服务
-POSTGRES_PASSWORD=your_postgres_password
-API_SECRET_KEY=your_api_secret_key
-
-# 服务端口
-AI_SERVICE_PORT=8000
-WEB3_SERVICE_PORT=3001
-FRONTEND_PORT=5173
-```
-
-### 模型与密钥
-- **多模型切换**: LLM_PROVIDER 支持逗号分隔顺序，例如 qwen,zhipu,openai
-- **OpenAI**: https://platform.openai.com/api-keys
-- **智谱**: https://open.bigmodel.cn/
-- **通义千问**: https://dashscope.aliyun.com/
-- **Pinecone**: https://www.pinecone.io/
-
-## 常见问题
-
-### 1. 找不到 Python
-**解决方案**: 安装 Python 3.10+
-- 下载: https://www.python.org/downloads/
-- 安装时勾选 "Add Python to PATH"
-
-### 2. 找不到 Node.js
-**解决方案**: 安装 Node.js 18+
-- 下载: https://nodejs.org/
-- 选择 LTS 版本
-
-### 3. 语音识别不工作
-**解决方案**:
-- 使用 Chrome 或 Edge 浏览器
-- 允许麦克风权限
-- 确保使用 HTTPS 或 localhost
-
-### 4. 钱包连接失败
-**解决方案**:
-- 安装 MetaMask 扩展
-- 刷新页面重试
-- 检查浏览器扩展是否启用
-
-### 5. 端口被占用
-**解决方案**:
-- 关闭占用端口的程序
-- 或修改 .env 文件中的端口号
-
-### 6. 依赖安装失败
-**解决方案**:
-- 检查网络连接
-- 使用国内镜像源
-- 清除缓存后重试
-
-## 测试
-
-### Python 测试
 ```bash
-cd ai_service
-.venv\Scripts\activate
-pytest                    # 运行所有测试
-pytest -v                 # 详细输出
-pytest --cov              # 覆盖率报告
+forge build
+
 ```
 
-### TypeScript 测试
+## 🔐 安全开发实践 (Security Best Practices)
+
+在本项目开发过程中，我们严格遵循生产级安全标准，拒绝使用明文私钥。我们利用 **Foundry Keystore** 对敏感信息进行加密管理：
+
+### 1. 安全导入私钥
+
+通过交互式命令行创建加密密钥库，确保私钥不进入 Bash 历史记录：
+
 ```bash
-cd web3_service
-npm test                  # 运行所有测试
-npm run test:watch        # 监听模式
-npm run test:coverage     # 覆盖率报告
+# 使用 Cast 安全导入私钥并命名为 defaultkey
+cast wallet import defaultkey --interactive
+
+# 按照提示输入私钥和高强度加密密码
+# Enter private key: ********************************
+# Enter password: **********
+
+# 成功结果：
+# `defaultkey` keystore was saved successfully. 
+# Address: 0xbc7bb5ba727a3edff6806c017b14e91c0db97336
+
 ```
 
-## API 文档
+### 2. 加密调用部署脚本
 
-### AI 服务 API (http://localhost:8000)
+在部署阶段，我们通过 `--account` 参数调用加密账户，这是目前最安全的链上交互方式之一：
 
-#### POST /parse
-语义解析
-```json
-{
-  "text": "我想买一个 NFT",
-  "session_id": "optional-session-id"
-}
-```
-
-#### POST /search
-商品搜索（当前为 mock 数据，后续接入 Pinecone）
-```json
-{
-  "query": "元宇宙音乐派对",
-  "top_k": 5
-}
-```
-
-## 设计文档
-项目设计文档见 DESIGN.md
-
-### Web3 服务 API (http://localhost:3001)
-
-#### POST /payment/start
-启动支付
-```json
-{
-  "product": { "id": "123", "price": "0.1 ETH" },
-  "userAddress": "0x..."
-}
-```
-
-#### GET /transaction/status/:txHash
-查询交易状态
-
-## 🎯 核心功能
-
-### 1. 语音识别
-- 使用 OpenAI Whisper Large V3
-- 支持中文和英文
-- 自动降噪处理
-- 静音检测
-
-### 2. 语义理解
-- 基于 LangChain 的对话管理
-- GPT-4 意图识别
-- 实体提取
-- 上下文理解
-
-### 3. 商品搜索
-- Pinecone 向量搜索
-- 语义相似度匹配
-- 多维度过滤
-- 实时更新
-
-### 4. 智能支付
-- 多钱包支持
-- 自动链路优化
-- Gas 费估算
-- 交易状态监听
-
-### 5. 安全保障
-- 合约黑名单检查
-- 大额交易检测
-- 输入验证
-- 错误处理
-
-## 🔒 安全特性
-
-- ✓ 合约地址验证
-- ✓ 黑名单检查
-- ✓ 大额交易警告
-- ✓ 用户确认机制
-- ✓ 错误信息脱敏
-- ✓ 会话超时管理
-
-## 📈 性能指标
-
-- 语音识别延迟: < 2s
-- 语义解析延迟: < 1s
-- 商品搜索延迟: < 500ms
-- 交易提交延迟: < 3s
-- 前端首屏加载: < 2s
-
-## 🚢 部署
-
-### Docker 部署
 ```bash
-docker-compose up -d
+forge script script/DeployFishCakePaymaster.s.sol:DeployFishCakePaymaster \
+    --rpc-url $HASHKEY_RPC \
+    --account defaultkey \
+    --sender 0xbc7bb5ba727a3edff6806c017b14e91c0db97336 \
+    --broadcast \
+    --legacy \
+    -vvvv
+
 ```
 
-### 手动部署
-参考各服务目录下的 README.md
+## 🌐 部署信息 (Deployment Status)
 
-## 📄 许可证
+本项目已成功部署至 **HashKey Chain Testnet**，实现了账户抽象架构在合规高性能公链上的初步落地。
 
-MIT License
+### HashKey Chain (Testnet)
 
-## 🤝 贡献
+* **Network Name**: HashKey Chain Testnet
+* **Chain ID**: `133`
+* **RPC Endpoint**: `https://testnet.hsk.xyz`
 
-欢迎提交 Issue 和 Pull Request！
+| Contract | Version | Address | Explorer |
+| --- | --- | --- | --- |
+| **FishCakePaymaster** | V1 (Whitelist) | `0x5B9aaF769b6a51fd8502E06D15f1362B95F522C5` | [View on Explorer](https://www.google.com/search?q=https://explorer.testnet.hashkey.com/address/0x5B9aaF769b6a51fd8502E06D15f1362B95F522C5) |
+| **EntryPoint** | v0.6 | `0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789` | - |
 
-## 📞 支持
+> **Deployment Proof**:
+> Transaction Hash: `0x6559f3d03119ef30e52050be4c20d1454f75b607423cd27aaad3b3601490d0ca`
+>
+> ## 📝 许可证
 
-如有问题，请查看：
-- [常见问题](#-常见问题)
-- [GitHub Issues](https://github.com/your-repo/issues)
-- [项目文档](./docs/)
+本项目采用 [MIT License](https://www.google.com/search?q=LICENSE) 授权。
+
+---
+2026.1.25
