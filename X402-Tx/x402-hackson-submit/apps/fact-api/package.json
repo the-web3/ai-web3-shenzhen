@@ -1,0 +1,19 @@
+{
+  "name": "fact-api",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@x402-stack/shared": "*",
+    "@hono/node-server": "^1.13.0",
+    "dotenv": "^16.4.7",
+    "hono": "^4.6.12",
+    "zod": "^3.24.1",
+    "viem": "^2.21.35"
+  }
+}

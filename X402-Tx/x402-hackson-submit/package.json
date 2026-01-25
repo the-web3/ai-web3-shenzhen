@@ -1,0 +1,22 @@
+{
+  "name": "x402-stack",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:mcp": "npm run dev --workspace apps/mcp-server",
+    "dev:fact": "npm run dev --workspace apps/fact-api",
+    "dev:facilitator": "npm run dev --workspace apps/facilitator",
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run typecheck --workspaces"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "tsx": "^4.20.2",
+    "typescript": "^5.7.3"
+  }
+}
+
