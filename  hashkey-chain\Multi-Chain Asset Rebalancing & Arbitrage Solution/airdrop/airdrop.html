@@ -1,0 +1,2468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fishcake - 多链跨链NFT空投平台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --gradient-primary: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            --gradient-success: linear-gradient(135deg, #4cc9f0 0%, #2a8fb8 100%);
+            --gradient-warning: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+            --gradient-hashkey: linear-gradient(135deg, #FF6B35 0%, #FFA726 100%);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--gradient);
+            color: var(--light);
+            min-height: 100vh;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.2), rgba(247, 37, 133, 0.1));
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path fill="rgba(255,255,255,0.02)" d="M0,0V100H1000V0ZM250,50a25,25,0,1,1,25-25A25,25,0,0,1,250,50ZM750,50a25,25,0,1,1,25-25A25,25,0,0,1,750,50Z"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4cc9f0, #f72585);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.3);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+        }
+        
+        .quick-action-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-action-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            border-radius: 17px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .quick-action-card:hover::before {
+            opacity: 1;
+        }
+        
+        .quick-action-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            color: var(--success);
+            border-bottom: 2px solid rgba(76, 201, 240, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .ad-container {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.2), rgba(247, 37, 133, 0.2));
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ad-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .countdown {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--success);
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(76, 201, 240, 0.5);
+        }
+        
+        .ad-progress {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .ad-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        .nft-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .nft-card:hover {
+            border-color: var(--success);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(76, 201, 240, 0.3);
+        }
+        
+        .nft-icon {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 15px;
+        }
+        
+        .network-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 5px;
+        }
+        
+        .badge-monad {
+            background: rgba(0, 209, 178, 0.2);
+            color: #00d1b2;
+            border: 1px solid rgba(0, 209, 178, 0.3);
+        }
+        
+        .badge-sepolia {
+            background: rgba(138, 43, 226, 0.2);
+            color: #8a2be2;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+        
+        .badge-moonbase {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        
+        .badge-hashkey {
+            background: rgba(255, 107, 53, 0.2);
+            color: #FF6B35;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn-success {
+            background: var(--gradient-success);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(76, 201, 240, 0.4);
+        }
+        
+        .btn-warning {
+            background: var(--gradient-warning);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-warning:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(247, 37, 133, 0.4);
+        }
+        
+        .btn-hashkey {
+            background: var(--gradient-hashkey);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .btn-hashkey:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .status-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-connected {
+            background-color: #28a745;
+            box-shadow: 0 0 10px #28a745;
+        }
+        
+        .status-disconnected {
+            background-color: #dc3545;
+            box-shadow: 0 0 10px #dc3545;
+        }
+        
+        .tab-content {
+            padding: 20px 0;
+        }
+        
+        .nav-tabs .nav-link {
+            color: rgba(255, 255, 255, 0.6);
+            border: none;
+            padding: 12px 20px;
+            font-weight: 600;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--success);
+            background: transparent;
+            border-bottom: 3px solid var(--success);
+        }
+        
+        .nav-tabs .nav-link:hover {
+            color: white;
+        }
+        
+        .wallet-display {
+            background: rgba(67, 97, 238, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .contract-address {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        
+        .toast {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .modal-content {
+            background: var(--dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+        
+        .form-control, .form-select {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .table-dark {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .stats-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--success);
+            margin-bottom: 5px;
+        }
+        
+        .stats-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: rgba(26, 26, 46, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-fish me-2" style="color: var(--success);"></i>
+                <strong>Fishcake</strong>
+                <span class="badge bg-warning ms-2" style="font-size: 0.6rem;">BETA</span>
+            </a>
+            
+            <div class="d-flex align-items-center">
+                <div id="wallet-status" class="me-3" style="display: none;">
+                    <span class="status-dot status-disconnected"></span>
+                    <span id="network-name">未连接</span>
+                </div>
+                <button class="btn btn-primary" id="connect-wallet-btn">
+                    <i class="fas fa-plug"></i> 连接钱包
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- 左侧边栏 -->
+            <div class="col-lg-3">
+                <div class="glass-card mb-4">
+                    <h5 class="section-title">
+                        <i class="fas fa-wallet me-2"></i>钱包状态
+                    </h5>
+                    <div id="wallet-info" style="display: none;">
+                        <div class="mb-3">
+                            <small class="text-muted">账户地址</small>
+                            <div id="account-address" class="contract-address"></div>
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-muted">网络</small>
+                            <div id="current-network" class="fw-bold"></div>
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-muted">ETH 余额</small>
+                            <div id="eth-balance" class="fw-bold"></div>
+                        </div>
+                    </div>
+                    <div id="no-wallet" class="text-center py-4">
+                        <i class="fas fa-wallet fa-2x mb-3 text-muted"></i>
+                        <p class="text-muted">请连接钱包开始使用</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card">
+                    <h5 class="section-title">
+                        <i class="fas fa-rocket me-2"></i>快速开始
+                    </h5>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" onclick="showTab('newbie-guide')">
+                            <i class="fas fa-play-circle"></i> 开始新手引导
+                        </button>
+                        <button class="btn btn-primary" onclick="showTab('airdrop')">
+                            <i class="fas fa-gift"></i> 领取NFT空投
+                        </button>
+                        <button class="btn btn-warning" onclick="showTab('bridge')">
+                            <i class="fas fa-exchange-alt"></i> 跨链转账
+                        </button>
+                        <button class="btn btn-hashkey" onclick="showTab('wallet')">
+                            <i class="fas fa-key"></i> 钱包工具
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="glass-card mt-4">
+                    <h5 class="section-title">
+                        <i class="fas fa-chart-line me-2"></i>实时统计
+                    </h5>
+                    <div class="row text-center">
+                        <div class="col-6 mb-3">
+                            <div class="stats-card">
+                                <div class="stats-number" id="total-nft-claims">0</div>
+                                <div class="stats-label">NFT领取</div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="stats-card">
+                                <div class="stats-number" id="total-cross-chain">0</div>
+                                <div class="stats-label">跨链交易</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stats-card">
+                                <div class="stats-number" id="ads-completed">0</div>
+                                <div class="stats-label">广告完成</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stats-card">
+                                <div class="stats-number" id="active-users">0</div>
+                                <div class="stats-label">活跃用户</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 主内容区 -->
+            <div class="col-lg-9">
+                <!-- 英雄区域 -->
+                <div class="hero-section">
+                    <h1 class="hero-title">跨链任意看广告，领取NFT空投</h1>
+                    <p class="hero-subtitle">
+                        支持 Monad、Sepolia、Moonbase Alpha、HashKey 四条测试链，观看简单广告即可免费领取NFT，
+                        体验多链稳定币跨桥转账，开启您的多链DeFi之旅
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <button class="btn btn-success btn-lg" onclick="showTab('newbie-guide')">
+                            <i class="fas fa-play me-2"></i> 立即开始
+                        </button>
+                        <button class="btn btn-primary btn-lg" onclick="showTab('airdrop')">
+                            <i class="fas fa-gift me-2"></i> 领取空投
+                        </button>
+                        <button class="btn btn-outline-light btn-lg" onclick="showTab('bridge')">
+                            <i class="fas fa-exchange-alt me-2"></i> 跨链体验
+                        </button>
+                        <button class="btn btn-hashkey btn-lg" onclick="showTab('wallet')">
+                            <i class="fas fa-key me-2"></i> 钱包工具
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 标签页导航 -->
+                <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button">
+                            <i class="fas fa-home me-2"></i>首页
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="newbie-guide-tab" data-bs-toggle="tab" data-bs-target="#newbie-guide" type="button">
+                            <i class="fas fa-compass me-2"></i>新手引导
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="airdrop-tab" data-bs-toggle="tab" data-bs-target="#airdrop" type="button">
+                            <i class="fas fa-gift me-2"></i>NFT空投
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="bridge-tab" data-bs-toggle="tab" data-bs-target="#bridge" type="button">
+                            <i class="fas fa-exchange-alt me-2"></i>跨链转账
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="wallet-tab" data-bs-toggle="tab" data-bs-target="#wallet" type="button">
+                            <i class="fas fa-tools me-2"></i>钱包工具
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- 标签页内容 -->
+                <div class="tab-content glass-card mt-0" id="mainTabsContent">
+                    <!-- 首页 -->
+                    <div class="tab-pane fade show active" id="home" role="tabpanel">
+                        <h3 class="section-title">欢迎来到 Fishcake 多链生态系统</h3>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-4 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-gem"></i>
+                                    </div>
+                                    <h4>NFT 空投</h4>
+                                    <p class="text-muted">在四条测试网免费领取NFT，每链仅需观看10秒广告</p>
+                                    <button class="btn btn-primary mt-3" onclick="showTab('airdrop')">
+                                        <i class="fas fa-gift"></i> 立即领取
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </div>
+                                    <h4>跨链转账</h4>
+                                    <p class="text-muted">在四条链之间自由转移稳定币资产，体验无缝跨链</p>
+                                    <button class="btn btn-primary mt-3" onclick="showTab('bridge')">
+                                        <i class="fas fa-bridge"></i> 开始跨链
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <h4>钱包工具</h4>
+                                    <p class="text-muted">一键创建无私钥钱包，直接导入MetaMask，安全便捷</p>
+                                    <button class="btn btn-primary mt-3" onclick="showTab('wallet')">
+                                        <i class="fas fa-plus-circle"></i> 创建钱包
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="quick-action-card mb-4">
+                                    <h5 class="section-title">
+                                        <i class="fas fa-bolt me-2"></i>快速开始
+                                    </h5>
+                                    <p class="mb-3">新用户只需3步即可体验完整功能：</p>
+                                    <ol class="mb-3">
+                                        <li class="mb-2">连接钱包或创建新钱包</li>
+                                        <li class="mb-2">在四条网络领取NFT空投</li>
+                                        <li class="mb-2">体验跨链转账功能</li>
+                                    </ol>
+                                    <button class="btn btn-success w-100" onclick="startNewbieGuide()">
+                                        <i class="fas fa-play-circle me-2"></i> 开始新手引导
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="quick-action-card mb-4">
+                                    <h5 class="section-title">
+                                        <i class="fas fa-ad me-2"></i>广告空投说明
+                                    </h5>
+                                    <p class="mb-3">我们的广告系统简单快速：</p>
+                                    <ul class="mb-3">
+                                        <li class="mb-2">每条链仅需观看10秒广告</li>
+                                        <li class="mb-2">广告收入用于项目开发</li>
+                                        <li class="mb-2">支持四条测试网免费领取</li>
+                                        <li class="mb-2">每个地址每链限领一次</li>
+                                    </ul>
+                                    <button class="btn btn-warning w-100" onclick="showTab('airdrop')">
+                                        <i class="fas fa-gift me-2"></i> 查看空投详情
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h5 class="section-title">支持的网络</h5>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="nft-card">
+                                    <div class="nft-icon">
+                                        <i class="fas fa-cube"></i>
+                                    </div>
+                                    <h5>Monad Testnet</h5>
+                                    <span class="badge badge-monad mb-3">链ID: 10143</span>
+                                    <p class="small text-muted">新一代高性能EVM链，体验未来的区块链技术</p>
+                                    <div class="mt-3">
+                                        <button class="btn btn-sm btn-outline-primary me-2" onclick="switchChain('monad')">
+                                            切换网络
+                                        </button>
+                                        <button class="btn btn-sm btn-success" onclick="startAdProcess('monad')">
+                                            领取NFT
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 mb-3">
+                                <div class="nft-card">
+                                    <div class="nft-icon">
+                                        <i class="fab fa-ethereum"></i>
+                                    </div>
+                                    <h5>Sepolia Testnet</h5>
+                                    <span class="badge badge-sepolia mb-3">链ID: 11155111</span>
+                                    <p class="small text-muted">以太坊官方测试网，最稳定的测试环境</p>
+                                    <div class="mt-3">
+                                        <button class="btn btn-sm btn-outline-primary me-2" onclick="switchChain('sepolia')">
+                                            切换网络
+                                        </button>
+                                        <button class="btn btn-sm btn-success" onclick="startAdProcess('sepolia')">
+                                            领取NFT
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 mb-3">
+                                <div class="nft-card">
+                                    <div class="nft-icon">
+                                        <i class="fas fa-moon"></i>
+                                    </div>
+                                    <h5>Moonbase Alpha</h5>
+                                    <span class="badge badge-moonbase mb-3">链ID: 1287</span>
+                                    <p class="small text-muted">波卡生态的以太坊兼容链，跨链生态丰富</p>
+                                    <div class="mt-3">
+                                        <button class="btn btn-sm btn-outline-primary me-2" onclick="switchChain('moonbase')">
+                                            切换网络
+                                        </button>
+                                        <button class="btn btn-sm btn-success" onclick="startAdProcess('moonbase')">
+                                            领取NFT
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 mb-3">
+                                <div class="nft-card">
+                                    <div class="nft-icon">
+                                        <i class="fas fa-key"></i>
+                                    </div>
+                                    <h5>HashKey Testnet</h5>
+                                    <span class="badge badge-hashkey mb-3">链ID: 133</span>
+                                    <p class="small text-muted">HashKey Chain测试网，企业级区块链解决方案</p>
+                                    <div class="mt-3">
+                                        <button class="btn btn-sm btn-outline-primary me-2" onclick="switchChain('hashkey')">
+                                            切换网络
+                                        </button>
+                                        <button class="btn btn-sm btn-success" onclick="startAdProcess('hashkey')">
+                                            领取NFT
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 新手引导 -->
+                    <div class="tab-pane fade" id="newbie-guide" role="tabpanel">
+                        <h3 class="section-title">
+                            <i class="fas fa-compass me-2"></i>新手引导
+                        </h3>
+                        
+                        <div class="alert alert-info mb-4" style="background: rgba(23, 162, 184, 0.2); border: 1px solid rgba(23, 162, 184, 0.3); color: #17a2b8; border-radius: 10px;">
+                            <i class="fas fa-info-circle me-2"></i>
+                            按照以下步骤完成新手任务，体验Fishcake多链系统的核心功能。完成所有步骤可获得额外奖励！
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <div class="glass-card mb-4">
+                                    <h5 class="mb-3">新手任务进度</h5>
+                                    <div class="progress mb-3" style="height: 20px;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" id="newbie-progress" style="width: 0%;">0%</div>
+                                    </div>
+                                    <div class="d-flex justify-content-between small text-muted">
+                                        <span>0/3 任务完成</span>
+                                        <span id="newbie-reward">完成所有任务可获得奖励</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="feature-card" id="step1-card">
+                                    <div class="feature-icon" style="background: var(--gradient-primary);">
+                                        <i class="fas fa-wallet"></i>
+                                    </div>
+                                    <h4>步骤1: 连接钱包</h4>
+                                    <p class="text-muted small">连接您的MetaMask钱包或创建新钱包</p>
+                                    
+                                    <div id="step1-not-completed">
+                                        <div class="mb-3">
+                                            <p class="small">如果您已有MetaMask钱包：</p>
+                                            <button class="btn btn-primary w-100 mb-2" onclick="connectWallet()">
+                                                <i class="fas fa-plug"></i> 连接MetaMask
+                                            </button>
+                                        </div>
+                                        
+                                        <div>
+                                            <p class="small">如果您没有钱包：</p>
+                                            <button class="btn btn-success w-100" onclick="showTab('wallet')">
+                                                <i class="fas fa-plus-circle"></i> 创建新钱包
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="step1-completed" style="display: none;">
+                                        <div class="alert alert-success p-2 mb-3">
+                                            <i class="fas fa-check-circle me-2"></i>已完成
+                                        </div>
+                                        <button class="btn btn-outline-success w-100" disabled>
+                                            <i class="fas fa-check"></i> 任务完成
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4 mb-4">
+                                <div class="feature-card" id="step2-card">
+                                    <div class="feature-icon" style="background: var(--gradient-success);">
+                                        <i class="fas fa-gift"></i>
+                                    </div>
+                                    <h4>步骤2: 领取NFT空投</h4>
+                                    <p class="text-muted small">在四条网络观看广告领取NFT</p>
+                                    
+                                    <div id="step2-not-completed">
+                                        <p class="small mb-3">在四条测试网各领取一个NFT：</p>
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-success" onclick="startAdProcess('monad')">
+                                                <i class="fas fa-cube"></i> 领取Monad NFT
+                                            </button>
+                                            <button class="btn btn-success" onclick="startAdProcess('sepolia')">
+                                                <i class="fab fa-ethereum"></i> 领取Sepolia NFT
+                                            </button>
+                                            <button class="btn btn-success" onclick="startAdProcess('moonbase')">
+                                                <i class="fas fa-moon"></i> 领取Moonbase NFT
+                                            </button>
+                                            <button class="btn btn-hashkey" onclick="startAdProcess('hashkey')">
+                                                <i class="fas fa-key"></i> 领取HashKey NFT
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="step2-completed" style="display: none;">
+                                        <div class="alert alert-success p-2 mb-3">
+                                            <i class="fas fa-check-circle me-2"></i>已完成
+                                        </div>
+                                        <button class="btn btn-outline-success w-100" disabled>
+                                            <i class="fas fa-check"></i> 任务完成
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4 mb-4">
+                                <div class="feature-card" id="step3-card">
+                                    <div class="feature-icon" style="background: var(--gradient-warning);">
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </div>
+                                    <h4>步骤3: 体验跨链</h4>
+                                    <p class="text-muted small">在不同链之间转移稳定币</p>
+                                    
+                                    <div id="step3-not-completed">
+                                        <p class="small mb-3">完成一次跨链转账体验：</p>
+                                        <button class="btn btn-warning w-100 mb-2" onclick="showTab('bridge')">
+                                            <i class="fas fa-exchange-alt"></i> 前往跨链页面
+                                        </button>
+                                        <p class="small text-muted">推荐从Monad转账到Sepolia</p>
+                                    </div>
+                                    
+                                    <div id="step3-completed" style="display: none;">
+                                        <div class="alert alert-success p-2 mb-3">
+                                            <i class="fas fa-check-circle me-2"></i>已完成
+                                        </div>
+                                        <button class="btn btn-outline-success w-100" disabled>
+                                            <i class="fas fa-check"></i> 任务完成
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <div class="glass-card text-center">
+                                    <h5 class="mb-3">新手任务奖励</h5>
+                                    <p class="mb-3">完成所有新手任务后，您将获得：</p>
+                                    <div class="row">
+                                        <div class="col-md-3 mb-3">
+                                            <div class="stats-card">
+                                                <div class="stats-number">4个</div>
+                                                <div class="stats-label">NFT收藏</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <div class="stats-card">
+                                                <div class="stats-number">100</div>
+                                                <div class="stats-label">测试代币</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <div class="stats-card">
+                                                <div class="stats-number">优先</div>
+                                                <div class="stats-label">空投资格</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <div class="stats-card">
+                                                <div class="stats-number">高级</div>
+                                                <div class="stats-label">用户徽章</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-success mt-3" id="claim-reward-btn" disabled onclick="claimNewbieReward()">
+                                        <i class="fas fa-gift me-2"></i> 领取任务奖励
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NFT空投 -->
+                    <div class="tab-pane fade" id="airdrop" role="tabpanel">
+                        <h3 class="section-title">
+                            <i class="fas fa-gift me-2"></i>NFT空投
+                        </h3>
+                        
+                        <div class="alert alert-info mb-4" style="background: rgba(23, 162, 184, 0.2); border: 1px solid rgba(23, 162, 184, 0.3); color: #17a2b8; border-radius: 10px;">
+                            <i class="fas fa-info-circle me-2"></i>
+                            每个地址在每条链上只能领取一次NFT。领取需要观看10秒广告并通过验证。支持四条测试链。
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-3 mb-4">
+                                <div class="nft-card">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <div class="token-name">Monad NFT (FISH-M)</div>
+                                            <small class="text-muted">Monad测试网专属</small>
+                                        </div>
+                                        <span class="badge badge-monad">Monad</span>
+                                    </div>
+                                    <div class="nft-icon">
+                                        <i class="fas fa-cube"></i>
+                                    </div>
+                                    <div id="monad-nft-status" class="mb-3">
+                                        状态: <span class="text-warning">未领取</span>
+                                    </div>
+                                    <button class="btn btn-success w-100" onclick="startAdProcess('monad')" id="monad-nft-btn">
+                                        <i class="fas fa-gift"></i> 观看广告领取
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 mb-4">
+                                <div class="nft-card">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <div class="token-name">Sepolia NFT (FISH-S)</div>
+                                            <small class="text-muted">Sepolia测试网专属</small>
+                                        </div>
+                                        <span class="badge badge-sepolia">Sepolia</span>
+                                    </div>
+                                    <div class="nft-icon">
+                                        <i class="fab fa-ethereum"></i>
+                                    </div>
+                                    <div id="sepolia-nft-status" class="mb-3">
+                                        状态: <span class="text-warning">未领取</span>
+                                    </div>
+                                    <button class="btn btn-success w-100" onclick="startAdProcess('sepolia')" id="sepolia-nft-btn">
+                                        <i class="fas fa-gift"></i> 观看广告领取
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 mb-4">
+                                <div class="nft-card">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <div class="token-name">Moonbase NFT (FISH-MA)</div>
+                                            <small class="text-muted">Moonbase测试网专属</small>
+                                        </div>
+                                        <span class="badge badge-moonbase">Moonbase</span>
+                                    </div>
+                                    <div class="nft-icon">
+                                        <i class="fas fa-moon"></i>
+                                    </div>
+                                    <div id="moonbase-nft-status" class="mb-3">
+                                        状态: <span class="text-warning">未领取</span>
+                                    </div>
+                                    <button class="btn btn-success w-100" onclick="startAdProcess('moonbase')" id="moonbase-nft-btn">
+                                        <i class="fas fa-gift"></i> 观看广告领取
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 mb-4">
+                                <div class="nft-card">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <div class="token-name">HashKey NFT (FISH-HK)</div>
+                                            <small class="text-muted">HashKey测试网专属</small>
+                                        </div>
+                                        <span class="badge badge-hashkey">HashKey</span>
+                                    </div>
+                                    <div class="nft-icon">
+                                        <i class="fas fa-key"></i>
+                                    </div>
+                                    <div id="hashkey-nft-status" class="mb-3">
+                                        状态: <span class="text-warning">未领取</span>
+                                    </div>
+                                    <button class="btn btn-hashkey w-100" onclick="startAdProcess('hashkey')" id="hashkey-nft-btn">
+                                        <i class="fas fa-gift"></i> 观看广告领取
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="glass-card">
+                                    <h5 class="section-title">空投统计数据</h5>
+                                    <div class="row text-center">
+                                        <div class="col-6 mb-3">
+                                            <div class="stats-card">
+                                                <div class="stats-number" id="nft-claimed-count">0</div>
+                                                <div class="stats-label">已领取NFT</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div class="stats-card">
+                                                <div class="stats-number" id="nft-available-count">4</div>
+                                                <div class="stats-label">可领取NFT</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="stats-card">
+                                                <div class="stats-number" id="nft-monad-count">0</div>
+                                                <div class="stats-label">Monad NFT</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="stats-card">
+                                                <div class="stats-number" id="nft-sepolia-count">0</div>
+                                                <div class="stats-label">Sepolia NFT</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="stats-card">
+                                                <div class="stats-number" id="nft-hashkey-count">0</div>
+                                                <div class="stats-label">HashKey NFT</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="glass-card">
+                                    <h5 class="section-title">批量领取</h5>
+                                    <p class="mb-3">一键领取所有可用的NFT空投：</p>
+                                    <button class="btn btn-warning w-100 mb-3" onclick="claimAllNFTs()" id="claim-all-btn">
+                                        <i class="fas fa-bolt"></i> 一键领取所有NFT
+                                    </button>
+                                    <div class="alert alert-info p-2">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        批量领取将按顺序处理每个网络的NFT领取，可能需要一些时间。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 跨链转账 -->
+                    <div class="tab-pane fade" id="bridge" role="tabpanel">
+                        <h3 class="section-title">
+                            <i class="fas fa-exchange-alt me-2"></i>跨链转账
+                        </h3>
+                        
+                        <div class="alert alert-info mb-4" style="background: rgba(23, 162, 184, 0.2); border: 1px solid rgba(23, 162, 184, 0.3); color: #17a2b8; border-radius: 10px;">
+                            <i class="fas fa-info-circle me-2"></i>
+                            在不同测试链之间转移您的稳定币资产。支持 Monad USDM ↔ Sepolia USDE ↔ Moonbase USDD ↔ HashKey USDH 双向跨链。
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="glass-card mb-4">
+                                    <h5 class="section-title">跨链转账表单</h5>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">来源网络</label>
+                                            <select class="form-select" id="source-chain">
+                                                <option value="monad">Monad (发送 USDM)</option>
+                                                <option value="sepolia">Sepolia (发送 USDE)</option>
+                                                <option value="moonbase">Moonbase (发送 USDD)</option>
+                                                <option value="hashkey">HashKey (发送 USDH)</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label class="form-label">目标网络</label>
+                                            <select class="form-select" id="target-chain">
+                                                <option value="sepolia">Sepolia (接收 pUSDE)</option>
+                                                <option value="moonbase">Moonbase (接收 pUSDD)</option>
+                                                <option value="hashkey">HashKey (接收 pUSDH)</option>
+                                                <option value="monad">Monad (接收 pUSDM)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">转账金额</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="bridge-amount" min="0" step="0.1" placeholder="输入金额" value="10">
+                                            <span class="input-group-text" id="bridge-token-symbol">USDM</span>
+                                        </div>
+                                        <div class="form-text">可用余额: <span id="available-balance">0</span> <span id="bridge-token-name">USDM</span></div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">接收地址 (可选)</label>
+                                        <input type="text" class="form-control" id="recipient-address" placeholder="留空则使用当前地址">
+                                    </div>
+                                    
+                                    <button class="btn btn-primary w-100" onclick="initiateCrossChain()">
+                                        <i class="fas fa-paper-plane"></i> 开始跨链转账
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="glass-card">
+                                    <h5 class="section-title">跨链映射说明</h5>
+                                    
+                                    <div class="mb-3">
+                                        <p class="small mb-1">Monad USDM → Sepolia pUSDE</p>
+                                        <div class="progress mb-3" style="height: 8px;">
+                                            <div class="progress-bar" style="width: 70%;"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <p class="small mb-1">Sepolia USDE → HashKey pUSDH</p>
+                                        <div class="progress mb-3" style="height: 8px;">
+                                            <div class="progress-bar" style="width: 60%;"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <p class="small mb-1">HashKey USDH → Moonbase pUSDD</p>
+                                        <div class="progress mb-3" style="height: 8px;">
+                                            <div class="progress-bar" style="width: 50%;"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <p class="small mb-1">Moonbase USDD → Monad pUSDM</p>
+                                        <div class="progress mb-3" style="height: 8px;">
+                                            <div class="progress-bar" style="width: 30%;"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alert alert-info p-3">
+                                        <small>
+                                            <i class="fas fa-lightbulb me-1"></i>
+                                            <strong>跨链过程：</strong><br>
+                                            1. 在源链锁定原生币<br>
+                                            2. 中继监听事件<br>
+                                            3. 在目标链铸造pToken
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h5 class="section-title">跨链历史</h5>
+                        <div class="table-responsive">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>来源</th>
+                                        <th>目标</th>
+                                        <th>金额</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bridge-history">
+                                    <tr>
+                                        <td colspan="6" class="text-center">暂无跨链记录</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 钱包工具 -->
+                    <div class="tab-pane fade" id="wallet" role="tabpanel">
+                        <h3 class="section-title">
+                            <i class="fas fa-tools me-2"></i>钱包工具
+                        </h3>
+                        
+                        <div class="alert alert-warning mb-4" style="background: rgba(255, 193, 7, 0.2); border: 1px solid rgba(255, 193, 7, 0.3); color: #ffc107; border-radius: 10px;">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>安全警告：</strong>助记词和私钥是访问您资产的关键。请务必妥善保管，不要与任何人分享。
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="glass-card mb-4">
+                                    <h5 class="section-title">
+                                        <i class="fas fa-plus-circle me-2"></i>创建新钱包
+                                    </h5>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">钱包名称 (可选)</label>
+                                        <input type="text" class="form-control" id="wallet-name" placeholder="例如：我的Fishcake钱包">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">钱包密码 (可选，用于本地加密)</label>
+                                        <input type="password" class="form-control" id="wallet-password" placeholder="输入密码">
+                                    </div>
+                                    
+                                    <button class="btn btn-primary w-100 mb-3" onclick="generateNewWallet()">
+                                        <i class="fas fa-magic"></i> 一键生成无私钥钱包
+                                    </button>
+                                    
+                                    <div class="alert alert-info p-2">
+                                        <small>
+                                            <i class="fas fa-info-circle me-1"></i>
+                                            一键生成功能将创建一个新的助记词、私钥和地址。助记词可以导入到任何兼容的钱包（如MetaMask）。
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="glass-card mb-4">
+                                    <h5 class="section-title">
+                                        <i class="fas fa-download me-2"></i>导入钱包
+                                    </h5>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">助记词 (12个单词)</label>
+                                        <textarea class="form-control" id="import-mnemonic" rows="3" placeholder="输入12个单词的助记词，用空格分隔"></textarea>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">或私钥</label>
+                                        <input type="password" class="form-control" id="import-private-key" placeholder="输入私钥 (0x开头)">
+                                    </div>
+                                    
+                                    <button class="btn btn-success w-100" onclick="importWallet()">
+                                        <i class="fas fa-file-import"></i> 导入钱包
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row" id="generated-wallet-section" style="display: none;">
+                            <div class="col-12">
+                                <div class="glass-card">
+                                    <h5 class="section-title">
+                                        <i class="fas fa-key me-2"></i>生成的钱包信息
+                                    </h5>
+                                    
+                                    <div class="alert alert-warning p-3 mb-4">
+                                        <i class="fas fa-shield-alt me-2"></i>
+                                        <strong>重要：请立即保存以下信息！</strong> 刷新页面后这些信息将丢失。
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">钱包地址</label>
+                                                <div class="contract-address" id="generated-address"></div>
+                                                <button class="btn btn-sm btn-outline-primary mt-2" onclick="copyToClipboard('generated-address')">
+                                                    <i class="fas fa-copy"></i> 复制地址
+                                                </button>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label class="form-label">助记词 (12个单词)</label>
+                                                <div class="contract-address" id="generated-mnemonic"></div>
+                                                <button class="btn btn-sm btn-outline-warning mt-2" onclick="copyToClipboard('generated-mnemonic')">
+                                                    <i class="fas fa-copy"></i> 复制助记词
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">私钥</label>
+                                                <div class="contract-address" id="generated-private-key"></div>
+                                                <button class="btn btn-sm btn-outline-danger mt-2" onclick="copyToClipboard('generated-private-key')">
+                                                    <i class="fas fa-copy"></i> 复制私钥
+                                                </button>
+                                            </div>
+                                            
+                                            <div class="d-grid gap-2 mt-4">
+                                                <button class="btn btn-success" onclick="importToMetaMask()">
+                                                    <i class="fab fa-metamask me-2"></i> 导入到MetaMask
+                                                </button>
+                                                <button class="btn btn-primary" onclick="connectGeneratedWallet()">
+                                                    <i class="fas fa-plug me-2"></i> 使用此钱包连接
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 广告模态框 -->
+    <div class="modal fade" id="adModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">观看广告领取NFT</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ad-container">
+                        <h4 id="ad-title">支持 Fishcake 生态系统</h4>
+                        <p id="ad-description">感谢您支持Fishcake项目！请观看以下广告以领取NFT奖励。</p>
+                        
+                        <div id="ad-content">
+                            <div class="text-center my-4">
+                                <i class="fas fa-ad fa-4x mb-3" style="color: var(--success);"></i>
+                                <h5>Fishcake 生态系统广告</h5>
+                                <p>通过观看此广告，您正在帮助我们扩展Fishcake生态系统。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="my-4">
+                            <h5 class="text-center">广告剩余时间</h5>
+                            <div class="countdown" id="ad-countdown">10</div>
+                            <div class="ad-progress">
+                                <div class="ad-progress-bar" id="ad-progress-bar"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info p-3">
+                            <i class="fas fa-info-circle me-2"></i>
+                            请观看完整广告以获得NFT领取资格。广告结束后将自动生成签名。
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel-ad-btn">取消</button>
+                    <button type="button" class="btn btn-primary" id="claim-nft-btn" disabled>
+                        <i class="fas fa-gift"></i> 生成签名并领取NFT
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 通知区域 -->
+    <div class="notification" id="notification-area"></div>
+
+    <!-- 脚本 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+    <script>
+        // ==================== 全局变量 ====================
+        let provider;
+        let signer;
+        let userAddress;
+        let currentChainId;
+        let isConnected = false;
+        
+        // 当前网络
+        let currentNetwork = 'monad';
+        
+        // NFT广告状态
+        let currentAdNetwork = null;
+        let adCountdownInterval = null;
+        let adCountdown = 10;
+        let adsCompleted = 0;
+        
+        // 新手引导状态
+        let newbieGuideStatus = {
+            step1: false, // 连接钱包
+            step2: false, // 领取NFT
+            step3: false  // 跨链体验
+        };
+        
+        // 生成的钱包信息
+        let generatedWallet = null;
+        
+        // 合约配置（添加HashKey链）
+        const contractConfig = {
+            monad: {
+                chainId: 10143,
+                contracts: {
+                    nft: "0xB045b57EBda724376A633D1E5c15bf87fC0BcB1C",
+                    nativeStablecoin: "0x4C7F77661E962bE69837d732532379ABbb1959a8",
+                    pToken: "0x6067b3a24dD3228B7F4fE4D076a1298217C4ef5F",
+                    bridgeLock: "0x23695F38ea47ed5F22aD6E12702360F731d5134A"
+                }
+            },
+            sepolia: {
+                chainId: 11155111,
+                contracts: {
+                    nft: "0x1E04197BA40288c603f44E2e51d1E8cfc220f127",
+                    nativeStablecoin: "0xd1B8857DE155A48A28C614a0dc466aC90E444fd0",
+                    pToken: "0xEB6e086CEf23725f82FcbA68Ca797eFd18b5b862",
+                    bridgeLock: "0x0e232f8Bd1fddd76aD9E8032Fb9BF4A506Adba59"
+                }
+            },
+            moonbase: {
+                chainId: 1287,
+                contracts: {
+                    nft: "0x126a9997Dc9814e4B7e210BB4A9E50E600E36342",
+                    nativeStablecoin: "0x70aAd923D525d90cae23BB816B7B5190AC5440Bc",
+                    pToken: "0x90507351583d764A0D3A325Ff7C26Ff7500103ac",
+                    bridgeLock: "0x865aaEaD2F05a13e4fe2F66c66c296C4058D91a9"
+                }
+            },
+            hashkey: {
+                chainId: 133,
+                contracts: {
+                    nft: "0x1234567890123456789012345678901234567890",
+                    nativeStablecoin: "0x1234567890123456789012345678901234567890",
+                    pToken: "0x1234567890123456789012345678901234567890",
+                    bridgeLock: "0x1234567890123456789012345678901234567890"
+                }
+            }
+        };
+        
+        // 跨链交易历史
+        let crossChainHistory = [];
+        
+        // ==================== 初始化 ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            // 检查MetaMask
+            if (typeof window.ethereum !== 'undefined') {
+                console.log('MetaMask 已安装');
+                initEthers();
+                setupEventListeners();
+            } else {
+                showNotification('error', '请安装MetaMask钱包');
+                document.getElementById('connect-wallet-btn').innerHTML = '<i class="fas fa-exclamation-triangle"></i> 请安装MetaMask';
+                document.getElementById('connect-wallet-btn').disabled = true;
+            }
+            
+            // 初始化统计
+            updateStats();
+            
+            // 初始化跨链页面
+            updateBridgePage();
+            
+            // 添加事件监听器
+            document.getElementById('source-chain').addEventListener('change', updateBridgePage);
+            
+            // 初始化标签页
+            const tabTriggerList = [].slice.call(document.querySelectorAll('#mainTabs button'));
+            tabTriggerList.forEach(function(tabTriggerEl) {
+                tabTriggerEl.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const tabId = this.getAttribute('data-bs-target').substring(1);
+                    
+                    // 更新内容
+                    if (tabId === 'airdrop') {
+                        checkAllNFTClaims();
+                    } else if (tabId === 'newbie-guide') {
+                        updateNewbieGuideStatus();
+                    }
+                });
+            });
+            
+            // 设置广告模态框事件
+            document.getElementById('cancel-ad-btn').addEventListener('click', function() {
+                if (adCountdownInterval) {
+                    clearInterval(adCountdownInterval);
+                    adCountdownInterval = null;
+                }
+            });
+            
+            document.getElementById('claim-nft-btn').addEventListener('click', function() {
+                if (!this.disabled) {
+                    claimNFTAfterAd();
+                }
+            });
+            
+            // 连接钱包按钮
+            document.getElementById('connect-wallet-btn').addEventListener('click', connectWallet);
+            
+            // 每10秒更新统计
+            setInterval(updateStats, 10000);
+        });
+        
+        // ==================== 以太坊连接 ====================
+        async function initEthers() {
+            provider = new ethers.providers.Web3Provider(window.ethereum);
+            try {
+                // 请求账户访问
+                const accounts = await provider.send("eth_requestAccounts", []);
+                if (accounts.length > 0) {
+                    await setupSigner();
+                    await updateNetworkInfo();
+                    isConnected = true;
+                    updateUI();
+                    checkAllNFTClaims();
+                    updateNewbieGuideStatus();
+                }
+            } catch (error) {
+                console.error('连接钱包失败:', error);
+                showNotification('error', '连接钱包失败: ' + error.message);
+            }
+        }
+        
+        async function setupSigner() {
+            signer = provider.getSigner();
+            userAddress = await signer.getAddress();
+            console.log('当前账户:', userAddress);
+        }
+        
+        async function updateNetworkInfo() {
+            const network = await provider.getNetwork();
+            currentChainId = network.chainId;
+            console.log('当前链ID:', currentChainId);
+            
+            // 根据链ID确定当前网络
+            if (currentChainId === 10143) {
+                currentNetwork = 'monad';
+            } else if (currentChainId === 11155111) {
+                currentNetwork = 'sepolia';
+            } else if (currentChainId === 1287) {
+                currentNetwork = 'moonbase';
+            } else if (currentChainId === 133) {
+                currentNetwork = 'hashkey';
+            } else {
+                currentNetwork = 'unknown';
+            }
+            
+            updateBridgePage();
+        }
+        
+        function setupEventListeners() {
+            // MetaMask账户变化
+            if (window.ethereum) {
+                window.ethereum.on('accountsChanged', async function(accounts) {
+                    console.log('账户变化:', accounts);
+                    if (accounts.length === 0) {
+                        // 用户断开连接
+                        isConnected = false;
+                        updateUI();
+                        showNotification('warning', '钱包已断开连接');
+                    } else {
+                        await setupSigner();
+                        updateUI();
+                        checkAllNFTClaims();
+                        updateNewbieGuideStatus();
+                        showNotification('info', '账户已切换');
+                    }
+                });
+                
+                // 网络变化
+                window.ethereum.on('chainChanged', async function(chainId) {
+                    console.log('网络变化:', chainId);
+                    // 重新初始化provider
+                    provider = new ethers.providers.Web3Provider(window.ethereum);
+                    await setupSigner();
+                    await updateNetworkInfo();
+                    updateUI();
+                    showNotification('info', '网络已切换');
+                });
+            }
+        }
+        
+        // ==================== UI更新 ====================
+        function updateUI() {
+            const walletInfo = document.getElementById('wallet-info');
+            const noWallet = document.getElementById('no-wallet');
+            const walletStatus = document.getElementById('wallet-status');
+            const connectBtn = document.getElementById('connect-wallet-btn');
+            
+            if (isConnected && userAddress) {
+                // 显示钱包信息
+                walletInfo.style.display = 'block';
+                noWallet.style.display = 'none';
+                walletStatus.style.display = 'flex';
+                
+                // 更新钱包信息
+                document.getElementById('account-address').textContent = 
+                    userAddress.substring(0, 6) + '...' + userAddress.substring(38);
+                
+                // 更新网络状态
+                const networkName = getNetworkName(currentNetwork);
+                document.getElementById('current-network').textContent = networkName;
+                document.getElementById('network-name').textContent = networkName;
+                
+                // 更新网络状态点
+                const statusDot = walletStatus.querySelector('.status-dot');
+                statusDot.className = 'status-dot status-connected';
+                
+                // 更新连接按钮
+                connectBtn.innerHTML = '<i class="fas fa-check"></i> 已连接';
+                connectBtn.classList.remove('btn-primary');
+                connectBtn.classList.add('btn-success');
+                
+                // 更新ETH余额
+                updateEthBalance();
+                
+                // 更新新手引导状态
+                updateNewbieGuideStatus();
+                
+            } else {
+                // 隐藏钱包信息
+                walletInfo.style.display = 'none';
+                noWallet.style.display = 'block';
+                walletStatus.style.display = 'none';
+                
+                // 更新连接按钮
+                connectBtn.innerHTML = '<i class="fas fa-plug"></i> 连接钱包';
+                connectBtn.classList.remove('btn-success');
+                connectBtn.classList.add('btn-primary');
+            }
+        }
+        
+        async function updateEthBalance() {
+            if (!userAddress || !provider) return;
+            
+            try {
+                const balance = await provider.getBalance(userAddress);
+                const ethBalance = ethers.utils.formatEther(balance);
+                document.getElementById('eth-balance').textContent = 
+                    parseFloat(ethBalance).toFixed(4) + ' ETH';
+            } catch (error) {
+                console.error('获取ETH余额失败:', error);
+            }
+        }
+        
+        function updateBridgePage() {
+            if (!isConnected) return;
+            
+            // 更新跨链页面的代币符号
+            const tokenSymbols = {
+                monad: 'USDM',
+                sepolia: 'USDE',
+                moonbase: 'USDD',
+                hashkey: 'USDH'
+            };
+            
+            const tokenNames = {
+                monad: 'USDM',
+                sepolia: 'USDE',
+                moonbase: 'USDD',
+                hashkey: 'USDH'
+            };
+            
+            const sourceChain = document.getElementById('source-chain').value;
+            document.getElementById('bridge-token-symbol').textContent = 
+                tokenSymbols[sourceChain] || '未知';
+            document.getElementById('bridge-token-name').textContent = 
+                tokenNames[sourceChain] || '未知';
+        }
+        
+        // ==================== 新手引导 ====================
+        function startNewbieGuide() {
+            showTab('newbie-guide');
+        }
+        
+        function updateNewbieGuideStatus() {
+            if (!isConnected) return;
+            
+            // 步骤1：连接钱包（已完成）
+            newbieGuideStatus.step1 = true;
+            
+            // 更新UI
+            const step1Completed = document.getElementById('step1-completed');
+            const step1NotCompleted = document.getElementById('step1-not-completed');
+            
+            if (step1Completed && step1NotCompleted) {
+                step1NotCompleted.style.display = 'none';
+                step1Completed.style.display = 'block';
+            }
+            
+            // 计算进度
+            let completedSteps = 0;
+            if (newbieGuideStatus.step1) completedSteps++;
+            if (newbieGuideStatus.step2) completedSteps++;
+            if (newbieGuideStatus.step3) completedSteps++;
+            
+            const progress = (completedSteps / 3) * 100;
+            const progressBar = document.getElementById('newbie-progress');
+            if (progressBar) {
+                progressBar.style.width = `${progress}%`;
+                progressBar.textContent = `${Math.round(progress)}%`;
+            }
+            
+            // 更新任务计数
+            const progressText = document.querySelector('#newbie-progress')?.parentElement?.nextElementSibling?.children[0];
+            if (progressText) {
+                progressText.textContent = `${completedSteps}/3 任务完成`;
+            }
+            
+            // 更新奖励状态
+            const claimRewardBtn = document.getElementById('claim-reward-btn');
+            const newbieReward = document.getElementById('newbie-reward');
+            
+            if (claimRewardBtn && newbieReward) {
+                if (completedSteps === 3) {
+                    claimRewardBtn.disabled = false;
+                    newbieReward.innerHTML = '<i class="fas fa-gift text-warning"></i> 可领取奖励';
+                } else {
+                    claimRewardBtn.disabled = true;
+                }
+            }
+        }
+        
+        function completeStep2() {
+            newbieGuideStatus.step2 = true;
+            const step2NotCompleted = document.getElementById('step2-not-completed');
+            const step2Completed = document.getElementById('step2-completed');
+            
+            if (step2NotCompleted && step2Completed) {
+                step2NotCompleted.style.display = 'none';
+                step2Completed.style.display = 'block';
+            }
+            updateNewbieGuideStatus();
+        }
+        
+        function completeStep3() {
+            newbieGuideStatus.step3 = true;
+            const step3NotCompleted = document.getElementById('step3-not-completed');
+            const step3Completed = document.getElementById('step3-completed');
+            
+            if (step3NotCompleted && step3Completed) {
+                step3NotCompleted.style.display = 'none';
+                step3Completed.style.display = 'block';
+            }
+            updateNewbieGuideStatus();
+        }
+        
+        function claimNewbieReward() {
+            if (newbieGuideStatus.step1 && newbieGuideStatus.step2 && newbieGuideStatus.step3) {
+                showNotification('success', '恭喜您完成所有新手任务！奖励已发放到您的钱包。');
+                const claimRewardBtn = document.getElementById('claim-reward-btn');
+                if (claimRewardBtn) {
+                    claimRewardBtn.disabled = true;
+                    claimRewardBtn.innerHTML = '<i class="fas fa-check"></i> 奖励已领取';
+                }
+                
+                // 更新统计数据
+                const activeUsers = parseInt(document.getElementById('active-users').textContent) + 1;
+                document.getElementById('active-users').textContent = activeUsers;
+                
+                // 模拟奖励发放
+                setTimeout(() => {
+                    showNotification('info', '100个测试代币已发送到您的钱包');
+                }, 1000);
+            }
+        }
+        
+        // ==================== NFT空投功能 ====================
+        function startAdProcess(network) {
+            if (!isConnected) {
+                showNotification('warning', '请先连接钱包');
+                showTab('newbie-guide');
+                return;
+            }
+            
+            // 检查当前网络是否匹配
+            if (currentNetwork !== network) {
+                showNotification('warning', `请先切换到${getNetworkName(network)}网络以领取NFT`);
+                switchChain(network);
+                return;
+            }
+            
+            currentAdNetwork = network;
+            adCountdown = 10;
+            
+            // 显示广告模态框
+            const adModal = new bootstrap.Modal(document.getElementById('adModal'));
+            adModal.show();
+            
+            // 更新广告标题
+            document.getElementById('ad-title').textContent = `领取 ${getNetworkName(network)} NFT`;
+            document.getElementById('ad-description').textContent = `观看广告以领取您在${getNetworkName(network)}网络的NFT`;
+            
+            // 重置按钮状态
+            const claimBtn = document.getElementById('claim-nft-btn');
+            claimBtn.disabled = true;
+            claimBtn.innerHTML = '<i class="fas fa-gift"></i> 生成签名并领取NFT';
+            
+            // 开始倒计时
+            startAdCountdown();
+        }
+        
+        function startAdCountdown() {
+            // 清除之前的倒计时
+            if (adCountdownInterval) {
+                clearInterval(adCountdownInterval);
+            }
+            
+            // 更新倒计时显示
+            updateAdCountdownDisplay();
+            
+            // 开始倒计时
+            adCountdownInterval = setInterval(() => {
+                adCountdown--;
+                updateAdCountdownDisplay();
+                
+                if (adCountdown <= 0) {
+                    clearInterval(adCountdownInterval);
+                    adCountdownInterval = null;
+                    
+                    // 启用领取按钮
+                    const claimBtn = document.getElementById('claim-nft-btn');
+                    claimBtn.disabled = false;
+                    claimBtn.innerHTML = '<i class="fas fa-gift"></i> 生成签名并领取NFT';
+                    
+                    // 更新进度条
+                    document.getElementById('ad-progress-bar').style.width = '100%';
+                    
+                    // 显示完成消息
+                    document.getElementById('ad-countdown').textContent = '完成！';
+                    document.getElementById('ad-countdown').style.color = 'var(--success)';
+                }
+            }, 1000);
+        }
+        
+        function updateAdCountdownDisplay() {
+            document.getElementById('ad-countdown').textContent = adCountdown;
+            
+            // 更新进度条
+            const progress = ((10 - adCountdown) / 10) * 100;
+            document.getElementById('ad-progress-bar').style.width = `${progress}%`;
+        }
+        
+        async function claimNFTAfterAd() {
+            if (!currentAdNetwork) {
+                showNotification('error', '没有选择要领取NFT的网络');
+                return;
+            }
+            
+            const network = currentAdNetwork;
+            
+            try {
+                showNotification('info', `正在领取${getNetworkName(network)} NFT...`);
+                
+                // 模拟广告服务器签名
+                const message = `Claim NFT on ${getNetworkName(network)} for ${userAddress} at ${Date.now()}`;
+                const messageHash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(message));
+                const messageHashBytes = ethers.utils.arrayify(messageHash);
+                
+                // 使用当前钱包签名
+                const signature = await signer.signMessage(messageHashBytes);
+                
+                // 更新按钮状态
+                const claimBtn = document.getElementById('claim-nft-btn');
+                claimBtn.disabled = true;
+                claimBtn.innerHTML = '<div class="loading"></div> 模拟领取中...';
+                
+                // 模拟交易等待
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // 增加广告完成计数
+                adsCompleted++;
+                
+                // 更新统计
+                updateStats();
+                
+                // 更新NFT状态
+                updateNFTStatus(network, true);
+                
+                // 更新新手引导状态
+                if (isAllNFTsClaimed()) {
+                    completeStep2();
+                }
+                
+                showNotification('success', `${getNetworkName(network)} NFT领取成功！`);
+                
+                // 关闭模态框
+                const adModal = bootstrap.Modal.getInstance(document.getElementById('adModal'));
+                if (adModal) {
+                    adModal.hide();
+                }
+                
+                // 重置广告状态
+                currentAdNetwork = null;
+                
+            } catch (error) {
+                console.error('领取NFT失败:', error);
+                showNotification('error', '领取失败: ' + error.message);
+                
+                // 恢复按钮状态
+                const claimBtn = document.getElementById('claim-nft-btn');
+                claimBtn.disabled = false;
+                claimBtn.innerHTML = '<i class="fas fa-gift"></i> 生成签名并领取NFT';
+            }
+        }
+        
+        function updateNFTStatus(network, claimed) {
+            const statusElement = document.getElementById(`${network}-nft-status`);
+            const buttonElement = document.getElementById(`${network}-nft-btn`);
+            
+            if (statusElement && buttonElement) {
+                if (claimed) {
+                    statusElement.innerHTML = `状态: <span class="text-success">已领取</span>`;
+                    buttonElement.disabled = true;
+                    buttonElement.innerHTML = '<i class="fas fa-check"></i> 已领取';
+                } else {
+                    statusElement.innerHTML = '状态: <span class="text-warning">未领取</span>';
+                    buttonElement.disabled = false;
+                    buttonElement.innerHTML = '<i class="fas fa-gift"></i> 观看广告领取';
+                }
+            }
+            
+            // 更新统计
+            updateNFTStats();
+        }
+        
+        function updateNFTStats() {
+            // 模拟已领取的NFT数量
+            let claimedCount = 0;
+            const networks = ['monad', 'sepolia', 'moonbase', 'hashkey'];
+            
+            networks.forEach(network => {
+                const statusElement = document.getElementById(`${network}-nft-status`);
+                if (statusElement && statusElement.innerHTML.includes('已领取')) {
+                    claimedCount++;
+                }
+            });
+            
+            const claimedCountElement = document.getElementById('nft-claimed-count');
+            const availableCountElement = document.getElementById('nft-available-count');
+            const totalClaimsElement = document.getElementById('total-nft-claims');
+            
+            if (claimedCountElement) claimedCountElement.textContent = claimedCount;
+            if (availableCountElement) availableCountElement.textContent = 4 - claimedCount;
+            if (totalClaimsElement) totalClaimsElement.textContent = claimedCount;
+            
+            // 更新各链NFT数量
+            const monadStatus = document.getElementById('monad-nft-status');
+            const sepoliaStatus = document.getElementById('sepolia-nft-status');
+            const hashkeyStatus = document.getElementById('hashkey-nft-status');
+            
+            if (monadStatus) {
+                document.getElementById('nft-monad-count').textContent = 
+                    monadStatus.innerHTML.includes('已领取') ? 1 : 0;
+            }
+            
+            if (sepoliaStatus) {
+                document.getElementById('nft-sepolia-count').textContent = 
+                    sepoliaStatus.innerHTML.includes('已领取') ? 1 : 0;
+            }
+            
+            if (hashkeyStatus) {
+                const hashkeyCountElement = document.getElementById('nft-hashkey-count');
+                if (hashkeyCountElement) {
+                    hashkeyCountElement.textContent = 
+                        hashkeyStatus.innerHTML.includes('已领取') ? 1 : 0;
+                }
+            }
+        }
+        
+        function isAllNFTsClaimed() {
+            const monadClaimed = document.getElementById('monad-nft-status')?.innerHTML.includes('已领取') || false;
+            const sepoliaClaimed = document.getElementById('sepolia-nft-status')?.innerHTML.includes('已领取') || false;
+            const moonbaseClaimed = document.getElementById('moonbase-nft-status')?.innerHTML.includes('已领取') || false;
+            const hashkeyClaimed = document.getElementById('hashkey-nft-status')?.innerHTML.includes('已领取') || false;
+            
+            return monadClaimed && sepoliaClaimed && moonbaseClaimed && hashkeyClaimed;
+        }
+        
+        async function checkAllNFTClaims() {
+            if (!isConnected) return;
+            
+            // 模拟检查NFT状态
+            showNotification('info', '正在检查NFT状态...');
+            
+            // 模拟延迟
+            setTimeout(() => {
+                // 模拟已领取的状态（实际应该从合约查询）
+                // 这里假设都没有领取
+                updateNFTStatus('monad', false);
+                updateNFTStatus('sepolia', false);
+                updateNFTStatus('moonbase', false);
+                updateNFTStatus('hashkey', false);
+                
+                updateNFTStats();
+                showNotification('success', 'NFT状态检查完成');
+            }, 1000);
+        }
+        
+        function claimAllNFTs() {
+            if (!isConnected) {
+                showNotification('warning', '请先连接钱包');
+                return;
+            }
+            
+            showNotification('info', '开始批量领取NFT...');
+            
+            // 模拟批量领取过程
+            const networks = ['monad', 'sepolia', 'moonbase', 'hashkey'];
+            let completed = 0;
+            
+            networks.forEach((network, index) => {
+                setTimeout(() => {
+                    // 模拟领取成功
+                    updateNFTStatus(network, true);
+                    completed++;
+                    
+                    if (completed === networks.length) {
+                        showNotification('success', '所有NFT领取完成！');
+                        updateNFTStats();
+                        
+                        // 更新新手引导状态
+                        completeStep2();
+                    }
+                }, (index + 1) * 3000); // 每个间隔3秒
+            });
+        }
+        
+        // ==================== 跨链转账功能 ====================
+        async function initiateCrossChain() {
+            const sourceChain = document.getElementById('source-chain').value;
+            const targetChain = document.getElementById('target-chain').value;
+            const amount = document.getElementById('bridge-amount').value;
+            const recipient = document.getElementById('recipient-address').value || userAddress;
+            
+            if (!amount || parseFloat(amount) <= 0) {
+                showNotification('warning', '请输入有效的金额');
+                return;
+            }
+            
+            if (sourceChain === targetChain) {
+                showNotification('warning', '不能在同一链内跨链');
+                return;
+            }
+            
+            // 检查当前网络是否匹配源链
+            if (currentNetwork !== sourceChain) {
+                showNotification('warning', `请先切换到${getNetworkName(sourceChain)}网络`);
+                switchChain(sourceChain);
+                return;
+            }
+            
+            try {
+                showNotification('info', '正在发起跨链转账...');
+                
+                // 模拟跨链过程
+                await new Promise(resolve => setTimeout(resolve, 3000));
+                
+                // 添加交易记录
+                const transaction = {
+                    time: new Date().toLocaleTimeString(),
+                    source: getNetworkName(sourceChain),
+                    target: getNetworkName(targetChain),
+                    amount: amount,
+                    status: '已完成',
+                    hash: '0x' + Math.random().toString(16).substr(2, 64)
+                };
+                
+                addBridgeHistory(transaction);
+                
+                // 更新统计
+                updateStats();
+                
+                // 更新新手引导状态
+                completeStep3();
+                
+                showNotification('success', '跨链转账已完成！');
+                
+            } catch (error) {
+                console.error('跨链转账失败:', error);
+                showNotification('error', '跨链失败: ' + error.message);
+            }
+        }
+        
+        function addBridgeHistory(record) {
+            const tableBody = document.getElementById('bridge-history');
+            
+            // 如果当前显示"暂无跨链记录"，清空它
+            if (tableBody.rows.length === 1 && tableBody.rows[0].cells[0].colSpan === 6) {
+                tableBody.innerHTML = '';
+            }
+            
+            // 添加到历史记录数组
+            crossChainHistory.unshift(record);
+            
+            // 更新表格
+            const row = tableBody.insertRow();
+            row.innerHTML = `
+                <td>${record.time}</td>
+                <td>${record.source}</td>
+                <td>${record.target}</td>
+                <td>${record.amount}</td>
+                <td><span class="badge bg-success">${record.status}</span></td>
+                <td><a href="#" onclick="viewTransaction('${record.hash}')" class="text-info">查看</a></td>
+            `;
+            
+            // 更新统计
+            document.getElementById('total-cross-chain').textContent = crossChainHistory.length;
+        }
+        
+        function viewTransaction(hash) {
+            showNotification('info', '模拟交易查看: ' + hash.substring(0, 20) + '...');
+        }
+        
+        // ==================== 钱包工具功能 ====================
+        async function generateNewWallet() {
+            try {
+                showNotification('info', '正在生成新钱包...');
+                
+                // 生成随机的助记词
+                const wallet = ethers.Wallet.createRandom();
+                
+                // 获取钱包信息
+                const address = wallet.address;
+                const mnemonic = wallet.mnemonic.phrase;
+                const privateKey = wallet.privateKey;
+                
+                // 保存钱包信息
+                generatedWallet = {
+                    address,
+                    mnemonic,
+                    privateKey,
+                    name: document.getElementById('wallet-name').value || 'Fishcake钱包',
+                    timestamp: new Date().toISOString()
+                };
+                
+                // 显示钱包信息
+                document.getElementById('generated-address').textContent = address;
+                document.getElementById('generated-mnemonic').textContent = mnemonic;
+                document.getElementById('generated-private-key').textContent = privateKey;
+                
+                // 显示钱包信息区域
+                document.getElementById('generated-wallet-section').style.display = 'block';
+                
+                showNotification('success', '新钱包生成成功！请立即保存助记词。');
+                
+            } catch (error) {
+                console.error('生成钱包失败:', error);
+                showNotification('error', '生成钱包失败: ' + error.message);
+            }
+        }
+        
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            const text = element.textContent.trim();
+            
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('success', '已复制到剪贴板');
+            }).catch(err => {
+                console.error('复制失败:', err);
+                showNotification('error', '复制失败');
+            });
+        }
+        
+        async function importToMetaMask() {
+            if (!generatedWallet) {
+                showNotification('warning', '请先生成钱包');
+                return;
+            }
+            
+            try {
+                if (typeof window.ethereum === 'undefined') {
+                    showNotification('error', '请先安装MetaMask');
+                    return;
+                }
+                
+                // 提示用户手动导入
+                showNotification('info', '请在MetaMask中选择"导入账户"，然后使用助记词或私钥导入');
+                
+            } catch (error) {
+                console.error('导入到MetaMask失败:', error);
+                showNotification('error', '导入失败: ' + error.message);
+            }
+        }
+        
+        function connectGeneratedWallet() {
+            if (!generatedWallet) {
+                showNotification('warning', '请先生成钱包');
+                return;
+            }
+            
+            // 模拟连接到生成的钱包
+            showNotification('success', '已连接到生成的钱包（模拟模式）');
+            
+            // 更新UI显示（模拟）
+            userAddress = generatedWallet.address;
+            isConnected = true;
+            
+            updateUI();
+            
+            // 更新新手引导状态
+            updateNewbieGuideStatus();
+        }
+        
+        async function importWallet() {
+            const mnemonic = document.getElementById('import-mnemonic').value.trim();
+            const privateKey = document.getElementById('import-private-key').value.trim();
+            
+            if (!mnemonic && !privateKey) {
+                showNotification('warning', '请输入助记词或私钥');
+                return;
+            }
+            
+            try {
+                let wallet;
+                
+                if (mnemonic) {
+                    // 从助记词导入
+                    wallet = ethers.Wallet.fromMnemonic(mnemonic);
+                } else if (privateKey) {
+                    // 从私钥导入
+                    wallet = new ethers.Wallet(privateKey);
+                }
+                
+                if (!wallet) {
+                    throw new Error('无法导入钱包');
+                }
+                
+                // 保存钱包信息
+                generatedWallet = {
+                    address: wallet.address,
+                    mnemonic: wallet.mnemonic?.phrase || '',
+                    privateKey: wallet.privateKey,
+                    name: '导入的钱包',
+                    timestamp: new Date().toISOString()
+                };
+                
+                // 显示钱包信息
+                document.getElementById('generated-address').textContent = wallet.address;
+                document.getElementById('generated-mnemonic').textContent = wallet.mnemonic?.phrase || '无（从私钥导入）';
+                document.getElementById('generated-private-key').textContent = wallet.privateKey;
+                
+                // 显示钱包信息区域
+                document.getElementById('generated-wallet-section').style.display = 'block';
+                
+                showNotification('success', '钱包导入成功！');
+                
+            } catch (error) {
+                console.error('导入钱包失败:', error);
+                showNotification('error', '导入失败: ' + error.message);
+            }
+        }
+        
+        // ==================== 网络切换 ====================
+        async function switchChain(network) {
+            if (!isConnected) {
+                showNotification('warning', '请先连接钱包');
+                return;
+            }
+            
+            const chainConfig = contractConfig[network];
+            if (!chainConfig) {
+                showNotification('error', '未知网络配置');
+                return;
+            }
+            
+            try {
+                // 请求切换网络
+                await window.ethereum.request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{ chainId: `0x${chainConfig.chainId.toString(16)}` }],
+                });
+                
+                showNotification('info', `正在切换到${getNetworkName(network)}网络`);
+            } catch (switchError) {
+                // 如果网络未添加，尝试添加
+                if (switchError.code === 4902) {
+                    try {
+                        await addNetworkToMetaMask(network);
+                    } catch (addError) {
+                        showNotification('error', '添加网络失败: ' + addError.message);
+                    }
+                } else {
+                    showNotification('error', '切换网络失败: ' + switchError.message);
+                }
+            }
+        }
+        
+        async function addNetworkToMetaMask(network) {
+            const chainConfig = contractConfig[network];
+            if (!chainConfig) return;
+            
+            const networkParams = {
+                monad: {
+                    chainId: '0x279F', // 10143
+                    chainName: 'Monad Testnet',
+                    nativeCurrency: {
+                        name: 'Monad',
+                        symbol: 'MON',
+                        decimals: 18
+                    },
+                    rpcUrls: ['https://testnet.monad.xyz/'],
+                    blockExplorerUrls: ['https://testnet.monadexplorer.com/']
+                },
+                sepolia: {
+                    chainId: '0xAA36A7', // 11155111
+                    chainName: 'Sepolia Testnet',
+                    nativeCurrency: {
+                        name: 'Sepolia Ether',
+                        symbol: 'ETH',
+                        decimals: 18
+                    },
+                    rpcUrls: ['https://rpc.sepolia.org'],
+                    blockExplorerUrls: ['https://sepolia.etherscan.io']
+                },
+                moonbase: {
+                    chainId: '0x507', // 1287
+                    chainName: 'Moonbase Alpha',
+                    nativeCurrency: {
+                        name: 'DEV',
+                        symbol: 'DEV',
+                        decimals: 18
+                    },
+                    rpcUrls: ['https://rpc.api.moonbase.moonbeam.network'],
+                    blockExplorerUrls: ['https://moonbase.moonscan.io/']
+                },
+                hashkey: {
+                    chainId: '0x85', // 133
+                    chainName: 'HashKey Chain Testnet',
+                    nativeCurrency: {
+                        name: 'HashKey',
+                        symbol: 'HSK',
+                        decimals: 18
+                    },
+                    rpcUrls: ['https://testnet.hsk.xyz'],
+                    blockExplorerUrls: ['https://testnet.hsk.xyz']
+                }
+            };
+            
+            const params = networkParams[network];
+            if (!params) return;
+            
+            try {
+                await window.ethereum.request({
+                    method: 'wallet_addEthereumChain',
+                    params: [params]
+                });
+                showNotification('success', `已添加${getNetworkName(network)}网络`);
+            } catch (error) {
+                throw error;
+            }
+        }
+        
+        // ==================== 统计功能 ====================
+        function updateStats() {
+            // 更新广告完成次数
+            const adsCompletedElement = document.getElementById('ads-completed');
+            if (adsCompletedElement) {
+                adsCompletedElement.textContent = adsCompleted;
+            }
+            
+            // 更新活跃用户（模拟）
+            const activeUsersElement = document.getElementById('active-users');
+            if (activeUsersElement && isConnected && Math.random() > 0.7) {
+                const activeUsers = parseInt(activeUsersElement.textContent) || 0;
+                activeUsersElement.textContent = activeUsers + 1;
+            }
+            
+            // 更新NFT统计
+            updateNFTStats();
+        }
+        
+        // ==================== 工具函数 ====================
+        function getNetworkName(network) {
+            const names = {
+                monad: 'Monad',
+                sepolia: 'Sepolia',
+                moonbase: 'Moonbase Alpha',
+                hashkey: 'HashKey'
+            };
+            return names[network] || network;
+        }
+        
+        function showNotification(type, message) {
+            const notificationArea = document.getElementById('notification-area');
+            if (!notificationArea) return;
+            
+            const toast = document.createElement('div');
+            toast.className = `toast show`;
+            toast.setAttribute('role', 'alert');
+            
+            const icons = {
+                success: 'check-circle',
+                error: 'exclamation-circle',
+                warning: 'exclamation-triangle',
+                info: 'info-circle'
+            };
+            
+            const colors = {
+                success: '#28a745',
+                error: '#dc3545',
+                warning: '#ffc107',
+                info: '#17a2b8'
+            };
+            
+            toast.innerHTML = `
+                <div class="toast-header">
+                    <i class="fas fa-${icons[type]} me-2" style="color: ${colors[type]}"></i>
+                    <strong class="me-auto">${type === 'success' ? '成功' : type === 'error' ? '错误' : type === 'warning' ? '警告' : '信息'}</strong>
+                    <small class="text-muted">刚刚</small>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+                </div>
+                <div class="toast-body">
+                    ${message}
+                </div>
+            `;
+            
+            notificationArea.appendChild(toast);
+            
+            // 5秒后自动移除
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.parentNode.removeChild(toast);
+                        }
+                    }, 300);
+                }
+            }, 5000);
+            
+            // 添加关闭按钮功能
+            const closeButton = toast.querySelector('.btn-close');
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.parentNode.removeChild(toast);
+                        }
+                    }, 300);
+                });
+            }
+        }
+        
+        function showTab(tabName) {
+            const tabButton = document.querySelector(`#${tabName}-tab`);
+            if (tabButton) {
+                tabButton.click();
+            }
+        }
+        
+        function connectWallet() {
+            if (!isConnected) {
+                initEthers();
+            }
+        }
+    </script>
+</body>
+</html>

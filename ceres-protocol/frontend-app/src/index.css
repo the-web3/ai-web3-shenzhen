@@ -1,0 +1,469 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ceres Protocol Design System - Spring Garden Theme (Flat) */
+
+@layer base {
+  :root {
+    /* Canvas - Warm Beige */
+    --background: 30 33% 97%;
+    --foreground: 0 0% 20%;
+
+    /* Card surfaces - Pure white */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    /* Primary - Sandy Brown #F4A259 */
+    --primary: 28 88% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Light Gold #F4E285 */
+    --secondary: 50 85% 74%;
+    --secondary-foreground: 0 0% 20%;
+
+    /* YES/Long - Muted Olive #8CB369 */
+    --yes: 93 36% 56%;
+    --yes-foreground: 0 0% 100%;
+    --yes-light: 93 36% 92%;
+
+    /* NO/Short - Blushed Brick #BC4B51 */
+    --no: 357 45% 51%;
+    --no-foreground: 0 0% 100%;
+    --no-light: 357 45% 92%;
+
+    /* Yield - Sandy Brown #F4A259 */
+    --yield: 28 88% 65%;
+    --yield-foreground: 0 0% 100%;
+
+    /* Accent - Light Gold #F4E285 */
+    --accent: 50 85% 74%;
+    --accent-foreground: 0 0% 20%;
+
+    /* Teal - Jungle Teal #5B8E7D */
+    --teal: 160 23% 46%;
+    --teal-foreground: 0 0% 100%;
+
+    /* Muted surfaces */
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+
+    --destructive: 357 45% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders */
+    --border: 0 0% 88%;
+    --border-hard: 0 0% 75%;
+    --input: 0 0% 92%;
+    --ring: 28 88% 65%;
+
+    --radius: 1rem;
+
+    /* Shadows - Gray only */
+    --shadow-soft: 0 4px 20px -4px rgba(0, 0, 0, 0.08);
+    --shadow-soft-sm: 0 2px 10px -2px rgba(0, 0, 0, 0.06);
+    --shadow-soft-lg: 0 8px 30px -6px rgba(0, 0, 0, 0.12);
+    --shadow-yes: 0 4px 16px -4px rgba(0, 0, 0, 0.1);
+    --shadow-no: 0 4px 16px -4px rgba(0, 0, 0, 0.1);
+    --shadow-yield: 0 4px 16px -4px rgba(0, 0, 0, 0.1);
+
+    /* Sidebar */
+    --sidebar-background: 30 33% 97%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 28 88% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 50 85% 74%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 0 0% 88%;
+    --sidebar-ring: 28 88% 65%;
+  }
+
+  .dark {
+    /* Canvas - Dark */
+    --background: 0 0% 10%;
+    --foreground: 0 0% 92%;
+
+    --card: 0 0% 14%;
+    --card-foreground: 0 0% 92%;
+
+    --popover: 0 0% 14%;
+    --popover-foreground: 0 0% 92%;
+
+    --primary: 28 88% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 50 60% 35%;
+    --secondary-foreground: 0 0% 92%;
+
+    --yes: 93 36% 50%;
+    --yes-foreground: 0 0% 100%;
+    --yes-light: 93 25% 20%;
+
+    --no: 357 45% 55%;
+    --no-foreground: 0 0% 100%;
+    --no-light: 357 30% 20%;
+
+    --yield: 28 88% 60%;
+    --yield-foreground: 0 0% 100%;
+
+    --accent: 50 60% 35%;
+    --accent-foreground: 0 0% 92%;
+
+    --teal: 160 23% 40%;
+    --teal-foreground: 0 0% 100%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 55%;
+
+    --destructive: 357 45% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 25%;
+    --border-hard: 0 0% 35%;
+    --input: 0 0% 25%;
+    --ring: 28 88% 65%;
+
+    --shadow-soft: 0 4px 20px -4px rgba(0, 0, 0, 0.3);
+    --shadow-soft-sm: 0 2px 10px -2px rgba(0, 0, 0, 0.25);
+    --shadow-soft-lg: 0 8px 30px -6px rgba(0, 0, 0, 0.4);
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 92%;
+    --sidebar-primary: 28 88% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 50 60% 35%;
+    --sidebar-accent-foreground: 0 0% 92%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: 28 88% 65%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: "Nunito", sans-serif;
+  }
+
+  /* Grid pattern background - very subtle */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
+
+@layer components {
+  /* Flat Card Style */
+  .card-juicy {
+    @apply bg-card rounded-3xl;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-juicy-sm {
+    @apply bg-card rounded-2xl;
+    box-shadow: var(--shadow-soft-sm);
+  }
+
+  .card-brutal {
+    @apply bg-card rounded-3xl;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-brutal-sm {
+    @apply bg-card rounded-2xl;
+    box-shadow: var(--shadow-soft-sm);
+  }
+
+  /* Button base - flat style */
+  .btn-jelly {
+    @apply font-bold rounded-2xl transition-all duration-200 bg-primary text-primary-foreground;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-jelly:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft-lg);
+  }
+
+  .btn-jelly:active {
+    transform: translateY(1px);
+    box-shadow: var(--shadow-soft-sm);
+  }
+
+  .btn-yes {
+    @apply bg-yes text-yes-foreground;
+    box-shadow: var(--shadow-yes);
+  }
+
+  .btn-yes:hover {
+    box-shadow: var(--shadow-soft-lg);
+  }
+
+  .btn-no {
+    @apply bg-no text-no-foreground;
+    box-shadow: var(--shadow-no);
+  }
+
+  .btn-no:hover {
+    box-shadow: var(--shadow-soft-lg);
+  }
+
+  .btn-yield {
+    @apply bg-yield text-yield-foreground;
+    box-shadow: var(--shadow-yield);
+  }
+
+  .btn-teal {
+    @apply bg-teal text-teal-foreground;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-teal:hover {
+    box-shadow: var(--shadow-soft-lg);
+  }
+
+  /* Pill/Capsule badges - flat style */
+  .pill {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-semibold text-sm;
+    box-shadow: var(--shadow-soft-sm);
+  }
+
+  /* Slot machine number animation */
+  .slot-number {
+    @apply tabular-nums font-bold;
+    animation: slotSpin 0.5s ease-out;
+  }
+
+  /* Progress bar styles */
+  .progress-yes {
+    @apply bg-yes rounded-l-full;
+  }
+
+  .progress-no {
+    @apply bg-no rounded-r-full;
+  }
+
+  /* Glass card */
+  .card-glass {
+    @apply rounded-3xl backdrop-blur-xl;
+    background: hsl(var(--card) / 0.9);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* ReFi boost tag - flat style */
+  .tag-refi {
+    @apply inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold;
+    background: hsl(var(--yes-light));
+    color: hsl(var(--yes));
+  }
+}
+
+@layer utilities {
+  /* Hover bounce effect */
+  .hover-bounce {
+    @apply transition-all duration-300;
+  }
+
+  .hover-bounce:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Press down effect */
+  .press-down:active {
+    transform: translateY(2px);
+  }
+
+  /* Text gradient - using solid colors now */
+  .text-gradient-primary {
+    color: hsl(var(--primary));
+  }
+
+  /* Shadow utilities */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-soft-sm {
+    box-shadow: var(--shadow-soft-sm);
+  }
+
+  .shadow-soft-lg {
+    box-shadow: var(--shadow-soft-lg);
+  }
+}
+
+/* Keyframes */
+@keyframes slotSpin {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes bounce-gentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background-size: 200% 100%;
+}
+
+/* Custom Range Slider Styles */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-track {
+  background: hsl(var(--muted));
+  height: 12px;
+  border-radius: 6px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  border: 3px solid hsl(var(--card));
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-soft-lg);
+}
+
+input[type="range"]::-moz-range-track {
+  background: hsl(var(--muted));
+  height: 12px;
+  border-radius: 6px;
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  border: 3px solid hsl(var(--card));
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-soft-lg);
+}
+
+/* Custom Select Styles */
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px 12px;
+  padding-right: 40px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Focus states */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}

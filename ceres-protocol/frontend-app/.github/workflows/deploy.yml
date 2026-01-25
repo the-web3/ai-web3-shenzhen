@@ -1,0 +1,147 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "ceres-protocol/frontend-app/**"
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "ceres-protocol/frontend-app/**"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ceres-protocol/frontend-app
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+          cache-dependency-path: "./ceres-protocol/frontend-app/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test -- --run
+
+      - name: Build application
+        run: npm run build
+        env:
+          VITE_CERES_GREEN_POINTS_ADDRESS: ${{ secrets.VITE_CERES_GREEN_POINTS_ADDRESS }}
+          VITE_CERES_REGISTRY_ADDRESS: ${{ secrets.VITE_CERES_REGISTRY_ADDRESS }}
+          VITE_CERES_MARKET_FACTORY_ADDRESS: ${{ secrets.VITE_CERES_MARKET_FACTORY_ADDRESS }}
+          VITE_HASHKEY_CHAIN_ID: "133"
+          VITE_HASHKEY_RPC_URL: "https://hashkeychain-testnet.alt.technology"
+          VITE_NETWORK_NAME: "Hashkey Chain Testnet"
+          VITE_EXPLORER_URL: "https://hashkeychain-testnet-explorer.alt.technology"
+          VITE_APP_NAME: "Ceres Protocol"
+          VITE_APP_VERSION: "1.0.0"
+          VITE_ENABLE_AI_DEMO: "true"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          path: ./ceres-protocol/frontend-app/dist
+
+  deploy-vercel:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    defaults:
+      run:
+        working-directory: ./ceres-protocol/frontend-app
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+          cache-dependency-path: "./ceres-protocol/frontend-app/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          VITE_CERES_GREEN_POINTS_ADDRESS: ${{ secrets.VITE_CERES_GREEN_POINTS_ADDRESS }}
+          VITE_CERES_REGISTRY_ADDRESS: ${{ secrets.VITE_CERES_REGISTRY_ADDRESS }}
+          VITE_CERES_MARKET_FACTORY_ADDRESS: ${{ secrets.VITE_CERES_MARKET_FACTORY_ADDRESS }}
+          VITE_HASHKEY_CHAIN_ID: "133"
+          VITE_HASHKEY_RPC_URL: "https://hashkeychain-testnet.alt.technology"
+          VITE_NETWORK_NAME: "Hashkey Chain Testnet"
+          VITE_EXPLORER_URL: "https://hashkeychain-testnet-explorer.alt.technology"
+          VITE_APP_NAME: "Ceres Protocol"
+          VITE_APP_VERSION: "1.0.0"
+          VITE_ENABLE_AI_DEMO: "true"
+
+      - name: Deploy to Vercel
+        uses: vercel/action@v1
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./ceres-protocol/frontend-app
+
+  deploy-netlify:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    defaults:
+      run:
+        working-directory: ./ceres-protocol/frontend-app
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+          cache-dependency-path: "./ceres-protocol/frontend-app/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          VITE_CERES_GREEN_POINTS_ADDRESS: ${{ secrets.VITE_CERES_GREEN_POINTS_ADDRESS }}
+          VITE_CERES_REGISTRY_ADDRESS: ${{ secrets.VITE_CERES_REGISTRY_ADDRESS }}
+          VITE_CERES_MARKET_FACTORY_ADDRESS: ${{ secrets.VITE_CERES_MARKET_FACTORY_ADDRESS }}
+          VITE_HASHKEY_CHAIN_ID: "133"
+          VITE_HASHKEY_RPC_URL: "https://hashkeychain-testnet.alt.technology"
+          VITE_NETWORK_NAME: "Hashkey Chain Testnet"
+          VITE_EXPLORER_URL: "https://hashkeychain-testnet-explorer.alt.technology"
+          VITE_APP_NAME: "Ceres Protocol"
+          VITE_APP_VERSION: "1.0.0"
+          VITE_ENABLE_AI_DEMO: "true"
+
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --prod --dir=dist
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

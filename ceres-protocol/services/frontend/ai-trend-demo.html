@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🤖 AI趋势分析演示 - Ceres Protocol</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #333;
+        line-height: 1.6;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .demo-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .demo-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .demo-title {
+        font-size: 2.5rem;
+        color: #4a5568;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .demo-subtitle {
+        font-size: 1.2rem;
+        color: #718096;
+        margin-bottom: 20px;
+      }
+
+      .demo-controls {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-secondary {
+        background: #e2e8f0;
+        color: #4a5568;
+      }
+
+      .btn-secondary:hover {
+        background: #cbd5e0;
+      }
+
+      .demo-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .demo-panel {
+        background: #f7fafc;
+        border-radius: 15px;
+        padding: 25px;
+        border: 1px solid #e2e8f0;
+      }
+
+      .panel-title {
+        font-size: 1.3rem;
+        color: #4a5568;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .market-info {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .market-title {
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 15px;
+      }
+
+      .market-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .stat-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background: #f7fafc;
+        border-radius: 8px;
+      }
+
+      .stat-label {
+        color: #718096;
+        font-size: 0.9rem;
+      }
+
+      .stat-value {
+        font-weight: 600;
+        color: #2d3748;
+      }
+
+      .trend-analysis {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .gauge-container {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+      }
+
+      .gauge {
+        text-align: center;
+      }
+
+      .gauge-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: conic-gradient(
+          #667eea 0deg,
+          #667eea var(--progress),
+          #e2e8f0 var(--progress),
+          #e2e8f0 360deg
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px;
+        position: relative;
+      }
+
+      .gauge-circle::before {
+        content: "";
+        width: 70px;
+        height: 70px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      .gauge-value {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #4a5568;
+        z-index: 1;
+      }
+
+      .gauge-label {
+        font-size: 0.9rem;
+        color: #718096;
+        font-weight: 600;
+      }
+
+      .ai-recommendation {
+        background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 600;
+        margin-top: 20px;
+      }
+
+      .orderbook-section {
+        grid-column: 1 / -1;
+        background: #f7fafc;
+        border-radius: 15px;
+        padding: 25px;
+        border: 1px solid #e2e8f0;
+      }
+
+      .orderbook-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .orderbook-side {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .orderbook-title {
+        font-weight: 600;
+        margin-bottom: 15px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .buy-orders .orderbook-title {
+        background: #f0fff4;
+        color: #38a169;
+      }
+
+      .sell-orders .orderbook-title {
+        background: #fed7d7;
+        color: #e53e3e;
+      }
+
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 12px;
+        margin-bottom: 5px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .buy-orders .order-item {
+        background: linear-gradient(
+          90deg,
+          #f0fff4 0%,
+          #f0fff4 var(--fill),
+          transparent var(--fill)
+        );
+        border-left: 3px solid #38a169;
+      }
+
+      .sell-orders .order-item {
+        background: linear-gradient(
+          90deg,
+          #fed7d7 0%,
+          #fed7d7 var(--fill),
+          transparent var(--fill)
+        );
+        border-left: 3px solid #e53e3e;
+      }
+
+      .order-price {
+        font-weight: 600;
+      }
+
+      .order-amount {
+        color: #718096;
+      }
+
+      .thinking-animation {
+        display: none;
+        text-align: center;
+        padding: 40px;
+        color: #667eea;
+      }
+
+      .thinking-icon {
+        font-size: 3rem;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.1);
+        }
+      }
+
+      .status-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .status-active {
+        background: #38a169;
+        animation: blink 1.5s infinite;
+      }
+
+      .status-inactive {
+        background: #e2e8f0;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .demo-content {
+          grid-template-columns: 1fr;
+        }
+
+        .orderbook-container {
+          grid-template-columns: 1fr;
+        }
+
+        .demo-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo-container">
+      <div class="demo-header">
+        <h1 class="demo-title">
+          <span>🤖</span>
+          AI趋势分析演示
+          <span>📈</span>
+        </h1>
+        <p class="demo-subtitle">站内热度趋势分析服务 (订单簿模式)</p>
+        <div class="demo-controls">
+          <button class="btn btn-primary" onclick="startAnalysis()">
+            <span>🚀</span>
+            开始分析
+          </button>
+          <button class="btn btn-secondary" onclick="resetDemo()">
+            <span>🔄</span>
+            重置演示
+          </button>
+        </div>
+      </div>
+
+      <div class="demo-content">
+        <div class="demo-panel">
+          <h3 class="panel-title">
+            <span>📊</span>
+            热门市场监控
+          </h3>
+          <div class="market-info">
+            <div class="market-title">
+              亚太地区可再生能源采用率是否会在2025年达到40%？
+            </div>
+            <div class="market-stats">
+              <div class="stat-item">
+                <span class="stat-label">交易量</span>
+                <span class="stat-value" id="volume">15.5 HKTC</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">参与者</span>
+                <span class="stat-value" id="participants">8 人</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">波动率</span>
+                <span class="stat-value" id="volatility">12.5%</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">动量</span>
+                <span class="stat-value" id="momentum">+8.3%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-panel">
+          <h3 class="panel-title">
+            <span>🧠</span>
+            AI趋势分析
+            <span class="status-indicator status-inactive" id="aiStatus"></span>
+          </h3>
+          <div class="thinking-animation" id="thinkingAnimation">
+            <div class="thinking-icon">🤖</div>
+            <p>AI正在分析市场趋势...</p>
+          </div>
+          <div class="trend-analysis" id="trendAnalysis">
+            <div class="gauge-container">
+              <div class="gauge">
+                <div
+                  class="gauge-circle"
+                  id="trendGauge"
+                  style="--progress: 0deg"
+                >
+                  <span class="gauge-value" id="trendValue">0%</span>
+                </div>
+                <div class="gauge-label">趋势强度</div>
+              </div>
+              <div class="gauge">
+                <div
+                  class="gauge-circle"
+                  id="confidenceGauge"
+                  style="--progress: 0deg"
+                >
+                  <span class="gauge-value" id="confidenceValue">0%</span>
+                </div>
+                <div class="gauge-label">AI信心度</div>
+              </div>
+            </div>
+            <div class="ai-recommendation" id="aiRecommendation">
+              等待AI分析...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="orderbook-section">
+        <h3 class="panel-title">
+          <span>📋</span>
+          AI生成的智能订单簿
+        </h3>
+        <div class="orderbook-container">
+          <div class="orderbook-side buy-orders">
+            <div class="orderbook-title">买单 (YES)</div>
+            <div id="buyOrders">
+              <!-- 买单将在这里动态生成 -->
+            </div>
+          </div>
+          <div class="orderbook-side sell-orders">
+            <div class="orderbook-title">卖单 (NO)</div>
+            <div id="sellOrders">
+              <!-- 卖单将在这里动态生成 -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let isAnalyzing = false;
+      let analysisInterval;
+
+      function startAnalysis() {
+        if (isAnalyzing) return;
+
+        isAnalyzing = true;
+        document.getElementById("aiStatus").className =
+          "status-indicator status-active";
+        document.getElementById("thinkingAnimation").style.display = "block";
+        document.getElementById("trendAnalysis").style.display = "none";
+
+        // 模拟AI分析过程
+        setTimeout(() => {
+          document.getElementById("thinkingAnimation").style.display = "none";
+          document.getElementById("trendAnalysis").style.display = "block";
+
+          // 执行趋势分析
+          performTrendAnalysis();
+
+          // 生成订单簿
+          generateOrderbook();
+
+          // 开始实时更新
+          startRealTimeUpdates();
+        }, 3000);
+      }
+
+      function performTrendAnalysis() {
+        // 模拟AI分析结果
+        const trendStrength = Math.random() * 0.4 + 0.6; // 60-100%
+        const confidence = Math.random() * 0.3 + 0.6; // 60-90%
+
+        // 更新仪表盘
+        updateGauge("trendGauge", "trendValue", trendStrength);
+        updateGauge("confidenceGauge", "confidenceValue", confidence);
+
+        // 生成推荐
+        let recommendation;
+        if (trendStrength > 0.8 && confidence > 0.75) {
+          recommendation = "🚀 强烈推荐：创建衍生市场";
+        } else if (trendStrength > 0.7) {
+          recommendation = "👀 建议：密切监控市场动态";
+        } else {
+          recommendation = "⏸️ 暂无行动：等待更强信号";
+        }
+
+        document.getElementById("aiRecommendation").textContent =
+          recommendation;
+      }
+
+      function updateGauge(gaugeId, valueId, percentage) {
+        const degrees = percentage * 360;
+        document
+          .getElementById(gaugeId)
+          .style.setProperty("--progress", degrees + "deg");
+        document.getElementById(valueId).textContent =
+          Math.round(percentage * 100) + "%";
+      }
+
+      function generateOrderbook() {
+        const buyOrders = document.getElementById("buyOrders");
+        const sellOrders = document.getElementById("sellOrders");
+
+        buyOrders.innerHTML = "";
+        sellOrders.innerHTML = "";
+
+        // 生成买单 (YES)
+        const buyPrices = [0.62, 0.6, 0.58, 0.56, 0.54];
+        const buyAmounts = [0.5, 0.8, 1.2, 1.8, 2.5];
+
+        buyPrices.forEach((price, index) => {
+          const orderItem = document.createElement("div");
+          orderItem.className = "order-item";
+          orderItem.style.setProperty(
+            "--fill",
+            (buyAmounts[index] / 3) * 100 + "%",
+          );
+          orderItem.innerHTML = `
+                    <span class="order-price">${price.toFixed(2)}</span>
+                    <span class="order-amount">${buyAmounts[index].toFixed(1)} HKTC</span>
+                `;
+          buyOrders.appendChild(orderItem);
+        });
+
+        // 生成卖单 (NO)
+        const sellPrices = [0.38, 0.4, 0.42, 0.44, 0.46];
+        const sellAmounts = [2.2, 1.6, 1.0, 0.7, 0.4];
+
+        sellPrices.forEach((price, index) => {
+          const orderItem = document.createElement("div");
+          orderItem.className = "order-item";
+          orderItem.style.setProperty(
+            "--fill",
+            (sellAmounts[index] / 3) * 100 + "%",
+          );
+          orderItem.innerHTML = `
+                    <span class="order-price">${price.toFixed(2)}</span>
+                    <span class="order-amount">${sellAmounts[index].toFixed(1)} HKTC</span>
+                `;
+          sellOrders.appendChild(orderItem);
+        });
+      }
+
+      function startRealTimeUpdates() {
+        analysisInterval = setInterval(() => {
+          // 模拟实时数据更新
+          const volume = (15.5 + Math.random() * 2 - 1).toFixed(1);
+          const participants = Math.floor(8 + Math.random() * 4 - 2);
+          const volatility = (12.5 + Math.random() * 5 - 2.5).toFixed(1);
+          const momentum = (8.3 + Math.random() * 4 - 2).toFixed(1);
+
+          document.getElementById("volume").textContent = volume + " HKTC";
+          document.getElementById("participants").textContent =
+            participants + " 人";
+          document.getElementById("volatility").textContent = volatility + "%";
+          document.getElementById("momentum").textContent =
+            (momentum >= 0 ? "+" : "") + momentum + "%";
+
+          // 轻微调整趋势分析
+          const currentTrend =
+            parseFloat(document.getElementById("trendValue").textContent) / 100;
+          const currentConfidence =
+            parseFloat(document.getElementById("confidenceValue").textContent) /
+            100;
+
+          const newTrend = Math.max(
+            0.5,
+            Math.min(1.0, currentTrend + (Math.random() * 0.1 - 0.05)),
+          );
+          const newConfidence = Math.max(
+            0.5,
+            Math.min(0.9, currentConfidence + (Math.random() * 0.08 - 0.04)),
+          );
+
+          updateGauge("trendGauge", "trendValue", newTrend);
+          updateGauge("confidenceGauge", "confidenceValue", newConfidence);
+        }, 2000);
+      }
+
+      function resetDemo() {
+        isAnalyzing = false;
+
+        if (analysisInterval) {
+          clearInterval(analysisInterval);
+          analysisInterval = null;
+        }
+
+        document.getElementById("aiStatus").className =
+          "status-indicator status-inactive";
+        document.getElementById("thinkingAnimation").style.display = "none";
+        document.getElementById("trendAnalysis").style.display = "block";
+
+        // 重置仪表盘
+        updateGauge("trendGauge", "trendValue", 0);
+        updateGauge("confidenceGauge", "confidenceValue", 0);
+
+        document.getElementById("aiRecommendation").textContent =
+          "等待AI分析...";
+
+        // 清空订单簿
+        document.getElementById("buyOrders").innerHTML = "";
+        document.getElementById("sellOrders").innerHTML = "";
+
+        // 重置市场数据
+        document.getElementById("volume").textContent = "15.5 HKTC";
+        document.getElementById("participants").textContent = "8 人";
+        document.getElementById("volatility").textContent = "12.5%";
+        document.getElementById("momentum").textContent = "+8.3%";
+      }
+
+      // 页面加载时的初始化
+      document.addEventListener("DOMContentLoaded", function () {
+        resetDemo();
+      });
+    </script>
+  </body>
+</html>

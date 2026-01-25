@@ -11597,6 +11597,5366 @@
         ]
       },
       "updated_at": "2026-01-25T01:38:49.535241Z"
+    },
+    "d6e1c796-4b53-46af-9df8-525797d22f4d": {
+      "doc_id": "d6e1c796-4b53-46af-9df8-525797d22f4d",
+      "created_at": "2026-01-25T02:21:44.684293Z",
+      "title": "区块链基础.pdf",
+      "markdown": "# 区块链基础\n\n# 1.区块链的基本概念\n\n# 1.1 记账⽅式的演变\n\n# 1.1.1 单式记账\n\n只有个⼈的⼀个账本来去记录每⼀笔\n\n# 1.1.2 复式记账\n\n有两个及以上的账本去共同记录每⼀笔\n\n# 1.1.3 中⼼化记账\n\n只有银⾏/中⼼服务器的⼀个账本来去记录每⼀笔问题：中⼼服务器有可能作恶\n\n总量有限2100万颗  \n没有⼈有发⾏权  \n共识⾼  \n不易腐蚀\n\n# 2. 区块链特性\n\n为了解决中⼼化记账问题 $_ { - > }$ 区块链\n\n区块链是⼀种去中⼼化、可追溯、不可篡改的记账⽅式\n\n# 2.1 去中⼼化\n\n共识体系：少数服从多数，达成⼀致意⻅才可以修改数据。奖惩机制会促使矿⼯往最⻓链⽅向⾛。区块数据会被其他⼈验证。有POW，POS等\n\n# POW\n\n1. 矿⼯到mempool中提取交易，然后打包到未出块的区块中\n\n2. 找到nonce，使得区块Hash $<$ target threshold 之后，直接将区块打包，区块Hash是区块头⾥⾯的所有数据Hash\n\n3. 将出块⼴播给其他节点\n\n0x12312323121213213 0x000000001231231243\n\n20min/10min = 2>1 $5 \\mathsf { m i n } / 1 0 \\mathsf { m i n } = 1 / 2 < 1$\n\n注：\n\n每隔2016个块，会进⾏⼀次难度调整，⽬标是控制每⼗分钟出⼀个块，防⽌分叉。所以⼤概每次调整是两周。\n\ntarget越⼩越难 new_targetThreshold = old_targetThreshold \\* (actual_time / target_time)，\n\nBitcoin的总量是2100万枚，矿⼯每次出块都会获得coinbase和transaction fees奖励，Coinbase奖励是区块链系统发的：第⼀次50 ，每210,000个块会减半，2140年会被挖完TransactionFees是每笔交易的⽤⼾愿意⽀付的⼿续费，⼿续费直接给矿⼯\n\n# POS\n\n使⽤质押投票的机制完成共识过程⼀个共识算法，在共识过程，若节点作恶，就会被惩罚；若节点正常完成共识，就会获得奖励。\n\n$\\bullet$ 第⼀层：资⾦质押  \n• 第⼆层：投票  \n• 第三层：正常投票（不做恶）就会获得奖励  \n• 第四层：异常投票（作恶）质押的资⾦就会被罚没\n\n前提条件是你参与投票共识，你必须要先质押，⼀般情况，很多质押协议都要求最⼩质押量，要⼤于这个最⼩质押量才有机会参与⽹络的共识\n\n# 以太坊的 LSD\n\n• 背景知识\n\n◦ 在ETH2.0升级时候，限定如果要在以太坊⽣成启动⼀个节点，需要质押32个ETH，⼩于32个ETH，不能启动该节点，⼤于32个ETH也不⾏\n\n◦ 在pactra升级，限定启动⼀个节点参与ETH⽹络共识⾄少还是需要32个ETH,最⼤可以到2048 个 ETH  \n◦ 质押范围在pactra升级是32ETH，不能多也不能少；在pactra升级之后，质押范围32-2048个 ETH  \n◦ 以太坊⽬前正在运⾏版本质押范围是 32-2048 个 ETH\n\n• LSD/LST/LSP 产品思路\n\n◦ 很多⼈的⼿上持有的ETH数量极⼤可能是低于32个ETH，这样很多⼈都⽆法参与以太坊质押收益，lido横空出世。\n\n◦ 将散⼾ETH收集起来，再去启动节点进⾏质押给信标链，再去启动节点参与⽹络共识• 第⼀步：⽤⼾质押ETH，LSPmint对应权益token给到⽤⼾• 第⼆步：当LSP⾥⾯的资⾦⼤等于32ETH时，链下服务监听到该事件之后，驱动将LSP资⾦充值到信标链合约，当新质押再进来，先将该节点质押的数量补充到2048；最新的质押达到32ETH再去启动新的节点。\n\n![](images/862ccb4e4d1be2d1245536e9d806e581957667b83d277d85a37d54a540cfc894.jpg)  \n• 图解 LSD/LST/LSP 产品\n\n• 第三步：充值完成值，启动⼀个信标链节点参与⽹络的共识出块• 第四步：出块完成之后，节点会获得奖励，矿池节点进⾏奖励抽成（节点拿 $5 \\substack { - 8 \\% }$ ），剩余的奖励给到LSP产品侧\n\n• 第五步：LSP 产品侧拿到奖励之后，抽成之后（LSP 拿 $5 \\substack { - 8 \\% }$ ），将奖励分发给⽤⼾• 第六步：⽤⼾取回质押，需要将权益token退回去，合约burn权益token之后释放ETH给到⽤⼾• 第七步：LSP退出，停掉节点，取回信标链合约资⾦\n\n# 2.2 可追溯\n\n账本公开\n\n![](images/abffd64b661051c16914870916407e579b04dd28331e20f05c432ff6df5eb53e.jpg)\n\n# 区块头分析\n\n每个区块头⾥⾯有\n\nversion, previous block header hash, merkle root hash, time, nBits(本次出块要求的target threshold), nonce(矿⼯找的⼀个随机值)\n\n然后对整个Header做⼀个Hash，得到区块的Hash,，（如果在⽹络中是第⼀个算出来<target_threshold，就可以被打包上链了）\n\nhttps://developer.bitcoin.org/reference/block_chain.html?highlight=header\n\n# 账本模型\n\n区块链中有两种账本模型来去追踪⼀个⽤⼾的数据\n\n账⼾模型（如以太坊）：账⼾A $_ { - > }$ 账⼾B\n\nUTXO（如⽐特币）：Input和Output\n\n![](images/0b57564766989032793e0ec39172e7898dffd8a41d7b909c2e6e7e1f6ed7214d.jpg)\n\n# 2.3 不可篡改\n\n# Hash 链结构\n\n保证历史数据⽆法被篡改（当你改变交易⾥的任意⼀个数据，导致的各层Hash不⼀样，从⽽导致交易根merkle root hash不⼀样，从⽽产⽣分叉）\n\n# H(Message)\n\n$\\bullet$ 单向不可逆: X 可以得出 ${ \\sf H } ( { \\sf X } )$ ，但 ${ \\sf H } ( { \\sf X } )$ ⽆法反推回X\n\n• Hash碰撞：找到⼀个Message Y，使得 ${ \\mathsf { H } } ( { \\mathsf { Y } } ) = = { \\mathsf { H } } ( { \\mathsf { X } } )$\n\n◦ MD4/MD5 已被破解\n\n◦ SHA256(Bitcoin), Kecake(Ethereum), Poseidon(zk相关的链)\n\n![](images/e6382eb37046693434ab613695db9629c014f92125bd06ceb6b6df72b95b6110.jpg)\n\n只要篡改了tx，hash(tx)会变，merkle tree root hash 就会变，区块hash就会变\n\n# 2.4 公钥密码学\n\n保证了只有合法签名后的数据才会被写⼊区块链⽹络\n\n单密钥：加密解密⽤同⼀把秘钥公钥密码：两把秘钥，公钥和私钥\n\n# 对⽐特币和以太坊来说\n\n# 1. 私钥推导公钥\n\na. privateKey --- ECDSA 其中的 secp256k1 -- $. >$ publicKey --- 以太坊⽤keccak-256，⽐特币⽤SHA-256+RIPEMD- $1 6 0 +$ 双重SHA256+Base58（不同的地址版本⽣成的⽅法不⼀样） $\\scriptstyle - >$ 地址\n\n# 2. 签名验证\n\na. 私钥签名：先将消息hash到固定⻓度（Message Digest数字摘要）将交易的内容⽤ECDSA其中的secp256k1进⾏签名（私钥 $^ +$ 消息_hash $^ +$ 随机数），⽣成的签名为：rs(⽐特币)，rsv（以太坊）\n\nb. 公钥验证：将获得的签名⽤和之前私钥推导公钥的流程再推导出公钥或者地址来进⾏验证\n\ni. ⽐特币⽹络，节点拿到(sig, pubkey, msg_hash)，⽤secp256k1去校验 签名者拥有私钥\n\nii. 以太坊，节点拿到(sig, msg_hash)，来去⽤ecrecover（secp256k1）来恢复出公钥，再⽤keccak256来⽣成地址，并与实际的from来进⾏验证签名者地址是否拥有私钥\n\n# 3. 加解密\n\na. 公钥加密，私钥解密。我给你发的消息会⽤你的公钥来加密，然后你⽤你的私钥来解密，这样就只有你可以看⻅了\n\n注：数字信封（digitalenvelope，相当于你慢速⾮对称加密⼀个信封，然后快速⽤对称加密信的内容）\n\n数字摘要，将交易信息hash到⼀个固定⻓度\n\n# 2.5 更多的⼀些基础概念\n\n# 2.5.1分叉和确认位\n\n分叉部分的区块会被抛弃，⽐特币遵循最⻓链原则\n\n所以链上有可能有作恶的⼈，⾃⼰在偷偷出⼀条链，只给⾃⼰拥有的超过百分之五⼗⼀的矿机⼴播（⾃⼰修改代码就⾏），然后⾃⼰可以调整难度值（⽐主链更快出块）。然后最后⼴播给全⽹，矿⼯发现⼀条更⻓的链，就⾃动切换过去了。\n\n但实际上⽬前还没有⼈有超过百分之五⼗⼀的算⼒。链上出现的分叉是由于有两个矿⼯差不多时间出块，然后整个⽹络上⾯有的⼈离A近，所以他们本地显⽰的是A是最新块，有的⼈离B近，所以他们本地显⽰的是B是最新块。\n\n所以对于⼀个矿⼯出的块来说，后⾯添加了多少的区块，就代表有多少的确认。⼀般六个以后这个矿⼯就可以认为⾃⼰的这个块稳了\n\n# 2.5.2 矿⼯、矿池\n\n所有在试nonce值的都是矿⼯，然后n个矿⼯的集合就是矿池。不同的矿池有不同的优化技术来⾼效协同采矿\n\n# 3. ⼀些概念\n\n公链：任何⼈都可以参与共识，严格意义上只有⽐特币和以太坊。⽐特币⾃⼰起⼀台矿机就可以参与共识，以太坊质押32个ETH就可以参与共识。\n\n联盟链：需要CA中⼼认证才可以参与共识私有链：不允许任何外部节点参与共识\n\n跨链：链与链之间进⾏资产转移或消息交互\n\n链抽象：将多链间的rollupservice，证明系统，快速验证，跨链进⾏模型抽象，这样⽤⼾就需要像对待单链⼀样去进⾏交互\n\n# 模块化区块链：最早是在cosmos⽣态\n\nMantle\n\n共识层：Ethereum\n\nDA层：EigenDA\n\n结算层：Layer2\n\n执⾏层：Layer2\n\n跨链互操作协议： $L x < - > L y$ 桥\n\n# EVM链扩容⽅式：\n\n• 纵向扩容：L2 • 横向扩容：并发EVM\n\nOp rollup ⼤家都是好⼈，challenge date\n\nZk rollup\n\nL1, L2, L3\n\nL2没有⾃⼰的共识，⽤L1做共识层\n\nL3是应⽤链，⽤L2做共识层和结算层\n\n# 4. 区块链的发展历史分析\n\n08年全球⾦融危机，09年⽐特币，14年底以太坊，15-18年⼤量公链出现，20-21年DEFI Summer，  \n23年基础设施25年应⽤层\n\n⽐特币不能运⾏智能合约，\n\n以太坊可以链上运⾏，可以发币了；以太坊是图灵完备的\n\n# 5. 密码学基础\n\n# 5.1 对称加密\n\n单密钥加密：加密解密⽤⼀把钥匙\n\n# DES -> 3DES (安全) $_ - >$ AES（安全且复杂度低）\n\n# 5.2 ⾮对称加密（公钥密码学）\n\n• RSA：没⼈⽤  \n• ECC椭圆曲线算法◦ ECDSA▪ secp256k1 256bit ⽐特币 以太坊secp256r1 256bit EOS▪ secp384r1, secp512r1 更⾼的密钥⻓度要求\n\n◦ EdDSA\n\n▪ ed25519 256bit Solana, Ton▪ ed448 448bit 更⾼的密钥⻓度要求\n\n# ◦ ECDSA vs EdDSA （⾯试常问问题）\n\n曲线上：ECDSA weierstrass 曲线，EdDSA EdWards曲线ECDSA依赖随机数，EdDSA不依赖于随机数，⽽是依赖于私钥哈希与消息m⼀起做确定性推导  \n▪ ECDSA 更容易被攻击，EDDSA 更安全签名速度：ECDSA 慢，EDDSA 快验证签名：ECDSA 慢，EDDSA 快  \n▪ 举例⼦• ECDSA：BTC， ETH• EdDSA：Solana, Sui, Aptos, Ton  \n零知识证明：⽤于隐私保护，或L2⾥⾯⾝份证明  \nzksnark  \nzkstark\n\nKzg: 效率⾼，因为它的实现⾥⾯有trust set，⾼效性，⽤⼾daFri: 安全性⾼，效率低\n\n# 区块链⾥⾯的交易\n\n传统交易：从某⼀个账⼾转账到某⼀个账⼾，这是⼀笔交易\n\n# 区块链⾥⾯\n\n• 从某⼀个地址转账到某⼀个地址，这是⼀笔交易  \n• 创建合约，也是⼀笔交易，不涉及转账  \n• 我去 call 合约往区块链写⼊数据，也是⼀笔交易  \n• ⽐特币矿⼯挖矿也是⼀笔交易  \n• 我⼀次 call n 个合约也可能是⼀笔交易，内部调⽤交易\n\n# 节点\n\n交易发到区块链⽹络，需要⼈来打包执⾏，打包执⾏交易的这些服务就叫节点，这种节点叫 validator节点，validator要么需要提供算⼒去挖矿，要么需要质押token参与出块。\n\n在我们⼀些Dapp或者钱包开发⾥⾯，需要同步链上数据和转发交易，这样节点叫做普通节点，不参与⽹络交易执⾏与验证，只是同步数据使⽤和转发交易到⽹络中。\n\nfabric⾥⾯的pbft是通过view change来先选主节点然后来共识 cometbft直接收到dpos传来的validator然后来做共识\n\n# 6. 区块链的特性⻆度理解ETH2.0\n\n# 6.1 ETH1.0\n\n• POW • 共识和执⾏都在Geth客⼾端\n\n# 6.2 ETH2.0\n\n• 信标链：POS共识 • Geth客⼾端：执⾏交易\n\n![](images/109d65975c5df4e24a525488fe372e43d453454a7fac512542c9ac7daf908ee5.jpg)\n\n# 6.2.1 区块组织\n\n# • 区块头\n\n◦ Hash ◦ ParentHash ◦ StateRoot ◦ TransactionRoot ◦ ReceiptRoot\n\n• 区块体 ◦ TxList\n\n![](images/b5621c2ee861fc6d9e74cdc2a55d4f5bbdfac9c61683896db8a34ebb1b715f20.jpg)\n\n# 6.2.2 ETH2.0的共识算法\n\nPOS链的⻓程\n\n⻓程攻击：某⼀个验证⼈在⼀个历史区块质押⽐重⼤的话，他就可以⽆论在多远的块都可以回滚到那个历史区块，并且出⼀条⽐主⽹更⻓的链来实现⻓程攻击。\n\n防⽌⻓程攻击：引⼊了checkpoint，过了⼀定checkPoint会先safe然后finalize，然后这些块就不可以改了\n\n# 6.2.3 名词解释\n\n• Epoch: 以太坊的⼀个质押周期，⾥⾯有32个slot  \n. Slot，区块插槽，每12秒出⼀个，⾥⾯可以填⼀个block或者是空的。（以太坊实际上不会出现空slot的情况，12秒都没有交易，以太坊也差不多凉了）  \n• Block区块  \n• Checkpoint，每过⼀个epoch就是⼀个Checkpoint\n\n在以太坊中，共识层是信标链，要启动⼀个Validator需要打⼊32-2048个ETH到信标链合约，去启动⼀个Validator。\n\n在每⼀个Epoch⾥，系统会从validator中选⼀群⼈来参与共识投票；然后每⼀个slot出来的时候会从这⼀群⼈中选⼀个出块⼈。\n\n![](images/cf5c3b21c29f279e4e855e1ad3e5e8a921a3dcaef91754b8292e7d03034bc0c7.jpg)  \n开始一个信标节点(beacon node)\n\nBlock building,Proposer(出块人)\n\n![](images/b62abff2c4e269e0b13ca422bc912c060b3dca11bca61a38ffc2f53cb15d5264.jpg)  \nBlockValidation,其他验证者/投票者\n\n以太坊检查点checkpoint：每32个slot⼀个确认位，假设从100开始。对于196来说：第132⾄第164都是safe；第100⾄第132都是finalized（批量label safe与finalize）\n\nCEX确认位confirmation：现在出到第196个块，第100个块之前都可以安全提现，第100⾄第164个块可以确认安全⼊账\n\n# 6.2.4 POS链怎么处理分叉的\n\n每个Validator每个slot轮次只能投给⼀个分叉块\n\n# 6.2.5 以太坊的数据结构\n\n# 6.2.5.1 Merkle Patricia Trie\n\n空节点，分⽀节点(来去做分叉的)，扩展节点(来去压缩路径的)，叶⼦结点(最后的)\n\n# MPT路径压缩优化\n\n# 普通前缀树（未优化）\n\n# Code block\n\n![](images/9dcd5372169d106c14e65ce290244e38125830c3ac00c6f189efc22011443d58.jpg)\n\n# MPT经过路径压缩后的结构\n\n# Code block\n\n1 t → o  \n2 ast (存储 \"toast\" 的值)  \n3 p (存储 \"top\" 的值)\n\nkey=“cat”\n\nRaw 编码 [0x63, 0x61, 0x74] 插⼊MPT之前\n\nHex 编码 [0x6, 0x3, 0x6, 0x1, 0x7, 0x4, 0x10(叶⼦结点标识)] 内存存储插⼊MPT将Byte拆成两个nibbles以后每个分⽀节点的范围从128变成了16，减少存储空间\n\n# Hex 编码转换⽰例\n\n• 如果 Key 为 \"cat\"，其 ASCII 码值分别为： (Raw)\n\n# Code block\n\n1 'c' -> 0x63   \n2 'a' -> 0x61   \n3 't' -> 0x74\n\n• 拆分成⾼ 4 位和低 4 位：(Hex)\n\nCode block\n\n1 'c' -> 0x6 0x3\n\n2 'a' -> 0x6 0x1   \n3 't' -> 0x7 0x4\n\n# 然后转换为Hex编码：\n\nCode block\n\n1 [3, 15, 3, 13, 4, 10, 16] // 最后 16 代表叶⼦节点终⽌符  \n3 $\\begin{array} { l } { 6 3 ~ = ~ 3 ~ \\star ~ 1 6 ~ + ~ 1 5 } \\\\ { 6 1 ~ = ~ 3 ~ \\star ~ 1 6 ~ + ~ 1 3 } \\\\ { 7 4 ~ = ~ 4 ~ \\star ~ 1 6 ~ + ~ 1 6 } \\end{array}$   \n4  \n5\n\n# HP编码\n\n但这样是对key的明⽂操作，所以进⾏了封装优化，使⽤keccak-256(key)来作为实际存储的key\n\n优点：Key固定⻓度32字节，增加隐私保护缺点：需要存储keccak-256(key) 到 key的映射关系\n\n增删改查都是⽤HEX在内存存储做的\n\nCommit是将MPT结构持久化到数据库，过程当中由于RLP的编码规则，只有被修改的节点和递归每⼀个他的⽗节点会被修改。\n\n# MPT在区块链中的应⽤\n\n1. 快速计算hash，只有被修改的节点和递归每⼀个他的⽗节点会被修改。\n\n2. 状态回滚的时候，因为历史MPT节点在数据库永久保留，只要我有切换会旧根哈希就可以回滚回去\n\n轻节点仅存区块头，Merkle证明记录了从根节点到⽬标叶⼦的所有节点内容，轻节点只需沿路径从叶节点递归hash就能还原stateRoot，然后和根哈希⽐对，⼀致则通过\n\n# 6.2.5.2 Bloom Filter\n\n是⼀种超省空间⾼效的数据结构，⽤来快速判断某个元素在不在集合⾥，不存key，⽽是存哈希标记优点：查找⾮常快且节省时间\n\n允许FalsePositive，但保证不会有FalseNegative（可能误认为某元素存在，但绝不会漏掉真实存在的）\n\n# 应⽤\n\n• 区块链⾥⾯⽐特币SPV（simplified payment verification），可以过滤交易数据，仅下载与⾃⼰相关的交易  \n• 以太坊⽇志检索，加速事件查询\n\n# 6.2.6以太坊的三棵树\n\n区块头：\n\nHash, parentHash, stateRoot, transactionRoot, receiptRoot\n\n区块体：\n\ntxlist\n\ntransactionRoot和receiptRoot和⽐特币的merkleRoot是⼀样的\n\nstateRoot是全局的，也就是说每个区块stateRoot链接的都是同⼀颗不同版本的World State Trie\n\n![](images/2d2be9bcc8a2309e1ad45c227144f662d735cb7275694b2d3c4532693c9be116.jpg)\n\n# 6.2.7 EVM\n\n⽐特币是使得Token经济去中⼼化，但是不能运⾏太复杂的逻辑，⾮图灵完备以太坊使得链上应⽤成为可能，可以运⾏复杂逻辑，图灵完备\n\n![](images/3de231e283aa953f3b384509fa65ce9fbac7f9e07be3cb0fa0ac26341a04ac93.jpg)\n\n# 6.2.8 以太坊⼀笔交易的⽣命周期\n\nEVM⽤program counter从Virtual ROM⾥的EVM Code⼀条⼀条读取opcode  \n进⼊operations进⾏具体逻辑，⽐如  \n⽐如 CALL 、 DELEGATECALL 会发起新的message call，再次初始化新的EVM执⾏环境  \n所有的操作的输⼊输出都通过stack传递，然后和memory进⾏交互  \n合约持久变量的全局存储\n\n# 6.2.9 智能合约\n\n$\\bullet$ 编程语⾔：solidity• 智能合约最终是以bytecode的形式存在Virtual ROM⾥⾯\n\nABI会告诉你有哪些函数可以⽤，然后这个函数与你实际传的参数按照ABI编码为Calldata，然后将Calldata发到链上，EVM收到后按ABI解析执⾏\n\nERC20 同质化代币  \nERC721 ⾮同质化代币  \nERC1155 半同质化代币  \nEIP2930 某些优化降低gas费。。。EIP4844 降低rollup扩容⽅案的成本\n\n# 6.2.10 Defi 去中⼼化⾦融\n\n稳定币\n\nNFT（图⽚视频，rwa）\n\nDEX（Uniswap $x ^ { \\star } y = k )$ ）\n\n去中⼼化衍⽣品 （Dydx Apex）\n\n质押借贷（Compound Aave）\n\n交易聚合（1inch DoDo）\n\nLSD/LST/LSP（Lido）\n\n再质押（EigenLayer）\n\n# 6.2.11 以太坊的Layer2\n\nzkRollup：使⽤的是有效性证明OpRollup：使⽤的是欺诈证明",
+      "extractions": [
+        {
+          "extraction_class": "概念",
+          "extraction_text": "区块链",
+          "char_interval": {
+            "start_pos": 223,
+            "end_pos": 226
+          },
+          "attributes": {
+            "mechanism_group": "区块链-去中心化-共识"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "去中心化",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "区块链-去中心化-共识"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "共识体系",
+          "char_interval": {
+            "start_pos": 266,
+            "end_pos": 270
+          },
+          "attributes": {
+            "mechanism_group": "区块链-去中心化-共识"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "POW",
+          "char_interval": {
+            "start_pos": 334,
+            "end_pos": 337
+          },
+          "attributes": {
+            "mechanism_group": "POW-挖矿-出块"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "矿工",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "POW-挖矿-出块"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "矿工到mempool中提取交易,然后打包到未出块的区块中",
+          "char_interval": null,
+          "attributes": {
+            "阶段": "交易处理",
+            "mechanism_group": "POW-挖矿-出块"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "找到nonce,使得区块Hash < target threshold 之后,直接将区块打包",
+          "char_interval": {
+            "start_pos": 375,
+            "end_pos": 391
+          },
+          "attributes": {
+            "阶段": "挖矿",
+            "mechanism_group": "POW-挖矿-出块"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "将出块广播给其他节点",
+          "char_interval": null,
+          "attributes": {
+            "阶段": "出块",
+            "mechanism_group": "POW-挖矿-出块"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "每隔2016个块,会进行一次难度调整,目标是控制每十分钟出一个块,防止分叉",
+          "char_interval": {
+            "start_pos": 585,
+            "end_pos": 594
+          },
+          "attributes": {
+            "阶段": "难度调整",
+            "mechanism_group": "POW-挖矿-出块"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "POS",
+          "char_interval": {
+            "start_pos": 872,
+            "end_pos": 875
+          },
+          "attributes": {
+            "mechanism_group": "POS-质押-投票"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "资金质押",
+          "char_interval": null,
+          "attributes": {
+            "阶段": "质押",
+            "mechanism_group": "POS-质押-投票"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "投票",
+          "char_interval": {
+            "start_pos": 962,
+            "end_pos": 964
+          },
+          "attributes": {
+            "阶段": "投票",
+            "mechanism_group": "POS-质押-投票"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "正常投票(不做恶)就会获得奖励",
+          "char_interval": {
+            "start_pos": 972,
+            "end_pos": 987
+          },
+          "attributes": {
+            "阶段": "奖励",
+            "mechanism_group": "POS-质押-投票"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "质押",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "质押-共识-罚没"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "罚没",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "质押-共识-罚没"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "共识",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "质押-共识-罚没"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "以太坊",
+          "char_interval": {
+            "start_pos": 1293,
+            "end_pos": 1296
+          },
+          "attributes": {
+            "类型": "主网",
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "ETH2.0升级",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "节点",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "pactra升级",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "LSD/LST/LSP",
+          "char_interval": {
+            "start_pos": 1327,
+            "end_pos": 1338
+          },
+          "attributes": {
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "信标链",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "用户",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "第一步:用户质押ETH,LSPmint对应权益token给到用户",
+          "char_interval": null,
+          "attributes": {
+            "阶段": "质押",
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "第二步:当LSP里面的资金大等于32ETH时,链下服务监听到该事件之后,驱动将LSP资金充值到信标链合约,当新质押再进来,先将该节点质押的数量补充到2048;最新的质押达到32ETH再去启动新的节点。",
+          "char_interval": {
+            "start_pos": 1483,
+            "end_pos": 1580
+          },
+          "attributes": {
+            "阶段": "充值",
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "第三步:充值完成值,启动一个信标链节点参与网络的共识出块",
+          "char_interval": {
+            "start_pos": 1687,
+            "end_pos": 1697
+          },
+          "attributes": {
+            "阶段": "启动节点",
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "第四步:出块完成之后,节点会获得奖励,矿池节点进行奖励抽成(节点拿 $5 \\substack { - 8 \\% }$ ),剩余的奖励给到LSP产品侧",
+          "char_interval": {
+            "start_pos": 1717,
+            "end_pos": 1736
+          },
+          "attributes": {
+            "阶段": "奖励分配",
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "第五步:LSP 产品侧拿到奖励之后,抽成之后(LSP 拿 $5 \\substack { - 8 \\% }$ ),将奖励分发给用户",
+          "char_interval": {
+            "start_pos": 1795,
+            "end_pos": 1851
+          },
+          "attributes": {
+            "阶段": "奖励分发",
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "第六步:用户取回质押,需要将权益token退回去,合约burn权益token之后释放ETH给到用户",
+          "char_interval": {
+            "start_pos": 1861,
+            "end_pos": 1865
+          },
+          "attributes": {
+            "阶段": "取回质押",
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "第七步:LSP退出,停掉节点,取回信标链合约资金",
+          "char_interval": {
+            "start_pos": 1912,
+            "end_pos": 1927
+          },
+          "attributes": {
+            "阶段": "退出",
+            "mechanism_group": "以太坊-LSD-质押"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "可追溯",
+          "char_interval": {
+            "start_pos": 1944,
+            "end_pos": 1947
+          },
+          "attributes": {
+            "mechanism_group": "账本公开"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "账本公开",
+          "char_interval": {
+            "start_pos": 1949,
+            "end_pos": 1953
+          },
+          "attributes": {
+            "mechanism_group": "账本公开"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "区块头",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "区块头-Hash-不可篡改"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "对整个Header做⼀个Hash,得到区块的Hash",
+          "char_interval": {
+            "start_pos": 2167,
+            "end_pos": 2195
+          },
+          "attributes": {
+            "阶段": "出块",
+            "mechanism_group": "区块头-Hash-不可篡改"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "如果在⽹络中是第⼀个算出来<target_threshold,就可以被打包上链了",
+          "char_interval": {
+            "start_pos": 2198,
+            "end_pos": 2238
+          },
+          "attributes": {
+            "阶段": "出块",
+            "mechanism_group": "区块头-Hash-不可篡改"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "账⼾模型(如以太坊)",
+          "char_interval": {
+            "start_pos": 2348,
+            "end_pos": 2358
+          },
+          "attributes": {
+            "mechanism_group": "账本模型-以太坊"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "以太坊",
+          "char_interval": null,
+          "attributes": {
+            "类型": "公链",
+            "mechanism_group": "账本模型-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "UTXO(如⽐特币)",
+          "char_interval": {
+            "start_pos": 2380,
+            "end_pos": 2390
+          },
+          "attributes": {
+            "mechanism_group": "账本模型-⽐特币"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "⽐特币",
+          "char_interval": {
+            "start_pos": 2386,
+            "end_pos": 2389
+          },
+          "attributes": {
+            "类型": "公链",
+            "mechanism_group": "账本模型-⽐特币"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "不可篡改",
+          "char_interval": {
+            "start_pos": 2493,
+            "end_pos": 2497
+          },
+          "attributes": {
+            "mechanism_group": "区块头-Hash-不可篡改"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Hash 链结构",
+          "char_interval": {
+            "start_pos": 2501,
+            "end_pos": 2509
+          },
+          "attributes": {
+            "mechanism_group": "区块头-Hash-不可篡改"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "保证历史数据⽆法被篡改(当你改变交易⾥的任意⼀个数据,导致的各层Hash不⼀样,从⽽导致交易根merkle root hash不⼀样,从⽽产⽣分叉)",
+          "char_interval": {
+            "start_pos": 2511,
+            "end_pos": 2585
+          },
+          "attributes": {
+            "阶段": "共识",
+            "mechanism_group": "区块头-Hash-不可篡改"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "单向不可逆: X 可以得出 H ( X ) ,但 H ( X ) ⽆法反推回X",
+          "char_interval": {
+            "start_pos": 2611,
+            "end_pos": 2624
+          },
+          "attributes": {
+            "mechanism_group": "Hash-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Hash碰撞:找到⼀个Message Y,使得 H ( Y ) == H ( X )",
+          "char_interval": {
+            "start_pos": 2690,
+            "end_pos": 2713
+          },
+          "attributes": {
+            "mechanism_group": "Hash-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "MD4/MD5 已被破解",
+          "char_interval": {
+            "start_pos": 2803,
+            "end_pos": 2815
+          },
+          "attributes": {
+            "mechanism_group": "Hash-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "SHA256(Bitcoin)",
+          "char_interval": {
+            "start_pos": 2819,
+            "end_pos": 2834
+          },
+          "attributes": {
+            "mechanism_group": "Hash-算法-⽐特币"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "Bitcoin",
+          "char_interval": {
+            "start_pos": 2259,
+            "end_pos": 2266
+          },
+          "attributes": {
+            "类型": "公链",
+            "mechanism_group": "Hash-算法-⽐特币"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Kecake(Ethereum)",
+          "char_interval": {
+            "start_pos": 2836,
+            "end_pos": 2852
+          },
+          "attributes": {
+            "mechanism_group": "Hash-算法-以太坊"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "Ethereum",
+          "char_interval": {
+            "start_pos": 2843,
+            "end_pos": 2851
+          },
+          "attributes": {
+            "类型": "公链",
+            "mechanism_group": "Hash-算法-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Poseidon(zk相关的链)",
+          "char_interval": {
+            "start_pos": 2854,
+            "end_pos": 2870
+          },
+          "attributes": {
+            "mechanism_group": "Hash-算法-zk链"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "merkle tree root hash",
+          "char_interval": {
+            "start_pos": 2973,
+            "end_pos": 2994
+          },
+          "attributes": {
+            "mechanism_group": "merkle tree root hash-区块hash"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "区块hash",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "merkle tree root hash-区块hash"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "公钥密码学",
+          "char_interval": {
+            "start_pos": 3016,
+            "end_pos": 3021
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "单密钥",
+          "char_interval": {
+            "start_pos": 3048,
+            "end_pos": 3051
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "公钥密码",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "私钥推导公钥",
+          "char_interval": {
+            "start_pos": 3098,
+            "end_pos": 3104
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "ECDSA",
+          "char_interval": {
+            "start_pos": 3124,
+            "end_pos": 3129
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "secp256k1",
+          "char_interval": {
+            "start_pos": 3134,
+            "end_pos": 3143
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "keccak-256",
+          "char_interval": {
+            "start_pos": 3171,
+            "end_pos": 3181
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "SHA-256",
+          "char_interval": {
+            "start_pos": 3186,
+            "end_pos": 3193
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "RIPEMD-160",
+          "char_interval": {
+            "start_pos": 3194,
+            "end_pos": 3201
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "双重SHA256",
+          "char_interval": {
+            "start_pos": 3212,
+            "end_pos": 3220
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Base58",
+          "char_interval": {
+            "start_pos": 3221,
+            "end_pos": 3227
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "签名验证",
+          "char_interval": {
+            "start_pos": 3273,
+            "end_pos": 3277
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "私钥签名",
+          "char_interval": {
+            "start_pos": 3282,
+            "end_pos": 3286
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Message Digest数字摘要",
+          "char_interval": {
+            "start_pos": 3301,
+            "end_pos": 3319
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "公钥验证",
+          "char_interval": {
+            "start_pos": 3405,
+            "end_pos": 3409
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "加解密",
+          "char_interval": {
+            "start_pos": 3613,
+            "end_pos": 3616
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "公钥加密",
+          "char_interval": {
+            "start_pos": 3621,
+            "end_pos": 3625
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "私钥解密",
+          "char_interval": {
+            "start_pos": 3626,
+            "end_pos": 3630
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "数字信封",
+          "char_interval": {
+            "start_pos": 3675,
+            "end_pos": 3679
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "数字摘要",
+          "char_interval": {
+            "start_pos": 3728,
+            "end_pos": 3732
+          },
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "分叉和确认位",
+          "char_interval": {
+            "start_pos": 3775,
+            "end_pos": 3781
+          },
+          "attributes": {
+            "mechanism_group": "分叉和确认位-最⻓链原则"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "最⻓链原则",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "分叉和确认位-最⻓链原则"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "⽐特币",
+          "char_interval": {
+            "start_pos": 3387,
+            "end_pos": 3390
+          },
+          "attributes": {
+            "类型": "公链",
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "以太坊",
+          "char_interval": {
+            "start_pos": 3396,
+            "end_pos": 3399
+          },
+          "attributes": {
+            "类型": "公链",
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "节点",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "签名者",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "作恶的⼈",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "分叉和确认位-最⻓链原则"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "矿⼯",
+          "char_interval": {
+            "start_pos": 3892,
+            "end_pos": 3894
+          },
+          "attributes": {
+            "mechanism_group": "分叉和确认位-最⻓链原则"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "私钥签名",
+          "char_interval": {
+            "start_pos": 3282,
+            "end_pos": 3286
+          },
+          "attributes": {
+            "流程": "签名",
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "公钥验证",
+          "char_interval": {
+            "start_pos": 3405,
+            "end_pos": 3409
+          },
+          "attributes": {
+            "流程": "验证",
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "加解密",
+          "char_interval": {
+            "start_pos": 3613,
+            "end_pos": 3616
+          },
+          "attributes": {
+            "流程": "通信",
+            "mechanism_group": "公钥密码学-签名验证"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "分叉",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "分叉-确认-矿工"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "矿工",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "分叉-确认-矿工"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "后⾯添加了多少的区块,就代表有多少的确认",
+          "char_interval": {
+            "start_pos": 4030,
+            "end_pos": 4050
+          },
+          "attributes": {
+            "阶段": "共识",
+            "mechanism_group": "分叉-确认-矿工"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "六个以后这个矿⼯就可以认为⾃⼰的这个块稳了",
+          "char_interval": {
+            "start_pos": 4052,
+            "end_pos": 4074
+          },
+          "attributes": {
+            "阶段": "共识",
+            "mechanism_group": "分叉-确认-矿工"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "矿工",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "矿工-矿池"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "矿池",
+          "char_interval": {
+            "start_pos": 4087,
+            "end_pos": 4089
+          },
+          "attributes": {
+            "mechanism_group": "矿工-矿池"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "公链",
+          "char_interval": {
+            "start_pos": 4154,
+            "end_pos": 4156
+          },
+          "attributes": {
+            "mechanism_group": "公链-共识"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "⽐特币",
+          "char_interval": {
+            "start_pos": 4183,
+            "end_pos": 4186
+          },
+          "attributes": {
+            "层级": "L1",
+            "mechanism_group": "公链-共识"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "以太坊",
+          "char_interval": null,
+          "attributes": {
+            "层级": "L1",
+            "mechanism_group": "公链-共识"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "联盟链",
+          "char_interval": {
+            "start_pos": 4222,
+            "end_pos": 4225
+          },
+          "attributes": {}
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "私有链",
+          "char_interval": null,
+          "attributes": {}
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "跨链",
+          "char_interval": {
+            "start_pos": 4260,
+            "end_pos": 4262
+          },
+          "attributes": {}
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "链抽象",
+          "char_interval": {
+            "start_pos": 4281,
+            "end_pos": 4284
+          },
+          "attributes": {}
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "模块化区块链",
+          "char_interval": {
+            "start_pos": 4346,
+            "end_pos": 4352
+          },
+          "attributes": {
+            "mechanism_group": "模块化区块链-分层"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "cosmos",
+          "char_interval": null,
+          "attributes": {
+            "层级": "生态",
+            "mechanism_group": "模块化区块链-分层"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "Mantle",
+          "char_interval": {
+            "start_pos": 4367,
+            "end_pos": 4373
+          },
+          "attributes": {
+            "层级": "L2",
+            "mechanism_group": "模块化区块链-分层"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "Ethereum",
+          "char_interval": {
+            "start_pos": 4379,
+            "end_pos": 4387
+          },
+          "attributes": {
+            "层级": "L1",
+            "mechanism_group": "模块化区块链-分层"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "共识层",
+          "char_interval": {
+            "start_pos": 4375,
+            "end_pos": 4378
+          },
+          "attributes": {
+            "mechanism_group": "模块化区块链-分层"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "DA层",
+          "char_interval": {
+            "start_pos": 4389,
+            "end_pos": 4392
+          },
+          "attributes": {
+            "mechanism_group": "模块化区块链-分层"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "结算层",
+          "char_interval": {
+            "start_pos": 4402,
+            "end_pos": 4405
+          },
+          "attributes": {
+            "mechanism_group": "模块化区块链-分层"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "执⾏层",
+          "char_interval": {
+            "start_pos": 4414,
+            "end_pos": 4417
+          },
+          "attributes": {
+            "mechanism_group": "模块化区块链-分层"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "跨链互操作协议",
+          "char_interval": {
+            "start_pos": 4426,
+            "end_pos": 4433
+          },
+          "attributes": {}
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "EVM链扩容⽅式",
+          "char_interval": {
+            "start_pos": 4456,
+            "end_pos": 4464
+          },
+          "attributes": {
+            "mechanism_group": "EVM扩容-L2"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "纵向扩容",
+          "char_interval": {
+            "start_pos": 4469,
+            "end_pos": 4473
+          },
+          "attributes": {
+            "mechanism_group": "EVM扩容-L2"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "L2",
+          "char_interval": {
+            "start_pos": 4474,
+            "end_pos": 4476
+          },
+          "attributes": {
+            "mechanism_group": "EVM扩容-L2"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "横向扩容",
+          "char_interval": {
+            "start_pos": 4479,
+            "end_pos": 4483
+          },
+          "attributes": {
+            "mechanism_group": "EVM扩容-并发EVM"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "并发EVM",
+          "char_interval": {
+            "start_pos": 4484,
+            "end_pos": 4489
+          },
+          "attributes": {
+            "mechanism_group": "EVM扩容-并发EVM"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Op rollup",
+          "char_interval": {
+            "start_pos": 4491,
+            "end_pos": 4500
+          },
+          "attributes": {}
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Zk rollup",
+          "char_interval": {
+            "start_pos": 4524,
+            "end_pos": 4533
+          },
+          "attributes": {}
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "L1",
+          "char_interval": {
+            "start_pos": 4535,
+            "end_pos": 4537
+          },
+          "attributes": {
+            "mechanism_group": "L1-L2-L3"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "L2",
+          "char_interval": {
+            "start_pos": 4539,
+            "end_pos": 4541
+          },
+          "attributes": {
+            "mechanism_group": "L1-L2-L3"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "L3",
+          "char_interval": {
+            "start_pos": 4543,
+            "end_pos": 4545
+          },
+          "attributes": {
+            "mechanism_group": "L1-L2-L3"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "L2没有⾃⼰的共识,⽤L1做共识层",
+          "char_interval": {
+            "start_pos": 4547,
+            "end_pos": 4564
+          },
+          "attributes": {
+            "mechanism_group": "L1-L2-L3"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "L3是应⽤链,⽤L2做共识层和结算层",
+          "char_interval": {
+            "start_pos": 4566,
+            "end_pos": 4584
+          },
+          "attributes": {
+            "mechanism_group": "L1-L2-L3"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "⽐特币",
+          "char_interval": {
+            "start_pos": 4616,
+            "end_pos": 4619
+          },
+          "attributes": {
+            "层级": "L1",
+            "mechanism_group": "历史-⽐特币-以太坊"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "以太坊",
+          "char_interval": null,
+          "attributes": {
+            "层级": "L1",
+            "mechanism_group": "历史-⽐特币-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "⽐特币不能运⾏智能合约",
+          "char_interval": {
+            "start_pos": 4676,
+            "end_pos": 4687
+          },
+          "attributes": {
+            "mechanism_group": "历史-⽐特币-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "以太坊可以链上运⾏,可以发币了",
+          "char_interval": {
+            "start_pos": 4690,
+            "end_pos": 4705
+          },
+          "attributes": {
+            "mechanism_group": "历史-⽐特币-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "以太坊是图灵完备的",
+          "char_interval": {
+            "start_pos": 4706,
+            "end_pos": 4715
+          },
+          "attributes": {
+            "mechanism_group": "历史-⽐特币-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "对称加密",
+          "char_interval": {
+            "start_pos": 4735,
+            "end_pos": 4739
+          },
+          "attributes": {
+            "mechanism_group": "对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "单密钥加密",
+          "char_interval": {
+            "start_pos": 4741,
+            "end_pos": 4746
+          },
+          "attributes": {
+            "mechanism_group": "对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "DES",
+          "char_interval": {
+            "start_pos": 4760,
+            "end_pos": 4763
+          },
+          "attributes": {
+            "mechanism_group": "对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "3DES",
+          "char_interval": {
+            "start_pos": 4767,
+            "end_pos": 4771
+          },
+          "attributes": {
+            "mechanism_group": "对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "AES",
+          "char_interval": {
+            "start_pos": 4785,
+            "end_pos": 4788
+          },
+          "attributes": {
+            "mechanism_group": "对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "⾮对称加密",
+          "char_interval": {
+            "start_pos": 4805,
+            "end_pos": 4810
+          },
+          "attributes": {
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "RSA",
+          "char_interval": {
+            "start_pos": 4821,
+            "end_pos": 4824
+          },
+          "attributes": {
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "ECC椭圆曲线算法",
+          "char_interval": {
+            "start_pos": 4832,
+            "end_pos": 4841
+          },
+          "attributes": {
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "ECDSA",
+          "char_interval": {
+            "start_pos": 4843,
+            "end_pos": 4848
+          },
+          "attributes": {
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "secp256k1",
+          "char_interval": {
+            "start_pos": 4850,
+            "end_pos": 4859
+          },
+          "attributes": {
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "⽐特币",
+          "char_interval": {
+            "start_pos": 4867,
+            "end_pos": 4870
+          },
+          "attributes": {
+            "层级": "L1",
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "以太坊",
+          "char_interval": null,
+          "attributes": {
+            "层级": "L1",
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "secp256r1",
+          "char_interval": {
+            "start_pos": 4850,
+            "end_pos": 4883
+          },
+          "attributes": {
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "EOS",
+          "char_interval": {
+            "start_pos": 4891,
+            "end_pos": 4894
+          },
+          "attributes": {
+            "层级": "L1",
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "secp384r1",
+          "char_interval": {
+            "start_pos": 4896,
+            "end_pos": 4905
+          },
+          "attributes": {
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "secp512r1",
+          "char_interval": {
+            "start_pos": 4907,
+            "end_pos": 4916
+          },
+          "attributes": {
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "EdDSA",
+          "char_interval": {
+            "start_pos": 4930,
+            "end_pos": 4935
+          },
+          "attributes": {
+            "mechanism_group": "⾮对称加密-算法"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "账户抽象",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "账户抽象-4337-EntryPoint"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "以太坊",
+          "char_interval": null,
+          "attributes": {
+            "类型": "主网",
+            "mechanism_group": "以太坊-账户抽象-4337"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "Base",
+          "char_interval": null,
+          "attributes": {
+            "类型": "L2",
+            "mechanism_group": "Base-账户抽象-4337"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "Sepolia",
+          "char_interval": null,
+          "attributes": {
+            "类型": "以太坊测试网",
+            "mechanism_group": "Sepolia-账户抽象-4337"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "Optimism",
+          "char_interval": null,
+          "attributes": {
+            "类型": "L2",
+            "mechanism_group": "Optimism-账户抽象-4337"
+          }
+        },
+        {
+          "extraction_class": "工具",
+          "extraction_text": "Hardhat",
+          "char_interval": null,
+          "attributes": {
+            "用途": "开发/测试/部署",
+            "生态": "EVM",
+            "mechanism_group": "Hardhat-部署-ERC-20"
+          }
+        },
+        {
+          "extraction_class": "工具",
+          "extraction_text": "Foundry",
+          "char_interval": null,
+          "attributes": {
+            "用途": "测试",
+            "生态": "EVM",
+            "mechanism_group": "Foundry-测试-重入/权限"
+          }
+        },
+        {
+          "extraction_class": "工具",
+          "extraction_text": "Ethers.js",
+          "char_interval": null,
+          "attributes": {
+            "用途": "与区块链交互",
+            "生态": "JavaScript/TypeScript",
+            "mechanism_group": "Ethers.js-交互-以太坊"
+          }
+        },
+        {
+          "extraction_class": "工具",
+          "extraction_text": "Wagmi",
+          "char_interval": null,
+          "attributes": {
+            "用途": "React Hooks for Web3",
+            "生态": "React",
+            "mechanism_group": "Wagmi-前端-以太坊"
+          }
+        },
+        {
+          "extraction_class": "合约/接口",
+          "extraction_text": "ERC-20",
+          "char_interval": null,
+          "attributes": {
+            "类型": "代币标准",
+            "职责": "资产发行与转账",
+            "mechanism_group": "ERC-20-部署-以太坊"
+          }
+        },
+        {
+          "extraction_class": "合约/接口",
+          "extraction_text": "4337 EntryPoint",
+          "char_interval": null,
+          "attributes": {
+            "类型": "入口合约",
+            "职责": "处理账户抽象交易",
+            "mechanism_group": "EntryPoint-4337-账户抽象"
+          }
+        },
+        {
+          "extraction_class": "合约/接口",
+          "extraction_text": "Router",
+          "char_interval": null,
+          "attributes": {
+            "类型": "路由合约",
+            "职责": "管理跨链或合约间调用",
+            "mechanism_group": "Router-跨链-以太坊"
+          }
+        },
+        {
+          "extraction_class": "安全实践",
+          "extraction_text": "权限控制",
+          "char_interval": null,
+          "attributes": {
+            "风险": "未授权访问",
+            "阶段": "开发/部署",
+            "mechanism_group": "权限控制-合约-ERC-20"
+          }
+        },
+        {
+          "extraction_class": "安全实践",
+          "extraction_text": "重入",
+          "char_interval": null,
+          "attributes": {
+            "风险": "重入攻击",
+            "阶段": "测试",
+            "mechanism_group": "重入-测试-Foundry"
+          }
+        },
+        {
+          "extraction_class": "安全实践",
+          "extraction_text": "签名校验",
+          "char_interval": null,
+          "attributes": {
+            "风险": "签名伪造",
+            "阶段": "开发",
+            "mechanism_group": "签名校验-账户抽象-4337"
+          }
+        },
+        {
+          "extraction_class": "安全实践",
+          "extraction_text": "延时执行",
+          "char_interval": null,
+          "attributes": {
+            "风险": "时间依赖攻击",
+            "阶段": "开发",
+            "mechanism_group": "延时执行-合约-安全"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "开发",
+          "char_interval": null,
+          "attributes": {
+            "阶段": "开发",
+            "mechanism_group": "Hardhat-开发-以太坊"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "测试",
+          "char_interval": null,
+          "attributes": {
+            "阶段": "测试",
+            "mechanism_group": "Foundry-测试-重入/权限"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "部署",
+          "char_interval": null,
+          "attributes": {
+            "阶段": "部署",
+            "mechanism_group": "Hardhat-部署-ERC-20"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "监控",
+          "char_interval": null,
+          "attributes": {
+            "阶段": "监控",
+            "mechanism_group": "监控-以太坊-节点"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "用户",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "用户-账户抽象-4337"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "合约",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "合约-ERC-20-以太坊"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "预言机",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "预言机-数据-以太坊"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "验证者",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "验证者-共识-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "区块头",
+          "char_interval": {
+            "start_pos": 5946,
+            "end_pos": 5949
+          },
+          "attributes": {
+            "mechanism_group": "区块组织-区块头"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "区块体",
+          "char_interval": {
+            "start_pos": 6018,
+            "end_pos": 6021
+          },
+          "attributes": {
+            "mechanism_group": "区块组织-区块体"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "POS链的⻓程",
+          "char_interval": {
+            "start_pos": 6135,
+            "end_pos": 6142
+          },
+          "attributes": {
+            "mechanism_group": "ETH2.0-共识算法-⻓程攻击"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "⻓程攻击",
+          "char_interval": {
+            "start_pos": 6144,
+            "end_pos": 6148
+          },
+          "attributes": {
+            "mechanism_group": "ETH2.0-共识算法-⻓程攻击"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "防⽌⻓程攻击",
+          "char_interval": {
+            "start_pos": 6216,
+            "end_pos": 6222
+          },
+          "attributes": {
+            "mechanism_group": "ETH2.0-共识算法-⻓程攻击"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Epoch",
+          "char_interval": {
+            "start_pos": 6297,
+            "end_pos": 6302
+          },
+          "attributes": {
+            "mechanism_group": "ETH2.0-名词解释-Epoch"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Slot",
+          "char_interval": {
+            "start_pos": 6329,
+            "end_pos": 6333
+          },
+          "attributes": {
+            "mechanism_group": "ETH2.0-名词解释-Slot"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Block区块",
+          "char_interval": {
+            "start_pos": 6408,
+            "end_pos": 6415
+          },
+          "attributes": {
+            "mechanism_group": "ETH2.0-名词解释-Block"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Checkpoint",
+          "char_interval": {
+            "start_pos": 6419,
+            "end_pos": 6429
+          },
+          "attributes": {
+            "mechanism_group": "ETH2.0-名词解释-Checkpoint"
+          }
+        },
+        {
+          "extraction_class": "协议/链",
+          "extraction_text": "以太坊",
+          "char_interval": null,
+          "attributes": {
+            "类型": "公链",
+            "mechanism_group": "以太坊-共识层-信标链"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "共识层是信标链",
+          "char_interval": {
+            "start_pos": 6461,
+            "end_pos": 6468
+          },
+          "attributes": {
+            "mechanism_group": "以太坊-共识层-信标链"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "Validator",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "以太坊-共识层-信标链"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "validator",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "以太坊-共识层-信标链"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "出块⼈",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "以太坊-共识层-信标链"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "Proposer",
+          "char_interval": {
+            "start_pos": 6709,
+            "end_pos": 6717
+          },
+          "attributes": {
+            "mechanism_group": "以太坊-共识层-信标链"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "其他验证者/投票者",
+          "char_interval": {
+            "start_pos": 6822,
+            "end_pos": 6831
+          },
+          "attributes": {
+            "mechanism_group": "以太坊-共识层-信标链"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "以太坊检查点checkpoint",
+          "char_interval": {
+            "start_pos": 6833,
+            "end_pos": 6849
+          },
+          "attributes": {
+            "mechanism_group": "以太坊-共识层-信标链"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "safe",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "POS-分叉-Validator"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "finalized",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "POS-分叉-Validator"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "批量label safe与finalize",
+          "char_interval": {
+            "start_pos": 6918,
+            "end_pos": 6939
+          },
+          "attributes": {
+            "阶段": "确认",
+            "mechanism_group": "POS-分叉-Validator"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "CEX",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "POS-分叉-Validator"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "确认位confirmation",
+          "char_interval": null,
+          "attributes": {
+            "阶段": "确认",
+            "mechanism_group": "POS-分叉-Validator"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "安全提现",
+          "char_interval": null,
+          "attributes": {
+            "阶段": "提现",
+            "mechanism_group": "POS-分叉-Validator"
+          }
+        },
+        {
+          "extraction_class": "步骤",
+          "extraction_text": "确认安全⼊账",
+          "char_interval": null,
+          "attributes": {
+            "阶段": "入账",
+            "mechanism_group": "POS-分叉-Validator"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "POS链怎么处理分叉的",
+          "char_interval": {
+            "start_pos": 7017,
+            "end_pos": 7028
+          },
+          "attributes": {
+            "mechanism_group": "POS-分叉-Validator"
+          }
+        },
+        {
+          "extraction_class": "角色",
+          "extraction_text": "Validator",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "POS-分叉-Validator"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "每个Validator每个slot轮次只能投给⼀个分叉块",
+          "char_interval": {
+            "start_pos": 7030,
+            "end_pos": 7058
+          },
+          "attributes": {
+            "mechanism_group": "POS-分叉-Validator"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "以太坊的数据结构",
+          "char_interval": {
+            "start_pos": 7068,
+            "end_pos": 7076
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Merkle Patricia Trie",
+          "char_interval": {
+            "start_pos": 7088,
+            "end_pos": 7108
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "空节点",
+          "char_interval": {
+            "start_pos": 7110,
+            "end_pos": 7113
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "分⽀节点(来去做分叉的)",
+          "char_interval": {
+            "start_pos": 7114,
+            "end_pos": 7126
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "扩展节点(来去压缩路径的)",
+          "char_interval": {
+            "start_pos": 7127,
+            "end_pos": 7140
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "叶⼦结点(最后的)",
+          "char_interval": {
+            "start_pos": 7141,
+            "end_pos": 7150
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "MPT路径压缩优化",
+          "char_interval": {
+            "start_pos": 7154,
+            "end_pos": 7163
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "普通前缀树(未优化)",
+          "char_interval": {
+            "start_pos": 7167,
+            "end_pos": 7177
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "MPT经过路径压缩后的结构",
+          "char_interval": {
+            "start_pos": 7277,
+            "end_pos": 7290
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Raw 编码",
+          "char_interval": {
+            "start_pos": 7369,
+            "end_pos": 7375
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Hex 编码",
+          "char_interval": {
+            "start_pos": 7404,
+            "end_pos": 7410
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "内存存储插⼊MPT将Byte拆成两个nibbles以后每个分⽀节点的范围从128变成了16,减少存储空间",
+          "char_interval": {
+            "start_pos": 7456,
+            "end_pos": 7508
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Hex 编码转换⽰例",
+          "char_interval": {
+            "start_pos": 7512,
+            "end_pos": 7522
+          },
+          "attributes": {
+            "mechanism_group": "MPT-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "HP编码",
+          "char_interval": {
+            "start_pos": 7958,
+            "end_pos": 7962
+          },
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "keccak-256(key)",
+          "char_interval": {
+            "start_pos": 7990,
+            "end_pos": 8005
+          },
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "RLP的编码规则",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "MPT结构持久化到数据库",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "只有被修改的节点和递归每一个他的父节点会被修改",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "快速计算hash",
+          "char_interval": {
+            "start_pos": 8173,
+            "end_pos": 8181
+          },
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "状态回滚",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "历史MPT节点在数据库永久保留",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "切换会旧根哈希就可以回滚回去",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "轻节点仅存区块头",
+          "char_interval": {
+            "start_pos": 8257,
+            "end_pos": 8265
+          },
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Merkle证明记录了从根节点到目标叶子的所有节点内容",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "轻节点只需沿路径从叶节点递归hash就能还原stateRoot",
+          "char_interval": {
+            "start_pos": 8294,
+            "end_pos": 8325
+          },
+          "attributes": {
+            "mechanism_group": "MPT-编码-存储"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Bloom Filter",
+          "char_interval": {
+            "start_pos": 8352,
+            "end_pos": 8364
+          },
+          "attributes": {
+            "mechanism_group": "Bloom-Filter-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "超省空间高效的数据结构",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "Bloom-Filter-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "快速判断某个元素在不在集合里",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "Bloom-Filter-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "允许FalsePositive",
+          "char_interval": {
+            "start_pos": 8426,
+            "end_pos": 8441
+          },
+          "attributes": {
+            "mechanism_group": "Bloom-Filter-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "保证不会有FalseNegative",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "Bloom-Filter-数据结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "比特币SPV(simplified payment verification)",
+          "char_interval": {
+            "start_pos": 8501,
+            "end_pos": 8539
+          },
+          "attributes": {
+            "mechanism_group": "Bloom-Filter-应用"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "过滤交易数据",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "Bloom-Filter-应用"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "以太坊日志检索",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "Bloom-Filter-应用"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "加速事件查询",
+          "char_interval": {
+            "start_pos": 8572,
+            "end_pos": 8578
+          },
+          "attributes": {
+            "mechanism_group": "Bloom-Filter-应用"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "以太坊的三棵树",
+          "char_interval": {
+            "start_pos": 8587,
+            "end_pos": 8594
+          },
+          "attributes": {
+            "mechanism_group": "以太坊-区块结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "区块头",
+          "char_interval": {
+            "start_pos": 8596,
+            "end_pos": 8599
+          },
+          "attributes": {
+            "mechanism_group": "以太坊-区块结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "区块体",
+          "char_interval": {
+            "start_pos": 8661,
+            "end_pos": 8664
+          },
+          "attributes": {
+            "mechanism_group": "以太坊-区块结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "transactionRoot和receiptRoot和比特币的merkleRoot是一样的",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "以太坊-区块结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "stateRoot是全局的",
+          "char_interval": {
+            "start_pos": 8723,
+            "end_pos": 8736
+          },
+          "attributes": {
+            "mechanism_group": "以太坊-区块结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "每个区块stateRoot链接的都是同一颗不同版本的World State Trie",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "以太坊-区块结构"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Token经济去中⼼化",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "链上应⽤",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "图灵完备",
+          "char_interval": {
+            "start_pos": 8939,
+            "end_pos": 8943
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "EVM",
+          "char_interval": {
+            "start_pos": 9049,
+            "end_pos": 9052
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "program counter",
+          "char_interval": {
+            "start_pos": 9053,
+            "end_pos": 9060
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Virtual ROM",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "EVM Code",
+          "char_interval": {
+            "start_pos": 9049,
+            "end_pos": 9090
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "opcode",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "operations",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "CALL",
+          "char_interval": {
+            "start_pos": 9130,
+            "end_pos": 9134
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "DELEGATECALL",
+          "char_interval": {
+            "start_pos": 9137,
+            "end_pos": 9149
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "message call",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "stack",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "memory",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "合约持久变量的全局存储",
+          "char_interval": {
+            "start_pos": 9220,
+            "end_pos": 9231
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "智能合约",
+          "char_interval": {
+            "start_pos": 9241,
+            "end_pos": 9245
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "工具",
+          "extraction_text": "solidity",
+          "char_interval": {
+            "start_pos": 9262,
+            "end_pos": 9270
+          },
+          "attributes": {
+            "用途": "编程语⾔",
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "bytecode",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "ABI",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Calldata",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "合约/接口",
+          "extraction_text": "ERC20",
+          "char_interval": {
+            "start_pos": 9387,
+            "end_pos": 9392
+          },
+          "attributes": {
+            "类型": "代币",
+            "职责": "同质化代币",
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "合约/接口",
+          "extraction_text": "ERC721",
+          "char_interval": {
+            "start_pos": 9400,
+            "end_pos": 9406
+          },
+          "attributes": {
+            "类型": "代币",
+            "职责": "⾮同质化代币",
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "合约/接口",
+          "extraction_text": "ERC1155",
+          "char_interval": {
+            "start_pos": 9415,
+            "end_pos": 9422
+          },
+          "attributes": {
+            "类型": "代币",
+            "职责": "半同质化代币",
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "合约/接口",
+          "extraction_text": "EIP2930",
+          "char_interval": {
+            "start_pos": 9431,
+            "end_pos": 9438
+          },
+          "attributes": {
+            "类型": "优化",
+            "职责": "降低gas费",
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "合约/接口",
+          "extraction_text": "EIP4844",
+          "char_interval": {
+            "start_pos": 9452,
+            "end_pos": 9459
+          },
+          "attributes": {
+            "类型": "优化",
+            "职责": "降低rollup扩容⽅案的成本",
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "Defi 去中⼼化⾦融",
+          "char_interval": {
+            "start_pos": 9486,
+            "end_pos": 9497
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "稳定币",
+          "char_interval": {
+            "start_pos": 9499,
+            "end_pos": 9502
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "NFT",
+          "char_interval": {
+            "start_pos": 9504,
+            "end_pos": 9507
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "DEX",
+          "char_interval": {
+            "start_pos": 9519,
+            "end_pos": 9522
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "去中⼼化衍⽣品",
+          "char_interval": {
+            "start_pos": 9558,
+            "end_pos": 9565
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "质押借贷",
+          "char_interval": {
+            "start_pos": 9579,
+            "end_pos": 9583
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "交易聚合",
+          "char_interval": {
+            "start_pos": 9600,
+            "end_pos": 9604
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "LSD/LST/LSP",
+          "char_interval": {
+            "start_pos": 9618,
+            "end_pos": 9629
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "再质押",
+          "char_interval": {
+            "start_pos": 9637,
+            "end_pos": 9640
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "以太坊的Layer2",
+          "char_interval": {
+            "start_pos": 9663,
+            "end_pos": 9673
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "zkRollup",
+          "char_interval": {
+            "start_pos": 9675,
+            "end_pos": 9683
+          },
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "有效性证明",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "OpRollup",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        },
+        {
+          "extraction_class": "概念",
+          "extraction_text": "欺诈证明",
+          "char_interval": null,
+          "attributes": {
+            "mechanism_group": "EVM-以太坊"
+          }
+        }
+      ],
+      "graph": {
+        "nodes": [
+          {
+            "id": "区块链",
+            "label": "区块链",
+            "type": "概念"
+          },
+          {
+            "id": "去中心化",
+            "label": "去中心化",
+            "type": "实体"
+          },
+          {
+            "id": "共识",
+            "label": "共识",
+            "type": "实体"
+          },
+          {
+            "id": "共识体系",
+            "label": "共识体系",
+            "type": "概念"
+          },
+          {
+            "id": "POW",
+            "label": "POW",
+            "type": "概念"
+          },
+          {
+            "id": "挖矿",
+            "label": "挖矿",
+            "type": "实体"
+          },
+          {
+            "id": "出块",
+            "label": "出块",
+            "type": "实体"
+          },
+          {
+            "id": "矿工",
+            "label": "矿工",
+            "type": "角色"
+          },
+          {
+            "id": "矿工到mempool中提取交易,然后打包到未出块的区块中",
+            "label": "矿工到mempool中提取交易,然后打包到未出块的区块中",
+            "type": "步骤"
+          },
+          {
+            "id": "找到nonce,使得区块Hash < target threshold 之后,直接将区块打包",
+            "label": "找到nonce,使得区块Hash < target threshold 之后,直接将区块打包",
+            "type": "步骤"
+          },
+          {
+            "id": "将出块广播给其他节点",
+            "label": "将出块广播给其他节点",
+            "type": "步骤"
+          },
+          {
+            "id": "每隔2016个块,会进行一次难度调整,目标是控制每十分钟出一个块,防止分叉",
+            "label": "每隔2016个块,会进行一次难度调整,目标是控制每十分钟出一个块,防止分叉",
+            "type": "步骤"
+          },
+          {
+            "id": "POS",
+            "label": "POS",
+            "type": "概念"
+          },
+          {
+            "id": "质押",
+            "label": "质押",
+            "type": "实体"
+          },
+          {
+            "id": "投票",
+            "label": "投票",
+            "type": "实体"
+          },
+          {
+            "id": "资金质押",
+            "label": "资金质押",
+            "type": "步骤"
+          },
+          {
+            "id": "正常投票(不做恶)就会获得奖励",
+            "label": "正常投票(不做恶)就会获得奖励",
+            "type": "步骤"
+          },
+          {
+            "id": "罚没",
+            "label": "罚没",
+            "type": "实体"
+          },
+          {
+            "id": "以太坊",
+            "label": "以太坊",
+            "type": "协议/链"
+          },
+          {
+            "id": "LSD",
+            "label": "LSD",
+            "type": "实体"
+          },
+          {
+            "id": "ETH2.0升级",
+            "label": "ETH2.0升级",
+            "type": "概念"
+          },
+          {
+            "id": "节点",
+            "label": "节点",
+            "type": "概念"
+          },
+          {
+            "id": "pactra升级",
+            "label": "pactra升级",
+            "type": "概念"
+          },
+          {
+            "id": "LSD/LST/LSP",
+            "label": "LSD/LST/LSP",
+            "type": "概念"
+          },
+          {
+            "id": "信标链",
+            "label": "信标链",
+            "type": "概念"
+          },
+          {
+            "id": "用户",
+            "label": "用户",
+            "type": "角色"
+          },
+          {
+            "id": "第一步:用户质押ETH,LSPmint对应权益token给到用户",
+            "label": "第一步:用户质押ETH,LSPmint对应权益token给到用户",
+            "type": "步骤"
+          },
+          {
+            "id": "第二步:当LSP里面的资金大等于32ETH时,链下服务监听到该事件之后,驱动将LSP资金充值到信标链合约,当新质押再进来,先将该节点质押的数量补充到2048;最新的质押达到32ETH再去启动新的节点。",
+            "label": "第二步:当LSP里面的资金大等于32ETH时,链下服务监听到该事件之后,驱动将LSP资金充值到信标链合约,当新质押再进来,先将该节点质押的数量补充到2048;最新的质押达到32ETH再去启动新的节点。",
+            "type": "步骤"
+          },
+          {
+            "id": "第三步:充值完成值,启动一个信标链节点参与网络的共识出块",
+            "label": "第三步:充值完成值,启动一个信标链节点参与网络的共识出块",
+            "type": "步骤"
+          },
+          {
+            "id": "第四步:出块完成之后,节点会获得奖励,矿池节点进行奖励抽成(节点拿 $5 \\substack { - 8 \\% }$ ),剩余的奖励给到LSP产品侧",
+            "label": "第四步:出块完成之后,节点会获得奖励,矿池节点进行奖励抽成(节点拿 $5 \\substack { - 8 \\% }$ ),剩余的奖励给到LSP产品侧",
+            "type": "步骤"
+          },
+          {
+            "id": "第五步:LSP 产品侧拿到奖励之后,抽成之后(LSP 拿 $5 \\substack { - 8 \\% }$ ),将奖励分发给用户",
+            "label": "第五步:LSP 产品侧拿到奖励之后,抽成之后(LSP 拿 $5 \\substack { - 8 \\% }$ ),将奖励分发给用户",
+            "type": "步骤"
+          },
+          {
+            "id": "第六步:用户取回质押,需要将权益token退回去,合约burn权益token之后释放ETH给到用户",
+            "label": "第六步:用户取回质押,需要将权益token退回去,合约burn权益token之后释放ETH给到用户",
+            "type": "步骤"
+          },
+          {
+            "id": "第七步:LSP退出,停掉节点,取回信标链合约资金",
+            "label": "第七步:LSP退出,停掉节点,取回信标链合约资金",
+            "type": "步骤"
+          },
+          {
+            "id": "可追溯",
+            "label": "可追溯",
+            "type": "概念"
+          },
+          {
+            "id": "账本公开",
+            "label": "账本公开",
+            "type": "概念"
+          },
+          {
+            "id": "区块头",
+            "label": "区块头",
+            "type": "概念"
+          },
+          {
+            "id": "Hash",
+            "label": "Hash",
+            "type": "实体"
+          },
+          {
+            "id": "不可篡改",
+            "label": "不可篡改",
+            "type": "实体"
+          },
+          {
+            "id": "对整个Header做⼀个Hash,得到区块的Hash",
+            "label": "对整个Header做⼀个Hash,得到区块的Hash",
+            "type": "步骤"
+          },
+          {
+            "id": "如果在⽹络中是第⼀个算出来<target_threshold,就可以被打包上链了",
+            "label": "如果在⽹络中是第⼀个算出来<target_threshold,就可以被打包上链了",
+            "type": "步骤"
+          },
+          {
+            "id": "账⼾模型(如以太坊)",
+            "label": "账⼾模型(如以太坊)",
+            "type": "概念"
+          },
+          {
+            "id": "账本模型",
+            "label": "账本模型",
+            "type": "实体"
+          },
+          {
+            "id": "UTXO(如⽐特币)",
+            "label": "UTXO(如⽐特币)",
+            "type": "概念"
+          },
+          {
+            "id": "⽐特币",
+            "label": "⽐特币",
+            "type": "实体"
+          },
+          {
+            "id": "Hash 链结构",
+            "label": "Hash 链结构",
+            "type": "概念"
+          },
+          {
+            "id": "保证历史数据⽆法被篡改(当你改变交易⾥的任意⼀个数据,导致的各层Hash不⼀样,从⽽导致交易根merkle root hash不⼀样,从⽽产⽣分叉)",
+            "label": "保证历史数据⽆法被篡改(当你改变交易⾥的任意⼀个数据,导致的各层Hash不⼀样,从⽽导致交易根merkle root hash不⼀样,从⽽产⽣分叉)",
+            "type": "步骤"
+          },
+          {
+            "id": "单向不可逆: X 可以得出 H ( X ) ,但 H ( X ) ⽆法反推回X",
+            "label": "单向不可逆: X 可以得出 H ( X ) ,但 H ( X ) ⽆法反推回X",
+            "type": "概念"
+          },
+          {
+            "id": "算法",
+            "label": "算法",
+            "type": "实体"
+          },
+          {
+            "id": "Hash碰撞:找到⼀个Message Y,使得 H ( Y ) == H ( X )",
+            "label": "Hash碰撞:找到⼀个Message Y,使得 H ( Y ) == H ( X )",
+            "type": "概念"
+          },
+          {
+            "id": "MD4/MD5 已被破解",
+            "label": "MD4/MD5 已被破解",
+            "type": "概念"
+          },
+          {
+            "id": "SHA256(Bitcoin)",
+            "label": "SHA256(Bitcoin)",
+            "type": "概念"
+          },
+          {
+            "id": "Bitcoin",
+            "label": "Bitcoin",
+            "type": "协议/链"
+          },
+          {
+            "id": "Kecake(Ethereum)",
+            "label": "Kecake(Ethereum)",
+            "type": "概念"
+          },
+          {
+            "id": "Ethereum",
+            "label": "Ethereum",
+            "type": "协议/链"
+          },
+          {
+            "id": "Poseidon(zk相关的链)",
+            "label": "Poseidon(zk相关的链)",
+            "type": "概念"
+          },
+          {
+            "id": "zk链",
+            "label": "zk链",
+            "type": "实体"
+          },
+          {
+            "id": "merkle tree root hash",
+            "label": "merkle tree root hash",
+            "type": "概念"
+          },
+          {
+            "id": "区块hash",
+            "label": "区块hash",
+            "type": "实体"
+          },
+          {
+            "id": "公钥密码学",
+            "label": "公钥密码学",
+            "type": "概念"
+          },
+          {
+            "id": "签名验证",
+            "label": "签名验证",
+            "type": "实体"
+          },
+          {
+            "id": "单密钥",
+            "label": "单密钥",
+            "type": "概念"
+          },
+          {
+            "id": "公钥密码",
+            "label": "公钥密码",
+            "type": "概念"
+          },
+          {
+            "id": "私钥推导公钥",
+            "label": "私钥推导公钥",
+            "type": "概念"
+          },
+          {
+            "id": "ECDSA",
+            "label": "ECDSA",
+            "type": "概念"
+          },
+          {
+            "id": "secp256k1",
+            "label": "secp256k1",
+            "type": "概念"
+          },
+          {
+            "id": "keccak-256",
+            "label": "keccak-256",
+            "type": "概念"
+          },
+          {
+            "id": "SHA-256",
+            "label": "SHA-256",
+            "type": "概念"
+          },
+          {
+            "id": "RIPEMD-160",
+            "label": "RIPEMD-160",
+            "type": "概念"
+          },
+          {
+            "id": "双重SHA256",
+            "label": "双重SHA256",
+            "type": "概念"
+          },
+          {
+            "id": "Base58",
+            "label": "Base58",
+            "type": "概念"
+          },
+          {
+            "id": "私钥签名",
+            "label": "私钥签名",
+            "type": "概念"
+          },
+          {
+            "id": "Message Digest数字摘要",
+            "label": "Message Digest数字摘要",
+            "type": "概念"
+          },
+          {
+            "id": "公钥验证",
+            "label": "公钥验证",
+            "type": "概念"
+          },
+          {
+            "id": "加解密",
+            "label": "加解密",
+            "type": "概念"
+          },
+          {
+            "id": "公钥加密",
+            "label": "公钥加密",
+            "type": "概念"
+          },
+          {
+            "id": "私钥解密",
+            "label": "私钥解密",
+            "type": "概念"
+          },
+          {
+            "id": "数字信封",
+            "label": "数字信封",
+            "type": "概念"
+          },
+          {
+            "id": "数字摘要",
+            "label": "数字摘要",
+            "type": "概念"
+          },
+          {
+            "id": "分叉和确认位",
+            "label": "分叉和确认位",
+            "type": "概念"
+          },
+          {
+            "id": "最⻓链原则",
+            "label": "最⻓链原则",
+            "type": "实体"
+          },
+          {
+            "id": "签名者",
+            "label": "签名者",
+            "type": "角色"
+          },
+          {
+            "id": "作恶的⼈",
+            "label": "作恶的⼈",
+            "type": "角色"
+          },
+          {
+            "id": "矿⼯",
+            "label": "矿⼯",
+            "type": "角色"
+          },
+          {
+            "id": "分叉",
+            "label": "分叉",
+            "type": "概念"
+          },
+          {
+            "id": "确认",
+            "label": "确认",
+            "type": "实体"
+          },
+          {
+            "id": "后⾯添加了多少的区块,就代表有多少的确认",
+            "label": "后⾯添加了多少的区块,就代表有多少的确认",
+            "type": "步骤"
+          },
+          {
+            "id": "六个以后这个矿⼯就可以认为⾃⼰的这个块稳了",
+            "label": "六个以后这个矿⼯就可以认为⾃⼰的这个块稳了",
+            "type": "步骤"
+          },
+          {
+            "id": "矿池",
+            "label": "矿池",
+            "type": "实体"
+          },
+          {
+            "id": "公链",
+            "label": "公链",
+            "type": "概念"
+          },
+          {
+            "id": "联盟链",
+            "label": "联盟链",
+            "type": "概念"
+          },
+          {
+            "id": "私有链",
+            "label": "私有链",
+            "type": "概念"
+          },
+          {
+            "id": "跨链",
+            "label": "跨链",
+            "type": "概念"
+          },
+          {
+            "id": "链抽象",
+            "label": "链抽象",
+            "type": "概念"
+          },
+          {
+            "id": "模块化区块链",
+            "label": "模块化区块链",
+            "type": "概念"
+          },
+          {
+            "id": "分层",
+            "label": "分层",
+            "type": "实体"
+          },
+          {
+            "id": "cosmos",
+            "label": "cosmos",
+            "type": "协议/链"
+          },
+          {
+            "id": "Mantle",
+            "label": "Mantle",
+            "type": "协议/链"
+          },
+          {
+            "id": "共识层",
+            "label": "共识层",
+            "type": "概念"
+          },
+          {
+            "id": "DA层",
+            "label": "DA层",
+            "type": "概念"
+          },
+          {
+            "id": "结算层",
+            "label": "结算层",
+            "type": "概念"
+          },
+          {
+            "id": "执⾏层",
+            "label": "执⾏层",
+            "type": "概念"
+          },
+          {
+            "id": "跨链互操作协议",
+            "label": "跨链互操作协议",
+            "type": "概念"
+          },
+          {
+            "id": "EVM链扩容⽅式",
+            "label": "EVM链扩容⽅式",
+            "type": "概念"
+          },
+          {
+            "id": "EVM扩容",
+            "label": "EVM扩容",
+            "type": "实体"
+          },
+          {
+            "id": "L2",
+            "label": "L2",
+            "type": "实体"
+          },
+          {
+            "id": "纵向扩容",
+            "label": "纵向扩容",
+            "type": "概念"
+          },
+          {
+            "id": "横向扩容",
+            "label": "横向扩容",
+            "type": "概念"
+          },
+          {
+            "id": "并发EVM",
+            "label": "并发EVM",
+            "type": "实体"
+          },
+          {
+            "id": "Op rollup",
+            "label": "Op rollup",
+            "type": "概念"
+          },
+          {
+            "id": "Zk rollup",
+            "label": "Zk rollup",
+            "type": "概念"
+          },
+          {
+            "id": "L1",
+            "label": "L1",
+            "type": "概念"
+          },
+          {
+            "id": "L3",
+            "label": "L3",
+            "type": "实体"
+          },
+          {
+            "id": "L2没有⾃⼰的共识,⽤L1做共识层",
+            "label": "L2没有⾃⼰的共识,⽤L1做共识层",
+            "type": "概念"
+          },
+          {
+            "id": "L3是应⽤链,⽤L2做共识层和结算层",
+            "label": "L3是应⽤链,⽤L2做共识层和结算层",
+            "type": "概念"
+          },
+          {
+            "id": "历史",
+            "label": "历史",
+            "type": "实体"
+          },
+          {
+            "id": "⽐特币不能运⾏智能合约",
+            "label": "⽐特币不能运⾏智能合约",
+            "type": "概念"
+          },
+          {
+            "id": "以太坊可以链上运⾏,可以发币了",
+            "label": "以太坊可以链上运⾏,可以发币了",
+            "type": "概念"
+          },
+          {
+            "id": "以太坊是图灵完备的",
+            "label": "以太坊是图灵完备的",
+            "type": "概念"
+          },
+          {
+            "id": "对称加密",
+            "label": "对称加密",
+            "type": "概念"
+          },
+          {
+            "id": "单密钥加密",
+            "label": "单密钥加密",
+            "type": "概念"
+          },
+          {
+            "id": "DES",
+            "label": "DES",
+            "type": "概念"
+          },
+          {
+            "id": "3DES",
+            "label": "3DES",
+            "type": "概念"
+          },
+          {
+            "id": "AES",
+            "label": "AES",
+            "type": "概念"
+          },
+          {
+            "id": "⾮对称加密",
+            "label": "⾮对称加密",
+            "type": "概念"
+          },
+          {
+            "id": "RSA",
+            "label": "RSA",
+            "type": "概念"
+          },
+          {
+            "id": "ECC椭圆曲线算法",
+            "label": "ECC椭圆曲线算法",
+            "type": "概念"
+          },
+          {
+            "id": "secp256r1",
+            "label": "secp256r1",
+            "type": "概念"
+          },
+          {
+            "id": "EOS",
+            "label": "EOS",
+            "type": "协议/链"
+          },
+          {
+            "id": "secp384r1",
+            "label": "secp384r1",
+            "type": "概念"
+          },
+          {
+            "id": "secp512r1",
+            "label": "secp512r1",
+            "type": "概念"
+          },
+          {
+            "id": "EdDSA",
+            "label": "EdDSA",
+            "type": "概念"
+          },
+          {
+            "id": "账户抽象",
+            "label": "账户抽象",
+            "type": "概念"
+          },
+          {
+            "id": "4337",
+            "label": "4337",
+            "type": "实体"
+          },
+          {
+            "id": "EntryPoint",
+            "label": "EntryPoint",
+            "type": "实体"
+          },
+          {
+            "id": "Base",
+            "label": "Base",
+            "type": "协议/链"
+          },
+          {
+            "id": "Sepolia",
+            "label": "Sepolia",
+            "type": "协议/链"
+          },
+          {
+            "id": "Optimism",
+            "label": "Optimism",
+            "type": "协议/链"
+          },
+          {
+            "id": "Hardhat",
+            "label": "Hardhat",
+            "type": "工具"
+          },
+          {
+            "id": "部署",
+            "label": "部署",
+            "type": "实体"
+          },
+          {
+            "id": "ERC",
+            "label": "ERC",
+            "type": "实体"
+          },
+          {
+            "id": "20",
+            "label": "20",
+            "type": "实体"
+          },
+          {
+            "id": "Foundry",
+            "label": "Foundry",
+            "type": "工具"
+          },
+          {
+            "id": "测试",
+            "label": "测试",
+            "type": "实体"
+          },
+          {
+            "id": "重入/权限",
+            "label": "重入/权限",
+            "type": "实体"
+          },
+          {
+            "id": "Ethers.js",
+            "label": "Ethers.js",
+            "type": "工具"
+          },
+          {
+            "id": "交互",
+            "label": "交互",
+            "type": "实体"
+          },
+          {
+            "id": "Wagmi",
+            "label": "Wagmi",
+            "type": "工具"
+          },
+          {
+            "id": "前端",
+            "label": "前端",
+            "type": "实体"
+          },
+          {
+            "id": "ERC-20",
+            "label": "ERC-20",
+            "type": "合约/接口"
+          },
+          {
+            "id": "4337 EntryPoint",
+            "label": "4337 EntryPoint",
+            "type": "合约/接口"
+          },
+          {
+            "id": "Router",
+            "label": "Router",
+            "type": "合约/接口"
+          },
+          {
+            "id": "权限控制",
+            "label": "权限控制",
+            "type": "安全实践"
+          },
+          {
+            "id": "合约",
+            "label": "合约",
+            "type": "实体"
+          },
+          {
+            "id": "重入",
+            "label": "重入",
+            "type": "安全实践"
+          },
+          {
+            "id": "签名校验",
+            "label": "签名校验",
+            "type": "安全实践"
+          },
+          {
+            "id": "延时执行",
+            "label": "延时执行",
+            "type": "安全实践"
+          },
+          {
+            "id": "安全",
+            "label": "安全",
+            "type": "实体"
+          },
+          {
+            "id": "开发",
+            "label": "开发",
+            "type": "步骤"
+          },
+          {
+            "id": "监控",
+            "label": "监控",
+            "type": "步骤"
+          },
+          {
+            "id": "预言机",
+            "label": "预言机",
+            "type": "角色"
+          },
+          {
+            "id": "数据",
+            "label": "数据",
+            "type": "实体"
+          },
+          {
+            "id": "验证者",
+            "label": "验证者",
+            "type": "角色"
+          },
+          {
+            "id": "区块组织",
+            "label": "区块组织",
+            "type": "实体"
+          },
+          {
+            "id": "区块体",
+            "label": "区块体",
+            "type": "概念"
+          },
+          {
+            "id": "POS链的⻓程",
+            "label": "POS链的⻓程",
+            "type": "概念"
+          },
+          {
+            "id": "ETH2.0",
+            "label": "ETH2.0",
+            "type": "实体"
+          },
+          {
+            "id": "共识算法",
+            "label": "共识算法",
+            "type": "实体"
+          },
+          {
+            "id": "⻓程攻击",
+            "label": "⻓程攻击",
+            "type": "实体"
+          },
+          {
+            "id": "防⽌⻓程攻击",
+            "label": "防⽌⻓程攻击",
+            "type": "概念"
+          },
+          {
+            "id": "Epoch",
+            "label": "Epoch",
+            "type": "概念"
+          },
+          {
+            "id": "名词解释",
+            "label": "名词解释",
+            "type": "实体"
+          },
+          {
+            "id": "Slot",
+            "label": "Slot",
+            "type": "概念"
+          },
+          {
+            "id": "Block区块",
+            "label": "Block区块",
+            "type": "概念"
+          },
+          {
+            "id": "Block",
+            "label": "Block",
+            "type": "实体"
+          },
+          {
+            "id": "Checkpoint",
+            "label": "Checkpoint",
+            "type": "概念"
+          },
+          {
+            "id": "共识层是信标链",
+            "label": "共识层是信标链",
+            "type": "概念"
+          },
+          {
+            "id": "Validator",
+            "label": "Validator",
+            "type": "角色"
+          },
+          {
+            "id": "validator",
+            "label": "validator",
+            "type": "角色"
+          },
+          {
+            "id": "出块⼈",
+            "label": "出块⼈",
+            "type": "角色"
+          },
+          {
+            "id": "Proposer",
+            "label": "Proposer",
+            "type": "角色"
+          },
+          {
+            "id": "其他验证者/投票者",
+            "label": "其他验证者/投票者",
+            "type": "角色"
+          },
+          {
+            "id": "以太坊检查点checkpoint",
+            "label": "以太坊检查点checkpoint",
+            "type": "概念"
+          },
+          {
+            "id": "safe",
+            "label": "safe",
+            "type": "概念"
+          },
+          {
+            "id": "finalized",
+            "label": "finalized",
+            "type": "概念"
+          },
+          {
+            "id": "批量label safe与finalize",
+            "label": "批量label safe与finalize",
+            "type": "步骤"
+          },
+          {
+            "id": "CEX",
+            "label": "CEX",
+            "type": "角色"
+          },
+          {
+            "id": "确认位confirmation",
+            "label": "确认位confirmation",
+            "type": "步骤"
+          },
+          {
+            "id": "安全提现",
+            "label": "安全提现",
+            "type": "步骤"
+          },
+          {
+            "id": "确认安全⼊账",
+            "label": "确认安全⼊账",
+            "type": "步骤"
+          },
+          {
+            "id": "POS链怎么处理分叉的",
+            "label": "POS链怎么处理分叉的",
+            "type": "概念"
+          },
+          {
+            "id": "每个Validator每个slot轮次只能投给⼀个分叉块",
+            "label": "每个Validator每个slot轮次只能投给⼀个分叉块",
+            "type": "概念"
+          },
+          {
+            "id": "以太坊的数据结构",
+            "label": "以太坊的数据结构",
+            "type": "概念"
+          },
+          {
+            "id": "MPT",
+            "label": "MPT",
+            "type": "实体"
+          },
+          {
+            "id": "数据结构",
+            "label": "数据结构",
+            "type": "实体"
+          },
+          {
+            "id": "Merkle Patricia Trie",
+            "label": "Merkle Patricia Trie",
+            "type": "概念"
+          },
+          {
+            "id": "空节点",
+            "label": "空节点",
+            "type": "概念"
+          },
+          {
+            "id": "分⽀节点(来去做分叉的)",
+            "label": "分⽀节点(来去做分叉的)",
+            "type": "概念"
+          },
+          {
+            "id": "扩展节点(来去压缩路径的)",
+            "label": "扩展节点(来去压缩路径的)",
+            "type": "概念"
+          },
+          {
+            "id": "叶⼦结点(最后的)",
+            "label": "叶⼦结点(最后的)",
+            "type": "概念"
+          },
+          {
+            "id": "MPT路径压缩优化",
+            "label": "MPT路径压缩优化",
+            "type": "概念"
+          },
+          {
+            "id": "普通前缀树(未优化)",
+            "label": "普通前缀树(未优化)",
+            "type": "概念"
+          },
+          {
+            "id": "MPT经过路径压缩后的结构",
+            "label": "MPT经过路径压缩后的结构",
+            "type": "概念"
+          },
+          {
+            "id": "Raw 编码",
+            "label": "Raw 编码",
+            "type": "概念"
+          },
+          {
+            "id": "Hex 编码",
+            "label": "Hex 编码",
+            "type": "概念"
+          },
+          {
+            "id": "内存存储插⼊MPT将Byte拆成两个nibbles以后每个分⽀节点的范围从128变成了16,减少存储空间",
+            "label": "内存存储插⼊MPT将Byte拆成两个nibbles以后每个分⽀节点的范围从128变成了16,减少存储空间",
+            "type": "概念"
+          },
+          {
+            "id": "Hex 编码转换⽰例",
+            "label": "Hex 编码转换⽰例",
+            "type": "概念"
+          },
+          {
+            "id": "HP编码",
+            "label": "HP编码",
+            "type": "概念"
+          },
+          {
+            "id": "编码",
+            "label": "编码",
+            "type": "实体"
+          },
+          {
+            "id": "存储",
+            "label": "存储",
+            "type": "实体"
+          },
+          {
+            "id": "keccak-256(key)",
+            "label": "keccak-256(key)",
+            "type": "概念"
+          },
+          {
+            "id": "RLP的编码规则",
+            "label": "RLP的编码规则",
+            "type": "概念"
+          },
+          {
+            "id": "MPT结构持久化到数据库",
+            "label": "MPT结构持久化到数据库",
+            "type": "概念"
+          },
+          {
+            "id": "只有被修改的节点和递归每一个他的父节点会被修改",
+            "label": "只有被修改的节点和递归每一个他的父节点会被修改",
+            "type": "概念"
+          },
+          {
+            "id": "快速计算hash",
+            "label": "快速计算hash",
+            "type": "概念"
+          },
+          {
+            "id": "状态回滚",
+            "label": "状态回滚",
+            "type": "概念"
+          },
+          {
+            "id": "历史MPT节点在数据库永久保留",
+            "label": "历史MPT节点在数据库永久保留",
+            "type": "概念"
+          },
+          {
+            "id": "切换会旧根哈希就可以回滚回去",
+            "label": "切换会旧根哈希就可以回滚回去",
+            "type": "概念"
+          },
+          {
+            "id": "轻节点仅存区块头",
+            "label": "轻节点仅存区块头",
+            "type": "概念"
+          },
+          {
+            "id": "Merkle证明记录了从根节点到目标叶子的所有节点内容",
+            "label": "Merkle证明记录了从根节点到目标叶子的所有节点内容",
+            "type": "概念"
+          },
+          {
+            "id": "轻节点只需沿路径从叶节点递归hash就能还原stateRoot",
+            "label": "轻节点只需沿路径从叶节点递归hash就能还原stateRoot",
+            "type": "概念"
+          },
+          {
+            "id": "Bloom Filter",
+            "label": "Bloom Filter",
+            "type": "概念"
+          },
+          {
+            "id": "Bloom",
+            "label": "Bloom",
+            "type": "实体"
+          },
+          {
+            "id": "Filter",
+            "label": "Filter",
+            "type": "实体"
+          },
+          {
+            "id": "超省空间高效的数据结构",
+            "label": "超省空间高效的数据结构",
+            "type": "概念"
+          },
+          {
+            "id": "快速判断某个元素在不在集合里",
+            "label": "快速判断某个元素在不在集合里",
+            "type": "概念"
+          },
+          {
+            "id": "允许FalsePositive",
+            "label": "允许FalsePositive",
+            "type": "概念"
+          },
+          {
+            "id": "保证不会有FalseNegative",
+            "label": "保证不会有FalseNegative",
+            "type": "概念"
+          },
+          {
+            "id": "比特币SPV(simplified payment verification)",
+            "label": "比特币SPV(simplified payment verification)",
+            "type": "概念"
+          },
+          {
+            "id": "应用",
+            "label": "应用",
+            "type": "实体"
+          },
+          {
+            "id": "过滤交易数据",
+            "label": "过滤交易数据",
+            "type": "概念"
+          },
+          {
+            "id": "以太坊日志检索",
+            "label": "以太坊日志检索",
+            "type": "概念"
+          },
+          {
+            "id": "加速事件查询",
+            "label": "加速事件查询",
+            "type": "概念"
+          },
+          {
+            "id": "以太坊的三棵树",
+            "label": "以太坊的三棵树",
+            "type": "概念"
+          },
+          {
+            "id": "区块结构",
+            "label": "区块结构",
+            "type": "实体"
+          },
+          {
+            "id": "transactionRoot和receiptRoot和比特币的merkleRoot是一样的",
+            "label": "transactionRoot和receiptRoot和比特币的merkleRoot是一样的",
+            "type": "概念"
+          },
+          {
+            "id": "stateRoot是全局的",
+            "label": "stateRoot是全局的",
+            "type": "概念"
+          },
+          {
+            "id": "每个区块stateRoot链接的都是同一颗不同版本的World State Trie",
+            "label": "每个区块stateRoot链接的都是同一颗不同版本的World State Trie",
+            "type": "概念"
+          },
+          {
+            "id": "Token经济去中⼼化",
+            "label": "Token经济去中⼼化",
+            "type": "概念"
+          },
+          {
+            "id": "EVM",
+            "label": "EVM",
+            "type": "实体"
+          },
+          {
+            "id": "链上应⽤",
+            "label": "链上应⽤",
+            "type": "概念"
+          },
+          {
+            "id": "图灵完备",
+            "label": "图灵完备",
+            "type": "概念"
+          },
+          {
+            "id": "program counter",
+            "label": "program counter",
+            "type": "概念"
+          },
+          {
+            "id": "Virtual ROM",
+            "label": "Virtual ROM",
+            "type": "概念"
+          },
+          {
+            "id": "EVM Code",
+            "label": "EVM Code",
+            "type": "概念"
+          },
+          {
+            "id": "opcode",
+            "label": "opcode",
+            "type": "概念"
+          },
+          {
+            "id": "operations",
+            "label": "operations",
+            "type": "概念"
+          },
+          {
+            "id": "CALL",
+            "label": "CALL",
+            "type": "概念"
+          },
+          {
+            "id": "DELEGATECALL",
+            "label": "DELEGATECALL",
+            "type": "概念"
+          },
+          {
+            "id": "message call",
+            "label": "message call",
+            "type": "概念"
+          },
+          {
+            "id": "stack",
+            "label": "stack",
+            "type": "概念"
+          },
+          {
+            "id": "memory",
+            "label": "memory",
+            "type": "概念"
+          },
+          {
+            "id": "合约持久变量的全局存储",
+            "label": "合约持久变量的全局存储",
+            "type": "概念"
+          },
+          {
+            "id": "智能合约",
+            "label": "智能合约",
+            "type": "概念"
+          },
+          {
+            "id": "solidity",
+            "label": "solidity",
+            "type": "工具"
+          },
+          {
+            "id": "bytecode",
+            "label": "bytecode",
+            "type": "概念"
+          },
+          {
+            "id": "ABI",
+            "label": "ABI",
+            "type": "概念"
+          },
+          {
+            "id": "Calldata",
+            "label": "Calldata",
+            "type": "概念"
+          },
+          {
+            "id": "ERC20",
+            "label": "ERC20",
+            "type": "合约/接口"
+          },
+          {
+            "id": "ERC721",
+            "label": "ERC721",
+            "type": "合约/接口"
+          },
+          {
+            "id": "ERC1155",
+            "label": "ERC1155",
+            "type": "合约/接口"
+          },
+          {
+            "id": "EIP2930",
+            "label": "EIP2930",
+            "type": "合约/接口"
+          },
+          {
+            "id": "EIP4844",
+            "label": "EIP4844",
+            "type": "合约/接口"
+          },
+          {
+            "id": "Defi 去中⼼化⾦融",
+            "label": "Defi 去中⼼化⾦融",
+            "type": "概念"
+          },
+          {
+            "id": "稳定币",
+            "label": "稳定币",
+            "type": "概念"
+          },
+          {
+            "id": "NFT",
+            "label": "NFT",
+            "type": "概念"
+          },
+          {
+            "id": "DEX",
+            "label": "DEX",
+            "type": "概念"
+          },
+          {
+            "id": "去中⼼化衍⽣品",
+            "label": "去中⼼化衍⽣品",
+            "type": "概念"
+          },
+          {
+            "id": "质押借贷",
+            "label": "质押借贷",
+            "type": "概念"
+          },
+          {
+            "id": "交易聚合",
+            "label": "交易聚合",
+            "type": "概念"
+          },
+          {
+            "id": "再质押",
+            "label": "再质押",
+            "type": "概念"
+          },
+          {
+            "id": "以太坊的Layer2",
+            "label": "以太坊的Layer2",
+            "type": "概念"
+          },
+          {
+            "id": "zkRollup",
+            "label": "zkRollup",
+            "type": "概念"
+          },
+          {
+            "id": "有效性证明",
+            "label": "有效性证明",
+            "type": "概念"
+          },
+          {
+            "id": "OpRollup",
+            "label": "OpRollup",
+            "type": "概念"
+          },
+          {
+            "id": "欺诈证明",
+            "label": "欺诈证明",
+            "type": "概念"
+          }
+        ],
+        "edges": [
+          {
+            "from": "区块链",
+            "to": "去中心化",
+            "type": "概念"
+          },
+          {
+            "from": "去中心化",
+            "to": "共识",
+            "type": "概念"
+          },
+          {
+            "from": "POW",
+            "to": "挖矿",
+            "type": "概念"
+          },
+          {
+            "from": "挖矿",
+            "to": "出块",
+            "type": "概念"
+          },
+          {
+            "from": "POW",
+            "to": "挖矿",
+            "type": "角色"
+          },
+          {
+            "from": "挖矿",
+            "to": "出块",
+            "type": "角色"
+          },
+          {
+            "from": "POW",
+            "to": "挖矿",
+            "type": "步骤"
+          },
+          {
+            "from": "挖矿",
+            "to": "出块",
+            "type": "步骤"
+          },
+          {
+            "from": "POS",
+            "to": "质押",
+            "type": "概念"
+          },
+          {
+            "from": "质押",
+            "to": "投票",
+            "type": "概念"
+          },
+          {
+            "from": "POS",
+            "to": "质押",
+            "type": "步骤"
+          },
+          {
+            "from": "质押",
+            "to": "投票",
+            "type": "步骤"
+          },
+          {
+            "from": "质押",
+            "to": "共识",
+            "type": "概念"
+          },
+          {
+            "from": "共识",
+            "to": "罚没",
+            "type": "概念"
+          },
+          {
+            "from": "以太坊",
+            "to": "LSD",
+            "type": "协议/链"
+          },
+          {
+            "from": "LSD",
+            "to": "质押",
+            "type": "协议/链"
+          },
+          {
+            "from": "以太坊",
+            "to": "LSD",
+            "type": "概念"
+          },
+          {
+            "from": "LSD",
+            "to": "质押",
+            "type": "概念"
+          },
+          {
+            "from": "以太坊",
+            "to": "LSD",
+            "type": "角色"
+          },
+          {
+            "from": "LSD",
+            "to": "质押",
+            "type": "角色"
+          },
+          {
+            "from": "以太坊",
+            "to": "LSD",
+            "type": "步骤"
+          },
+          {
+            "from": "LSD",
+            "to": "质押",
+            "type": "步骤"
+          },
+          {
+            "from": "区块头",
+            "to": "Hash",
+            "type": "概念"
+          },
+          {
+            "from": "Hash",
+            "to": "不可篡改",
+            "type": "概念"
+          },
+          {
+            "from": "区块头",
+            "to": "Hash",
+            "type": "步骤"
+          },
+          {
+            "from": "Hash",
+            "to": "不可篡改",
+            "type": "步骤"
+          },
+          {
+            "from": "账本模型",
+            "to": "以太坊",
+            "type": "概念"
+          },
+          {
+            "from": "账本模型",
+            "to": "以太坊",
+            "type": "协议/链"
+          },
+          {
+            "from": "账本模型",
+            "to": "⽐特币",
+            "type": "概念"
+          },
+          {
+            "from": "账本模型",
+            "to": "⽐特币",
+            "type": "协议/链"
+          },
+          {
+            "from": "Hash",
+            "to": "算法",
+            "type": "概念"
+          },
+          {
+            "from": "算法",
+            "to": "⽐特币",
+            "type": "概念"
+          },
+          {
+            "from": "Hash",
+            "to": "算法",
+            "type": "协议/链"
+          },
+          {
+            "from": "算法",
+            "to": "⽐特币",
+            "type": "协议/链"
+          },
+          {
+            "from": "算法",
+            "to": "以太坊",
+            "type": "概念"
+          },
+          {
+            "from": "算法",
+            "to": "以太坊",
+            "type": "协议/链"
+          },
+          {
+            "from": "算法",
+            "to": "zk链",
+            "type": "概念"
+          },
+          {
+            "from": "merkle tree root hash",
+            "to": "区块hash",
+            "type": "概念"
+          },
+          {
+            "from": "公钥密码学",
+            "to": "签名验证",
+            "type": "概念"
+          },
+          {
+            "from": "分叉和确认位",
+            "to": "最⻓链原则",
+            "type": "概念"
+          },
+          {
+            "from": "公钥密码学",
+            "to": "签名验证",
+            "type": "协议/链"
+          },
+          {
+            "from": "公钥密码学",
+            "to": "签名验证",
+            "type": "角色"
+          },
+          {
+            "from": "分叉和确认位",
+            "to": "最⻓链原则",
+            "type": "角色"
+          },
+          {
+            "from": "公钥密码学",
+            "to": "签名验证",
+            "type": "步骤"
+          },
+          {
+            "from": "分叉",
+            "to": "确认",
+            "type": "概念"
+          },
+          {
+            "from": "确认",
+            "to": "矿工",
+            "type": "概念"
+          },
+          {
+            "from": "分叉",
+            "to": "确认",
+            "type": "角色"
+          },
+          {
+            "from": "确认",
+            "to": "矿工",
+            "type": "角色"
+          },
+          {
+            "from": "分叉",
+            "to": "确认",
+            "type": "步骤"
+          },
+          {
+            "from": "确认",
+            "to": "矿工",
+            "type": "步骤"
+          },
+          {
+            "from": "矿工",
+            "to": "矿池",
+            "type": "角色"
+          },
+          {
+            "from": "公链",
+            "to": "共识",
+            "type": "概念"
+          },
+          {
+            "from": "公链",
+            "to": "共识",
+            "type": "协议/链"
+          },
+          {
+            "from": "模块化区块链",
+            "to": "分层",
+            "type": "概念"
+          },
+          {
+            "from": "模块化区块链",
+            "to": "分层",
+            "type": "协议/链"
+          },
+          {
+            "from": "EVM扩容",
+            "to": "L2",
+            "type": "概念"
+          },
+          {
+            "from": "EVM扩容",
+            "to": "并发EVM",
+            "type": "概念"
+          },
+          {
+            "from": "L1",
+            "to": "L2",
+            "type": "概念"
+          },
+          {
+            "from": "L2",
+            "to": "L3",
+            "type": "概念"
+          },
+          {
+            "from": "历史",
+            "to": "⽐特币",
+            "type": "协议/链"
+          },
+          {
+            "from": "⽐特币",
+            "to": "以太坊",
+            "type": "协议/链"
+          },
+          {
+            "from": "历史",
+            "to": "⽐特币",
+            "type": "概念"
+          },
+          {
+            "from": "⽐特币",
+            "to": "以太坊",
+            "type": "概念"
+          },
+          {
+            "from": "对称加密",
+            "to": "算法",
+            "type": "概念"
+          },
+          {
+            "from": "⾮对称加密",
+            "to": "算法",
+            "type": "概念"
+          },
+          {
+            "from": "⾮对称加密",
+            "to": "算法",
+            "type": "协议/链"
+          },
+          {
+            "from": "账户抽象",
+            "to": "4337",
+            "type": "概念"
+          },
+          {
+            "from": "4337",
+            "to": "EntryPoint",
+            "type": "概念"
+          },
+          {
+            "from": "以太坊",
+            "to": "账户抽象",
+            "type": "协议/链"
+          },
+          {
+            "from": "账户抽象",
+            "to": "4337",
+            "type": "协议/链"
+          },
+          {
+            "from": "Base",
+            "to": "账户抽象",
+            "type": "协议/链"
+          },
+          {
+            "from": "Sepolia",
+            "to": "账户抽象",
+            "type": "协议/链"
+          },
+          {
+            "from": "Optimism",
+            "to": "账户抽象",
+            "type": "协议/链"
+          },
+          {
+            "from": "Hardhat",
+            "to": "部署",
+            "type": "工具"
+          },
+          {
+            "from": "部署",
+            "to": "ERC",
+            "type": "工具"
+          },
+          {
+            "from": "ERC",
+            "to": "20",
+            "type": "工具"
+          },
+          {
+            "from": "Foundry",
+            "to": "测试",
+            "type": "工具"
+          },
+          {
+            "from": "测试",
+            "to": "重入/权限",
+            "type": "工具"
+          },
+          {
+            "from": "Ethers.js",
+            "to": "交互",
+            "type": "工具"
+          },
+          {
+            "from": "交互",
+            "to": "以太坊",
+            "type": "工具"
+          },
+          {
+            "from": "Wagmi",
+            "to": "前端",
+            "type": "工具"
+          },
+          {
+            "from": "前端",
+            "to": "以太坊",
+            "type": "工具"
+          },
+          {
+            "from": "ERC",
+            "to": "20",
+            "type": "合约/接口"
+          },
+          {
+            "from": "20",
+            "to": "部署",
+            "type": "合约/接口"
+          },
+          {
+            "from": "部署",
+            "to": "以太坊",
+            "type": "合约/接口"
+          },
+          {
+            "from": "EntryPoint",
+            "to": "4337",
+            "type": "合约/接口"
+          },
+          {
+            "from": "4337",
+            "to": "账户抽象",
+            "type": "合约/接口"
+          },
+          {
+            "from": "Router",
+            "to": "跨链",
+            "type": "合约/接口"
+          },
+          {
+            "from": "跨链",
+            "to": "以太坊",
+            "type": "合约/接口"
+          },
+          {
+            "from": "权限控制",
+            "to": "合约",
+            "type": "安全实践"
+          },
+          {
+            "from": "合约",
+            "to": "ERC",
+            "type": "安全实践"
+          },
+          {
+            "from": "ERC",
+            "to": "20",
+            "type": "安全实践"
+          },
+          {
+            "from": "重入",
+            "to": "测试",
+            "type": "安全实践"
+          },
+          {
+            "from": "测试",
+            "to": "Foundry",
+            "type": "安全实践"
+          },
+          {
+            "from": "签名校验",
+            "to": "账户抽象",
+            "type": "安全实践"
+          },
+          {
+            "from": "账户抽象",
+            "to": "4337",
+            "type": "安全实践"
+          },
+          {
+            "from": "延时执行",
+            "to": "合约",
+            "type": "安全实践"
+          },
+          {
+            "from": "合约",
+            "to": "安全",
+            "type": "安全实践"
+          },
+          {
+            "from": "Hardhat",
+            "to": "开发",
+            "type": "步骤"
+          },
+          {
+            "from": "开发",
+            "to": "以太坊",
+            "type": "步骤"
+          },
+          {
+            "from": "Foundry",
+            "to": "测试",
+            "type": "步骤"
+          },
+          {
+            "from": "测试",
+            "to": "重入/权限",
+            "type": "步骤"
+          },
+          {
+            "from": "Hardhat",
+            "to": "部署",
+            "type": "步骤"
+          },
+          {
+            "from": "部署",
+            "to": "ERC",
+            "type": "步骤"
+          },
+          {
+            "from": "ERC",
+            "to": "20",
+            "type": "步骤"
+          },
+          {
+            "from": "监控",
+            "to": "以太坊",
+            "type": "步骤"
+          },
+          {
+            "from": "以太坊",
+            "to": "节点",
+            "type": "步骤"
+          },
+          {
+            "from": "用户",
+            "to": "账户抽象",
+            "type": "角色"
+          },
+          {
+            "from": "账户抽象",
+            "to": "4337",
+            "type": "角色"
+          },
+          {
+            "from": "合约",
+            "to": "ERC",
+            "type": "角色"
+          },
+          {
+            "from": "ERC",
+            "to": "20",
+            "type": "角色"
+          },
+          {
+            "from": "20",
+            "to": "以太坊",
+            "type": "角色"
+          },
+          {
+            "from": "预言机",
+            "to": "数据",
+            "type": "角色"
+          },
+          {
+            "from": "数据",
+            "to": "以太坊",
+            "type": "角色"
+          },
+          {
+            "from": "验证者",
+            "to": "共识",
+            "type": "角色"
+          },
+          {
+            "from": "共识",
+            "to": "以太坊",
+            "type": "角色"
+          },
+          {
+            "from": "区块组织",
+            "to": "区块头",
+            "type": "概念"
+          },
+          {
+            "from": "区块组织",
+            "to": "区块体",
+            "type": "概念"
+          },
+          {
+            "from": "ETH2.0",
+            "to": "共识算法",
+            "type": "概念"
+          },
+          {
+            "from": "共识算法",
+            "to": "⻓程攻击",
+            "type": "概念"
+          },
+          {
+            "from": "ETH2.0",
+            "to": "名词解释",
+            "type": "概念"
+          },
+          {
+            "from": "名词解释",
+            "to": "Epoch",
+            "type": "概念"
+          },
+          {
+            "from": "名词解释",
+            "to": "Slot",
+            "type": "概念"
+          },
+          {
+            "from": "名词解释",
+            "to": "Block",
+            "type": "概念"
+          },
+          {
+            "from": "名词解释",
+            "to": "Checkpoint",
+            "type": "概念"
+          },
+          {
+            "from": "以太坊",
+            "to": "共识层",
+            "type": "协议/链"
+          },
+          {
+            "from": "共识层",
+            "to": "信标链",
+            "type": "协议/链"
+          },
+          {
+            "from": "以太坊",
+            "to": "共识层",
+            "type": "概念"
+          },
+          {
+            "from": "共识层",
+            "to": "信标链",
+            "type": "概念"
+          },
+          {
+            "from": "以太坊",
+            "to": "共识层",
+            "type": "角色"
+          },
+          {
+            "from": "共识层",
+            "to": "信标链",
+            "type": "角色"
+          },
+          {
+            "from": "POS",
+            "to": "分叉",
+            "type": "概念"
+          },
+          {
+            "from": "分叉",
+            "to": "Validator",
+            "type": "概念"
+          },
+          {
+            "from": "POS",
+            "to": "分叉",
+            "type": "步骤"
+          },
+          {
+            "from": "分叉",
+            "to": "Validator",
+            "type": "步骤"
+          },
+          {
+            "from": "POS",
+            "to": "分叉",
+            "type": "角色"
+          },
+          {
+            "from": "分叉",
+            "to": "Validator",
+            "type": "角色"
+          },
+          {
+            "from": "MPT",
+            "to": "数据结构",
+            "type": "概念"
+          },
+          {
+            "from": "MPT",
+            "to": "编码",
+            "type": "概念"
+          },
+          {
+            "from": "编码",
+            "to": "存储",
+            "type": "概念"
+          },
+          {
+            "from": "Bloom",
+            "to": "Filter",
+            "type": "概念"
+          },
+          {
+            "from": "Filter",
+            "to": "数据结构",
+            "type": "概念"
+          },
+          {
+            "from": "Filter",
+            "to": "应用",
+            "type": "概念"
+          },
+          {
+            "from": "以太坊",
+            "to": "区块结构",
+            "type": "概念"
+          },
+          {
+            "from": "EVM",
+            "to": "以太坊",
+            "type": "概念"
+          },
+          {
+            "from": "EVM",
+            "to": "以太坊",
+            "type": "工具"
+          },
+          {
+            "from": "EVM",
+            "to": "以太坊",
+            "type": "合约/接口"
+          }
+        ],
+        "chains": [
+          {
+            "mechanism_group": "区块链-去中心化-共识",
+            "nodes": [
+              "区块链",
+              "去中心化",
+              "共识"
+            ]
+          },
+          {
+            "mechanism_group": "POW-挖矿-出块",
+            "nodes": [
+              "POW",
+              "挖矿",
+              "出块"
+            ]
+          },
+          {
+            "mechanism_group": "POS-质押-投票",
+            "nodes": [
+              "POS",
+              "质押",
+              "投票"
+            ]
+          },
+          {
+            "mechanism_group": "质押-共识-罚没",
+            "nodes": [
+              "质押",
+              "共识",
+              "罚没"
+            ]
+          },
+          {
+            "mechanism_group": "以太坊-LSD-质押",
+            "nodes": [
+              "以太坊",
+              "LSD",
+              "质押"
+            ]
+          },
+          {
+            "mechanism_group": "区块头-Hash-不可篡改",
+            "nodes": [
+              "区块头",
+              "Hash",
+              "不可篡改"
+            ]
+          },
+          {
+            "mechanism_group": "账本模型-以太坊",
+            "nodes": [
+              "账本模型",
+              "以太坊"
+            ]
+          },
+          {
+            "mechanism_group": "账本模型-⽐特币",
+            "nodes": [
+              "账本模型",
+              "⽐特币"
+            ]
+          },
+          {
+            "mechanism_group": "Hash-算法",
+            "nodes": [
+              "Hash",
+              "算法"
+            ]
+          },
+          {
+            "mechanism_group": "Hash-算法-⽐特币",
+            "nodes": [
+              "Hash",
+              "算法",
+              "⽐特币"
+            ]
+          },
+          {
+            "mechanism_group": "Hash-算法-以太坊",
+            "nodes": [
+              "Hash",
+              "算法",
+              "以太坊"
+            ]
+          },
+          {
+            "mechanism_group": "Hash-算法-zk链",
+            "nodes": [
+              "Hash",
+              "算法",
+              "zk链"
+            ]
+          },
+          {
+            "mechanism_group": "merkle tree root hash-区块hash",
+            "nodes": [
+              "merkle tree root hash",
+              "区块hash"
+            ]
+          },
+          {
+            "mechanism_group": "公钥密码学-签名验证",
+            "nodes": [
+              "公钥密码学",
+              "签名验证"
+            ]
+          },
+          {
+            "mechanism_group": "分叉和确认位-最⻓链原则",
+            "nodes": [
+              "分叉和确认位",
+              "最⻓链原则"
+            ]
+          },
+          {
+            "mechanism_group": "分叉-确认-矿工",
+            "nodes": [
+              "分叉",
+              "确认",
+              "矿工"
+            ]
+          },
+          {
+            "mechanism_group": "矿工-矿池",
+            "nodes": [
+              "矿工",
+              "矿池"
+            ]
+          },
+          {
+            "mechanism_group": "公链-共识",
+            "nodes": [
+              "公链",
+              "共识"
+            ]
+          },
+          {
+            "mechanism_group": "模块化区块链-分层",
+            "nodes": [
+              "模块化区块链",
+              "分层"
+            ]
+          },
+          {
+            "mechanism_group": "EVM扩容-L2",
+            "nodes": [
+              "EVM扩容",
+              "L2"
+            ]
+          },
+          {
+            "mechanism_group": "EVM扩容-并发EVM",
+            "nodes": [
+              "EVM扩容",
+              "并发EVM"
+            ]
+          },
+          {
+            "mechanism_group": "L1-L2-L3",
+            "nodes": [
+              "L1",
+              "L2",
+              "L3"
+            ]
+          },
+          {
+            "mechanism_group": "历史-⽐特币-以太坊",
+            "nodes": [
+              "历史",
+              "⽐特币",
+              "以太坊"
+            ]
+          },
+          {
+            "mechanism_group": "对称加密-算法",
+            "nodes": [
+              "对称加密",
+              "算法"
+            ]
+          },
+          {
+            "mechanism_group": "⾮对称加密-算法",
+            "nodes": [
+              "⾮对称加密",
+              "算法"
+            ]
+          },
+          {
+            "mechanism_group": "账户抽象-4337-EntryPoint",
+            "nodes": [
+              "账户抽象",
+              "4337",
+              "EntryPoint"
+            ]
+          },
+          {
+            "mechanism_group": "以太坊-账户抽象-4337",
+            "nodes": [
+              "以太坊",
+              "账户抽象",
+              "4337"
+            ]
+          },
+          {
+            "mechanism_group": "Base-账户抽象-4337",
+            "nodes": [
+              "Base",
+              "账户抽象",
+              "4337"
+            ]
+          },
+          {
+            "mechanism_group": "Sepolia-账户抽象-4337",
+            "nodes": [
+              "Sepolia",
+              "账户抽象",
+              "4337"
+            ]
+          },
+          {
+            "mechanism_group": "Optimism-账户抽象-4337",
+            "nodes": [
+              "Optimism",
+              "账户抽象",
+              "4337"
+            ]
+          },
+          {
+            "mechanism_group": "Hardhat-部署-ERC-20",
+            "nodes": [
+              "Hardhat",
+              "部署",
+              "ERC",
+              "20"
+            ]
+          },
+          {
+            "mechanism_group": "Foundry-测试-重入/权限",
+            "nodes": [
+              "Foundry",
+              "测试",
+              "重入/权限"
+            ]
+          },
+          {
+            "mechanism_group": "Ethers.js-交互-以太坊",
+            "nodes": [
+              "Ethers.js",
+              "交互",
+              "以太坊"
+            ]
+          },
+          {
+            "mechanism_group": "Wagmi-前端-以太坊",
+            "nodes": [
+              "Wagmi",
+              "前端",
+              "以太坊"
+            ]
+          },
+          {
+            "mechanism_group": "ERC-20-部署-以太坊",
+            "nodes": [
+              "ERC",
+              "20",
+              "部署",
+              "以太坊"
+            ]
+          },
+          {
+            "mechanism_group": "EntryPoint-4337-账户抽象",
+            "nodes": [
+              "EntryPoint",
+              "4337",
+              "账户抽象"
+            ]
+          },
+          {
+            "mechanism_group": "Router-跨链-以太坊",
+            "nodes": [
+              "Router",
+              "跨链",
+              "以太坊"
+            ]
+          },
+          {
+            "mechanism_group": "权限控制-合约-ERC-20",
+            "nodes": [
+              "权限控制",
+              "合约",
+              "ERC",
+              "20"
+            ]
+          },
+          {
+            "mechanism_group": "重入-测试-Foundry",
+            "nodes": [
+              "重入",
+              "测试",
+              "Foundry"
+            ]
+          },
+          {
+            "mechanism_group": "签名校验-账户抽象-4337",
+            "nodes": [
+              "签名校验",
+              "账户抽象",
+              "4337"
+            ]
+          },
+          {
+            "mechanism_group": "延时执行-合约-安全",
+            "nodes": [
+              "延时执行",
+              "合约",
+              "安全"
+            ]
+          },
+          {
+            "mechanism_group": "Hardhat-开发-以太坊",
+            "nodes": [
+              "Hardhat",
+              "开发",
+              "以太坊"
+            ]
+          },
+          {
+            "mechanism_group": "监控-以太坊-节点",
+            "nodes": [
+              "监控",
+              "以太坊",
+              "节点"
+            ]
+          },
+          {
+            "mechanism_group": "用户-账户抽象-4337",
+            "nodes": [
+              "用户",
+              "账户抽象",
+              "4337"
+            ]
+          },
+          {
+            "mechanism_group": "合约-ERC-20-以太坊",
+            "nodes": [
+              "合约",
+              "ERC",
+              "20",
+              "以太坊"
+            ]
+          },
+          {
+            "mechanism_group": "预言机-数据-以太坊",
+            "nodes": [
+              "预言机",
+              "数据",
+              "以太坊"
+            ]
+          },
+          {
+            "mechanism_group": "验证者-共识-以太坊",
+            "nodes": [
+              "验证者",
+              "共识",
+              "以太坊"
+            ]
+          },
+          {
+            "mechanism_group": "区块组织-区块头",
+            "nodes": [
+              "区块组织",
+              "区块头"
+            ]
+          },
+          {
+            "mechanism_group": "区块组织-区块体",
+            "nodes": [
+              "区块组织",
+              "区块体"
+            ]
+          },
+          {
+            "mechanism_group": "ETH2.0-共识算法-⻓程攻击",
+            "nodes": [
+              "ETH2.0",
+              "共识算法",
+              "⻓程攻击"
+            ]
+          },
+          {
+            "mechanism_group": "ETH2.0-名词解释-Epoch",
+            "nodes": [
+              "ETH2.0",
+              "名词解释",
+              "Epoch"
+            ]
+          },
+          {
+            "mechanism_group": "ETH2.0-名词解释-Slot",
+            "nodes": [
+              "ETH2.0",
+              "名词解释",
+              "Slot"
+            ]
+          },
+          {
+            "mechanism_group": "ETH2.0-名词解释-Block",
+            "nodes": [
+              "ETH2.0",
+              "名词解释",
+              "Block"
+            ]
+          },
+          {
+            "mechanism_group": "ETH2.0-名词解释-Checkpoint",
+            "nodes": [
+              "ETH2.0",
+              "名词解释",
+              "Checkpoint"
+            ]
+          },
+          {
+            "mechanism_group": "以太坊-共识层-信标链",
+            "nodes": [
+              "以太坊",
+              "共识层",
+              "信标链"
+            ]
+          },
+          {
+            "mechanism_group": "POS-分叉-Validator",
+            "nodes": [
+              "POS",
+              "分叉",
+              "Validator"
+            ]
+          },
+          {
+            "mechanism_group": "MPT-数据结构",
+            "nodes": [
+              "MPT",
+              "数据结构"
+            ]
+          },
+          {
+            "mechanism_group": "MPT-编码-存储",
+            "nodes": [
+              "MPT",
+              "编码",
+              "存储"
+            ]
+          },
+          {
+            "mechanism_group": "Bloom-Filter-数据结构",
+            "nodes": [
+              "Bloom",
+              "Filter",
+              "数据结构"
+            ]
+          },
+          {
+            "mechanism_group": "Bloom-Filter-应用",
+            "nodes": [
+              "Bloom",
+              "Filter",
+              "应用"
+            ]
+          },
+          {
+            "mechanism_group": "以太坊-区块结构",
+            "nodes": [
+              "以太坊",
+              "区块结构"
+            ]
+          },
+          {
+            "mechanism_group": "EVM-以太坊",
+            "nodes": [
+              "EVM",
+              "以太坊"
+            ]
+          }
+        ]
+      },
+      "updated_at": "2026-01-25T02:21:44.684293Z"
     }
   }
 }

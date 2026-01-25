@@ -1,0 +1,763 @@
+[32mINFO [0m[01-24|11:28:33.699] create keyPairs                          [32mpubkey:[0m=E([17804667891501213281331496825658553806874294837063998836020894897538554764189,20797932339736110058278507506851339521385350458506118183887117420599196856172])
+[32mINFO [0m[01-24|11:28:33.699] should register                          [32mis[0m=true
+[32mINFO [0m[01-24|11:28:33.764] oracle node register information         [32mpublicKey[0m=0337b84de6947b243626cc8b977bb1f1632610614842468dfa8f35dcbbc55a515e [32maddress[0m=0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc
+[32mINFO [0m[01-24|11:28:33.764] register to operator ...
+[32mINFO [0m[01-24|11:28:53.951] success to register operator             [32mtx_hash[0m=353dd4..4a7f01
+[32mINFO [0m[01-24|11:28:53.953] initialized price provider               [32massetType[0m=liquor [32massetName[0m=Maotai [32murl[0m="http://127.0.0.1:8888/api/price?symbol=maotai"
+[32mINFO [0m[01-24|11:28:53.953] web socket url                           [32mWsAddr[0m=tcp://127.0.0.1:8081
+[32mINFO [0m[01-24|11:28:53.956] auth success!
+[32mINFO [0m[01-24|11:28:53.956] process websocket message
+[32mINFO [0m[01-24|11:28:53.956] start to sign message
+[32mINFO [0m[01-24|11:28:58.288] receive request method : signMsgBatch    [32mreqId[0m=202601241128589868
+[32mINFO [0m[01-24|11:28:58.288] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:28:58.288] dealing resId (202601241128589868) 
+[32mINFO [0m[01-24|11:28:58.288] request body market price                [32mRequestId[0m=f4158f55-8e70-4cf8-b413-788a3630a6b5
+[32mINFO [0m[01-24|11:28:58.292] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1774.324
+[32mINFO [0m[01-24|11:28:58.292] sign msg                                 [32mmsg[0m=1774.323569f4158f55-8e70-4cf8-b413-788a3630a6b532
+[32mINFO [0m[01-24|11:28:58.292] msg hash                                 [32mdata[0m=75a67e..ba57ec
+[32mINFO [0m[01-24|11:28:58.293] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([2908274586663055265604050522194008517008720792308258151317472065560772644697,12733337663859945260585211925084721503722078806589796400041305176382663716322])
+[32mINFO [0m[01-24|11:28:58.293] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:28:58.293] send rsp success!
+[32mINFO [0m[01-24|11:28:58.293] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:29:08.394] receive request method : signMsgBatch    [32mreqId[0m=202601241129085388
+[32mINFO [0m[01-24|11:29:08.395] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:29:08.395] dealing resId (202601241129085388) 
+[32mINFO [0m[01-24|11:29:08.395] request body market price                [32mRequestId[0m=f4c14c82-ca93-4307-bdec-051bac134be6
+[32mINFO [0m[01-24|11:29:08.397] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1778.331
+[32mINFO [0m[01-24|11:29:08.397] sign msg                                 [32mmsg[0m=1778.330662f4c14c82-ca93-4307-bdec-051bac134be633
+[32mINFO [0m[01-24|11:29:08.397] msg hash                                 [32mdata[0m=26ea7c..0826c2
+[32mINFO [0m[01-24|11:29:08.397] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([14664366055033851478495775819671402706407985038903341785030583431453924881233,13145602195594888127152109431114708562738707307941170245995024359281060051500])
+[32mINFO [0m[01-24|11:29:08.398] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:29:08.398] send rsp success!
+[32mINFO [0m[01-24|11:29:08.398] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:29:18.500] receive request method : signMsgBatch    [32mreqId[0m=202601241129186709
+[32mINFO [0m[01-24|11:29:18.500] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:29:18.500] dealing resId (202601241129186709) 
+[32mINFO [0m[01-24|11:29:18.500] request body market price                [32mRequestId[0m=75339326-2935-4305-9432-c19e5eae99bf
+[32mINFO [0m[01-24|11:29:18.503] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1776.691
+[32mINFO [0m[01-24|11:29:18.503] sign msg                                 [32mmsg[0m=1776.69136175339326-2935-4305-9432-c19e5eae99bf34
+[32mINFO [0m[01-24|11:29:18.503] msg hash                                 [32mdata[0m=3dee88..dbf862
+[32mINFO [0m[01-24|11:29:18.503] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([17565682230836381900641422151911001360252118615321114010808371722565202722669,8892291420258296912437734006600527118214120025534099794293449927130754240213])
+[32mINFO [0m[01-24|11:29:18.504] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:29:18.504] send rsp success!
+[32mINFO [0m[01-24|11:29:18.504] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:29:28.590] receive request method : signMsgBatch    [32mreqId[0m=202601241129281346
+[32mINFO [0m[01-24|11:29:28.590] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:29:28.590] dealing resId (202601241129281346) 
+[32mINFO [0m[01-24|11:29:28.590] request body market price                [32mRequestId[0m=e8826e2e-dd3c-470e-af8e-e486f138cd32
+[32mINFO [0m[01-24|11:29:28.591] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1776.691
+[32mINFO [0m[01-24|11:29:28.591] sign msg                                 [32mmsg[0m=1776.691361e8826e2e-dd3c-470e-af8e-e486f138cd3235
+[32mINFO [0m[01-24|11:29:28.591] msg hash                                 [32mdata[0m=3dee88..dbf862
+[32mINFO [0m[01-24|11:29:28.591] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([17565682230836381900641422151911001360252118615321114010808371722565202722669,8892291420258296912437734006600527118214120025534099794293449927130754240213])
+[32mINFO [0m[01-24|11:29:28.593] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:29:28.593] send rsp success!
+[32mINFO [0m[01-24|11:29:28.594] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:29:38.787] receive request method : signMsgBatch    [32mreqId[0m=202601241129385007
+[32mINFO [0m[01-24|11:29:38.787] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:29:38.787] dealing resId (202601241129385007) 
+[32mINFO [0m[01-24|11:29:38.787] request body market price                [32mRequestId[0m=fc691561-90ce-4b58-b01c-210ee98969b5
+[32mINFO [0m[01-24|11:29:38.792] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1771.127
+[32mINFO [0m[01-24|11:29:38.792] sign msg                                 [32mmsg[0m=1771.126633fc691561-90ce-4b58-b01c-210ee98969b536
+[32mINFO [0m[01-24|11:29:38.792] msg hash                                 [32mdata[0m=dd3bdb..3f2368
+[32mINFO [0m[01-24|11:29:38.793] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([4910938781619841984287011463923779443115702028647022013077343365418606575284,12425580913807970223393934029523353505934323309109432223771673789215256663613])
+[32mINFO [0m[01-24|11:29:38.793] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:29:38.793] send rsp success!
+[32mINFO [0m[01-24|11:29:38.793] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:29:48.879] receive request method : signMsgBatch    [32mreqId[0m=202601241129482359
+[32mINFO [0m[01-24|11:29:48.879] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:29:48.879] dealing resId (202601241129482359) 
+[32mINFO [0m[01-24|11:29:48.879] request body market price                [32mRequestId[0m=d44d6576-637a-4728-878c-82a8718520e8
+[32mINFO [0m[01-24|11:29:48.881] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1779.201
+[32mINFO [0m[01-24|11:29:48.881] sign msg                                 [32mmsg[0m=1779.200587d44d6576-637a-4728-878c-82a8718520e837
+[32mINFO [0m[01-24|11:29:48.881] msg hash                                 [32mdata[0m=52e161..999b8f
+[32mINFO [0m[01-24|11:29:48.881] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([21288051779439163175197589123412238432997930963205059954725240739784213668635,3860282033586158474791813058107018177751938917611570072593810897194934737153])
+[32mINFO [0m[01-24|11:29:48.882] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:29:48.882] send rsp success!
+[32mINFO [0m[01-24|11:29:48.882] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:29:58.992] receive request method : signMsgBatch    [32mreqId[0m=202601241129581616
+[32mINFO [0m[01-24|11:29:58.993] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:29:58.993] dealing resId (202601241129581616) 
+[32mINFO [0m[01-24|11:29:58.993] request body market price                [32mRequestId[0m=b1a30556-8615-490b-8a5e-6d6e8fbb229e
+[32mINFO [0m[01-24|11:29:58.995] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1779.201
+[32mINFO [0m[01-24|11:29:58.995] sign msg                                 [32mmsg[0m=1779.200587b1a30556-8615-490b-8a5e-6d6e8fbb229e38
+[32mINFO [0m[01-24|11:29:58.995] msg hash                                 [32mdata[0m=52e161..999b8f
+[32mINFO [0m[01-24|11:29:58.996] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([21288051779439163175197589123412238432997930963205059954725240739784213668635,3860282033586158474791813058107018177751938917611570072593810897194934737153])
+[32mINFO [0m[01-24|11:29:58.996] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:29:58.996] send rsp success!
+[32mINFO [0m[01-24|11:29:58.996] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:30:09.100] receive request method : signMsgBatch    [32mreqId[0m=202601241130098803
+[32mINFO [0m[01-24|11:30:09.101] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:30:09.101] dealing resId (202601241130098803) 
+[32mINFO [0m[01-24|11:30:09.102] request body market price                [32mRequestId[0m=1ab02f03-3f0f-47aa-a4e5-a1973764568e
+[32mINFO [0m[01-24|11:30:09.103] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1774.493
+[32mINFO [0m[01-24|11:30:09.103] sign msg                                 [32mmsg[0m=1774.4927221ab02f03-3f0f-47aa-a4e5-a1973764568e39
+[32mINFO [0m[01-24|11:30:09.103] msg hash                                 [32mdata[0m=75a67e..ba57ec
+[32mINFO [0m[01-24|11:30:09.104] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([2908274586663055265604050522194008517008720792308258151317472065560772644697,12733337663859945260585211925084721503722078806589796400041305176382663716322])
+[32mINFO [0m[01-24|11:30:09.104] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:30:09.104] send rsp success!
+[32mINFO [0m[01-24|11:30:09.104] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:30:19.207] receive request method : signMsgBatch    [32mreqId[0m=202601241130193826
+[32mINFO [0m[01-24|11:30:19.208] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:30:19.208] dealing resId (202601241130193826) 
+[32mINFO [0m[01-24|11:30:19.208] request body market price                [32mRequestId[0m=97e14b78-f2ff-4211-87ca-2969dc235af1
+[32mINFO [0m[01-24|11:30:19.211] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1817.331
+[32mINFO [0m[01-24|11:30:19.211] sign msg                                 [32mmsg[0m=1817.33143697e14b78-f2ff-4211-87ca-2969dc235af140
+[32mINFO [0m[01-24|11:30:19.211] msg hash                                 [32mdata[0m=afc143..839028
+[32mINFO [0m[01-24|11:30:19.211] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([16237604564845599362326807978959530794494209781183160269143535174137293827685,7618049770206470434821698705582295978897978393730800713855592415846545496635])
+[32mINFO [0m[01-24|11:30:19.212] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:30:19.212] send rsp success!
+[32mINFO [0m[01-24|11:30:19.212] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:30:29.316] receive request method : signMsgBatch    [32mreqId[0m=202601241130292884
+[32mINFO [0m[01-24|11:30:29.316] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:30:29.316] dealing resId (202601241130292884) 
+[32mINFO [0m[01-24|11:30:29.316] request body market price                [32mRequestId[0m=cba7e1a8-5867-49dc-a1b8-51cc98627a77
+[32mINFO [0m[01-24|11:30:29.317] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1817.331
+[32mINFO [0m[01-24|11:30:29.317] sign msg                                 [32mmsg[0m=1817.331436cba7e1a8-5867-49dc-a1b8-51cc98627a7741
+[32mINFO [0m[01-24|11:30:29.317] msg hash                                 [32mdata[0m=afc143..839028
+[32mINFO [0m[01-24|11:30:29.318] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([16237604564845599362326807978959530794494209781183160269143535174137293827685,7618049770206470434821698705582295978897978393730800713855592415846545496635])
+[32mINFO [0m[01-24|11:30:29.318] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:30:29.318] send rsp success!
+[32mINFO [0m[01-24|11:30:29.318] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:30:39.646] receive request method : signMsgBatch    [32mreqId[0m=202601241130397647
+[32mINFO [0m[01-24|11:30:39.646] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:30:39.646] dealing resId (202601241130397647) 
+[32mINFO [0m[01-24|11:30:39.647] request body market price                [32mRequestId[0m=248e17c7-1bd2-473d-a0a9-3caa64fde697
+[32mINFO [0m[01-24|11:30:39.649] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1809.827
+[32mINFO [0m[01-24|11:30:39.649] sign msg                                 [32mmsg[0m=1809.827228248e17c7-1bd2-473d-a0a9-3caa64fde69742
+[32mINFO [0m[01-24|11:30:39.649] msg hash                                 [32mdata[0m=95a140..35ffb0
+[32mINFO [0m[01-24|11:30:39.650] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([8922126609562993030481328911664695287020314117176281955270640657466597983278,6246318344205555124810773131928650726111199401471845020922896612153839035318])
+[32mINFO [0m[01-24|11:30:39.650] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:30:39.650] send rsp success!
+[32mINFO [0m[01-24|11:30:39.650] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:30:49.757] receive request method : signMsgBatch    [32mreqId[0m=202601241130490457
+[32mINFO [0m[01-24|11:30:49.757] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:30:49.757] dealing resId (202601241130490457) 
+[32mINFO [0m[01-24|11:30:49.758] request body market price                [32mRequestId[0m=75aa26a1-a285-41eb-a470-8763b28f787d
+[32mINFO [0m[01-24|11:30:49.759] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1810.245
+[32mINFO [0m[01-24|11:30:49.759] sign msg                                 [32mmsg[0m=1810.24531375aa26a1-a285-41eb-a470-8763b28f787d43
+[32mINFO [0m[01-24|11:30:49.759] msg hash                                 [32mdata[0m=f0ae08..5d1e26
+[32mINFO [0m[01-24|11:30:49.760] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([11895220372914298326250779596161440312302305393166962019795522189838524969035,6647628704367114977733529172281426697067861679003963270529929897344604768081])
+[32mINFO [0m[01-24|11:30:49.760] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:30:49.760] send rsp success!
+[32mINFO [0m[01-24|11:30:49.760] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:30:59.871] receive request method : signMsgBatch    [32mreqId[0m=202601241130596562
+[32mINFO [0m[01-24|11:30:59.872] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:30:59.872] dealing resId (202601241130596562) 
+[32mINFO [0m[01-24|11:30:59.872] request body market price                [32mRequestId[0m=2df9aeaa-ba17-4244-97e6-8e2cdd423a92
+[32mINFO [0m[01-24|11:30:59.874] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1810.245
+[32mINFO [0m[01-24|11:30:59.874] sign msg                                 [32mmsg[0m=1810.2453132df9aeaa-ba17-4244-97e6-8e2cdd423a9244
+[32mINFO [0m[01-24|11:30:59.874] msg hash                                 [32mdata[0m=f0ae08..5d1e26
+[32mINFO [0m[01-24|11:30:59.875] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([11895220372914298326250779596161440312302305393166962019795522189838524969035,6647628704367114977733529172281426697067861679003963270529929897344604768081])
+[32mINFO [0m[01-24|11:30:59.875] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:30:59.875] send rsp success!
+[32mINFO [0m[01-24|11:30:59.875] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:31:09.984] receive request method : signMsgBatch    [32mreqId[0m=202601241131094453
+[32mINFO [0m[01-24|11:31:09.984] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:31:09.984] dealing resId (202601241131094453) 
+[32mINFO [0m[01-24|11:31:09.984] request body market price                [32mRequestId[0m=1137180a-38c0-4d21-ab1d-9b2bd306bc27
+[32mINFO [0m[01-24|11:31:09.986] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1839.310
+[32mINFO [0m[01-24|11:31:09.986] sign msg                                 [32mmsg[0m=1839.3097411137180a-38c0-4d21-ab1d-9b2bd306bc2745
+[32mINFO [0m[01-24|11:31:09.987] msg hash                                 [32mdata[0m=534100..bafba8
+[32mINFO [0m[01-24|11:31:09.987] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([10451820012790666692476371717348500074700451804681415112416871386089862134977,16584065514040295452680818372753802822213440898048996966898750813238814229392])
+[32mINFO [0m[01-24|11:31:09.987] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:31:09.987] send rsp success!
+[32mINFO [0m[01-24|11:31:09.987] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:31:20.090] receive request method : signMsgBatch    [32mreqId[0m=202601241131206679
+[32mINFO [0m[01-24|11:31:20.091] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:31:20.091] dealing resId (202601241131206679) 
+[32mINFO [0m[01-24|11:31:20.091] request body market price                [32mRequestId[0m=5445508d-378d-45d1-9e27-ad5ac6f20884
+[32mINFO [0m[01-24|11:31:20.092] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1774.769
+[32mINFO [0m[01-24|11:31:20.092] sign msg                                 [32mmsg[0m=1774.7686935445508d-378d-45d1-9e27-ad5ac6f2088446
+[32mINFO [0m[01-24|11:31:20.092] msg hash                                 [32mdata[0m=75a67e..ba57ec
+[32mINFO [0m[01-24|11:31:20.092] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([2908274586663055265604050522194008517008720792308258151317472065560772644697,12733337663859945260585211925084721503722078806589796400041305176382663716322])
+[32mINFO [0m[01-24|11:31:20.093] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:31:20.093] send rsp success!
+[32mINFO [0m[01-24|11:31:20.093] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:31:30.180] receive request method : signMsgBatch    [32mreqId[0m=202601241131301900
+[32mINFO [0m[01-24|11:31:30.181] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:31:30.181] dealing resId (202601241131301900) 
+[32mINFO [0m[01-24|11:31:30.181] request body market price                [32mRequestId[0m=9c6efcc3-8e15-4795-89b2-4f9f7ebddb24
+[32mINFO [0m[01-24|11:31:30.181] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1765.792
+[32mINFO [0m[01-24|11:31:30.181] sign msg                                 [32mmsg[0m=1765.7922049c6efcc3-8e15-4795-89b2-4f9f7ebddb2447
+[32mINFO [0m[01-24|11:31:30.181] msg hash                                 [32mdata[0m=58c711..734a7f
+[32mINFO [0m[01-24|11:31:30.181] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([11183475036525603378125111356715742908823172736073721032251419340894527064085,1781619463064842368541456363684217961565122510958894469914150949184562503607])
+[32mINFO [0m[01-24|11:31:30.182] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:31:30.182] send rsp success!
+[32mINFO [0m[01-24|11:31:30.182] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:31:40.267] receive request method : signMsgBatch    [32mreqId[0m=202601241131408283
+[32mINFO [0m[01-24|11:31:40.268] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:31:40.268] dealing resId (202601241131408283) 
+[32mINFO [0m[01-24|11:31:40.268] request body market price                [32mRequestId[0m=783e503d-9f43-445e-8588-3474872ef96f
+[32mINFO [0m[01-24|11:31:40.269] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1765.792
+[32mINFO [0m[01-24|11:31:40.269] sign msg                                 [32mmsg[0m=1765.792204783e503d-9f43-445e-8588-3474872ef96f48
+[32mINFO [0m[01-24|11:31:40.270] msg hash                                 [32mdata[0m=58c711..734a7f
+[32mINFO [0m[01-24|11:31:40.271] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([11183475036525603378125111356715742908823172736073721032251419340894527064085,1781619463064842368541456363684217961565122510958894469914150949184562503607])
+[32mINFO [0m[01-24|11:31:40.271] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:31:40.271] send rsp success!
+[32mINFO [0m[01-24|11:31:40.271] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:31:50.369] receive request method : signMsgBatch    [32mreqId[0m=202601241131501126
+[32mINFO [0m[01-24|11:31:50.369] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:31:50.369] dealing resId (202601241131501126) 
+[32mINFO [0m[01-24|11:31:50.369] request body market price                [32mRequestId[0m=cc4749d0-9e12-416c-b553-b9531745712d
+[32mINFO [0m[01-24|11:31:50.370] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1784.603
+[32mINFO [0m[01-24|11:31:50.370] sign msg                                 [32mmsg[0m=1784.603447cc4749d0-9e12-416c-b553-b9531745712d49
+[32mINFO [0m[01-24|11:31:50.370] msg hash                                 [32mdata[0m=ef832f..e54fd8
+[32mINFO [0m[01-24|11:31:50.371] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([15367831934763131397710496183114191502010781315529077276162711126798931076295,20494740013320641707916577948312407695890678822689895018494430906785816484087])
+[32mINFO [0m[01-24|11:31:50.371] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:31:50.371] send rsp success!
+[32mINFO [0m[01-24|11:31:50.371] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:32:00.496] receive request method : signMsgBatch    [32mreqId[0m=202601241132003833
+[32mINFO [0m[01-24|11:32:00.497] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:32:00.497] dealing resId (202601241132003833) 
+[32mINFO [0m[01-24|11:32:00.497] request body market price                [32mRequestId[0m=b2b4b835-eee9-4150-a160-35d4aec7ec5b
+[32mINFO [0m[01-24|11:32:00.498] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1776.017
+[32mINFO [0m[01-24|11:32:00.498] sign msg                                 [32mmsg[0m=1776.016543b2b4b835-eee9-4150-a160-35d4aec7ec5b50
+[32mINFO [0m[01-24|11:32:00.498] msg hash                                 [32mdata[0m=3dee88..dbf862
+[32mINFO [0m[01-24|11:32:00.499] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([17565682230836381900641422151911001360252118615321114010808371722565202722669,8892291420258296912437734006600527118214120025534099794293449927130754240213])
+[32mINFO [0m[01-24|11:32:00.499] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:32:00.499] send rsp success!
+[32mINFO [0m[01-24|11:32:00.499] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:32:10.619] receive request method : signMsgBatch    [32mreqId[0m=202601241132100358
+[32mINFO [0m[01-24|11:32:10.619] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:32:10.619] dealing resId (202601241132100358) 
+[32mINFO [0m[01-24|11:32:10.619] request body market price                [32mRequestId[0m=30e93498-9890-4311-83f3-f7ad88bc1093
+[32mINFO [0m[01-24|11:32:10.621] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1776.017
+[32mINFO [0m[01-24|11:32:10.621] sign msg                                 [32mmsg[0m=1776.01654330e93498-9890-4311-83f3-f7ad88bc109351
+[32mINFO [0m[01-24|11:32:10.621] msg hash                                 [32mdata[0m=3dee88..dbf862
+[32mINFO [0m[01-24|11:32:10.621] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([17565682230836381900641422151911001360252118615321114010808371722565202722669,8892291420258296912437734006600527118214120025534099794293449927130754240213])
+[32mINFO [0m[01-24|11:32:10.622] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:32:10.622] send rsp success!
+[32mINFO [0m[01-24|11:32:10.622] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:32:20.725] receive request method : signMsgBatch    [32mreqId[0m=202601241132203092
+[32mINFO [0m[01-24|11:32:20.726] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:32:20.726] dealing resId (202601241132203092) 
+[32mINFO [0m[01-24|11:32:20.726] request body market price                [32mRequestId[0m=02cee8f4-6add-4ea3-b597-aef78ea2f8dd
+[32mINFO [0m[01-24|11:32:20.727] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1759.391
+[32mINFO [0m[01-24|11:32:20.727] sign msg                                 [32mmsg[0m=1759.39060302cee8f4-6add-4ea3-b597-aef78ea2f8dd52
+[32mINFO [0m[01-24|11:32:20.727] msg hash                                 [32mdata[0m=52b0d3..f2fe78
+[32mINFO [0m[01-24|11:32:20.727] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([488729379049967626129031211597290399901349224737597556773542803125186054881,11189130458813028972177925027365722483728026510731340786515584626307546907947])
+[32mINFO [0m[01-24|11:32:20.728] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:32:20.728] send rsp success!
+[32mINFO [0m[01-24|11:32:20.728] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:32:31.184] receive request method : signMsgBatch    [32mreqId[0m=202601241132318479
+[32mINFO [0m[01-24|11:32:31.184] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:32:31.184] dealing resId (202601241132318479) 
+[32mINFO [0m[01-24|11:32:31.184] request body market price                [32mRequestId[0m=80973f41-4ded-4968-a84e-aa4607a8379c
+[32mINFO [0m[01-24|11:32:31.214] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1755.845
+[32mINFO [0m[01-24|11:32:31.215] sign msg                                 [32mmsg[0m=1755.84485780973f41-4ded-4968-a84e-aa4607a8379c53
+[32mINFO [0m[01-24|11:32:31.222] msg hash                                 [32mdata[0m=4403be..6361eb
+[32mINFO [0m[01-24|11:32:31.227] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([21438875325186946184328743922408240951182157967537124195195155447381872366865,11416915567373146440019469490304761469842162700246601331383513218041170921808])
+[32mINFO [0m[01-24|11:32:31.229] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:32:31.229] send rsp success!
+[32mINFO [0m[01-24|11:32:31.229] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:32:41.637] receive request method : signMsgBatch    [32mreqId[0m=202601241132413386
+[32mINFO [0m[01-24|11:32:41.637] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:32:41.637] dealing resId (202601241132413386) 
+[32mINFO [0m[01-24|11:32:41.637] request body market price                [32mRequestId[0m=ed42e3dc-c61c-42c5-bcdd-c0b23fdce635
+[32mINFO [0m[01-24|11:32:41.638] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1755.845
+[32mINFO [0m[01-24|11:32:41.638] sign msg                                 [32mmsg[0m=1755.844857ed42e3dc-c61c-42c5-bcdd-c0b23fdce63554
+[32mINFO [0m[01-24|11:32:41.638] msg hash                                 [32mdata[0m=4403be..6361eb
+[32mINFO [0m[01-24|11:32:41.638] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([21438875325186946184328743922408240951182157967537124195195155447381872366865,11416915567373146440019469490304761469842162700246601331383513218041170921808])
+[32mINFO [0m[01-24|11:32:41.638] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:32:41.639] send rsp success!
+[32mINFO [0m[01-24|11:32:41.639] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:32:51.765] receive request method : signMsgBatch    [32mreqId[0m=202601241132514629
+[32mINFO [0m[01-24|11:32:51.767] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:32:51.768] dealing resId (202601241132514629) 
+[32mINFO [0m[01-24|11:32:51.768] request body market price                [32mRequestId[0m=958ab41e-9909-4d83-b1b3-f31a04d571eb
+[32mINFO [0m[01-24|11:32:51.769] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1813.607
+[32mINFO [0m[01-24|11:32:51.769] sign msg                                 [32mmsg[0m=1813.607407958ab41e-9909-4d83-b1b3-f31a04d571eb55
+[32mINFO [0m[01-24|11:32:51.770] msg hash                                 [32mdata[0m=4933c4..4c6fc6
+[32mINFO [0m[01-24|11:32:51.770] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([10716291871961263478588652587448697297516465033024926676900589219753285001778,16043178252269313394374703486316440730012874883107566621337183773096758281888])
+[32mINFO [0m[01-24|11:32:51.771] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:32:51.771] send rsp success!
+[32mINFO [0m[01-24|11:32:51.771] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:33:01.881] receive request method : signMsgBatch    [32mreqId[0m=202601241133010297
+[32mINFO [0m[01-24|11:33:01.881] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:33:01.881] dealing resId (202601241133010297) 
+[32mINFO [0m[01-24|11:33:01.881] request body market price                [32mRequestId[0m=aa7940f6-ad61-4c96-b2f4-fbbb9512abc6
+[32mINFO [0m[01-24|11:33:01.888] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1794.200
+[32mINFO [0m[01-24|11:33:01.888] sign msg                                 [32mmsg[0m=1794.200470aa7940f6-ad61-4c96-b2f4-fbbb9512abc657
+[32mINFO [0m[01-24|11:33:01.888] msg hash                                 [32mdata[0m=2a0438..5d25f6
+[32mINFO [0m[01-24|11:33:01.889] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([4644955497509381570978301281141670216698710750463467687894197860824672524230,20802522223423228669758454851296076425450438649909363979783734326583531448444])
+[32mINFO [0m[01-24|11:33:01.889] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:33:01.889] send rsp success!
+[32mINFO [0m[01-24|11:33:01.889] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:33:11.990] receive request method : signMsgBatch    [32mreqId[0m=202601241133112034
+[32mINFO [0m[01-24|11:33:11.991] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:33:11.991] dealing resId (202601241133112034) 
+[32mINFO [0m[01-24|11:33:11.991] request body market price                [32mRequestId[0m=05148121-ade9-4f12-99ea-775ddd992587
+[32mINFO [0m[01-24|11:33:11.993] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1794.200
+[32mINFO [0m[01-24|11:33:11.994] sign msg                                 [32mmsg[0m=1794.20047005148121-ade9-4f12-99ea-775ddd99258758
+[32mINFO [0m[01-24|11:33:11.994] msg hash                                 [32mdata[0m=2a0438..5d25f6
+[32mINFO [0m[01-24|11:33:11.994] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([4644955497509381570978301281141670216698710750463467687894197860824672524230,20802522223423228669758454851296076425450438649909363979783734326583531448444])
+[32mINFO [0m[01-24|11:33:11.994] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:33:11.995] send rsp success!
+[32mINFO [0m[01-24|11:33:11.995] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:33:22.310] receive request method : signMsgBatch    [32mreqId[0m=202601241133223077
+[32mINFO [0m[01-24|11:33:22.311] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:33:22.311] dealing resId (202601241133223077) 
+[32mINFO [0m[01-24|11:33:22.311] request body market price                [32mRequestId[0m=ac4ec3e9-a47b-42f6-b444-48ab5eed99f4
+[32mINFO [0m[01-24|11:33:22.315] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1809.313
+[32mINFO [0m[01-24|11:33:22.315] sign msg                                 [32mmsg[0m=1809.313293ac4ec3e9-a47b-42f6-b444-48ab5eed99f459
+[32mINFO [0m[01-24|11:33:22.315] msg hash                                 [32mdata[0m=95a140..35ffb0
+[32mINFO [0m[01-24|11:33:22.316] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([8922126609562993030481328911664695287020314117176281955270640657466597983278,6246318344205555124810773131928650726111199401471845020922896612153839035318])
+[32mINFO [0m[01-24|11:33:22.316] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:33:22.316] send rsp success!
+[32mINFO [0m[01-24|11:33:22.316] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:33:32.450] receive request method : signMsgBatch    [32mreqId[0m=202601241133325338
+[32mINFO [0m[01-24|11:33:32.450] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:33:32.450] dealing resId (202601241133325338) 
+[32mINFO [0m[01-24|11:33:32.450] request body market price                [32mRequestId[0m=90091e30-8fa8-4365-a733-41ac2fad75e4
+[32mINFO [0m[01-24|11:33:32.455] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1769.838
+[32mINFO [0m[01-24|11:33:32.455] sign msg                                 [32mmsg[0m=1769.83763890091e30-8fa8-4365-a733-41ac2fad75e461
+[32mINFO [0m[01-24|11:33:32.455] msg hash                                 [32mdata[0m=f9504d..a27892
+[32mINFO [0m[01-24|11:33:32.456] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([4302241787049193127112621781674523146014920004513827506639437188567227767115,974117605924668184588824512501341976833397149583191337074650319655241514392])
+[32mINFO [0m[01-24|11:33:32.456] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:33:32.456] send rsp success!
+[32mINFO [0m[01-24|11:33:32.456] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:33:42.551] receive request method : signMsgBatch    [32mreqId[0m=202601241133428962
+[32mINFO [0m[01-24|11:33:42.551] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:33:42.551] dealing resId (202601241133428962) 
+[32mINFO [0m[01-24|11:33:42.551] request body market price                [32mRequestId[0m=f8a634b1-267c-4b7b-8749-6ef07fe12c33
+[32mINFO [0m[01-24|11:33:42.553] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1769.838
+[32mINFO [0m[01-24|11:33:42.553] sign msg                                 [32mmsg[0m=1769.837638f8a634b1-267c-4b7b-8749-6ef07fe12c3362
+[32mINFO [0m[01-24|11:33:42.553] msg hash                                 [32mdata[0m=f9504d..a27892
+[32mINFO [0m[01-24|11:33:42.553] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([4302241787049193127112621781674523146014920004513827506639437188567227767115,974117605924668184588824512501341976833397149583191337074650319655241514392])
+[32mINFO [0m[01-24|11:33:42.554] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:33:42.554] send rsp success!
+[32mINFO [0m[01-24|11:33:42.554] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:33:52.671] receive request method : signMsgBatch    [32mreqId[0m=202601241133529453
+[32mINFO [0m[01-24|11:33:52.672] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:33:52.672] dealing resId (202601241133529453) 
+[32mINFO [0m[01-24|11:33:52.672] request body market price                [32mRequestId[0m=a4d79d1a-d6da-4768-9ad0-05d3998d09cd
+[32mINFO [0m[01-24|11:33:52.674] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1751.017
+[32mINFO [0m[01-24|11:33:52.674] sign msg                                 [32mmsg[0m=1751.017035a4d79d1a-d6da-4768-9ad0-05d3998d09cd63
+[32mINFO [0m[01-24|11:33:52.674] msg hash                                 [32mdata[0m=c83df7..b83f01
+[32mINFO [0m[01-24|11:33:52.675] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([16191099866822101352178992167533208371587763965151468886163031221929104222155,19240362570882392366369513232905078836175172132055027144164994330741452669955])
+[32mINFO [0m[01-24|11:33:52.675] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:33:52.675] send rsp success!
+[32mINFO [0m[01-24|11:33:52.675] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:34:02.860] receive request method : signMsgBatch    [32mreqId[0m=202601241134029719
+[32mINFO [0m[01-24|11:34:02.860] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:34:02.860] dealing resId (202601241134029719) 
+[32mINFO [0m[01-24|11:34:02.860] request body market price                [32mRequestId[0m=17c8f234-2dac-413a-9dbb-26a2863420fd
+[32mINFO [0m[01-24|11:34:02.862] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1752.707
+[32mINFO [0m[01-24|11:34:02.862] sign msg                                 [32mmsg[0m=1752.70689517c8f234-2dac-413a-9dbb-26a2863420fd64
+[32mINFO [0m[01-24|11:34:02.862] msg hash                                 [32mdata[0m=03a583..a4fb76
+[32mINFO [0m[01-24|11:34:02.862] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([17720752202856047346774935840061860682521739622942244321740786680509014396951,12333797913152315903876778783343920924991195220018609466610638389287681279257])
+[32mINFO [0m[01-24|11:34:02.863] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:34:02.863] send rsp success!
+[32mINFO [0m[01-24|11:34:02.863] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:34:12.950] receive request method : signMsgBatch    [32mreqId[0m=202601241134127556
+[32mINFO [0m[01-24|11:34:12.951] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:34:12.951] dealing resId (202601241134127556) 
+[32mINFO [0m[01-24|11:34:12.951] request body market price                [32mRequestId[0m=c194ce24-9d11-4a29-b45b-6f8ed962649a
+[32mINFO [0m[01-24|11:34:12.952] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1752.707
+[32mINFO [0m[01-24|11:34:12.952] sign msg                                 [32mmsg[0m=1752.706895c194ce24-9d11-4a29-b45b-6f8ed962649a66
+[32mINFO [0m[01-24|11:34:12.952] msg hash                                 [32mdata[0m=03a583..a4fb76
+[32mINFO [0m[01-24|11:34:12.953] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([17720752202856047346774935840061860682521739622942244321740786680509014396951,12333797913152315903876778783343920924991195220018609466610638389287681279257])
+[32mINFO [0m[01-24|11:34:12.953] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:34:12.953] send rsp success!
+[32mINFO [0m[01-24|11:34:12.953] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:34:23.045] receive request method : signMsgBatch    [32mreqId[0m=202601241134236425
+[32mINFO [0m[01-24|11:34:23.045] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:34:23.046] dealing resId (202601241134236425) 
+[32mINFO [0m[01-24|11:34:23.046] request body market price                [32mRequestId[0m=fe3fbcd5-6001-412e-9d0a-5ccc1d3dabec
+[32mINFO [0m[01-24|11:34:23.046] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1798.603
+[32mINFO [0m[01-24|11:34:23.046] sign msg                                 [32mmsg[0m=1798.602570fe3fbcd5-6001-412e-9d0a-5ccc1d3dabec67
+[32mINFO [0m[01-24|11:34:23.046] msg hash                                 [32mdata[0m=8bfd56..1fb25c
+[32mINFO [0m[01-24|11:34:23.047] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([3750511220610331801213451331152955579665037887849585344257203257534303866776,15370555383840297107386864386862899391788477218472004819861200839025149141301])
+[32mINFO [0m[01-24|11:34:23.048] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:34:23.048] send rsp success!
+[32mINFO [0m[01-24|11:34:23.048] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:34:33.155] receive request method : signMsgBatch    [32mreqId[0m=202601241134338199
+[32mINFO [0m[01-24|11:34:33.156] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:34:33.156] dealing resId (202601241134338199) 
+[32mINFO [0m[01-24|11:34:33.156] request body market price                [32mRequestId[0m=81e2d2d7-e9bc-43c7-aab3-ab317d190043
+[32mINFO [0m[01-24|11:34:33.158] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1761.017
+[32mINFO [0m[01-24|11:34:33.158] sign msg                                 [32mmsg[0m=1761.01738281e2d2d7-e9bc-43c7-aab3-ab317d19004368
+[32mINFO [0m[01-24|11:34:33.158] msg hash                                 [32mdata[0m=2eb541..ba6979
+[32mINFO [0m[01-24|11:34:33.159] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([18153222576589175153667974603933137143842799118354927120953088689716480654974,19520030388458547413166702039111377330315609332010154131724420392891353615572])
+[32mINFO [0m[01-24|11:34:33.160] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:34:33.160] send rsp success!
+[32mINFO [0m[01-24|11:34:33.160] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:34:43.275] receive request method : signMsgBatch    [32mreqId[0m=202601241134436504
+[32mINFO [0m[01-24|11:34:43.276] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:34:43.277] dealing resId (202601241134436504) 
+[32mINFO [0m[01-24|11:34:43.277] request body market price                [32mRequestId[0m=0ffb62f0-7845-4904-ae6e-3769e78176bc
+[32mINFO [0m[01-24|11:34:43.281] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1761.017
+[32mINFO [0m[01-24|11:34:43.281] sign msg                                 [32mmsg[0m=1761.0173820ffb62f0-7845-4904-ae6e-3769e78176bc69
+[32mINFO [0m[01-24|11:34:43.281] msg hash                                 [32mdata[0m=2eb541..ba6979
+[32mINFO [0m[01-24|11:34:43.282] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([18153222576589175153667974603933137143842799118354927120953088689716480654974,19520030388458547413166702039111377330315609332010154131724420392891353615572])
+[32mINFO [0m[01-24|11:34:43.282] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:34:43.282] send rsp success!
+[32mINFO [0m[01-24|11:34:43.282] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:34:53.384] receive request method : signMsgBatch    [32mreqId[0m=202601241134531892
+[32mINFO [0m[01-24|11:34:53.385] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:34:53.385] dealing resId (202601241134531892) 
+[32mINFO [0m[01-24|11:34:53.385] request body market price                [32mRequestId[0m=68666f1a-5200-4f53-9b4e-89e1e10d3bf6
+[32mINFO [0m[01-24|11:34:53.388] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1802.460
+[32mINFO [0m[01-24|11:34:53.388] sign msg                                 [32mmsg[0m=1802.45972268666f1a-5200-4f53-9b4e-89e1e10d3bf670
+[32mINFO [0m[01-24|11:34:53.388] msg hash                                 [32mdata[0m=573991..06119b
+[32mINFO [0m[01-24|11:34:53.389] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([7184437314718013914203581047121522332433979424290900999305767810633531445631,3814985576955931473378661662652083217877669823601662611508208158293332412906])
+[32mINFO [0m[01-24|11:34:53.390] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:34:53.390] send rsp success!
+[32mINFO [0m[01-24|11:34:53.390] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:35:03.482] receive request method : signMsgBatch    [32mreqId[0m=202601241135036525
+[32mINFO [0m[01-24|11:35:03.482] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:35:03.482] dealing resId (202601241135036525) 
+[32mINFO [0m[01-24|11:35:03.483] request body market price                [32mRequestId[0m=6425a5a0-f097-4d08-9506-c12a1e464f28
+[32mINFO [0m[01-24|11:35:03.485] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1820.743
+[32mINFO [0m[01-24|11:35:03.485] sign msg                                 [32mmsg[0m=1820.7427476425a5a0-f097-4d08-9506-c12a1e464f2871
+[32mINFO [0m[01-24|11:35:03.485] msg hash                                 [32mdata[0m=a3d637..63df78
+[32mINFO [0m[01-24|11:35:03.485] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([2803530419472252505967422058414193585479014488537719271637850121083611270748,16288605978630043316786250757917035133857005643145340332780976706213674328103])
+[32mINFO [0m[01-24|11:35:03.486] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:35:03.486] send rsp success!
+[32mINFO [0m[01-24|11:35:03.486] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:35:13.593] receive request method : signMsgBatch    [32mreqId[0m=202601241135136560
+[32mINFO [0m[01-24|11:35:13.594] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:35:13.594] dealing resId (202601241135136560) 
+[32mINFO [0m[01-24|11:35:13.594] request body market price                [32mRequestId[0m=138aeab1-e200-4ab9-8bbb-ca9ba0ea9feb
+[32mINFO [0m[01-24|11:35:13.596] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1820.743
+[32mINFO [0m[01-24|11:35:13.596] sign msg                                 [32mmsg[0m=1820.742747138aeab1-e200-4ab9-8bbb-ca9ba0ea9feb72
+[32mINFO [0m[01-24|11:35:13.596] msg hash                                 [32mdata[0m=a3d637..63df78
+[32mINFO [0m[01-24|11:35:13.596] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([2803530419472252505967422058414193585479014488537719271637850121083611270748,16288605978630043316786250757917035133857005643145340332780976706213674328103])
+[32mINFO [0m[01-24|11:35:13.597] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:35:13.597] send rsp success!
+[32mINFO [0m[01-24|11:35:13.597] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:35:23.699] receive request method : signMsgBatch    [32mreqId[0m=202601241135234592
+[32mINFO [0m[01-24|11:35:23.699] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:35:23.699] dealing resId (202601241135234592) 
+[32mINFO [0m[01-24|11:35:23.699] request body market price                [32mRequestId[0m=f437be8d-cda6-4fa8-90c5-3ce7623dcf1b
+[32mINFO [0m[01-24|11:35:23.700] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1796.624
+[32mINFO [0m[01-24|11:35:23.700] sign msg                                 [32mmsg[0m=1796.623863f437be8d-cda6-4fa8-90c5-3ce7623dcf1b73
+[32mINFO [0m[01-24|11:35:23.700] msg hash                                 [32mdata[0m=d66743..01ced1
+[32mINFO [0m[01-24|11:35:23.700] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([13668607261013299599930813615787430003212279372157151021563102562325908239239,18259110403203081512844121957481124772793616284332318477349249289291140719032])
+[32mINFO [0m[01-24|11:35:23.701] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:35:23.701] send rsp success!
+[32mINFO [0m[01-24|11:35:23.701] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:35:33.803] receive request method : signMsgBatch    [32mreqId[0m=202601241135334722
+[32mINFO [0m[01-24|11:35:33.804] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:35:33.804] dealing resId (202601241135334722) 
+[32mINFO [0m[01-24|11:35:33.804] request body market price                [32mRequestId[0m=97d6221b-ebd8-4bfd-9993-4437125cd25a
+[32mINFO [0m[01-24|11:35:33.805] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1809.630
+[32mINFO [0m[01-24|11:35:33.805] sign msg                                 [32mmsg[0m=1809.63019997d6221b-ebd8-4bfd-9993-4437125cd25a74
+[32mINFO [0m[01-24|11:35:33.805] msg hash                                 [32mdata[0m=95a140..35ffb0
+[32mINFO [0m[01-24|11:35:33.806] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([8922126609562993030481328911664695287020314117176281955270640657466597983278,6246318344205555124810773131928650726111199401471845020922896612153839035318])
+[32mINFO [0m[01-24|11:35:33.806] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:35:33.806] send rsp success!
+[32mINFO [0m[01-24|11:35:33.807] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:35:43.912] receive request method : signMsgBatch    [32mreqId[0m=202601241135438029
+[32mINFO [0m[01-24|11:35:43.913] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:35:43.913] dealing resId (202601241135438029) 
+[32mINFO [0m[01-24|11:35:43.913] request body market price                [32mRequestId[0m=0250394d-c587-4905-9739-b2d574de51b6
+[32mINFO [0m[01-24|11:35:43.916] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1809.630
+[32mINFO [0m[01-24|11:35:43.916] sign msg                                 [32mmsg[0m=1809.6301990250394d-c587-4905-9739-b2d574de51b675
+[32mINFO [0m[01-24|11:35:43.916] msg hash                                 [32mdata[0m=95a140..35ffb0
+[32mINFO [0m[01-24|11:35:43.916] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([8922126609562993030481328911664695287020314117176281955270640657466597983278,6246318344205555124810773131928650726111199401471845020922896612153839035318])
+[32mINFO [0m[01-24|11:35:43.917] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:35:43.917] send rsp success!
+[32mINFO [0m[01-24|11:35:43.917] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:35:54.023] receive request method : signMsgBatch    [32mreqId[0m=202601241135544855
+[32mINFO [0m[01-24|11:35:54.024] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:35:54.024] dealing resId (202601241135544855) 
+[32mINFO [0m[01-24|11:35:54.024] request body market price                [32mRequestId[0m=0a9484e6-5cee-4833-a70e-c13f05af2e30
+[32mINFO [0m[01-24|11:35:54.025] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1775.239
+[32mINFO [0m[01-24|11:35:54.025] sign msg                                 [32mmsg[0m=1775.2389070a9484e6-5cee-4833-a70e-c13f05af2e3076
+[32mINFO [0m[01-24|11:35:54.025] msg hash                                 [32mdata[0m=406455..cf5b5b
+[32mINFO [0m[01-24|11:35:54.026] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([3916958856842242814546625522632862012269696564301982723392333352752519383536,9599080029500589785515575281632420462336599723035185563331922518978625569696])
+[32mINFO [0m[01-24|11:35:54.027] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:35:54.027] send rsp success!
+[32mINFO [0m[01-24|11:35:54.027] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:36:04.141] receive request method : signMsgBatch    [32mreqId[0m=202601241136043350
+[32mINFO [0m[01-24|11:36:04.142] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:36:04.142] dealing resId (202601241136043350) 
+[32mINFO [0m[01-24|11:36:04.142] request body market price                [32mRequestId[0m=80a34e06-d35b-48a7-a5fc-c1710fe990f0
+[32mINFO [0m[01-24|11:36:04.151] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1813.702
+[32mINFO [0m[01-24|11:36:04.152] sign msg                                 [32mmsg[0m=1813.70209880a34e06-d35b-48a7-a5fc-c1710fe990f077
+[32mINFO [0m[01-24|11:36:04.152] msg hash                                 [32mdata[0m=4933c4..4c6fc6
+[32mINFO [0m[01-24|11:36:04.152] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([10716291871961263478588652587448697297516465033024926676900589219753285001778,16043178252269313394374703486316440730012874883107566621337183773096758281888])
+[32mINFO [0m[01-24|11:36:04.153] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:36:04.153] send rsp success!
+[32mINFO [0m[01-24|11:36:04.153] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:36:14.252] receive request method : signMsgBatch    [32mreqId[0m=202601241136142654
+[32mINFO [0m[01-24|11:36:14.253] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:36:14.253] dealing resId (202601241136142654) 
+[32mINFO [0m[01-24|11:36:14.253] request body market price                [32mRequestId[0m=01515ec3-abb6-4d4b-aea3-beb2f7a5ced8
+[32mINFO [0m[01-24|11:36:14.253] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1813.702
+[32mINFO [0m[01-24|11:36:14.254] sign msg                                 [32mmsg[0m=1813.70209801515ec3-abb6-4d4b-aea3-beb2f7a5ced878
+[32mINFO [0m[01-24|11:36:14.254] msg hash                                 [32mdata[0m=4933c4..4c6fc6
+[32mINFO [0m[01-24|11:36:14.254] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([10716291871961263478588652587448697297516465033024926676900589219753285001778,16043178252269313394374703486316440730012874883107566621337183773096758281888])
+[32mINFO [0m[01-24|11:36:14.254] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:36:14.255] send rsp success!
+[32mINFO [0m[01-24|11:36:14.255] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:36:24.358] receive request method : signMsgBatch    [32mreqId[0m=202601241136241950
+[32mINFO [0m[01-24|11:36:24.359] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:36:24.359] dealing resId (202601241136241950) 
+[32mINFO [0m[01-24|11:36:24.359] request body market price                [32mRequestId[0m=c5bbacca-6e49-4b59-8ded-8fbb5bb20dcb
+[32mINFO [0m[01-24|11:36:24.360] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1751.698
+[32mINFO [0m[01-24|11:36:24.360] sign msg                                 [32mmsg[0m=1751.698419c5bbacca-6e49-4b59-8ded-8fbb5bb20dcb79
+[32mINFO [0m[01-24|11:36:24.360] msg hash                                 [32mdata[0m=c83df7..b83f01
+[32mINFO [0m[01-24|11:36:24.360] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([16191099866822101352178992167533208371587763965151468886163031221929104222155,19240362570882392366369513232905078836175172132055027144164994330741452669955])
+[32mINFO [0m[01-24|11:36:24.361] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:36:24.361] send rsp success!
+[32mINFO [0m[01-24|11:36:24.361] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:36:34.455] receive request method : signMsgBatch    [32mreqId[0m=202601241136346386
+[32mINFO [0m[01-24|11:36:34.455] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:36:34.455] dealing resId (202601241136346386) 
+[32mINFO [0m[01-24|11:36:34.455] request body market price                [32mRequestId[0m=9e1fe868-9b40-4e99-94dd-7680c69bca79
+[32mINFO [0m[01-24|11:36:34.456] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1839.870
+[32mINFO [0m[01-24|11:36:34.456] sign msg                                 [32mmsg[0m=1839.8702719e1fe868-9b40-4e99-94dd-7680c69bca7980
+[32mINFO [0m[01-24|11:36:34.456] msg hash                                 [32mdata[0m=534100..bafba8
+[32mINFO [0m[01-24|11:36:34.456] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([10451820012790666692476371717348500074700451804681415112416871386089862134977,16584065514040295452680818372753802822213440898048996966898750813238814229392])
+[32mINFO [0m[01-24|11:36:34.456] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:36:34.456] send rsp success!
+[32mINFO [0m[01-24|11:36:34.456] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:36:44.550] receive request method : signMsgBatch    [32mreqId[0m=202601241136440116
+[32mINFO [0m[01-24|11:36:44.551] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:36:44.551] dealing resId (202601241136440116) 
+[32mINFO [0m[01-24|11:36:44.551] request body market price                [32mRequestId[0m=4e96e111-9d42-465b-99b0-33ac60e028e4
+[32mINFO [0m[01-24|11:36:44.553] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1839.870
+[32mINFO [0m[01-24|11:36:44.553] sign msg                                 [32mmsg[0m=1839.8702714e96e111-9d42-465b-99b0-33ac60e028e481
+[32mINFO [0m[01-24|11:36:44.553] msg hash                                 [32mdata[0m=534100..bafba8
+[32mINFO [0m[01-24|11:36:44.554] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([10451820012790666692476371717348500074700451804681415112416871386089862134977,16584065514040295452680818372753802822213440898048996966898750813238814229392])
+[32mINFO [0m[01-24|11:36:44.554] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:36:44.555] send rsp success!
+[32mINFO [0m[01-24|11:36:44.555] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:36:54.665] receive request method : signMsgBatch    [32mreqId[0m=202601241136549832
+[32mINFO [0m[01-24|11:36:54.665] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:36:54.665] dealing resId (202601241136549832) 
+[32mINFO [0m[01-24|11:36:54.665] request body market price                [32mRequestId[0m=66607652-34b6-4f1b-a8cc-76bcf4071db3
+[32mINFO [0m[01-24|11:36:54.666] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1807.615
+[32mINFO [0m[01-24|11:36:54.666] sign msg                                 [32mmsg[0m=1807.61481166607652-34b6-4f1b-a8cc-76bcf4071db382
+[32mINFO [0m[01-24|11:36:54.666] msg hash                                 [32mdata[0m=5f18ba..737a46
+[32mINFO [0m[01-24|11:36:54.667] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([10743069609104286180021391725065772770609606111816169194647408371451144802130,15540414003603995577459241605512091558942228424847702887528587012412445949933])
+[32mINFO [0m[01-24|11:36:54.668] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:36:54.668] send rsp success!
+[32mINFO [0m[01-24|11:36:54.668] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:37:04.779] receive request method : signMsgBatch    [32mreqId[0m=202601241137040654
+[32mINFO [0m[01-24|11:37:04.780] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:37:04.780] dealing resId (202601241137040654) 
+[32mINFO [0m[01-24|11:37:04.780] request body market price                [32mRequestId[0m=52fd659c-a07c-4625-acb7-2af07d1d5b37
+[32mINFO [0m[01-24|11:37:04.781] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1770.614
+[32mINFO [0m[01-24|11:37:04.781] sign msg                                 [32mmsg[0m=1770.61377752fd659c-a07c-4625-acb7-2af07d1d5b3783
+[32mINFO [0m[01-24|11:37:04.781] msg hash                                 [32mdata[0m=b643c0..10b408
+[32mINFO [0m[01-24|11:37:04.782] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([9391392854415453535012753619847499443735502079135214721784429000107747292132,16649824208702404039313140655755671461596237030248572045672411394063487527009])
+[32mINFO [0m[01-24|11:37:04.783] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:37:04.783] send rsp success!
+[32mINFO [0m[01-24|11:37:04.783] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:37:14.889] receive request method : signMsgBatch    [32mreqId[0m=202601241137148257
+[32mINFO [0m[01-24|11:37:14.889] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:37:14.889] dealing resId (202601241137148257) 
+[32mINFO [0m[01-24|11:37:14.889] request body market price                [32mRequestId[0m=028e0fcd-6715-4a6f-8df1-87f24f7a8f62
+[32mINFO [0m[01-24|11:37:14.890] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1770.614
+[32mINFO [0m[01-24|11:37:14.890] sign msg                                 [32mmsg[0m=1770.613777028e0fcd-6715-4a6f-8df1-87f24f7a8f6284
+[32mINFO [0m[01-24|11:37:14.890] msg hash                                 [32mdata[0m=b643c0..10b408
+[32mINFO [0m[01-24|11:37:14.890] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([9391392854415453535012753619847499443735502079135214721784429000107747292132,16649824208702404039313140655755671461596237030248572045672411394063487527009])
+[32mINFO [0m[01-24|11:37:14.891] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:37:14.891] send rsp success!
+[32mINFO [0m[01-24|11:37:14.891] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:37:24.983] receive request method : signMsgBatch    [32mreqId[0m=202601241137241234
+[32mINFO [0m[01-24|11:37:24.983] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:37:24.983] dealing resId (202601241137241234) 
+[32mINFO [0m[01-24|11:37:24.983] request body market price                [32mRequestId[0m=456b1fdc-ebf2-49f5-9f0a-406a6cc886a5
+[32mINFO [0m[01-24|11:37:24.984] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1767.927
+[32mINFO [0m[01-24|11:37:24.984] sign msg                                 [32mmsg[0m=1767.926538456b1fdc-ebf2-49f5-9f0a-406a6cc886a585
+[32mINFO [0m[01-24|11:37:24.984] msg hash                                 [32mdata[0m=0b0af5..bd8864
+[32mINFO [0m[01-24|11:37:24.985] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([16976754514417070929053556957266563697799872851808320087516096171213187826753,8348075742994964165092833601451194878293738277285020371258888040330715224509])
+[32mINFO [0m[01-24|11:37:24.985] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:37:24.985] send rsp success!
+[32mINFO [0m[01-24|11:37:24.985] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:37:35.096] receive request method : signMsgBatch    [32mreqId[0m=202601241137350962
+[32mINFO [0m[01-24|11:37:35.097] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:37:35.097] dealing resId (202601241137350962) 
+[32mINFO [0m[01-24|11:37:35.097] request body market price                [32mRequestId[0m=2eca765f-c849-48bb-bf10-0e63313435c1
+[32mINFO [0m[01-24|11:37:35.098] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1777.971
+[32mINFO [0m[01-24|11:37:35.098] sign msg                                 [32mmsg[0m=1777.9713102eca765f-c849-48bb-bf10-0e63313435c186
+[32mINFO [0m[01-24|11:37:35.098] msg hash                                 [32mdata[0m=e3c437..017e5e
+[32mINFO [0m[01-24|11:37:35.098] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([10993794628764285610132645435418575485337667002411349926152851129951296216608,5788603664953630392190516190232883421933080895387185337688127182555018037748])
+[32mINFO [0m[01-24|11:37:35.099] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:37:35.099] send rsp success!
+[32mINFO [0m[01-24|11:37:35.099] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:37:45.192] receive request method : signMsgBatch    [32mreqId[0m=202601241137451470
+[32mINFO [0m[01-24|11:37:45.193] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:37:45.193] dealing resId (202601241137451470) 
+[32mINFO [0m[01-24|11:37:45.194] request body market price                [32mRequestId[0m=706c8113-38cd-4a1a-b18c-431357803ec0
+[32mINFO [0m[01-24|11:37:45.195] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1827.416
+[32mINFO [0m[01-24|11:37:45.195] sign msg                                 [32mmsg[0m=1827.415562706c8113-38cd-4a1a-b18c-431357803ec087
+[32mINFO [0m[01-24|11:37:45.195] msg hash                                 [32mdata[0m=f50a79..e31d60
+[32mINFO [0m[01-24|11:37:45.196] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([135860608453897729872381243605798579064921518136383590269465443536283442301,2899174319318830101862079879128804296968742102676295377596263228539850170969])
+[32mINFO [0m[01-24|11:37:45.196] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:37:45.196] send rsp success!
+[32mINFO [0m[01-24|11:37:45.196] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:37:55.302] receive request method : signMsgBatch    [32mreqId[0m=202601241137552797
+[32mINFO [0m[01-24|11:37:55.302] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:37:55.302] dealing resId (202601241137552797) 
+[32mINFO [0m[01-24|11:37:55.302] request body market price                [32mRequestId[0m=e2b0f34c-3828-45d5-b446-af693f6324d8
+[32mINFO [0m[01-24|11:37:55.303] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1827.416
+[32mINFO [0m[01-24|11:37:55.303] sign msg                                 [32mmsg[0m=1827.415562e2b0f34c-3828-45d5-b446-af693f6324d888
+[32mINFO [0m[01-24|11:37:55.303] msg hash                                 [32mdata[0m=f50a79..e31d60
+[32mINFO [0m[01-24|11:37:55.304] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([135860608453897729872381243605798579064921518136383590269465443536283442301,2899174319318830101862079879128804296968742102676295377596263228539850170969])
+[32mINFO [0m[01-24|11:37:55.305] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:37:55.305] send rsp success!
+[32mINFO [0m[01-24|11:37:55.305] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:38:05.414] receive request method : signMsgBatch    [32mreqId[0m=202601241138056799
+[32mINFO [0m[01-24|11:38:05.415] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:38:05.415] dealing resId (202601241138056799) 
+[32mINFO [0m[01-24|11:38:05.415] request body market price                [32mRequestId[0m=c25d5ab5-3ad3-453f-be2d-ad351da9cb8a
+[32mINFO [0m[01-24|11:38:05.415] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1785.506
+[32mINFO [0m[01-24|11:38:05.415] sign msg                                 [32mmsg[0m=1785.506003c25d5ab5-3ad3-453f-be2d-ad351da9cb8a89
+[32mINFO [0m[01-24|11:38:05.415] msg hash                                 [32mdata[0m=1b4f71..4b76cb
+[32mINFO [0m[01-24|11:38:05.415] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([6857172319944932245750939022190144221347416687831586103369939084511117186748,18718095293703635490933745939884470615666918856453961826435196642383080891672])
+[32mINFO [0m[01-24|11:38:05.416] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:38:05.416] send rsp success!
+[32mINFO [0m[01-24|11:38:05.416] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:38:15.515] receive request method : signMsgBatch    [32mreqId[0m=202601241138158619
+[32mINFO [0m[01-24|11:38:15.515] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:38:15.515] dealing resId (202601241138158619) 
+[32mINFO [0m[01-24|11:38:15.516] request body market price                [32mRequestId[0m=87bb650a-e46b-472a-ad67-1c97d4209008
+[32mINFO [0m[01-24|11:38:15.518] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1772.199
+[32mINFO [0m[01-24|11:38:15.518] sign msg                                 [32mmsg[0m=1772.19900587bb650a-e46b-472a-ad67-1c97d420900890
+[32mINFO [0m[01-24|11:38:15.518] msg hash                                 [32mdata[0m=95b984..e7712c
+[32mINFO [0m[01-24|11:38:15.518] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([11078348428010070854267295292938320125863883737222610323530155794312934981152,13034930860863902383282701089572776975418802273064841072476279223117572179282])
+[32mINFO [0m[01-24|11:38:15.519] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:38:15.519] send rsp success!
+[32mINFO [0m[01-24|11:38:15.519] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:38:25.613] receive request method : signMsgBatch    [32mreqId[0m=202601241138255686
+[32mINFO [0m[01-24|11:38:25.614] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:38:25.614] dealing resId (202601241138255686) 
+[32mINFO [0m[01-24|11:38:25.614] request body market price                [32mRequestId[0m=94b620a0-0c62-4111-b724-ca961523d1e4
+[32mINFO [0m[01-24|11:38:25.614] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1772.199
+[32mINFO [0m[01-24|11:38:25.614] sign msg                                 [32mmsg[0m=1772.19900594b620a0-0c62-4111-b724-ca961523d1e491
+[32mINFO [0m[01-24|11:38:25.614] msg hash                                 [32mdata[0m=95b984..e7712c
+[32mINFO [0m[01-24|11:38:25.615] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([11078348428010070854267295292938320125863883737222610323530155794312934981152,13034930860863902383282701089572776975418802273064841072476279223117572179282])
+[32mINFO [0m[01-24|11:38:25.615] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:38:25.615] send rsp success!
+[32mINFO [0m[01-24|11:38:25.615] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:38:35.715] receive request method : signMsgBatch    [32mreqId[0m=202601241138352508
+[32mINFO [0m[01-24|11:38:35.716] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:38:35.716] dealing resId (202601241138352508) 
+[32mINFO [0m[01-24|11:38:35.716] request body market price                [32mRequestId[0m=d07c2d7b-cbd0-4d90-830c-f87c39fafac2
+[32mINFO [0m[01-24|11:38:35.717] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1847.455
+[32mINFO [0m[01-24|11:38:35.717] sign msg                                 [32mmsg[0m=1847.455466d07c2d7b-cbd0-4d90-830c-f87c39fafac292
+[32mINFO [0m[01-24|11:38:35.718] msg hash                                 [32mdata[0m=539162..011246
+[32mINFO [0m[01-24|11:38:35.718] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([8952238819977696138735792657455341270669505674807865136449382271041016845555,9540059442996418870157849169731674613341876085857406416001813685391173655649])
+[32mINFO [0m[01-24|11:38:35.719] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:38:35.719] send rsp success!
+[32mINFO [0m[01-24|11:38:35.719] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:38:45.825] receive request method : signMsgBatch    [32mreqId[0m=202601241138457326
+[32mINFO [0m[01-24|11:38:45.827] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:38:45.827] dealing resId (202601241138457326) 
+[32mINFO [0m[01-24|11:38:45.827] request body market price                [32mRequestId[0m=05490c87-8f17-4650-8224-9ddd84000933
+[32mINFO [0m[01-24|11:38:45.832] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1834.701
+[32mINFO [0m[01-24|11:38:45.832] sign msg                                 [32mmsg[0m=1834.70145405490c87-8f17-4650-8224-9ddd8400093393
+[32mINFO [0m[01-24|11:38:45.832] msg hash                                 [32mdata[0m=58d2fe..f1ad93
+[32mINFO [0m[01-24|11:38:45.833] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([5784298561138134080932498228314678249091400532292517424438203116819838649126,4391246212949260504923964368331715647071168698614397065388180681090379004007])
+[32mINFO [0m[01-24|11:38:45.834] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:38:45.834] send rsp success!
+[32mINFO [0m[01-24|11:38:45.834] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:38:55.936] receive request method : signMsgBatch    [32mreqId[0m=202601241138553061
+[32mINFO [0m[01-24|11:38:55.936] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:38:55.936] dealing resId (202601241138553061) 
+[32mINFO [0m[01-24|11:38:55.937] request body market price                [32mRequestId[0m=da9bfe25-2858-4862-bd46-34ef5c0e58d6
+[32mINFO [0m[01-24|11:38:55.938] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1834.701
+[32mINFO [0m[01-24|11:38:55.938] sign msg                                 [32mmsg[0m=1834.701454da9bfe25-2858-4862-bd46-34ef5c0e58d694
+[32mINFO [0m[01-24|11:38:55.938] msg hash                                 [32mdata[0m=58d2fe..f1ad93
+[32mINFO [0m[01-24|11:38:55.938] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([5784298561138134080932498228314678249091400532292517424438203116819838649126,4391246212949260504923964368331715647071168698614397065388180681090379004007])
+[32mINFO [0m[01-24|11:38:55.939] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:38:55.939] send rsp success!
+[32mINFO [0m[01-24|11:38:55.939] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:39:06.051] receive request method : signMsgBatch    [32mreqId[0m=202601241139063043
+[32mINFO [0m[01-24|11:39:06.052] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:39:06.052] dealing resId (202601241139063043) 
+[32mINFO [0m[01-24|11:39:06.052] request body market price                [32mRequestId[0m=c13a2a52-2559-43aa-9100-0fac1769ce7b
+[32mINFO [0m[01-24|11:39:06.054] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1787.540
+[32mINFO [0m[01-24|11:39:06.054] sign msg                                 [32mmsg[0m=1787.539691c13a2a52-2559-43aa-9100-0fac1769ce7b95
+[32mINFO [0m[01-24|11:39:06.054] msg hash                                 [32mdata[0m=8a51e2..78739d
+[32mINFO [0m[01-24|11:39:06.054] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([20277113584492446833907638873876048849702241629295353032115758150215126334000,15193776401715195764109926228761916827054530678415938623581919391376403345167])
+[32mINFO [0m[01-24|11:39:06.055] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:39:06.055] send rsp success!
+[32mINFO [0m[01-24|11:39:06.055] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:39:16.160] receive request method : signMsgBatch    [32mreqId[0m=202601241139162945
+[32mINFO [0m[01-24|11:39:16.161] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:39:16.161] dealing resId (202601241139162945) 
+[32mINFO [0m[01-24|11:39:16.161] request body market price                [32mRequestId[0m=71c1de3b-0b09-4095-bbb0-f108cdcaeafa
+[32mINFO [0m[01-24|11:39:16.162] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1817.778
+[32mINFO [0m[01-24|11:39:16.162] sign msg                                 [32mmsg[0m=1817.77795671c1de3b-0b09-4095-bbb0-f108cdcaeafa96
+[32mINFO [0m[01-24|11:39:16.162] msg hash                                 [32mdata[0m=afc143..839028
+[32mINFO [0m[01-24|11:39:16.163] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([16237604564845599362326807978959530794494209781183160269143535174137293827685,7618049770206470434821698705582295978897978393730800713855592415846545496635])
+[32mINFO [0m[01-24|11:39:16.164] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:39:16.164] send rsp success!
+[32mINFO [0m[01-24|11:39:16.164] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:39:26.274] receive request method : signMsgBatch    [32mreqId[0m=202601241139266163
+[32mINFO [0m[01-24|11:39:26.275] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:39:26.275] dealing resId (202601241139266163) 
+[32mINFO [0m[01-24|11:39:26.275] request body market price                [32mRequestId[0m=ad4ee3a4-ef28-43e6-ba2e-c7602a469b0f
+[32mINFO [0m[01-24|11:39:26.277] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1817.778
+[32mINFO [0m[01-24|11:39:26.277] sign msg                                 [32mmsg[0m=1817.777956ad4ee3a4-ef28-43e6-ba2e-c7602a469b0f97
+[32mINFO [0m[01-24|11:39:26.277] msg hash                                 [32mdata[0m=afc143..839028
+[32mINFO [0m[01-24|11:39:26.278] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([16237604564845599362326807978959530794494209781183160269143535174137293827685,7618049770206470434821698705582295978897978393730800713855592415846545496635])
+[32mINFO [0m[01-24|11:39:26.278] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:39:26.278] send rsp success!
+[32mINFO [0m[01-24|11:39:26.278] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:39:36.375] receive request method : signMsgBatch    [32mreqId[0m=202601241139366013
+[32mINFO [0m[01-24|11:39:36.376] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:39:36.376] dealing resId (202601241139366013) 
+[32mINFO [0m[01-24|11:39:36.376] request body market price                [32mRequestId[0m=c843feb8-32af-4855-8405-939e884ad823
+[32mINFO [0m[01-24|11:39:36.377] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1807.315
+[32mINFO [0m[01-24|11:39:36.377] sign msg                                 [32mmsg[0m=1807.314540c843feb8-32af-4855-8405-939e884ad82398
+[32mINFO [0m[01-24|11:39:36.377] msg hash                                 [32mdata[0m=5f18ba..737a46
+[32mINFO [0m[01-24|11:39:36.377] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([10743069609104286180021391725065772770609606111816169194647408371451144802130,15540414003603995577459241605512091558942228424847702887528587012412445949933])
+[32mINFO [0m[01-24|11:39:36.378] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:39:36.378] send rsp success!
+[32mINFO [0m[01-24|11:39:36.378] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:39:46.473] receive request method : signMsgBatch    [32mreqId[0m=202601241139462110
+[32mINFO [0m[01-24|11:39:46.473] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:39:46.473] dealing resId (202601241139462110) 
+[32mINFO [0m[01-24|11:39:46.473] request body market price                [32mRequestId[0m=1af167c5-e233-4cc4-9620-a8e5ca2754f2
+[32mINFO [0m[01-24|11:39:46.473] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1812.251
+[32mINFO [0m[01-24|11:39:46.473] sign msg                                 [32mmsg[0m=1812.2514051af167c5-e233-4cc4-9620-a8e5ca2754f299
+[32mINFO [0m[01-24|11:39:46.473] msg hash                                 [32mdata[0m=fc0deb..5ed1c4
+[32mINFO [0m[01-24|11:39:46.474] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([6720420825004421192065606790345590205118501950660899231324697500880405279579,165390531855364412436919484764226347495180307040368804492086855105107307127])
+[32mINFO [0m[01-24|11:39:46.474] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:39:46.474] send rsp success!
+[32mINFO [0m[01-24|11:39:46.474] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:39:56.575] receive request method : signMsgBatch    [32mreqId[0m=202601241139561580
+[32mINFO [0m[01-24|11:39:56.576] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:39:56.576] dealing resId (202601241139561580) 
+[32mINFO [0m[01-24|11:39:56.576] request body market price                [32mRequestId[0m=d26ad7d1-695c-4a58-a686-675757221f4b
+[32mINFO [0m[01-24|11:39:56.578] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1812.251
+[32mINFO [0m[01-24|11:39:56.579] sign msg                                 [32mmsg[0m=1812.251405d26ad7d1-695c-4a58-a686-675757221f4b100
+[32mINFO [0m[01-24|11:39:56.579] msg hash                                 [32mdata[0m=fc0deb..5ed1c4
+[32mINFO [0m[01-24|11:39:56.580] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([6720420825004421192065606790345590205118501950660899231324697500880405279579,165390531855364412436919484764226347495180307040368804492086855105107307127])
+[32mINFO [0m[01-24|11:39:56.580] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:39:56.580] send rsp success!
+[32mINFO [0m[01-24|11:39:56.580] sent sign response to oracle manager successfully
+[32mINFO [0m[01-24|11:40:06.687] receive request method : signMsgBatch    [32mreqId[0m=202601241140067085
+[32mINFO [0m[01-24|11:40:06.687] write msg to sign channel successfully
+[32mINFO [0m[01-24|11:40:06.687] dealing resId (202601241140067085) 
+[32mINFO [0m[01-24|11:40:06.687] request body market price                [32mRequestId[0m=18f05fe7-70ff-4e3c-b18d-d39b39ede1c6
+[32mINFO [0m[01-24|11:40:06.688] fetched asset price successfully         [32massetType[0m=liquor [32massetName[0m=Maotai [32mprice[0m=1804.324
+[32mINFO [0m[01-24|11:40:06.688] sign msg                                 [32mmsg[0m=1804.32387418f05fe7-70ff-4e3c-b18d-d39b39ede1c6101
+[32mINFO [0m[01-24|11:40:06.688] msg hash                                 [32mdata[0m=37e9e2..fd8301
+[32mINFO [0m[01-24|11:40:06.689] success to sign SubmitOracleSignatureMsg [32msignature[0m=E([8924639191773884937986123006511702925489292879399423230894873011700605824271,20074587340375042714785948504253459165538977771950234834286510238133252730722])
+[32mINFO [0m[01-24|11:40:06.689] node signed the message, sending response to oracle manager
+[32mINFO [0m[01-24|11:40:06.689] send rsp success!
+[32mINFO [0m[01-24|11:40:06.689] sent sign response to oracle manager successfully
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x2 addr=0x0 pc=0x101756f60]
+
+goroutine 1 [running]:
+github.com/cpchain-network/oracle-node/node.(*Node).Stop(0x14000332bb0, {0x1023ab280?, 0x1400061f978?})
+	/Users/wenqirui/Desktop/rwa/oracle/oracle-node/node/node.go:117 +0x20
+main.newCli.LifecycleCmd.lifecycleCmd.func2(0x14000706840)
+	/Users/wenqirui/Desktop/rwa/oracle/oracle-node/common/cliapp/lifecycle.go:64 +0x2c4
+github.com/urfave/cli/v2.(*Command).Run(0x1400012e000, 0x14000706840, {0x1400018e780, 0x5, 0x5})
+	/Users/wenqirui/go/pkg/mod/github.com/urfave/cli/v2@v2.27.6/command.go:276 +0x600
+github.com/urfave/cli/v2.(*Command).Run(0x1400012e6e0, 0x14000706700, {0x140000322a0, 0x6, 0x6})
+	/Users/wenqirui/go/pkg/mod/github.com/urfave/cli/v2@v2.27.6/command.go:269 +0x83c
+github.com/urfave/cli/v2.(*App).RunContext(0x1400027a600, {0x101cfd950, 0x1023ab280}, {0x140000322a0, 0x6, 0x6})
+	/Users/wenqirui/go/pkg/mod/github.com/urfave/cli/v2@v2.27.6/app.go:333 +0x51c
+main.main()
+	/Users/wenqirui/Desktop/rwa/oracle/oracle-node/cmd/main.go:18 +0x158
