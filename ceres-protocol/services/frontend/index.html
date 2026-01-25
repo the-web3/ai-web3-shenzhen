@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌟 Ceres Protocol AI Agent Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <h1 class="title">
+            <i class="fas fa-robot"></i>
+            Ceres Protocol AI Agent
+          </h1>
+          <p class="subtitle">智能预测市场AI演示 - 无需外部API</p>
+        </div>
+        <div class="header-actions">
+          <button id="startDemo" class="btn btn-primary">
+            <i class="fas fa-play"></i>
+            开始演示
+          </button>
+          <button id="resetDemo" class="btn btn-secondary">
+            <i class="fas fa-refresh"></i>
+            重置
+          </button>
+        </div>
+      </header>
+
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <div class="status-item">
+          <i class="fas fa-circle status-indicator" id="aiStatus"></i>
+          <span>AI状态: <span id="aiStatusText">待机中</span></span>
+        </div>
+        <div class="status-item">
+          <i class="fas fa-chart-line"></i>
+          <span>已生成事件: <span id="eventCount">0</span></span>
+        </div>
+        <div class="status-item">
+          <i class="fas fa-clock"></i>
+          <span>运行时间: <span id="runtime">00:00</span></span>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Scenario Tabs -->
+        <div class="scenario-tabs">
+          <button class="tab-btn active" data-scenario="competitive">
+            <i class="fas fa-balance-scale"></i>
+            竞争性判断
+          </button>
+          <button class="tab-btn" data-scenario="trend">
+            <i class="fas fa-chart-line"></i>
+            趋势分析
+          </button>
+          <button class="tab-btn" data-scenario="hotspot">
+            <i class="fas fa-globe"></i>
+            外部热点
+          </button>
+          <button class="tab-btn" data-scenario="summary">
+            <i class="fas fa-chart-pie"></i>
+            统计摘要
+          </button>
+        </div>
+
+        <!-- Scenario Content -->
+        <div class="scenario-content">
+          <!-- Competitive Judgment Scenario -->
+          <div id="competitive" class="scenario-panel active">
+            <div class="scenario-header">
+              <h2><i class="fas fa-balance-scale"></i> 竞争性判断模式 (AMM)</h2>
+              <div class="scenario-status" id="competitiveStatus">等待开始</div>
+            </div>
+
+            <div class="content-grid">
+              <div class="card">
+                <h3><i class="fas fa-user"></i> 人类事件</h3>
+                <div id="humanEvent" class="event-display">
+                  <div class="event-description">等待AI分析...</div>
+                  <div class="event-prediction">
+                    <div class="prediction-item">
+                      <span class="label">YES:</span>
+                      <span class="value" id="humanYes">--</span>
+                    </div>
+                    <div class="prediction-item">
+                      <span class="label">NO:</span>
+                      <span class="value" id="humanNo">--</span>
+                    </div>
+                  </div>
+                  <div class="event-stake">
+                    质押: <span id="humanStake">--</span> HKTC
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3><i class="fas fa-robot"></i> AI分析</h3>
+                <div id="aiAnalysis" class="ai-analysis">
+                  <div class="thinking-animation" id="thinkingAnimation">
+                    <i class="fas fa-brain thinking"></i>
+                    <span>AI正在分析中...</span>
+                  </div>
+                  <div
+                    class="analysis-result"
+                    id="analysisResult"
+                    style="display: none"
+                  >
+                    <div class="ai-description" id="aiDescription"></div>
+                    <div class="ai-reasoning" id="aiReasoning"></div>
+                    <div class="ai-confidence">
+                      信心度: <span id="aiConfidence">--</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="price-comparison">
+              <h3><i class="fas fa-chart-bar"></i> 价格对比分析</h3>
+              <canvas id="priceChart" width="400" height="200"></canvas>
+              <div
+                class="disagreement-indicator"
+                id="disagreementIndicator"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Trend Analysis Scenario -->
+          <div id="trend" class="scenario-panel">
+            <div class="scenario-header">
+              <h2><i class="fas fa-chart-line"></i> 趋势分析模式 (订单簿)</h2>
+              <div class="scenario-status" id="trendStatus">等待开始</div>
+            </div>
+
+            <div class="content-grid">
+              <div class="card">
+                <h3><i class="fas fa-fire"></i> 热门市场</h3>
+                <div id="trendingMarket" class="market-display">
+                  <div class="market-description" id="marketDescription">
+                    等待分析...
+                  </div>
+                  <div class="market-stats">
+                    <div class="stat-item">
+                      <i class="fas fa-coins"></i>
+                      <span
+                        >交易量: <span id="marketVolume">--</span> HKTC</span
+                      >
+                    </div>
+                    <div class="stat-item">
+                      <i class="fas fa-users"></i>
+                      <span
+                        >参与者: <span id="marketParticipants">--</span>人</span
+                      >
+                    </div>
+                    <div class="stat-item">
+                      <i class="fas fa-chart-area"></i>
+                      <span>波动率: <span id="marketVolatility">--</span></span>
+                    </div>
+                    <div class="stat-item">
+                      <i class="fas fa-rocket"></i>
+                      <span>动量: <span id="marketMomentum">--</span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3><i class="fas fa-tachometer-alt"></i> 趋势分析仪表板</h3>
+                <div id="trendDashboard" class="dashboard">
+                  <div class="gauge-container">
+                    <div class="gauge">
+                      <canvas
+                        id="trendStrengthGauge"
+                        width="150"
+                        height="150"
+                      ></canvas>
+                      <div class="gauge-label">趋势强度</div>
+                    </div>
+                    <div class="gauge">
+                      <canvas
+                        id="confidenceGauge"
+                        width="150"
+                        height="150"
+                      ></canvas>
+                      <div class="gauge-label">信心度</div>
+                    </div>
+                  </div>
+                  <div class="recommendation" id="trendRecommendation">
+                    <i class="fas fa-lightbulb"></i>
+                    <span
+                      >推荐行动:
+                      <span id="recommendedAction">分析中...</span></span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="derivatives-section">
+              <h3><i class="fas fa-sitemap"></i> 生成的衍生市场</h3>
+              <div id="derivativesList" class="derivatives-list">
+                <!-- 动态生成衍生市场 -->
+              </div>
+            </div>
+          </div>
+
+          <!-- External Hotspot Scenario -->
+          <div id="hotspot" class="scenario-panel">
+            <div class="scenario-header">
+              <h2><i class="fas fa-globe"></i> 外部热点模式 (订单簿)</h2>
+              <div class="scenario-status" id="hotspotStatus">等待开始</div>
+            </div>
+
+            <div class="monitoring-section">
+              <h3><i class="fas fa-satellite"></i> AI监控外部数据源</h3>
+              <div class="data-sources">
+                <div class="source-item">
+                  <i class="fas fa-cloud-sun"></i>
+                  <span>天气模式和气候数据</span>
+                  <div class="source-status scanning" id="weatherStatus">
+                    扫描中...
+                  </div>
+                </div>
+                <div class="source-item">
+                  <i class="fas fa-newspaper"></i>
+                  <span>环境新闻和报告</span>
+                  <div class="source-status scanning" id="newsStatus">
+                    扫描中...
+                  </div>
+                </div>
+                <div class="source-item">
+                  <i class="fas fa-hashtag"></i>
+                  <span>社交媒体气候讨论</span>
+                  <div class="source-status scanning" id="socialStatus">
+                    扫描中...
+                  </div>
+                </div>
+                <div class="source-item">
+                  <i class="fas fa-satellite-dish"></i>
+                  <span>卫星图像分析</span>
+                  <div class="source-status scanning" id="satelliteStatus">
+                    扫描中...
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hotspots-section">
+              <h3><i class="fas fa-radar"></i> 检测到的热点事件</h3>
+              <div id="hotspotsRadar" class="hotspots-radar">
+                <!-- 动态生成热点事件 -->
+              </div>
+              <div class="qualifying-events" id="qualifyingEvents">
+                符合市场创建条件的事件:
+                <span id="qualifyingCount">0</span>/<span id="totalHotspots"
+                  >0</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary Scenario -->
+          <div id="summary" class="scenario-panel">
+            <div class="scenario-header">
+              <h2><i class="fas fa-chart-pie"></i> 演示统计摘要</h2>
+              <div class="scenario-status" id="summaryStatus">等待完成</div>
+            </div>
+
+            <div class="summary-grid">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="summary-content">
+                  <div class="summary-number" id="totalEvents">0</div>
+                  <div class="summary-label">总AI生成事件</div>
+                </div>
+              </div>
+
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-robot"></i>
+                </div>
+                <div class="summary-content">
+                  <div class="summary-number" id="competitiveJudgments">0</div>
+                  <div class="summary-label">竞争性判断</div>
+                </div>
+              </div>
+
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="summary-content">
+                  <div class="summary-number" id="trendDerivatives">0</div>
+                  <div class="summary-label">趋势衍生市场</div>
+                </div>
+              </div>
+
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-globe"></i>
+                </div>
+                <div class="summary-content">
+                  <div class="summary-number" id="hotspotMarkets">0</div>
+                  <div class="summary-label">外部热点市场</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="success-rate">
+              <h3><i class="fas fa-check-circle"></i> 成功率</h3>
+              <div class="success-indicator">
+                <div class="success-bar">
+                  <div
+                    class="success-fill"
+                    id="successFill"
+                    style="width: 0%"
+                  ></div>
+                </div>
+                <div class="success-text" id="successRate">0%</div>
+              </div>
+            </div>
+
+            <div class="capabilities-showcase">
+              <h3><i class="fas fa-star"></i> 核心能力展示</h3>
+              <div class="capabilities-list">
+                <div class="capability-item">
+                  <i class="fas fa-check"></i>
+                  <span>智能竞争分析和判断生成</span>
+                </div>
+                <div class="capability-item">
+                  <i class="fas fa-check"></i>
+                  <span>高级趋势检测和衍生市场创建</span>
+                </div>
+                <div class="capability-item">
+                  <i class="fas fa-check"></i>
+                  <span>外部数据监控和热点事件捕获</span>
+                </div>
+                <div class="capability-item">
+                  <i class="fas fa-check"></i>
+                  <span>多模式集成和资源优化</span>
+                </div>
+                <div class="capability-item">
+                  <i class="fas fa-check"></i>
+                  <span>复杂订单簿流动性提供</span>
+                </div>
+                <div class="capability-item">
+                  <i class="fas fa-check"></i>
+                  <span>基于信心度的风险管理决策</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>🎯 黑客松价值主张</h4>
+            <ul>
+              <li>无外部API依赖 - 完全自包含演示</li>
+              <li>通过高级模拟实现真实AI行为</li>
+              <li>生产就绪架构，全面测试</li>
+              <li>专注气候的真实应用场景</li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>🚀 技术特色</h4>
+            <ul>
+              <li>三种AI模式同时运行</li>
+              <li>智能模拟引擎</li>
+              <li>多市场类型支持</li>
+              <li>实时可视化展示</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Ceres Protocol - AI驱动的气候预测市场</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">AI正在初始化...</div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
