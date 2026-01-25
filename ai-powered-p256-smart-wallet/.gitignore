@@ -1,0 +1,40 @@
+# Frontend dependencies
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.DS_Store
+frontend/*.log
+frontend/.env
+frontend/.env*.local
+frontend/package-lock.json
+
+# Backend dependencies
+backend/bin/
+backend/tmp/
+backend/*.exe
+backend/*.log
+backend/.env
+backend/server
+backend/setup_db
+backend/*.pid
+frontend/*.pid
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Smart contracts
+contracts/node_modules/
+contracts/cache/
+contracts/artifacts/
+contracts/typechain-types/
+contracts/.env
+contracts/*.log
