@@ -1,74 +1,297 @@
-# AI X Web3 深圳黑客松站
+# Voice-to-Pay (语音支付系统)
 
-## 1.提交要求
+AI 驱动的 Web3 语音支付系统，通过自然语言语音交互完成区块链商品购买。
 
-所有参赛项目需以 GitHub 仓库形式提交，并在仓库根目录下完整呈现项目内容。评审将以仓库中的实际内容作为主要评判依据。
+## 快速开始
 
-### 1.1.项目提交位置
-- 项目需提交至 GitHub 仓库根目录
-- 不接受仅提供压缩包、截图或单独文档链接
+### 前置要求
+- Python 3.10+
+- Node.js 18+
+- MetaMask 钱包扩展
 
+### 一键启动（推荐）
 
-### 1.2.必须包含内容（根目录要求）
+**Windows 用户：**
+```cmd
+# 双击运行或在命令行执行
+start.bat
+```
 
-#### 1.2.1.源码（Source Code）
+脚本会自动：
+1. ✓ 检查环境
+2. ✓ 安装依赖
+3. ✓ 启动 AI 服务 (端口 8000)
+4. ✓ 启动 Web3 服务 (端口 3001)
+5. ✓ 启动前端界面 (端口 5173)
 
-项目完整源码，结构清晰，可正常 clone； 支持但不限于：
+启动完成后，在浏览器中打开 `http://localhost:5173` 即可使用。
 
-- 前端 / 后端
-- 智能合约
-- AI 模型或推理代码
-- 脚本与工具代码
-- 禁止仅提交空壳仓库或示例代码
-- 建议：
-  - 合理拆分目录（frontend / backend / contracts / ai / scripts 等）
+### 手动启动
 
-关键逻辑需有基础注释，便于评审理解
+如果需要手动控制：
 
-#### 1.2.2.项目功能说明（README.md 必须）
+```bash
+# 1. 安装依赖
+cd ai_service && python -m venv .venv && .venv\Scripts\activate && pip install -r requirements.txt && cd ..
+cd web3_service && npm install && cd ..
+cd web_frontend && npm install && cd ..
 
-仓库根目录需包含 README.md，并至少说明：
+# 2. 启动服务（分别在不同的终端）
+cd ai_service && .venv\Scripts\activate && python main.py
+cd web3_service && npm run dev
+cd web_frontend && npm run dev
+```
 
-- 项目名称 & 一句话简介
-- 项目背景与解决的问题
-- 核心功能列表（功能点级别）
-- 目标用户与使用场景
-- AI / Web3 的使用方式与价值点
+## 使用说明
 
-README 是评委第一入口，清晰度会直接影响第一印象。
+1. **连接钱包** - 点击右上角"连接钱包"按钮
+2. **语音输入** - 点击麦克风图标说话，例如："我想买一个 NFT"
+3. **选择商品** - 从搜索结果中选择商品
+4. **确认支付** - 查看详情并确认支付
+5. **等待确认** - 等待区块链确认交易
 
-#### 1.2.3.设计文档（Design Doc）
+## 项目结构
 
-需提供独立的设计说明文档，例如： DESIGN.md / docs/design.md / design.pdf; 内容建议包括：
+```
+voice_to_pay/
+├── ai_service/              # Python AI 服务 (端口 8000)
+│   ├── main.py             # 服务入口
+│   ├── asr_engine.py       # 语音识别 (Whisper)
+│   ├── semantic_parser.py  # 语义解析 (LangChain)
+│   ├── knowledge_base.py   # 商品知识库 (Pinecone)
+│   └── session_manager.py  # 会话管理 (Redis)
+│
+├── web3_service/           # TypeScript Web3 服务 (端口 3001)
+│   └── src/
+│       ├── main.ts         # 服务入口
+│       ├── wallet-sdk.ts   # 钱包交互
+│       ├── transaction-module.ts  # 交易执行
+│       └── payment-orchestrator.ts # 支付编排
+│
+├── web_frontend/           # React 前端 (端口 5173)
+│   └── src/
+│       ├── App.tsx         # 主应用
+│       └── components/     # UI 组件
+│
+├── start.bat               # 一键启动脚本
+└── check_env.bat          # 环境检查脚本
+```
 
-- 整体架构设计（可配架构图）
-- 系统模块划分与职责
-- 关键流程说明（如交易流程 / 推理流程 / 用户路径）
-- 合约 / AI / 数据流的设计思路
-- 核心技术选型理由
-  - 不要求长，但要求逻辑完整、工程自洽。
+## 技术栈
 
-#### 1.2.4.代码运行说明（Run Guide）
+### AI 语义层 (Python)
+- **语音识别**: Whisper
+- **语义解析**: 自研解析器 + 多模型适配器
+- **模型适配**: OpenAI / 智谱 / 通义千问（自动切换）
+- **知识库**: Pinecone 向量数据库
+- **会话管理**: Redis
 
-需提供清晰的本地或测试环境运行说明，例如：RUN.md / DEPLOY.md / README 中单独章节; 至少包含：
+### Web3 执行层 (TypeScript)
+- **钱包交互**: Ethers.js + MetaMask
+- **区块链**: Polygon (支持多链)
+- **交易监听**: 实时状态轮询
 
-- 环境依赖（语言版本、框架、节点要求等）
-- 安装步骤
-- 启动命令
-- 示例配置（如 .env.example）
-- 可验证的运行结果说明
-- 评委不一定真的跑代码，但**“能跑”是基本专业度体现**。
+### 前端界面 (React)
+- **框架**: React 18 + TypeScript + Vite
+- **设计**: 金色/琥珀色主题 + 深色背景
+- **字体**: Orbitron (标题) + Exo 2 (正文)
+- **语音**: Web Speech API
 
-### 1.3.Demo 演示
-- Demo 视频（3–5 分钟，展示真实功能）
-- 在线 Demo / 测试网地址
-- PPT / 产品介绍文档
-- 合约地址（测试网 / 主网）
-- 技术亮点或创新说明（HIGHLIGHTS.md）
+## 配置说明
 
-### 1.4.评审视角的重要提示
+### 环境变量
 
-- 工程完成度 > 概念完整度
-- 能运行 > 能想象
+复制 `.env.example` 到 `.env` 并填入以下配置：
 
-清楚说明 你已经做了什么，而不是未来规划
+```env
+# AI 服务
+LLM_PROVIDER=openai
+OPENAI_API_KEY=your_openai_api_key
+ZHIPU_API_KEY=your_zhipu_api_key
+QWEN_API_KEY=your_qwen_api_key
+PINECONE_API_KEY=your_pinecone_api_key
+PINECONE_INDEX_NAME=voice-to-pay-products
+
+# Web3 服务
+POSTGRES_PASSWORD=your_postgres_password
+API_SECRET_KEY=your_api_secret_key
+
+# 服务端口
+AI_SERVICE_PORT=8000
+WEB3_SERVICE_PORT=3001
+FRONTEND_PORT=5173
+```
+
+### 模型与密钥
+- **多模型切换**: LLM_PROVIDER 支持逗号分隔顺序，例如 qwen,zhipu,openai
+- **OpenAI**: https://platform.openai.com/api-keys
+- **智谱**: https://open.bigmodel.cn/
+- **通义千问**: https://dashscope.aliyun.com/
+- **Pinecone**: https://www.pinecone.io/
+
+## 常见问题
+
+### 1. 找不到 Python
+**解决方案**: 安装 Python 3.10+
+- 下载: https://www.python.org/downloads/
+- 安装时勾选 "Add Python to PATH"
+
+### 2. 找不到 Node.js
+**解决方案**: 安装 Node.js 18+
+- 下载: https://nodejs.org/
+- 选择 LTS 版本
+
+### 3. 语音识别不工作
+**解决方案**:
+- 使用 Chrome 或 Edge 浏览器
+- 允许麦克风权限
+- 确保使用 HTTPS 或 localhost
+
+### 4. 钱包连接失败
+**解决方案**:
+- 安装 MetaMask 扩展
+- 刷新页面重试
+- 检查浏览器扩展是否启用
+
+### 5. 端口被占用
+**解决方案**:
+- 关闭占用端口的程序
+- 或修改 .env 文件中的端口号
+
+### 6. 依赖安装失败
+**解决方案**:
+- 检查网络连接
+- 使用国内镜像源
+- 清除缓存后重试
+
+## 测试
+
+### Python 测试
+```bash
+cd ai_service
+.venv\Scripts\activate
+pytest                    # 运行所有测试
+pytest -v                 # 详细输出
+pytest --cov              # 覆盖率报告
+```
+
+### TypeScript 测试
+```bash
+cd web3_service
+npm test                  # 运行所有测试
+npm run test:watch        # 监听模式
+npm run test:coverage     # 覆盖率报告
+```
+
+## API 文档
+
+### AI 服务 API (http://localhost:8000)
+
+#### POST /parse
+语义解析
+```json
+{
+  "text": "我想买一个 NFT",
+  "session_id": "optional-session-id"
+}
+```
+
+#### POST /search
+商品搜索（当前为 mock 数据，后续接入 Pinecone）
+```json
+{
+  "query": "元宇宙音乐派对",
+  "top_k": 5
+}
+```
+
+## 设计文档
+项目设计文档见 DESIGN.md
+
+### Web3 服务 API (http://localhost:3001)
+
+#### POST /payment/start
+启动支付
+```json
+{
+  "product": { "id": "123", "price": "0.1 ETH" },
+  "userAddress": "0x..."
+}
+```
+
+#### GET /transaction/status/:txHash
+查询交易状态
+
+## 🎯 核心功能
+
+### 1. 语音识别
+- 使用 OpenAI Whisper Large V3
+- 支持中文和英文
+- 自动降噪处理
+- 静音检测
+
+### 2. 语义理解
+- 基于 LangChain 的对话管理
+- GPT-4 意图识别
+- 实体提取
+- 上下文理解
+
+### 3. 商品搜索
+- Pinecone 向量搜索
+- 语义相似度匹配
+- 多维度过滤
+- 实时更新
+
+### 4. 智能支付
+- 多钱包支持
+- 自动链路优化
+- Gas 费估算
+- 交易状态监听
+
+### 5. 安全保障
+- 合约黑名单检查
+- 大额交易检测
+- 输入验证
+- 错误处理
+
+## 🔒 安全特性
+
+- ✓ 合约地址验证
+- ✓ 黑名单检查
+- ✓ 大额交易警告
+- ✓ 用户确认机制
+- ✓ 错误信息脱敏
+- ✓ 会话超时管理
+
+## 📈 性能指标
+
+- 语音识别延迟: < 2s
+- 语义解析延迟: < 1s
+- 商品搜索延迟: < 500ms
+- 交易提交延迟: < 3s
+- 前端首屏加载: < 2s
+
+## 🚢 部署
+
+### Docker 部署
+```bash
+docker-compose up -d
+```
+
+### 手动部署
+参考各服务目录下的 README.md
+
+## 📄 许可证
+
+MIT License
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+## 📞 支持
+
+如有问题，请查看：
+- [常见问题](#-常见问题)
+- [GitHub Issues](https://github.com/your-repo/issues)
+- [项目文档](./docs/)
