@@ -3,9 +3,9 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { EventInfo, Orderbook } from "~~/components/event";
+import { EventInfo, OnChainOrderbook } from "~~/components/event";
 import { OrderList, TradePanel } from "~~/components/trade";
-import { useAuth } from "~~/hooks/useAuth";
+import { useAuth, useUserRole } from "~~/hooks";
 import type { Event } from "~~/types";
 
 interface OrderbookLevel {
@@ -27,7 +27,8 @@ export default function EventDetailPage() {
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { isAuthenticated, hasJoinedVendors, isLoading: authLoading, activeVendor } = useAuth();
+  const { isLoading: authLoading, activeVendor, token } = useAuth();
+  const { canAccessHome, isVendorOwner } = useUserRole();
 
   const eventId = params.eventId as string;
   const vendorIdParam = searchParams.get("vendor_id");
@@ -47,11 +48,16 @@ export default function EventDetailPage() {
 
   const vendorId = vendorIdParam ? parseInt(vendorIdParam) : activeVendor?.vendor_id;
 
+  // Check if current user owns this vendor
+  const isEventOwner = vendorId ? isVendorOwner(vendorId) : false;
+
   const fetchEventDetail = useCallback(async () => {
     if (!vendorId || !eventId) return;
 
     try {
-      const response = await fetch(`/api/events/${eventId}?vendor_id=${vendorId}`);
+      const response = await fetch(`/api/events/${eventId}?vendor_id=${vendorId}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      });
       const data = await response.json();
 
       if (!response.ok) {
@@ -67,12 +73,12 @@ export default function EventDetailPage() {
     } finally {
       setLoading(false);
     }
-  }, [vendorId, eventId]);
+  }, [vendorId, eventId, token]);
 
   useEffect(() => {
     if (authLoading) return;
 
-    if (!isAuthenticated || !hasJoinedVendors) {
+    if (!canAccessHome) {
       router.push("/join");
       return;
     }
@@ -82,7 +88,7 @@ export default function EventDetailPage() {
     // Set up polling for orderbook updates
     const interval = setInterval(fetchEventDetail, 10000);
     return () => clearInterval(interval);
-  }, [authLoading, isAuthenticated, hasJoinedVendors, router, fetchEventDetail]);
+  }, [authLoading, canAccessHome, router, fetchEventDetail]);
 
   const handleSelectPrice = (outcomeIndex: number) => (price: number, side: "buy" | "sell") => {
     setSelectedTrade({ price, side, outcomeIndex });
@@ -101,8 +107,19 @@ export default function EventDetailPage() {
     );
   }
 
-  if (!isAuthenticated || !hasJoinedVendors) {
-    return null;
+  if (!canAccessHome) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center py-12">
+          <div className="text-6xl mb-4">🔐</div>
+          <h3 className="text-lg font-semibold">Join a Dapp First</h3>
+          <p className="text-base-content/60 mt-2">You need to join a Dapp before you can view events.</p>
+          <Link href="/join" className="btn btn-primary mt-4">
+            Join with Invite Code
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
@@ -166,6 +183,16 @@ export default function EventDetailPage() {
         </ul>
       </div>
 
+      {/* Owner badge and management link */}
+      {isEventOwner && (
+        <div className="flex items-center gap-2 mb-4">
+          <span className="badge badge-primary">Your Event</span>
+          <Link href="/dapp" className="btn btn-xs btn-ghost">
+            Manage in Dashboard
+          </Link>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column - Event Info & Orderbooks */}
         <div className="lg:col-span-2 space-y-6">
@@ -176,8 +203,9 @@ export default function EventDetailPage() {
             <h2 className="text-xl font-bold mb-4">Order Books</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {orderbooks.map(ob => (
-                <Orderbook
+                <OnChainOrderbook
                   key={ob.outcome_index}
+                  eventId={event.event_id}
                   outcomeIndex={ob.outcome_index}
                   outcomeName={ob.outcome_name}
                   bids={ob.bids}

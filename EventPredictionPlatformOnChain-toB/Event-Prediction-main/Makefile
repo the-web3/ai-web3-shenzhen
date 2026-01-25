@@ -46,11 +46,11 @@ anvil :; anvil -m 'test test test test test test test test test test test junk' 
 
 NETWORK_ARGS := --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KEY) --broadcast
 NETWORK_SEPOLIA:= --rpc-url $(SEPOLIA_RPC_URL) --account devWallet --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) -vvvv
-NETWORK_ROOTHASH:= --rpc-url $(ROOTHASH_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast   -vvvv
+NETWORK_ROOTHASH:= --rpc-url $(RHS_TESTNET_RPC_URL) --private-key $(SEPOLIA_PRIV_KEY) --broadcast   -vvvv
 
 # ============ L2 部署配置 (推荐用于生产环境) ============
 # Arbitrum One (主网)
-NETWORK_ARBITRUM:= --rpc-url $(ARBITRUM_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast --verify --etherscan-api-key $(ARBISCAN_API_KEY) --verifier-url https://api.arbiscan.io/api -vvvv
+NETWORK_ARBITRUM:= --rpc-url $(ARBITRUM_RPC_URL) --private-key $(SEPOLIA_PRIV_KEY) --broadcast --verify --etherscan-api-key $(ARBISCAN_API_KEY) --verifier-url https://api.arbiscan.io/api -vvvv
 
 # Arbitrum Sepolia (测试网)
 NETWORK_ARBITRUM_SEPOLIA:= --rpc-url $(ARBITRUM_SEPOLIA_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast --verify --etherscan-api-key $(ARBISCAN_API_KEY) --verifier-url https://api-sepolia.arbiscan.io/api -vvvv
@@ -95,3 +95,26 @@ deploy-optimism:
 
 deploy-optimism-sepolia:
 	@forge script script/DeploySWToken.s.sol:DeploySWToken $(NETWORK_OPTIMISM_SEPOLIA)
+
+# ============ Prediction Market Deployment ============
+deploy-prediction-local:
+	@forge script script/Deploy.s.sol:Deploy --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KEY) --broadcast -vv
+
+deploy-prediction-sepolia:
+	@forge script script/Deploy.s.sol:Deploy $(NETWORK_SEPOLIA)
+
+deploy-prediction-roothash:
+	@forge script script/Deploy.s.sol:Deploy $(NETWORK_ROOTHASH)
+
+deploy-prediction-base-sepolia:
+	@forge script script/Deploy.s.sol:Deploy $(NETWORK_BASE_SEPOLIA)
+
+deploy-prediction-arbitrum-sepolia:
+	@forge script script/Deploy.s.sol:Deploy $(NETWORK_ARBITRUM_SEPOLIA)
+
+deploy-prediction-optimism-sepolia:
+	@forge script script/Deploy.s.sol:Deploy $(NETWORK_OPTIMISM_SEPOLIA)
+
+# Create deployments directory
+create-deployments-dir:
+	@mkdir -p deployments

@@ -1,8 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useAuth } from "~~/hooks/useAuth";
+import { type Address } from "viem";
+import { useAuth, useUserRole } from "~~/hooks";
+import { useEventPod, usePodFactory, useVendorPods } from "~~/hooks/contracts";
 import { EVENT_STATUS_LABELS, INVITE_STATUS_LABELS, formatAddress, formatDeadline } from "~~/lib/utils";
 import type { Event } from "~~/types";
 
@@ -21,7 +24,10 @@ interface InviteCode {
 
 export default function DappManagePage() {
   const router = useRouter();
-  const { isAuthenticated, isLoading: authLoading, joinedVendors, address } = useAuth();
+  const { isLoading: authLoading, joinedVendors, address, token, activeVendorId, setActiveVendor } = useAuth();
+  const { canAccessDapp } = useUserRole();
+  const { isReady: contractReady } = useVendorPods();
+  const { createEvent: createEventOnChain, settleEvent: settleEventOnChain, isMining } = useEventPod();
 
   const [activeTab, setActiveTab] = useState<"events" | "invites">("events");
   const [selectedVendorId, setSelectedVendorId] = useState<number | null>(null);
@@ -32,6 +38,11 @@ export default function DappManagePage() {
 
   // Filter vendors where user is the owner
   const ownedVendors = joinedVendors.filter(jv => jv.vendors.vendor_address.toLowerCase() === address?.toLowerCase());
+  const selectedVendor = ownedVendors.find(jv => jv.vendors.vendor_id === selectedVendorId)?.vendors;
+  const selectedVendorAddress = selectedVendor?.vendor_address as Address | undefined;
+  const selectedFeeRecipient = (selectedVendor?.fee_recipient || selectedVendor?.vendor_address) as Address | undefined;
+
+  const { registerVendor, isRegistering, isPodFactoryReady } = usePodFactory(selectedVendorAddress);
 
   // Select first owned vendor by default
   useEffect(() => {
@@ -40,12 +51,19 @@ export default function DappManagePage() {
     }
   }, [ownedVendors, selectedVendorId]);
 
+  useEffect(() => {
+    if (!selectedVendorId || selectedVendorId === activeVendorId) return;
+    setActiveVendor(selectedVendorId);
+  }, [selectedVendorId, activeVendorId, setActiveVendor]);
+
   const fetchEvents = useCallback(async () => {
     if (!selectedVendorId) return;
 
     setLoading(true);
     try {
-      const response = await fetch(`/api/dapp/events?vendor_id=${selectedVendorId}`);
+      const response = await fetch(`/api/dapp/events?vendor_id=${selectedVendorId}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      });
       const data = await response.json();
 
       if (!response.ok) {
@@ -67,7 +85,9 @@ export default function DappManagePage() {
 
     setLoading(true);
     try {
-      const response = await fetch(`/api/dapp/invite-codes?vendor_id=${selectedVendorId}`);
+      const response = await fetch(`/api/dapp/invite-codes?vendor_id=${selectedVendorId}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      });
       const data = await response.json();
 
       if (!response.ok) {
@@ -87,8 +107,9 @@ export default function DappManagePage() {
   useEffect(() => {
     if (authLoading) return;
 
-    if (!isAuthenticated) {
-      router.push("/");
+    // Not owner - redirect to apply page
+    if (!canAccessDapp) {
+      router.push("/apply");
       return;
     }
 
@@ -97,7 +118,7 @@ export default function DappManagePage() {
     } else {
       fetchInviteCodes();
     }
-  }, [authLoading, isAuthenticated, router, activeTab, fetchEvents, fetchInviteCodes]);
+  }, [authLoading, canAccessDapp, router, activeTab, fetchEvents, fetchInviteCodes]);
 
   // Create Event Modal State
   const [showCreateEvent, setShowCreateEvent] = useState(false);
@@ -110,14 +131,72 @@ export default function DappManagePage() {
   });
   const [creating, setCreating] = useState(false);
 
+  const handleRegisterOnChain = async () => {
+    if (!selectedVendorAddress || !selectedFeeRecipient) return;
+    if (!confirm("Register this vendor on-chain and create its Pod contracts?")) return;
+
+    try {
+      await registerVendor(selectedFeeRecipient);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Failed to register vendor on-chain");
+    }
+  };
+
   const handleCreateEvent = async () => {
     if (!selectedVendorId) return;
 
     setCreating(true);
     try {
+      // Try on-chain creation first if contract is ready
+      if (contractReady) {
+        const deadlineTimestamp = BigInt(Math.floor(new Date(newEvent.deadline).getTime() / 1000));
+        const settlementTimestamp = BigInt(Math.floor(new Date(newEvent.settlement_time).getTime() / 1000));
+        const outcomes = newEvent.outcomes.filter(o => o.trim()).map(name => ({ name, description: "" }));
+
+        const txHash = await createEventOnChain({
+          title: newEvent.title,
+          description: newEvent.description,
+          deadline: deadlineTimestamp,
+          settlementTime: settlementTimestamp,
+          outcomes,
+        });
+
+        if (txHash) {
+          // Also sync to database
+          try {
+            await fetch("/api/dapp/events", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                vendor_id: selectedVendorId,
+                ...newEvent,
+                tx_hash: txHash,
+              }),
+            });
+          } catch (syncErr) {
+            console.warn("Failed to sync event to database:", syncErr);
+          }
+
+          setShowCreateEvent(false);
+          setNewEvent({
+            title: "",
+            description: "",
+            deadline: "",
+            settlement_time: "",
+            outcomes: ["", ""],
+          });
+          fetchEvents();
+          return;
+        }
+      }
+
+      // Fallback to API-only creation
       const response = await fetch("/api/dapp/events", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({
           vendor_id: selectedVendorId,
           ...newEvent,
@@ -156,7 +235,10 @@ export default function DappManagePage() {
     try {
       const response = await fetch("/api/invite/generate", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({
           vendor_id: selectedVendorId,
           max_uses: 0, // Unlimited
@@ -184,7 +266,10 @@ export default function DappManagePage() {
     try {
       const response = await fetch("/api/invite/revoke", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({
           vendor_id: selectedVendorId,
           code,
@@ -211,9 +296,38 @@ export default function DappManagePage() {
 
     setSettlingEvent(eventId);
     try {
+      // Try on-chain settlement first if contract is ready
+      if (contractReady) {
+        const txHash = await settleEventOnChain(BigInt(eventId), outcomeIndex);
+
+        if (txHash) {
+          // Also sync to database
+          try {
+            await fetch(`/api/dapp/events/${eventId}/settle`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                vendor_id: selectedVendorId,
+                winning_outcome_index: outcomeIndex,
+                tx_hash: txHash,
+              }),
+            });
+          } catch (syncErr) {
+            console.warn("Failed to sync settlement to database:", syncErr);
+          }
+
+          fetchEvents();
+          return;
+        }
+      }
+
+      // Fallback to API-only settlement
       const response = await fetch(`/api/dapp/events/${eventId}/settle`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({
           vendor_id: selectedVendorId,
           winning_outcome_index: outcomeIndex,
@@ -242,8 +356,25 @@ export default function DappManagePage() {
     );
   }
 
-  if (!isAuthenticated) {
-    return null;
+  // Not authorized - show friendly message while redirecting
+  if (!canAccessDapp) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center py-12">
+          <div className="text-6xl mb-4">🔐</div>
+          <h3 className="text-lg font-semibold">Access Restricted</h3>
+          <p className="text-base-content/60 mt-2">This page is only accessible to Dapp owners.</p>
+          <div className="flex gap-2 justify-center mt-4">
+            <Link href="/apply" className="btn btn-primary">
+              Apply to Create a Dapp
+            </Link>
+            <Link href="/home" className="btn btn-ghost">
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (ownedVendors.length === 0) {
@@ -264,7 +395,14 @@ export default function DappManagePage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Dapp Management</h1>
+        <div className="flex items-center gap-3">
+          <h1 className="text-2xl font-bold">Dapp Management</h1>
+          {contractReady ? (
+            <span className="badge badge-success">On-chain</span>
+          ) : (
+            <span className="badge badge-warning">Off-chain</span>
+          )}
+        </div>
 
         {/* Vendor Selector */}
         {ownedVendors.length > 1 && (
@@ -281,6 +419,19 @@ export default function DappManagePage() {
           </select>
         )}
       </div>
+
+      {!contractReady && (
+        <div className="alert alert-warning mb-6">
+          <span>On-chain Pods are not linked yet. Actions will use the API until you activate on-chain.</span>
+          {isPodFactoryReady && selectedVendorAddress ? (
+            <button className="btn btn-sm btn-primary" onClick={handleRegisterOnChain} disabled={isRegistering}>
+              {isRegistering ? <span className="loading loading-spinner loading-xs"></span> : "Activate On-chain"}
+            </button>
+          ) : (
+            <span className="text-xs">PodFactory address is not configured.</span>
+          )}
+        </div>
+      )}
 
       {/* Tabs */}
       <div className="tabs tabs-boxed mb-6 w-fit">
@@ -354,7 +505,11 @@ export default function DappManagePage() {
                             {(event.status === 0 || event.status === 1) && (
                               <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-sm btn-ghost">
-                                  Settle
+                                  {settlingEvent === event.event_id || isMining ? (
+                                    <span className="loading loading-spinner loading-xs"></span>
+                                  ) : (
+                                    "Settle"
+                                  )}
                                 </label>
                                 <ul
                                   tabIndex={0}
@@ -364,7 +519,7 @@ export default function DappManagePage() {
                                     <li key={outcome.index}>
                                       <button
                                         onClick={() => handleSettleEvent(event.event_id, outcome.index)}
-                                        disabled={settlingEvent === event.event_id}
+                                        disabled={settlingEvent === event.event_id || isMining}
                                       >
                                         {outcome.name}
                                       </button>
@@ -455,7 +610,14 @@ export default function DappManagePage() {
       {showCreateEvent && (
         <div className="modal modal-open">
           <div className="modal-box">
-            <h3 className="font-bold text-lg mb-4">Create Event</h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-bold text-lg">Create Event</h3>
+              {contractReady ? (
+                <span className="badge badge-success badge-sm">On-chain</span>
+              ) : (
+                <span className="badge badge-warning badge-sm">Off-chain</span>
+              )}
+            </div>
 
             <div className="form-control mb-3">
               <label className="label">
@@ -549,9 +711,11 @@ export default function DappManagePage() {
               <button
                 className="btn btn-primary"
                 onClick={handleCreateEvent}
-                disabled={creating || !newEvent.title || !newEvent.deadline || newEvent.outcomes.some(o => !o)}
+                disabled={
+                  creating || isMining || !newEvent.title || !newEvent.deadline || newEvent.outcomes.some(o => !o)
+                }
               >
-                {creating ? <span className="loading loading-spinner loading-sm"></span> : "Create"}
+                {creating || isMining ? <span className="loading loading-spinner loading-sm"></span> : "Create"}
               </button>
             </div>
           </div>

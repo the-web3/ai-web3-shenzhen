@@ -5,56 +5,73 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { hardhat } from "viem/chains";
-import { Bars3Icon, Cog6ToothIcon, UserCircleIcon, WalletIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, Cog6ToothIcon, DocumentPlusIcon, ShieldCheckIcon, WalletIcon } from "@heroicons/react/24/outline";
 import { SignInButton } from "~~/components/auth";
 import { VendorSwitcher } from "~~/components/layout";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { useAuth, useUserRole } from "~~/hooks";
 import { useOutsideClick, useTargetNetwork } from "~~/hooks/scaffold-eth";
-import { useAuth } from "~~/hooks/useAuth";
 
 type HeaderMenuLink = {
   label: string;
   href: string;
   icon?: React.ReactNode;
-  requireAuth?: boolean;
-  requireVendor?: boolean;
-  requireAdmin?: boolean;
+  // Role requirements
+  requireMember?: boolean; // Must have joined a vendor
+  requireOwner?: boolean; // Must own a vendor
+  requireAdmin?: boolean; // Must be admin
+  // Hide conditions
+  hideIfOwner?: boolean; // Hide if user is already an owner
 };
 
 export const menuLinks: HeaderMenuLink[] = [
   {
     label: "Home",
     href: "/home",
-    requireVendor: true,
+    requireMember: true,
   },
   {
     label: "Portfolio",
     href: "/portfolio",
     icon: <WalletIcon className="h-4 w-4" />,
-    requireVendor: true,
+    requireMember: true,
+  },
+  {
+    label: "Apply",
+    href: "/apply",
+    icon: <DocumentPlusIcon className="h-4 w-4" />,
+    hideIfOwner: true, // Don't show if already an owner
   },
   {
     label: "Dapp Manage",
     href: "/dapp",
     icon: <Cog6ToothIcon className="h-4 w-4" />,
-    requireAuth: true,
+    requireOwner: true, // Only show for owners
   },
   {
     label: "Admin",
     href: "/admin",
-    icon: <UserCircleIcon className="h-4 w-4" />,
+    icon: <ShieldCheckIcon className="h-4 w-4" />,
     requireAdmin: true,
   },
 ];
 
 export const HeaderMenuLinks = () => {
   const pathname = usePathname();
-  const { isAuthenticated, hasJoinedVendors, isAdmin } = useAuth();
+  const { isMember, isOwner, isAdmin, isAuthenticated } = useUserRole();
 
   const filteredLinks = menuLinks.filter(link => {
+    // Check hide conditions first
+    if (link.hideIfOwner && isOwner) return false;
+
+    // Check requirements
     if (link.requireAdmin && !isAdmin) return false;
-    if (link.requireVendor && !hasJoinedVendors) return false;
-    if (link.requireAuth && !isAuthenticated) return false;
+    if (link.requireOwner && !isOwner) return false;
+    if (link.requireMember && !isMember) return false;
+
+    // For Apply link, only show if authenticated but not owner
+    if (link.href === "/apply" && !isAuthenticated) return false;
+
     return true;
   });
 
@@ -82,12 +99,29 @@ export const HeaderMenuLinks = () => {
 };
 
 /**
+ * Role badge component
+ */
+const RoleBadge = () => {
+  const { roleBadge, isAdmin, isOwner } = useUserRole();
+
+  if (!roleBadge) return null;
+
+  // Different colors for different roles
+  let badgeClass = "badge-neutral";
+  if (isAdmin) badgeClass = "badge-error";
+  else if (isOwner) badgeClass = "badge-primary";
+
+  return <span className={`badge badge-sm ${badgeClass}`}>{roleBadge}</span>;
+};
+
+/**
  * Site header
  */
 export const Header = () => {
   const { targetNetwork } = useTargetNetwork();
   const isLocalNetwork = targetNetwork.id === hardhat.id;
-  const { isConnected, isAuthenticated, hasJoinedVendors } = useAuth();
+  const { isConnected, isAuthenticated } = useAuth();
+  const { isMember, canAccessHome } = useUserRole();
 
   const burgerMenuRef = useRef<HTMLDetailsElement>(null);
   useOutsideClick(burgerMenuRef, () => {
@@ -111,7 +145,7 @@ export const Header = () => {
           </ul>
         </details>
         <Link
-          href={hasJoinedVendors ? "/home" : "/"}
+          href={canAccessHome ? "/home" : "/"}
           passHref
           className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0"
         >
@@ -128,9 +162,15 @@ export const Header = () => {
         </ul>
       </div>
       <div className="navbar-end grow mr-4 gap-2">
-        {isConnected && isAuthenticated && hasJoinedVendors && <VendorSwitcher />}
+        {/* Role Badge */}
+        {isConnected && isAuthenticated && <RoleBadge />}
+        {/* Vendor Switcher - only for members */}
+        {isConnected && isAuthenticated && isMember && <VendorSwitcher />}
+        {/* Sign In Button */}
         {isConnected && !isAuthenticated && <SignInButton />}
+        {/* Connect Wallet */}
         <RainbowKitCustomConnectButton />
+        {/* Faucet for local dev */}
         {isLocalNetwork && <FaucetButton />}
       </div>
     </div>

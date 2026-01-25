@@ -89,7 +89,11 @@ type IsContractDeclarationMissing<TYes, TNo> = typeof contractsData extends { [k
 
 type ContractsDeclaration = IsContractDeclarationMissing<GenericContractsDeclaration, typeof contractsData>;
 
-type Contracts = ContractsDeclaration[ConfiguredChainId];
+type Contracts = keyof ContractsDeclaration extends never
+  ? { [key: string]: GenericContract }
+  : ContractsDeclaration extends { [key: number]: infer V }
+    ? V
+    : { [key: string]: GenericContract };
 
 export type ContractName = keyof Contracts;
 
@@ -280,7 +284,7 @@ export type EventFilters<
     : {
         [Key in IsContractDeclarationMissing<
           any,
-          IndexedEventInputs<TContractName, TEventName>["name"]
+          NonNullable<IndexedEventInputs<TContractName, TEventName>["name"]>
         >]?: AbiParameterToPrimitiveType<Extract<IndexedEventInputs<TContractName, TEventName>, { name: Key }>>;
       }
 >;

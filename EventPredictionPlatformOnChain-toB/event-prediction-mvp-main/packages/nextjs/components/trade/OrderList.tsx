@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ORDER_SIDE_LABELS, ORDER_STATUS_LABELS, formatPrice, formatTokenAmount } from "~~/lib/utils";
+import { useAuthStore } from "~~/stores";
 import type { Order } from "~~/types";
 
 interface OrderListProps {
@@ -15,6 +16,7 @@ export function OrderList({ vendorId, eventId, refreshKey = 0 }: OrderListProps)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [cancellingId, setCancellingId] = useState<number | null>(null);
+  const token = useAuthStore(state => state.token);
 
   const fetchOrders = useCallback(async () => {
     try {
@@ -26,7 +28,12 @@ export function OrderList({ vendorId, eventId, refreshKey = 0 }: OrderListProps)
         params.set("event_id", eventId.toString());
       }
 
-      const response = await fetch(`/api/orders?${params.toString()}`);
+      const headers: HeadersInit = {};
+      if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
+
+      const response = await fetch(`/api/orders?${params.toString()}`, { headers });
       const data = await response.json();
 
       if (!response.ok) {
@@ -41,7 +48,7 @@ export function OrderList({ vendorId, eventId, refreshKey = 0 }: OrderListProps)
     } finally {
       setLoading(false);
     }
-  }, [vendorId, eventId]);
+  }, [vendorId, eventId, token]);
 
   useEffect(() => {
     fetchOrders();
@@ -50,8 +57,14 @@ export function OrderList({ vendorId, eventId, refreshKey = 0 }: OrderListProps)
   const handleCancel = async (orderId: number) => {
     setCancellingId(orderId);
     try {
+      const headers: HeadersInit = {};
+      if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
+
       const response = await fetch(`/api/orders/${orderId}?vendor_id=${vendorId}`, {
         method: "DELETE",
+        headers,
       });
 
       const data = await response.json();

@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "~~/lib/auth/jwt";
+import { getTokenFromRequest } from "~~/lib/auth/server";
 import { createAdminClient } from "~~/lib/supabase/server";
 import type { Vendor } from "~~/types";
 
 // GET /api/admin/vendors - Get all vendors
 export async function GET(request: NextRequest) {
   try {
-    const token = request.cookies.get("auth_token")?.value;
+    const token = getTokenFromRequest(request);
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }

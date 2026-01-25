@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAccount } from "wagmi";
 import { SignInButton } from "~~/components/auth";
@@ -14,7 +14,7 @@ interface VendorInfo {
 
 type ValidateStatus = "idle" | "loading" | "valid" | "invalid" | "already_joined";
 
-export default function JoinPage() {
+function JoinPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const codeFromUrl = searchParams.get("code") || "";
@@ -196,6 +196,27 @@ export default function JoinPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function JoinPageLoading() {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+      <div className="card w-full max-w-md bg-base-100 shadow-xl">
+        <div className="card-body items-center">
+          <span className="loading loading-spinner loading-lg"></span>
+          <p className="text-base-content/70">Loading...</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function JoinPage() {
+  return (
+    <Suspense fallback={<JoinPageLoading />}>
+      <JoinPageContent />
+    </Suspense>
   );
 }
 

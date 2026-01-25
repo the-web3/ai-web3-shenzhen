@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "~~/lib/auth/jwt";
+import { getTokenFromRequest } from "~~/lib/auth/server";
 import { createAdminClient } from "~~/lib/supabase/server";
 
 // POST /api/dapp/events/[eventId]/settle - Settle event
 export async function POST(request: NextRequest, { params }: { params: Promise<{ eventId: string }> }) {
   try {
     const { eventId } = await params;
-    const token = request.cookies.get("auth_token")?.value;
+    const token = getTokenFromRequest(request);
 
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

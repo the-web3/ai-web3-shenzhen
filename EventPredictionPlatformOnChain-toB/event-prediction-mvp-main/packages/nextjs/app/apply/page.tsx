@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "~~/hooks/useAuth";
+import Link from "next/link";
+import { useAuth, useUserRole } from "~~/hooks";
 
 export default function ApplyPage() {
-  const router = useRouter();
-  const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const { isLoading: authLoading, token } = useAuth();
+  const { isAuthenticated, isOwner } = useUserRole();
 
   const [vendorName, setVendorName] = useState("");
   const [description, setDescription] = useState("");
@@ -25,9 +25,16 @@ export default function ApplyPage() {
 
     setSubmitting(true);
     try {
+      const headers: Record<string, string> = {
+        "Content-Type": "application/json",
+      };
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       const response = await fetch("/api/admin/applications", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({
           vendor_name: vendorName.trim(),
           description: description.trim() || null,
@@ -56,17 +63,46 @@ export default function ApplyPage() {
     );
   }
 
+  // Not authenticated - show sign in prompt
   if (!isAuthenticated) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="text-center py-12">
+          <div className="text-6xl mb-4">🔐</div>
           <h3 className="text-lg font-semibold">Sign In Required</h3>
           <p className="text-base-content/60 mt-2">Please connect your wallet and sign in to apply for a dapp.</p>
+          <Link href="/join" className="btn btn-primary mt-4">
+            Connect Wallet
+          </Link>
         </div>
       </div>
     );
   }
 
+  // Already an owner - show message and redirect
+  if (isOwner) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-md mx-auto text-center py-12">
+          <div className="text-6xl mb-4">🏢</div>
+          <h3 className="text-lg font-semibold">You Already Own a Dapp</h3>
+          <p className="text-base-content/60 mt-2">
+            You already have a Dapp. Go to your management dashboard to create events and manage your dapp.
+          </p>
+          <div className="flex gap-2 justify-center mt-4">
+            <Link href="/dapp" className="btn btn-primary">
+              Go to Dapp Management
+            </Link>
+            <Link href="/home" className="btn btn-ghost">
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Success state
   if (success) {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -76,14 +112,15 @@ export default function ApplyPage() {
           <p className="text-base-content/60 mt-2">
             Your application has been submitted and is pending review. You will be notified once it&apos;s approved.
           </p>
-          <button className="btn btn-primary mt-4" onClick={() => router.push("/home")}>
+          <Link href="/home" className="btn btn-primary mt-4">
             Back to Home
-          </button>
+          </Link>
         </div>
       </div>
     );
   }
 
+  // Show application form
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-md mx-auto">

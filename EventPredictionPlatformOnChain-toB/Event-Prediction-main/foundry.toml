@@ -23,7 +23,10 @@ cse = true  # 公共子表达式消除
 constantOptimizer = true  # 常量优化
 yul = true  # Yul 优化器
 
-fs_permissions = [{ access = "read-write", path = "./" }]
+fs_permissions = [
+    { access = "read-write", path = "./" },
+    { access = "read-write", path = "./deployments" }
+]
 
 # ============ 测试配置 ============
 [profile.test]

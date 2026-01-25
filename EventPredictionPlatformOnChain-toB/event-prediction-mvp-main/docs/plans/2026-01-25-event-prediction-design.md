@@ -1161,85 +1161,57 @@ export async function createServerSupabaseClient() {
 
 ---
 
-## 10. 实现阶段划分
+## 10. 实现状态与对齐计划
 
-### Phase 1: 基础设施 (Day 1)
+说明: [x] = 已实现, [ ] = 待完成, [~] = 部分实现(需对齐 PRD)
 
-- [ ] 配置 Supabase 连接
-- [ ] 创建数据库表（运行 SQL）
-- [ ] 设置环境变量
-- [ ] 复制合约 ABI
-- [ ] 实现认证系统 (/api/auth/*)
-- [ ] 创建 Zustand stores
-- [ ] 实现 AuthGuard 组件
+### 10.1 已实现(仓库内可见)
 
-### Phase 2: 邀请码与加入流程 (Day 1-2)
+- [x] Supabase client/server 配置 (`packages/nextjs/lib/supabase/*`)
+- [x] 认证系统 (/api/auth/*, `packages/nextjs/hooks/useAuth.ts`)
+- [x] Zustand auth store (`packages/nextjs/stores/useAuthStore.ts`)
+- [x] /join 页面 + /api/invite/* API
+- [x] VendorSwitcher 组件
+- [x] /home, /event/[id], /portfolio, /dapp, /admin 页面
+- [x] /api/events*, /api/orders*, /api/portfolio, /api/admin/* 基础接口
+- [x] 合约 hooks (useEventPod/useOrderBookPod/useFundingPod/useFeeVaultPod)
 
-- [ ] /join 页面
-- [ ] /api/invite/* API
-- [ ] VendorSwitcher 组件
-- [ ] 加入成功后的重定向逻辑
+### 10.2 需要对齐 PRD 的部分
 
-### Phase 3: 事件列表与详情 (Day 2)
+- [ ] API 统一校验 (user_address + vendor_id) 覆盖 /api/events*, /api/portfolio, /api/orders 等
+- [ ] /dapp 相关请求统一携带 Authorization (events/invite-codes/generate/revoke/settle)
+- [ ] /event/[id] 增加"我的持仓"模块
+- [ ] 交易面板展示预估手续费
+- [ ] 移除撤单功能 (UI + /api/orders/[orderId] DELETE)
+- [ ] 状态定义/文案对齐 PRD (event status, invite status)
+- [ ] /dapp 费用池管理 UI (pending_fee/pushed_fee/withdraw)
+- [ ] Vendor 切换 toast 提示
+- [ ] 邀请码 hash + depleted 状态 (PRD 建议, 可选)
+- [ ] 页面级访问控制统一 (AuthGuard 或统一重定向规则)
 
-- [ ] /home 页面
-- [ ] EventCard, EventList 组件
-- [ ] /event/[id] 页面
-- [ ] EventDetail, OutcomeCard 组件
-- [ ] /api/events/* API
+### 10.3 外部依赖/环境
 
-### Phase 4: 交易功能 (Day 2-3)
-
-- [ ] TradePanel 组件
-- [ ] 合约 hooks (useOrderBookPod, useFundingPod)
-- [ ] 下单流程（合约调用 + DB 同步）
-- [ ] OrderList 组件
-- [ ] 撤单功能
-
-### Phase 5: Portfolio (Day 3)
-
-- [ ] /portfolio 页面
-- [ ] BalanceCard, DepositModal, WithdrawModal
-- [ ] PositionList 组件
-- [ ] 交易历史
-
-### Phase 6: Vendor 管理端 (Day 3-4)
-
-- [ ] /dapp 页面布局
-- [ ] EventManager + CreateEventModal
-- [ ] InviteManager (生成/撤销邀请码)
-- [ ] FeeManager (费用池管理)
-
-### Phase 7: Admin 管理端 (Day 4)
-
-- [ ] /admin 页面
-- [ ] ApplicationList 组件
-- [ ] 审核流程
-
-### Phase 8: 优化与测试 (Day 4-5)
-
-- [ ] 错误处理优化
-- [ ] Loading 状态
-- [ ] 响应式布局调整
-- [ ] E2E 测试关键流程
+- [ ] Supabase 表结构与 RLS 在服务端配置
+- [ ] .env 变量 (Supabase, JWT)
+- [ ] 合约地址与 ABI 更新
 
 ---
 
 ## 11. 验收清单 (Demo Checklist)
 
-参考 PRD Section 8：
+参考 PRD Section 8，按当前实现状态标注：
 
-1. [ ] 通过邀请码链接进入 `/join`
-2. [ ] 连接钱包 → 签名 → 加入 Dapp 成功 → 自动进入 `/home`
-3. [ ] 首页看到仅该 vendor 的事件列表
+1. [x] 通过邀请码链接进入 `/join`
+2. [x] 连接钱包 → 签名 → 加入 Dapp 成功 → 自动进入 `/home`
+3. [x] 首页看到仅该 vendor 的事件列表
 4. [ ] 进入事件页下单，Partial 时能在"我的订单"看到 remaining
-5. [ ] 可以撤销 Pending/Partial 订单
-6. [ ] Portfolio 显示该 vendor 的余额/持仓/流水
-7. [ ] 切换到另一个已加入 vendor：数据完全切换且互不影响
-8. [ ] Vendor 端生成/撤销邀请码
-9. [ ] Vendor 端创建事件、取消事件
+5. [ ] 不支持撤单，Partial remaining 留在订单簿并提示
+6. [~] Portfolio 显示该 vendor 的余额/持仓/流水 (缺交易流水)
+7. [~] 切换到另一个已加入 vendor：数据完全切换且互不影响 (缺 toast 提示)
+8. [~] Vendor 端生成/撤销邀请码 (请求需补授权)
+9. [~] Vendor 端创建事件、取消事件 (缺取消事件)
 10. [ ] Vendor 端查看/提取费用池
-11. [ ] Admin 端审核 Dapp 申请
+11. [~] Admin 端审核 Dapp 申请 (接口/权限已在, 需联调数据)
 
 ---
 
