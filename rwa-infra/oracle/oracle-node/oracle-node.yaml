@@ -1,0 +1,41 @@
+cp_chain_rpc: "http://rpcgateway:8545"
+cp_chain_id: 86606
+cp_chain_starting_height: 619636
+block_step: 100
+oracle_manager_address: "0x3907Eb2835fcca5E7874fea37B5D56312EeEf5b0"
+bls_registry_address: "0xdfC8afd6B3d093cf63a93880f042F6B7Ea2FfB13"
+cpusdt_pod_address: "0xd9FAcC96Fc13C3AAd9e07a8402722a8A3f356830"
+caller: "0x11b98C8FCf47935ab15b515AeC6800D380dE1Ab9"
+#private_key: "ee7a57c20f3f750b631b38f072e9fa2b26ee36b734d1f6f291d68fa19d215c20"
+
+manager:
+  level_db_folder: "manager_storage"
+  ws_addr: "tcp://0.0.0.0:8081"
+  http_addr: "127.0.0.1:34567"
+  sign_timeout: "3s"
+  submit_price_time: "1s"
+  node_members: "0x155c8B4995b43C951016eb381478714b1e7f0e83, 0x7C9a9806BA142043076d292fceD12a8e46E60184, 0x11b98C8FCf47935ab15b515AeC6800D380dE1Ab9"
+
+node:
+  level_db_folder: "/app/data/node_storage1"
+  key_path: "/app/data/bls/key.store1"
+  ws_addr: "tcp://0.0.0.0:8081"
+  sign_timeout: "2s"
+  wait_scan_interval: "2s"
+
+  # 新增：通用数据源配置（RWA 资产价格）
+  data_source:
+    asset_type: "stock"                                    # 资产类型
+    asset_name: "贵州茅台"                                  # 资产名称
+    url: "http://localhost:8888/api/price?symbol=maotai"   # Mock Server URL
+    method: "GET"                                          # HTTP 方法
+    price_path: "data.price"                               # JSONPath 提取价格
+    # 或使用 bid/ask 平均值：
+    # bid_path: "data.bid"
+    # ask_path: "data.ask"
+    decimals: 6                                            # 价格精度
+
+  # 旧配置（已废弃，保留兼容性）
+  exchange_config:
+    base_http_url: ""
+    base_ws_url: ""

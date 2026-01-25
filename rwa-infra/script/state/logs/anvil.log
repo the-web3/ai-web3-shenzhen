@@ -1,0 +1,3029 @@
+
+[32m
+                             _   _
+                            (_) | |
+      __ _   _ __   __   __  _  | |
+     / _` | | '_ \  \ \ / / | | | |
+    | (_| | | | | |  \ V /  | | | |
+     \__,_| |_| |_|   \_/   |_| |_|
+[0m
+    0.2.0 (fdd321b 2024-10-15T00:21:13.119600000Z)
+    [32mhttps://github.com/foundry-rs/foundry[0m
+
+Available Accounts
+==================
+
+(0) 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 (10000.000000000000000000 ETH)
+(1) 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 (10000.000000000000000000 ETH)
+(2) 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC (10000.000000000000000000 ETH)
+(3) 0x90F79bf6EB2c4f870365E785982E1f101E93b906 (10000.000000000000000000 ETH)
+(4) 0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65 (10000.000000000000000000 ETH)
+(5) 0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc (10000.000000000000000000 ETH)
+(6) 0x976EA74026E726554dB657fA54763abd0C3a0aa9 (10000.000000000000000000 ETH)
+(7) 0x14dC79964da2C08b23698B3D3cc7Ca32193d9955 (10000.000000000000000000 ETH)
+(8) 0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f (10000.000000000000000000 ETH)
+(9) 0xa0Ee7A142d267C1f36714E4a8F75612F20a79720 (10000.000000000000000000 ETH)
+
+Private Keys
+==================
+
+(0) 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+(1) 0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d
+(2) 0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a
+(3) 0x7c852118294e51e653712a81e05800f419141751be58f605c371e15141b007a6
+(4) 0x47e179ec197488593b187f80a00eb0da91f1b9d0b13f8733639f19c30a34926a
+(5) 0x8b3a350cf5c34c9194ca85829a2df0ec3153be0318b5e2d3348e872092edffba
+(6) 0x92db14e403b83dfe3df233f83dfa3a0d7096f21ca9b0d6d6b8d88b2b4ec1564e
+(7) 0x4bbbf85ce3377467afe5d46f804f221813b2bb87f24d81f60f1fcdbf7cbf4356
+(8) 0xdbda1821b80551c9d65939329250298aa3472ba22feea921c0cf5d620ea67b97
+(9) 0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6
+
+Wallet
+==================
+Mnemonic:          test test test test test test test test test test test junk
+Derivation path:   m/44'/60'/0'/0/
+
+
+Chain ID
+==================
+
+[32m31337[0m
+
+Base Fee
+==================
+
+[32m1000000000[0m
+
+Gas Limit
+==================
+
+[32m30000000[0m
+
+Genesis Timestamp
+==================
+
+[32m1769225305[0m
+
+Listening on 127.0.0.1:8545
+eth_blockNumber
+eth_getTransactionCount
+eth_getCode
+eth_blockNumber
+eth_gasPrice
+eth_chainId
+eth_getBlockByNumber
+eth_blockNumber
+eth_gasPrice
+eth_getBlockByNumber
+eth_chainId
+eth_getBalance
+eth_getTransactionCount
+eth_getCode
+eth_getTransactionCount
+eth_getCode
+eth_getBalance
+eth_getTransactionCount
+eth_getCode
+eth_getBalance
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getBalance
+eth_getTransactionCount
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_chainId
+eth_chainId
+eth_chainId
+eth_feeHistory
+eth_feeHistory
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x94fec128c05873cd42ff8cd6cef91facc2aa88ded61c3da7bcd34493d712e78c
+    Contract created: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+    Gas used: 79145
+
+    Block Number: 1
+    Block Hash: 0x537fe5e18ac746b1e11aa4d3043f49f3efc7b868ada259711db58a13802f6785
+    Block Time: "Sat, 24 Jan 2026 03:28:30 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0xa469970ff01226f74092223d7c56f0c117ed18a593b5b137b0f3a24717ecdfc6
+    Contract created: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+    Gas used: 663315
+
+    Block Number: 2
+    Block Hash: 0x154597058bb7a9b5f974743941b5ab07bd40db73cce6efe93e99d3d1c2355131
+    Block Time: "Sat, 24 Jan 2026 03:28:31 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0xcf2d13e7ef8875ab3455e6426a8ce1f045ecad00d9c42df3f43e1e207bc44504
+    Contract created: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+    Gas used: 2671186
+
+    Block Number: 3
+    Block Hash: 0x0d6fb35a3e3531438dc18337fe5721eb98d91a86415e5f6a583f7d196df96459
+    Block Time: "Sat, 24 Jan 2026 03:28:32 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0xc7e709d17b3fd0d8a61e0ea301dfade8036939238bb4300ebb9e55d071c2c120
+    Contract created: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+    Gas used: 663315
+
+    Block Number: 4
+    Block Hash: 0xe220eb78377277a60ccc1e17237679c1ce6d37a83963bfdc8f44176657900aa8
+    Block Time: "Sat, 24 Jan 2026 03:28:33 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0xad1e13f93507783b9a0c5a669cc0ef519794f88a2eecd0a748dbd04296b5e624
+    Contract created: 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9
+    Gas used: 1377274
+
+    Block Number: 5
+    Block Hash: 0xfe6a4b84c99ef745ec43f63a61df6c6604e7754b7d9d1b702b71e615fa874b13
+    Block Time: "Sat, 24 Jan 2026 03:28:34 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x29789acaf9a3f88c54dadfaf33e36e300d868472d153f0d5bc33ca40a21391c0
+    Gas used: 178272
+
+    Block Number: 6
+    Block Hash: 0xea347da49284ee4fb305bc897b3b34d934eb0d14a8fe9bdbbdb6781218842ed9
+    Block Time: "Sat, 24 Jan 2026 03:28:35 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x6ecb5c50575a6428d37a92116b82669f7133e45fb42c852c2fa673c188089140
+    Gas used: 135728
+
+    Block Number: 7
+    Block Hash: 0x7e34f29ca6312fe47c958bc2116d6ee910f2443fb48deee517c41344ae332a64
+    Block Time: "Sat, 24 Jan 2026 03:28:36 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_getCode
+eth_blockNumber
+eth_gasPrice
+eth_chainId
+eth_getBlockByNumber
+eth_blockNumber
+eth_gasPrice
+eth_chainId
+eth_getBlockByNumber
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getCode
+eth_getBalance
+eth_getTransactionCount
+eth_getCode
+eth_getBalance
+eth_getTransactionCount
+eth_getCode
+eth_getBalance
+eth_getTransactionCount
+eth_getCode
+eth_getBalance
+eth_getTransactionCount
+eth_getCode
+eth_getBalance
+eth_getTransactionCount
+eth_getCode
+eth_getBalance
+eth_getTransactionCount
+eth_getCode
+eth_getBalance
+eth_getTransactionCount
+eth_getCode
+eth_getBalance
+eth_getTransactionCount
+eth_getStorageAt
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getStorageAt
+eth_getStorageAt
+eth_chainId
+eth_chainId
+eth_chainId
+eth_feeHistory
+eth_feeHistory
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0xd5afe0c6d9a9ad66a8d70e407a81c6716f994615451f3cfe9ca3bb3a8b526320
+    Contract created: 0xa513E6E4b8f2a923D98304ec87F64353C4D5C853
+    Gas used: 79145
+
+    Block Number: 8
+    Block Hash: 0x19124f35528bb449b39a97d4656284092b8ce88d1f531a0e6231ed7489d9c98a
+    Block Time: "Sat, 24 Jan 2026 03:28:37 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x535d64eb73137148282fbfee60d6d0b57caf0672d2312e793521eff29155cb06
+    Contract created: 0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6
+    Gas used: 663315
+
+    Block Number: 9
+    Block Hash: 0x30e2e0e0260787bd50d554d26c6ff59626d8dfd21bd211801c4b50ff63b21c21
+    Block Time: "Sat, 24 Jan 2026 03:28:38 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0xfc4c46784502f19c18f0c4a6f1e0ee02c78e897ff5e99b0ffe3a4ec8417c84cc
+    Contract created: 0x8A791620dd6260079BF849Dc5567aDC3F2FdC318
+    Gas used: 997227
+
+    Block Number: 10
+    Block Hash: 0x4fcbb9f5080e95ade9399abba2ce0d03cc547200fc316fb85c60cd3335a3cfd2
+    Block Time: "Sat, 24 Jan 2026 03:28:39 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0xf92500d945aa4013e2ea5786c4ccae929110cbeac89b0dc9bbf6b5d5b7eef3ad
+    Gas used: 110795
+
+    Block Number: 11
+    Block Hash: 0x61b9d379a495f0895884f2455875ca3b1792afe8318de410bbeaf5ba5d82e27e
+    Block Time: "Sat, 24 Jan 2026 03:28:40 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x6ea07dd2fa00929c485b7e56971b948f7192f459a6136fb3ea6377a0da7d1594
+    Gas used: 52182
+
+    Block Number: 12
+    Block Hash: 0xa8dfd6cec1b08707ea63ac1548ff25d966e904bb1f72733a091035aa36f31e01
+    Block Time: "Sat, 24 Jan 2026 03:28:41 +0000"
+
+eth_getTransactionReceipt
+eth_chainId
+eth_feeHistory
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0xa1dab6eb78821218fb85550bf6a0a0f75854b4c1054009dca067a9e505973c43
+    Gas used: 51393
+
+    Block Number: 13
+    Block Hash: 0x3167bb42de41a258b7acc83b0fcf78f60eb122ef61909aa19bb2bc6c764d4702
+    Block Time: "Sat, 24 Jan 2026 03:28:42 +0000"
+
+eth_blockNumber
+eth_getTransactionReceipt
+eth_getBlockByNumber
+eth_chainId
+eth_feeHistory
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+eth_blockNumber
+
+    Transaction: 0x96f21347e566f1a3f7297ad0390f3b3ee9f813fd3566300dc547d3f78cbbd265
+    Gas used: 51393
+
+    Block Number: 14
+    Block Hash: 0xf879b3644d9de516a4c962d4e6c873310beb5a66aa05afb36ab3bac46568c41f
+eth_getTransactionReceipt
+    Block Time: "Sat, 24 Jan 2026 03:28:43 +0000"
+
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_getTransactionReceipt
+eth_chainId
+eth_feeHistory
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+eth_blockNumber
+
+    Transaction: 0x20332f76168b8345f7f42473c44aa3cb9ab336fdf51099ee3caeb206a8a17f9c
+    Gas used: 51393
+
+eth_getTransactionReceipt
+    Block Number: 15
+    Block Hash: 0xcd7f55a647fbca3ee2fa44e4adabc9a63226dd5cb0f1a29ca1829164a4c821a5
+    Block Time: "Sat, 24 Jan 2026 03:28:44 +0000"
+
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_getTransactionReceipt
+eth_chainId
+eth_feeHistory
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+eth_blockNumber
+
+    Transaction: 0x6bed9aa70c4a711d064b0bf03894b916986afdff6475b2559abdd65df0264bc4
+    Gas used: 51334
+
+    Block Number: 16
+    Block Hash: 0x79e6b25934134b710a5c3bed349480fa1666f9178e61a9aaf4f80e79817b37a9
+    Block Time: "Sat, 24 Jan 2026 03:28:45 +0000"
+
+eth_getTransactionReceipt
+eth_getBlockByNumber
+eth_chainId
+eth_feeHistory
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+eth_blockNumber
+
+    Transaction: 0xbbe834e4fe87d510e895c4134ec8365da5a659f0fc5eddff9146e76afef19c04
+    Gas used: 51334
+
+    Block Number: 17
+    Block Hash: 0x35076f27e772df9ca6ba78c35d8af9759277e06bc815023721e8d5dee48935fa
+    Block Time: "Sat, 24 Jan 2026 03:28:46 +0000"
+
+eth_getTransactionReceipt
+eth_getBlockByNumber
+eth_chainId
+eth_feeHistory
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+eth_blockNumber
+
+    Transaction: 0xcf87ade97162d4030240d9d69da56438fccfc81e6cf873de3fd03ec8224eb507
+    Gas used: 51334
+
+    Block Number: 18
+    Block Hash: 0x853616bcde41bf8fdedcf421f1a198b0a0f81a4d71119f82e035e5df2360eb00
+    Block Time: "Sat, 24 Jan 2026 03:28:47 +0000"
+
+eth_getTransactionReceipt
+eth_getBlockByNumber
+eth_blockNumber
+eth_call
+eth_getBlockByNumber
+eth_blockNumber
+eth_call
+eth_getBlockByNumber
+eth_blockNumber
+eth_maxPriorityFeePerGas
+eth_call
+eth_getCode
+eth_estimateGas
+eth_blockNumber
+eth_getBlockByNumber
+eth_getTransactionCount
+eth_call
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_getBlockByNumber
+eth_estimateGas
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getTransactionCount
+eth_getCode
+eth_maxPriorityFeePerGas
+eth_getBlockByNumber
+eth_estimateGas
+eth_getTransactionCount
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_getCode
+eth_getTransactionCount
+eth_estimateGas
+eth_estimateGas
+eth_sendRawTransaction
+eth_getTransactionCount
+eth_getTransactionCount
+
+    Transaction: 0xac49672da05f20eaf638535cceef59e871cce4f0c37276ef4a7ee5ca4356413f
+    Gas used: 260047
+
+    Block Number: 19
+    Block Hash: 0x90293d3e65c1c9cd33358d95be72314dd4ccaff50b2ec3ca5042422192c26bc4
+    Block Time: "Sat, 24 Jan 2026 03:28:48 +0000"
+
+eth_sendRawTransaction
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+
+    Transaction: 0x96150679ead76c2d477d5487c59c27b07f6dcfa99bd590355155893f4e649ea9
+    Gas used: 260047
+
+    Block Number: 20
+    Block Hash: 0xf447681a50c9974368b866cd0865b89054afaac2adb7e668b30151b546e398b4
+    Block Time: "Sat, 24 Jan 2026 03:28:49 +0000"
+
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x6a31d1644b179ecaa1165396cbb5eac7dce184cf5e63632fd820e10fa37e28a9
+    Gas used: 260059
+
+    Block Number: 21
+    Block Hash: 0x00e4f463c6b83d7697899ec4f505b3a3edd17d7cd20855eee02e9cfd83485de4
+    Block Time: "Sat, 24 Jan 2026 03:28:50 +0000"
+
+eth_getCode
+eth_blockNumber
+eth_gasPrice
+eth_getBlockByNumber
+eth_chainId
+eth_blockNumber
+eth_gasPrice
+eth_chainId
+eth_getBlockByNumber
+eth_getBalance
+eth_getTransactionCount
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_getBalance
+eth_getCode
+eth_getTransactionCount
+eth_getTransactionCount
+eth_getBalance
+eth_getCode
+eth_chainId
+eth_chainId
+eth_chainId
+eth_feeHistory
+eth_feeHistory
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x39dc0e4cfef828f73bf0f95bc91f3506cb18d70596efed58611657f8617bbd23
+    Contract created: 0x68B1D87F95878fE05B998F19b66F4baba5De1aed
+    Gas used: 1546117
+
+    Block Number: 22
+    Block Hash: 0x92bf9996ad05b1baccbfd7de281bda5d6e0cf120b3938a1d249ac9e39a6744bf
+    Block Time: "Sat, 24 Jan 2026 03:28:51 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x81d3c68f9a23fcd5b48ebfaacd670bcfc1d97c1229fce16930bf2d33a98ebb52
+    Contract created: 0x3Aa5ebB10DC797CAC828524e59A333d0A371443c
+    Gas used: 65747
+
+    Block Number: 23
+    Block Hash: 0xa1dc63e85294fd7753dfe1b740f1afc64bd28d2cf409bf8a42d10d37601df59d
+    Block Time: "Sat, 24 Jan 2026 03:28:52 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x5a4c7641c5c544d4b6c2002454d4e46fbaefc283c7025aa9835c8334680a3fa8
+    Contract created: 0xc6e7DF5E7b4f2A278906862b61205850344D4e7d
+    Gas used: 530991
+
+    Block Number: 24
+    Block Hash: 0x5e89a178cde3fbad449bd347c29afa8e4e420700a721401194c03ce4a9ea7683
+    Block Time: "Sat, 24 Jan 2026 03:28:53 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x6b625836b5e977aabe52a3658da40c5e2e0b0bf7caff5837d7ecb3862bafd451
+    Contract created: 0x59b670e9fA9D0A427751Af201D676719a970857b
+    Gas used: 2019584
+
+    Block Number: 25
+    Block Hash: 0x73280f983b8fb706f2bab1a4dcf3c5a5040e03f64c60eede6f1073c90b0ac5eb
+    Block Time: "Sat, 24 Jan 2026 03:28:54 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x7d28d40845f869020f8d704c2bbee6069d0b5afd47fa20316e3e9ea0ae0ff940
+    Gas used: 184811
+
+    Block Number: 26
+    Block Hash: 0xf32a9900bfcff5fbcd315de293dc694e293c4c0978a54471a2ab40e4d65e3365
+    Block Time: "Sat, 24 Jan 2026 03:28:55 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x8661c2a5fb01d654148783705b0f29c44603a72d6dca518b5f89e85f2e545441
+    Gas used: 51281
+
+    Block Number: 27
+    Block Hash: 0xeb43d339ad13ffbf813372b94c8de02c2123c7332b04e841e4b705a8bc109ed7
+    Block Time: "Sat, 24 Jan 2026 03:28:56 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x588b7e92d550b42353cfdf88b4a62226f5f23c09c3775ef91dd601b5de32bac5
+    Gas used: 146561
+
+    Block Number: 28
+    Block Hash: 0x0e108b764b969fcf4b40c6475205dd067c256655289fcf0fd57ae7c318d998e4
+    Block Time: "Sat, 24 Jan 2026 03:28:57 +0000"
+
+eth_getTransactionReceipt
+eth_getTransactionCount
+eth_estimateGas
+eth_sendRawTransaction
+
+    Transaction: 0x6b2065dce1cb8342b60ce2f0305a56c93fc926c55330753dd2895b1e2e34bb88
+    Gas used: 146561
+
+    Block Number: 29
+    Block Hash: 0xe64ec47d5da138cb35d602b2265c6f326e36331df5b9eb97fff3390ff37453bf
+    Block Time: "Sat, 24 Jan 2026 03:28:58 +0000"
+
+eth_getTransactionReceipt
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_getTransactionReceipt
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_getCode
+eth_estimateGas
+eth_estimateGas
+eth_getTransactionCount
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_getCode
+eth_estimateGas
+eth_estimateGas
+eth_getTransactionCount
+eth_getTransactionCount
+eth_sendRawTransaction
+eth_sendRawTransaction
+
+    Transaction: 0x82e8b851c16755ca4cdd401667eab40bdd950d10dc9d0d54fdf36dc39ba7306e
+    Gas used: 176130
+
+    Block Number: 30
+    Block Hash: 0xc7e9c1be34e234a0a948143bd6fc110c6dc2c861ec06435e6ea7d0beb622bae8
+    Block Time: "Sat, 24 Jan 2026 03:28:59 +0000"
+
+
+    Transaction: 0x353dd4d8af428adb52e00e9fdc161ac459411c389b47cab2c75a77c86b4a7f01
+    Gas used: 124830
+
+    Block Number: 31
+    Block Hash: 0x5ced25c1c26bd5fab8669cdcdc8518e7a59143bf5836664764caed2ecd1f9fff
+    Block Time: "Sat, 24 Jan 2026 03:29:00 +0000"
+
+eth_getTransactionReceipt
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xb0f57e533a48754ecda622529dededaf4cfedb41b8e7e9a8a8d73576ed9d33a4
+    Gas used: 124830
+
+    Block Number: 32
+    Block Hash: 0x021890a5840c1b9539edba20c8c7b4bc3a0cb5e105c85c288ee20ab94265d2ef
+    Block Time: "Sat, 24 Jan 2026 03:29:01 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_getTransactionReceipt
+eth_getTransactionReceipt
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x9f8a3cc80a1b8ced3bf5845370d2112e7435bc45543101a731570b50ee1a045b
+    Gas used: 276823
+
+    Block Number: 33
+    Block Hash: 0x0a5a8927bc12919486b97ee612c108a2ea548f6e43b1ed07fc37ab62288304d5
+    Block Time: "Sat, 24 Jan 2026 03:29:02 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x1b2f950b978c7135ce74b26e73be750aed4df772e3d21795efe24a1c88fb6955
+    Gas used: 226034
+
+    Block Number: 34
+    Block Hash: 0xe1d858f831c1e19174c57b70432197f412d6fdb042744deb94c400fd677052e8
+    Block Time: "Sat, 24 Jan 2026 03:29:08 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x9dfc352c4a5480c54191e78aa6fc12eb19af07e0d744c64cd2dd9c9bfe34f126
+    Gas used: 226034
+
+    Block Number: 35
+    Block Hash: 0x37c6a1b0d22e62fadcea2422935ee4fdef0a07fcae08c3e0f11e26f134d776c8
+    Block Time: "Sat, 24 Jan 2026 03:29:18 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x7a97b7569d6170f247d37b2eccd030b8909dd9e35fb2dc6d2aafdbc1cbeb7bbc
+    Gas used: 223234
+
+    Block Number: 36
+    Block Hash: 0x1aa8ac8d9e18e222b43d8197065a1ba9f8fbbaf2b698bb6463d803fbd18a264f
+    Block Time: "Sat, 24 Jan 2026 03:29:28 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x4931c47897aaa4356f09b5b3833c1c5ae9ed3dae991f0e1a524ed5914ee3cc04
+    Gas used: 226034
+
+    Block Number: 37
+    Block Hash: 0x43bd355fe974e2e494c2fb01b971000203d8862268ec22c4c90ae3338b73039e
+    Block Time: "Sat, 24 Jan 2026 03:29:38 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xc4be88cbefabf87d0025fb0090643181202fc3d34327ed137a7bc3c555f7769c
+    Gas used: 228322
+
+    Block Number: 38
+    Block Hash: 0x98a9dc963411a66947b660fa3f5aa15564265120828305903137026f4e5a2090
+    Block Time: "Sat, 24 Jan 2026 03:29:48 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x4985d0f51111c6cc7b817d45963a3c1eeb37012094799a1ae3a46455ee5f704b
+    Gas used: 225522
+
+    Block Number: 39
+    Block Hash: 0x163b46a37c1e8208fca16e15bac038c898e8a45c213643105f6b9bfb2638ed70
+    Block Time: "Sat, 24 Jan 2026 03:29:59 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xf281a665bec6202ac54ec989050edde00143207272b622ea27a8172aaf1c0f50
+    Gas used: 226034
+
+    Block Number: 40
+    Block Hash: 0xe0104e3b4a8952e5a36eb6c4055f86826dcd03aace21f1795108772e0570b427
+    Block Time: "Sat, 24 Jan 2026 03:30:09 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_call
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xe49282a6de4f1479c17540485d52ee218de8aadc01864887a6a14bdcd3e240ab
+    Gas used: 228298
+
+    Block Number: 41
+    Block Hash: 0x2a6d0101ace1af2292043d6c898abd95502e8f697ffb54f390b2e27d796f9f89
+    Block Time: "Sat, 24 Jan 2026 03:30:19 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x81b559310834687ff1c4e3a4e2b506dc5759cfbe060fe8714cd5c5306ad3ff73
+    Gas used: 225498
+
+    Block Number: 42
+    Block Hash: 0xcad6dcfdc41173f8effc22c0a9ff35d45724075c9a863555b2e919820aabe6be
+    Block Time: "Sat, 24 Jan 2026 03:30:29 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_call
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x2cdf75acfeb7c828ce755f5d3288c5390a05b82c7fe52e11e359b93e34949098
+    Gas used: 228310
+
+    Block Number: 43
+    Block Hash: 0xebddd6c7cecf911b18af9a1733bf2cdf59befe6488932982a83988f9a082e125
+    Block Time: "Sat, 24 Jan 2026 03:30:39 +0000"
+
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xa398e1746be8cee3c6035897f2669dec97333b32eae8cd360a17a795636c95ba
+    Gas used: 237476
+
+    Block Number: 44
+    Block Hash: 0xe07fd2ab27329f9667f7e1a218aa5344e060cb7b1ff25a564e58d6ae52ba195b
+    Block Time: "Sat, 24 Jan 2026 03:30:49 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xc610b84606579ad04c6c3b840f17ea9f686a8e69bde1cd91ea9500703eec9808
+    Gas used: 234676
+
+    Block Number: 45
+    Block Hash: 0x56bc212b7744dd1c1f3a87176d2083ae3414ab88d2c61a201299155e693e9ef5
+    Block Time: "Sat, 24 Jan 2026 03:30:59 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_call
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_blockNumber
+eth_gasPrice
+eth_getBlockByNumber
+eth_blockNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_call
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x7dd6aefe502f55e1cdcbc29e8d5b3f16f3978584bf932681265713ac516bd46a
+    Gas used: 228310
+
+    Block Number: 46
+    Block Hash: 0xa08fafdf97e3b5f55f6d755fc75e7e892ef179ae2d8b277e582fcb7b10119512
+    Block Time: "Sat, 24 Jan 2026 03:31:10 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_call
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_gasPrice
+eth_getBlockByNumber
+eth_call
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xad0ca8a28f440c63174fa7505c77287ee0f3c2ebf80883a21d26787470d9cc93
+    Gas used: 226034
+
+    Block Number: 47
+    Block Hash: 0x7468acc57c21bc8deb905851c7a4d7546cf1614c193e6df7cf33b2d97b0a8910
+    Block Time: "Sat, 24 Jan 2026 03:31:20 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_gasPrice
+eth_getBlockByNumber
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBalance
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x435897f54e4e67a1043548108fb790569ed6ac0d3e3f7c227e45c8917df0de5b
+    Gas used: 230598
+
+    Block Number: 48
+    Block Hash: 0x59274b267c24fb8d0035afd34ba9b1aa59945f0368db34d17a84569fb66dd0fe
+    Block Time: "Sat, 24 Jan 2026 03:31:30 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_gasPrice
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getBlockByNumber
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x8b1a696bb0e2e54f5b04a700c622a2ce7a43125c786bb79f36d54a8bc03b6f91
+    Gas used: 227798
+
+    Block Number: 49
+    Block Hash: 0xb71b2bced7846177545e2e1b0ea7f45315cd8d1c4172773003dea8eecfd1053f
+    Block Time: "Sat, 24 Jan 2026 03:31:40 +0000"
+
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_gasPrice
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBalance
+eth_blockNumber
+eth_getBalance
+eth_blockNumber
+eth_blockNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x74bdbb1675dc38ef969c4cdb37e3ba67122c7d11a23369ecf5524b6222cf83d6
+    Gas used: 226034
+
+    Block Number: 50
+    Block Hash: 0x167a09dd7807412faf256fb26817fa3a424cd8c0865d5197abeb7867073de270
+    Block Time: "Sat, 24 Jan 2026 03:31:50 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_gasPrice
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xfd503c21aebbafb3fc3117e58556959cccd827028859064958422a9211ee642c
+    Gas used: 226034
+
+    Block Number: 51
+    Block Hash: 0x4f72a3471138d4038de048534aa73a774ee216c07bb093a9d5eec3307d8a45b7
+    Block Time: "Sat, 24 Jan 2026 03:32:00 +0000"
+
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xc2524a6604e2d2827cb9abe63346aab9431e4c9373a8d9456affb9b0350445d1
+    Gas used: 223234
+
+    Block Number: 52
+    Block Hash: 0x91e12de8217d4493bc7b63ce83e3cdbb12100799d9aec834b83cf838129049ed
+    Block Time: "Sat, 24 Jan 2026 03:32:10 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xbe782c92757cc401934b683c223a3cc04f03583779cfb5ac1a26101d88636c60
+    Gas used: 228322
+
+    Block Number: 53
+    Block Hash: 0x2152f841ea0a79174e0583acf73f0081e924b33c0cbb13a9401397e39db54a84
+    Block Time: "Sat, 24 Jan 2026 03:32:20 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_gasPrice
+eth_blockNumber
+eth_getBlockByNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+eth_call
+
+    Transaction: 0x746baf4cb72d513ece033764ce72fa7430af1bd507820feb7f7444ce8172703e
+    Gas used: 230610
+
+    Block Number: 54
+    Block Hash: 0x447ad2c1afe94aa8602718d948a1909d65a79e4ff70978c4b4a31ff1d6f66d75
+    Block Time: "Sat, 24 Jan 2026 03:32:31 +0000"
+
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_gasPrice
+eth_blockNumber
+eth_call
+eth_getBlockByNumber
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_call
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xe2e030534a40d2c682ac84f2e55d2c28bd326b21b6a5bfbd25129fed29c14ad9
+    Gas used: 227810
+
+    Block Number: 55
+    Block Hash: 0xa91b959790c148ccaee2aca05452945a9e9247e7332b95ad5a432acb8f284cf7
+    Block Time: "Sat, 24 Jan 2026 03:32:41 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBalance
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getCode
+eth_getCode
+eth_estimateGas
+eth_blockNumber
+eth_call
+eth_getBalance
+eth_call
+eth_gasPrice
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_blockNumber
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_getStorageAt
+eth_getStorageAt
+eth_getTransactionCount
+eth_getCode
+eth_blockNumber
+eth_blockNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x2b4892d34b0c81fbf933ef069bf68ee13e4a5315a24f03eb74210a8b2b8565f1
+    Gas used: 228322
+
+    Block Number: 56
+    Block Hash: 0x36272dbc9d5cbfe9e0d87e5bf07116deadd213fc6a987c8d808c663c9c92a46e
+    Block Time: "Sat, 24 Jan 2026 03:32:51 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_sendRawTransaction
+
+    Transaction: 0xb56e856b13b6a5b5afd67c258c9c32008d6836c4189bf7785fccd00cc0d7a2a5
+    Gas used: 72549
+
+    Block Number: 57
+    Block Hash: 0xd783183821728c866395f8a3812cd830bbb586291b2387eb16926d3c852fb424
+    Block Time: "Sat, 24 Jan 2026 03:32:52 +0000"
+
+eth_call
+eth_call
+eth_getTransactionReceipt
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_call
+eth_call
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_gasPrice
+eth_call
+eth_blockNumber
+eth_getBlockByNumber
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xcccf21e219cd17a92d381cf48b06cd9881e7f83f9f382da1685cd23725e4bc80
+    Gas used: 228322
+
+    Block Number: 58
+    Block Hash: 0x6bc975eb7283d7d2dbf61161dd086da331bae0f2f429451cb6d992b4a89736c3
+    Block Time: "Sat, 24 Jan 2026 03:33:01 +0000"
+
+eth_blockNumber
+eth_getBalance
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xf122992fd3cd9ab770a1925b2b57d5313c3f2ec80a8fbfdd46af810e63fcc7fd
+    Gas used: 225522
+
+    Block Number: 59
+    Block Hash: 0xd17a89c7bdfbe55e476d113297a1fb6345df30c298996bdd39bd079b4794bc91
+    Block Time: "Sat, 24 Jan 2026 03:33:12 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getCode
+eth_getCode
+eth_getBlockByNumber
+eth_estimateGas
+eth_gasPrice
+eth_blockNumber
+eth_call
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_gasPrice
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x08edf1998dd8d204ef0cf6728b15bc167e34d1514368a88b7d30bfecb2653c41
+    Gas used: 228310
+
+    Block Number: 60
+    Block Hash: 0x2720c53739e41e0ccfcde5b74738f98cd4e1a0df97e79ad0ff6e413d11e2b0ae
+    Block Time: "Sat, 24 Jan 2026 03:33:22 +0000"
+
+eth_blockNumber
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_gasPrice
+eth_getStorageAt
+eth_getStorageAt
+eth_getTransactionCount
+eth_getCode
+eth_blockNumber
+eth_sendRawTransaction
+
+    Transaction: 0x0b800a27bd8cea6e309025a512d5a9e765b6076bb2f3e540e5af4d566b53f90a
+    Gas used: 164326
+
+    Block Number: 61
+    Block Hash: 0x7d21f32ed0d933d144c7dbcbf75785cc1e9e001f913f39176b33df33c92c3479
+    Block Time: "Sat, 24 Jan 2026 03:33:23 +0000"
+
+eth_call
+eth_call
+eth_getTransactionReceipt
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_gasPrice
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xb6907f5b180af4821a7192badf443f68a8273e8456b368e64ab558a6be7e48a7
+    Gas used: 228322
+
+    Block Number: 62
+    Block Hash: 0xfe91134b95559e0dd3d6ae0d23ffe1f1237051cddd61fb08fa276149d32c8e67
+    Block Time: "Sat, 24 Jan 2026 03:33:32 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xe74e8d2f8b3f2146a3a96838119a4233399dd04bf4ffebb598624288c610f4b1
+    Gas used: 225522
+
+    Block Number: 63
+    Block Hash: 0x2e1300d930d6a20a72ef4c76c554828ffe350036dc2488eec30fd17198576cb7
+    Block Time: "Sat, 24 Jan 2026 03:33:42 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBalance
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_gasPrice
+eth_blockNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBalance
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x871f771929018dd29126c85575fae69f8bf408329db9fbeab86326044f623890
+    Gas used: 226034
+
+    Block Number: 64
+    Block Hash: 0x354ad2a7653a0e32a6368550a694f5b301d796063b61994c3d36a3b6f57d378e
+    Block Time: "Sat, 24 Jan 2026 03:33:52 +0000"
+
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_blockNumber
+eth_getBalance
+eth_getBlockByNumber
+eth_getBalance
+eth_blockNumber
+eth_getLogs
+eth_getLogs
+eth_getLogs
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x2f61c64794712ee0acf18ff58579e636c1075cb28ab2b60c37121cc9f0364311
+    Gas used: 226022
+
+    Block Number: 65
+    Block Hash: 0xfcb8f6078046c52964a98a6db8336b3720d58adc158b3ec2aedffaa2f7e21367
+    Block Time: "Sat, 24 Jan 2026 03:34:02 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getCode
+eth_getCode
+eth_getBlockByNumber
+eth_estimateGas
+eth_getBlockByNumber
+eth_gasPrice
+eth_blockNumber
+eth_call
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_gasPrice
+eth_blockNumber
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_call
+eth_getStorageAt
+eth_getStorageAt
+eth_getTransactionCount
+eth_getCode
+eth_blockNumber
+eth_blockNumber
+eth_getBlockByNumber
+eth_sendRawTransaction
+
+    Transaction: 0x8ec12b2a8cb6a0e7e657c62776f7d1ebd00f2f4e7e6f04e6b77ff14c0d6286ec
+    Gas used: 71646
+
+    Block Number: 66
+    Block Hash: 0x9d56f0b2c9537b445d3049e4fda68af137fddaab5dac55f7524f25dba6b5f7e9
+    Block Time: "Sat, 24 Jan 2026 03:34:10 +0000"
+
+eth_call
+eth_call
+eth_getTransactionReceipt
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x390516beff4782eb9cdf17c819f5b4aed6444f1dcb3f7472f2bf7d640f4eec19
+    Gas used: 223222
+
+    Block Number: 67
+    Block Hash: 0x620f5c78390cd9eb203c9e2b220a5fb393d6410878de90ea8be9610bd251d065
+    Block Time: "Sat, 24 Jan 2026 03:34:13 +0000"
+
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xff89f6f1453bf19c2c78a2f8e4b4147064c403903bda405f11b96dfc1d80501e
+    Gas used: 228310
+
+    Block Number: 68
+    Block Hash: 0x17cbc42c97c29ac3c8e72d7a28cad88c69736a6974cdaf23b2acd0d9d1d7302c
+    Block Time: "Sat, 24 Jan 2026 03:34:23 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x6270fc35f404bc2a12b54599c11c69a47c3021df9ae11a7f0ec4a0d506adb2d3
+    Gas used: 228322
+
+    Block Number: 69
+    Block Hash: 0x4d52b31c48ea2186b40c06ec78764ee79f2215b9b3141921fdcf3f4fa237748a
+    Block Time: "Sat, 24 Jan 2026 03:34:33 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xe6e69a822bce8d0abe7f03de9f10249cc676ae7d972fa32e8a6fd282394fb1d3
+    Gas used: 225522
+
+    Block Number: 70
+    Block Hash: 0x2a798affa58bb3530b709b4ad932f81d33c00707e63235dc48cbe16fa8284de2
+    Block Time: "Sat, 24 Jan 2026 03:34:43 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xf1c49c1cb78e685e85efd9a863d4067b3648dd653de197d5ea64e407b663e600
+    Gas used: 230610
+
+    Block Number: 71
+    Block Hash: 0x5f9167e5228d7de7c9426eae07ed04084389edd1e893218438d32a6b4160e153
+    Block Time: "Sat, 24 Jan 2026 03:34:53 +0000"
+
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_call
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xccc5101405aa2d79ebc87b0873cc634a782ae91b87f366ee5b91817efa7e74f1
+    Gas used: 228322
+
+    Block Number: 72
+    Block Hash: 0xfb87ee681ec0b2069a56d4955ae6ec033ae284e4f1f7f3e3dac808e06cf065e3
+    Block Time: "Sat, 24 Jan 2026 03:35:03 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_call
+eth_call
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_call
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xfc1957dc257cd9b8059ea51dc3d1cce887677fa2c5d96f94dfa11db576689214
+    Gas used: 225522
+
+    Block Number: 73
+    Block Hash: 0xe58250623da015b8afb8b4dd8adc18565a0f328d1f089a979e578d59757079a3
+    Block Time: "Sat, 24 Jan 2026 03:35:13 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x04bc60caa40c64b303843be5b4712b6c560e90cfb6e46cde57afeec2eebec46f
+    Gas used: 230610
+
+    Block Number: 74
+    Block Hash: 0x8128aa0c84ff2e039b012e72b7d9e6ddd8d676de1c69c3844c4d8d09cdc2641d
+    Block Time: "Sat, 24 Jan 2026 03:35:23 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x162e2f76c2aa67ca3c34047c352b60347fca56cb5c98983034853057d47e86aa
+    Gas used: 228310
+
+    Block Number: 75
+    Block Hash: 0xcfc053570d5834534182a3e51429943a80cf3d21376101091eb6730a12727c0b
+    Block Time: "Sat, 24 Jan 2026 03:35:33 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xbc505b044896019cb0a3cd54f281c9008dea5e02d9853256af752d25f5db6c74
+    Gas used: 225510
+
+    Block Number: 76
+    Block Hash: 0xf9373fa85b647a13a19279837df0d5cabbd78d725fb2c2f03b05a98a947afed3
+    Block Time: "Sat, 24 Jan 2026 03:35:44 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xf926f51fd7a19d520e31479d25ca95346cccb32b45b33e43a2e55b5165b83c59
+    Gas used: 230586
+
+    Block Number: 77
+    Block Hash: 0xf259277c673b7633eb724679f816b8bce9d82ee6654a4e64d6db75d97c794c21
+    Block Time: "Sat, 24 Jan 2026 03:35:54 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_call
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x403ebb39b5fb7f55f5a56efc459731da840419c1b3407a37216793b9c4c92398
+    Gas used: 228322
+
+    Block Number: 78
+    Block Hash: 0x2b475042c1d6278c60d6e6839351ddb4b894078b3c297e988cae2ad30450dd77
+    Block Time: "Sat, 24 Jan 2026 03:36:04 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getBlockByNumber
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x2af7f1ff3a923687015de2dc348cd6af7000c7768165afb9888cb192f800f9e4
+    Gas used: 225522
+
+    Block Number: 79
+    Block Hash: 0xf4312e049ef19765804379028474026dfe71453b9ade1a81454c94386fd30611
+    Block Time: "Sat, 24 Jan 2026 03:36:14 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x8754ced51cdfe6c663b9ec572ace667e4e178327755f3f43474032ce05f1ad02
+    Gas used: 226034
+
+    Block Number: 80
+    Block Hash: 0x9d4780b9cd4137864fcd17b6f879aa5d8f34cff7874af3366357ab0ef114adf2
+    Block Time: "Sat, 24 Jan 2026 03:36:24 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x70652a12edf456d945ba10e310ba8456e9110856ca3d47d3ddf0fcb66cefcd86
+    Gas used: 228310
+
+    Block Number: 81
+    Block Hash: 0x29bca5d507ec5e5d06eb693fbfd1125f9e89fdee5dbd3f7846b48c64d4076cfe
+    Block Time: "Sat, 24 Jan 2026 03:36:34 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x31d701e8884867801b9c9b91f321b0bb412842d24f4878575d9a51996398f82b
+    Gas used: 225510
+
+    Block Number: 82
+    Block Hash: 0x9e569781ae10dfb68275833cc6dde8ef3e6d32fd1b63ecbe30e4b1b6d463b37e
+    Block Time: "Sat, 24 Jan 2026 03:36:44 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x9963bd6cbeba9336839a91e88add3f71c0bcdeabfd3f5422ff1b3e952f0fa420
+    Gas used: 232875
+
+    Block Number: 83
+    Block Hash: 0x6d8813351122cafa1c9bc57f6877b3cf1b67f3a2e19271d9cfab431bfad9e86b
+    Block Time: "Sat, 24 Jan 2026 03:36:54 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xd3526493e03f6d92b746193921e2e74f1ed59f271c18041fab6dfa11edde4ea3
+    Gas used: 226034
+
+    Block Number: 84
+    Block Hash: 0xc1904db09591200180ab5f1430a4d7274b062be928df09eef520c910e8ee1fff
+    Block Time: "Sat, 24 Jan 2026 03:37:04 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x0939e5132e586ea70808f848d1635dacc695ed3a4f7d60d7aa12d7626279f091
+    Gas used: 223234
+
+    Block Number: 85
+    Block Hash: 0xdcbdfacc571323c65cd9adfed2178032176b3ae46d304b148d1668024e253be0
+    Block Time: "Sat, 24 Jan 2026 03:37:14 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xdbad4b7d52466cde122ee0c407597b338b69ec652a9aec8c293bf695ffe1f187
+    Gas used: 237464
+
+    Block Number: 86
+    Block Hash: 0x892aad25a2bb2657f9a0c8400c3a02f0e8ca3d467f4f9f4a9d3e7b36ee848df4
+    Block Time: "Sat, 24 Jan 2026 03:37:25 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x30978feeaa5b4a4d30beeed083176516e28c03237b0ba3e46a09158620a346da
+    Gas used: 230610
+
+    Block Number: 87
+    Block Hash: 0x9c81058f5996613ab31372fc7ddfe556c31797f20aa48cef51b9bfb5b6dcaafa
+    Block Time: "Sat, 24 Jan 2026 03:37:35 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xfa3251264b94f4b6d197d2809bacca50a1a1d896af0c1965c361ad83a2d2c28f
+    Gas used: 235187
+
+    Block Number: 88
+    Block Hash: 0x8368d369c6b1d16157f147d7adf377d1467092b331b876cdde800ff8a3772c06
+    Block Time: "Sat, 24 Jan 2026 03:37:45 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xc9a8ec94b9ba3006a07700c00d70eae3d79699fb2abc5f80d92384765ca790bd
+    Gas used: 232387
+
+    Block Number: 89
+    Block Hash: 0xa88e233241d965cf6465cbdaf55c42a24e71b72cae5473e2ca5dbb0e16b73e09
+    Block Time: "Sat, 24 Jan 2026 03:37:55 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x97af227048fe001d36aeed21196765c29b8be7cf3d5a627083419deac8da1f54
+    Gas used: 228310
+
+    Block Number: 90
+    Block Hash: 0xa19795d10af56b4c67df6dfd89c369e6f4a47a2301f63e86c1fb951649532fe7
+    Block Time: "Sat, 24 Jan 2026 03:38:05 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_call
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x91e856ece2b943631b95d210d6c4ae06029d51aa3f30bf5e51c2acd1adce8b53
+    Gas used: 228322
+
+    Block Number: 91
+    Block Hash: 0x659b5af1c1433be2a02048af02e318618634fe4009d3c513ad490f9a88242739
+    Block Time: "Sat, 24 Jan 2026 03:38:15 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x69c77b8add4c729e8ab95985f8a332bf991e2e2947f722e42991f76020e0db0e
+    Gas used: 225522
+
+    Block Number: 92
+    Block Hash: 0x3c61f472d51e082cdfa824129d211b8ff0cf71a3b127d2a820b82a6e891be13e
+    Block Time: "Sat, 24 Jan 2026 03:38:25 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x7ae6462b4b29a3a697a171a5ab7eeacd39bc207ac0df0bc7a01e6e17cd397382
+    Gas used: 230610
+
+    Block Number: 93
+    Block Hash: 0x153b50b364735c5ca4a17815d08375aaefb5d127c7af0c07fd2ffb98cea8fd4c
+    Block Time: "Sat, 24 Jan 2026 03:38:35 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x2232e3b0280be67933a67e06fd4516c405dc37f926465bc5aced85b453cfb556
+    Gas used: 226034
+
+    Block Number: 94
+    Block Hash: 0x4fd0b3dfb11e209f2c3201ea4e0da8141d3fb59c69fe8099333b0b28ad0c40f2
+    Block Time: "Sat, 24 Jan 2026 03:38:45 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x157b1b9e3a07db628653c9be258c91b9fb9572bdb6143a809b26c65d942e7ada
+    Gas used: 223234
+
+    Block Number: 95
+    Block Hash: 0xbf8974e84bcb265431d9e7a050bb7c8b2ca1f39f49a09c64bf7a4d66118c2324
+    Block Time: "Sat, 24 Jan 2026 03:38:56 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x4d275b6c34de4d177cc6b2344bd77e585707ca08665affdf44b3377318e4e963
+    Gas used: 232899
+
+    Block Number: 96
+    Block Hash: 0xfcb42b3d8af4858a918f5d6ab0e80e349700fa4f326feedf9291cd169a392a9d
+    Block Time: "Sat, 24 Jan 2026 03:39:06 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x4a6c0a7a6e57e2309c9ca25be3f7580aae47f8e1e8edb6d0d382011ca6920553
+    Gas used: 228298
+
+    Block Number: 97
+    Block Hash: 0x756686ad08df07455429b32e4b705c110e4114fbddc741cf3961b4bade1a8721
+    Block Time: "Sat, 24 Jan 2026 03:39:16 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_call
+eth_getBalance
+eth_call
+eth_call
+eth_call
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xe976cd525cbc6f3822a10d28d7f29ef665995777809cffa347f8ff3266be3b92
+    Gas used: 225498
+
+    Block Number: 98
+    Block Hash: 0x971fec2ab4e8cd5a2dc7055b284b33ba2b245eb5f9fe71eaf493e4064a7236cc
+    Block Time: "Sat, 24 Jan 2026 03:39:26 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xb65d3fd31f39aae5a10b15febddcc8dd31626936a1818d0c07e2f4ebd27a1795
+    Gas used: 232875
+
+    Block Number: 99
+    Block Hash: 0x0fc12e00af10df199d682e7f9c0df596b858a6eaeb12afb2af82e1a3a3ff4848
+    Block Time: "Sat, 24 Jan 2026 03:39:36 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xc99e4b39c277b56da8343f39aa424070801fd2949170792acea531184099c2f6
+    Gas used: 226010
+
+    Block Number: 100
+    Block Hash: 0x39b4693248494d4b913e60f2d2f1104d067d28b3d912449fa42724d429131a2c
+    Block Time: "Sat, 24 Jan 2026 03:39:46 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0xf67ac484a714a29f96103a445d3996e600066f5178718d9484e7672acc60f1e2
+    Gas used: 223210
+
+    Block Number: 101
+    Block Hash: 0x6f308d00f940736feaf515aaa33ede57ef3a47ec16dcf335637dbabd2ef1eb37
+    Block Time: "Sat, 24 Jan 2026 03:39:56 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getTransactionReceipt
+eth_blockNumber
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_getBlockByNumber
+eth_maxPriorityFeePerGas
+eth_getCode
+eth_estimateGas
+eth_getTransactionCount
+eth_sendRawTransaction
+
+    Transaction: 0x7dde5a478aff3ddeeb50018327aa27b1fabaa006ba0b8f2a28c55818c99de677
+    Gas used: 230610
+
+    Block Number: 102
+    Block Hash: 0x29201bfc5b8f7227093d4173aef7652af01cef614db6139a1974f15c1961e96e
+    Block Time: "Sat, 24 Jan 2026 03:40:06 +0000"
+
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getLogs
+eth_getBlockByNumber
+eth_getBlockByNumber
+eth_getBlockByNumber

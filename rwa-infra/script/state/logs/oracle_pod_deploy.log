@@ -1,0 +1,20 @@
+Compiling 1 files with Solc 0.8.22
+Solc 0.8.22 finished in 707.62ms
+Compiler run successful!
+Script ran successfully.
+
+== Logs ==
+  oraclePodImplementation=== 0x8A791620dd6260079BF849Dc5567aDC3F2FdC318
+  deploy proxyOraclePod: 0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6
+
+SKIPPING ON CHAIN SIMULATION.
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+
+Transactions saved to: /Users/wenqirui/Desktop/rwa/oracle/oracle-contracts/broadcast/deployOraclePod.s.sol/31337/run-latest.json
+
+Sensitive values saved to: /Users/wenqirui/Desktop/rwa/oracle/oracle-contracts/cache/deployOraclePod.s.sol/31337/run-latest.json
+

@@ -1,0 +1,26 @@
+Compiling 52 files with Solc 0.8.22
+Solc 0.8.22 finished in 3.19s
+Compiler run successful with warnings:
+Warning (2072): Unused local variable.
+  --> src/core/OracleManager.sol:82:13:
+   |
+82 |             uint256 totalStaking,
+   |             ^^^^^^^^^^^^^^^^^^^^
+
+Script ran successfully.
+
+== Logs ==
+  deploy proxyBlsApkRegistry: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  deploy proxyOracleManager: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+
+SKIPPING ON CHAIN SIMULATION.
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+
+Transactions saved to: /Users/wenqirui/Desktop/rwa/oracle/oracle-contracts/broadcast/deployOracle.s.sol/31337/run-latest.json
+
+Sensitive values saved to: /Users/wenqirui/Desktop/rwa/oracle/oracle-contracts/cache/deployOracle.s.sol/31337/run-latest.json
+

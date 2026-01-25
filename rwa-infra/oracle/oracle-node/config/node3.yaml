@@ -1,0 +1,35 @@
+cp_chain_rpc: "http://127.0.0.1:8545"
+cp_chain_id: 31337
+cp_chain_starting_height: 1
+block_step: 100
+
+oracle_manager_address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+bls_registry_address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+cpusdt_pod_address: "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6"
+
+# Node 3: 账户 3
+private_key: "7c852118294e51e653712a81e05800f419141751be58f605c371e15141b007a6"
+
+manager:
+  level_db_folder: "/tmp/oracle/manager_storage"
+  ws_addr: "tcp://0.0.0.0:8081"
+  http_addr: "127.0.0.1:34567"
+  sign_timeout: "5s"
+  submit_price_time: "10s"
+  node_members: ""
+
+node:
+  level_db_folder: "/tmp/oracle/node3_storage"
+  key_path: "/tmp/oracle/bls/node3.key"
+  ws_addr: "tcp://127.0.0.1:8081"
+  sign_timeout: "3s"
+  wait_scan_interval: "2s"
+  data_source:
+    asset_type: "stock"
+    asset_name: "Maotai"
+    url: "http://127.0.0.1:8888/api/price?symbol=maotai"
+    price_path: "data.price"
+    decimals: 6
+  exchange_config:
+    base_http_url: ""
+    base_ws_url: ""
