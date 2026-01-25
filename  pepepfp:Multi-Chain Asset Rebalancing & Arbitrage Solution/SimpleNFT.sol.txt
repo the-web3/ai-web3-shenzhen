@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.0;
+contract SimpleNFT {
+    mapping(uint256 => address) public ownerOf;
+    mapping(uint256 => string) public strategy;
+    uint256 public nextId = 1;
+    
+    function mint(string calldata _strategy) external returns (uint256) {
+        uint256 id = nextId;
+        nextId++;
+        ownerOf[id] = msg.sender;
+        strategy[id] = _strategy;
+        return id;
+    }
+    
+    function execute(uint256 id) external view returns (string memory) {
+        require(ownerOf[id] == msg.sender, "Not owner");
+        return strategy[id];
+    }
+}
