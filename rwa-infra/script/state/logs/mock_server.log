@@ -1,0 +1,16 @@
+🚀 RWA Mock Server starting on http://127.0.0.1:8888
+🕒 Price window: 15s (set env MOCK_WINDOW_SECONDS to override)
+📊 Available endpoints:
+   GET /api/price?symbol=maotai  - 获取资产价格
+   GET /api/assets               - 列出所有资产
+   GET /health                   - 健康检查
+
+📈 Available symbols:
+   wine       - 茅台酒价格 (base: 2899.00)
+   silver     - 白银现货 (base: 31.50)
+   copper     - 铜期货 (base: 9500.00)
+   btc        - 比特币 (base: 105000.00)
+   maotai     - 贵州茅台 (base: 1800.00)
+   gold       - 黄金现货 (base: 2650.00)
+   oil        - 原油期货 (base: 78.50)
+   house_sz   - 深圳房价指数 (base: 65000.00)
