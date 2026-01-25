@@ -1,0 +1,38 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+# ============ Gas 优化配置 (推荐用于生产环境) ============
+# 启用优化器和 via-ir 编译模式（解决 Stack too deep 错误）
+optimizer = true
+optimizer_runs = 1000  # 提高到 1000，优化运行时 Gas（适合高频调用的合约）
+via_ir = true  # 启用 IR 编译器，进一步优化
+
+# Solidity 编译器版本
+solc_version = "0.8.33"
+
+# 启用额外的优化器细节
+[profile.default.optimizer_details]
+peephole = true  # 窥孔优化
+inliner = true   # 内联优化
+jumpdestRemover = true  # 移除无用跳转
+orderLiterals = true  # 字面量排序
+deduplicate = true  # 去重
+cse = true  # 公共子表达式消除
+constantOptimizer = true  # 常量优化
+yul = true  # Yul 优化器
+
+fs_permissions = [{ access = "read-write", path = "./" }]
+
+# ============ 测试配置 ============
+[profile.test]
+optimizer_runs = 200  # 测试时使用较少运行次数，加快编译速度
+
+# ============ 生产配置 (最激进的 Gas 优化) ============
+[profile.production]
+optimizer = true
+optimizer_runs = 5000  # 极限优化运行时 Gas
+via_ir = true
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
