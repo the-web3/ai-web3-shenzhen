@@ -1,0 +1,26 @@
+# Compiler files
+cache/
+out/
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/31337/
+/broadcast
+
+# Docs
+docs/
+
+# Dotenv file
+.env
+./lib
+.idea
+.vscode/
+
+deployed_addresses.json
+foundry.lock
+bun.lock
+package.json
+tsconfig.json
+node_modules/
+tsscript/
+**/__*
