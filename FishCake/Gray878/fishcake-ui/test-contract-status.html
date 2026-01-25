@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Contract Status</title>
+  <style>
+    body {
+      font-family: monospace;
+      padding: 20px;
+      background: #1e1e1e;
+      color: #d4d4d4;
+    }
+    .section {
+      margin: 20px 0;
+      padding: 15px;
+      background: #252526;
+      border-radius: 5px;
+    }
+    .success { color: #4ec9b0; }
+    .error { color: #f48771; }
+    .warning { color: #dcdcaa; }
+    pre {
+      background: #1e1e1e;
+      padding: 10px;
+      border-radius: 3px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 Contract Status Test</h1>
+  
+  <div class="section">
+    <h2>1. 配置检查</h2>
+    <div id="config-check"></div>
+  </div>
+
+  <div class="section">
+    <h2>2. 函数测试</h2>
+    <div id="function-test"></div>
+  </div>
+
+  <div class="section">
+    <h2>3. 所有链测试</h2>
+    <div id="all-chains-test"></div>
+  </div>
+
+  <script type="module">
+    // 模拟配置
+    const DEPLOYED_CONTRACTS = {
+      eventManager: {
+        sepolia: "0x408F996e66BbD0ae2AA28F98e95b2F638BF00579",
+        bscTestnet: "",
+        optimismSepolia: "0x119d4Cc0B3Bb161742DcE9f378d5726d98aA5452",
+        baseSepolia: "0x7561D10D87E3B3bd764D60b5BA1B833E8A6B1b2d",
+        arbitrumSepolia: "0x119d4Cc0B3Bb161742DcE9f378d5726d98aA5452",
+        roothashTestnet: ""
+      }
+    }
+
+    function hasDeployedContract(chainName) {
+      const address = DEPLOYED_CONTRACTS.eventManager[chainName]
+      return address !== undefined && address !== null && address !== ""
+    }
+
+    // 1. 配置检查
+    const configDiv = document.getElementById('config-check')
+    configDiv.innerHTML = `
+      <pre>${JSON.stringify(DEPLOYED_CONTRACTS, null, 2)}</pre>
+    `
+
+    // 2. 函数测试
+    const functionDiv = document.getElementById('function-test')
+    const testCases = [
+      'sepolia',
+      'optimismSepolia',
+      'baseSepolia',
+      'arbitrumSepolia',
+      'bscTestnet',
+      'ethereum',
+      'nonexistent'
+    ]
+
+    let functionHtml = '<table style="width: 100%; border-collapse: collapse;">'
+    functionHtml += '<tr><th style="text-align: left; padding: 5px;">Chain Name</th><th style="text-align: left; padding: 5px;">Address</th><th style="text-align: left; padding: 5px;">Result</th></tr>'
+    
+    testCases.forEach(chainName => {
+      const address = DEPLOYED_CONTRACTS.eventManager[chainName] || 'undefined'
+      const result = hasDeployedContract(chainName)
+      const resultClass = result ? 'success' : 'error'
+      const resultText = result ? '✅ true' : '❌ false'
+      
+      functionHtml += `
+        <tr>
+          <td style="padding: 5px;">${chainName}</td>
+          <td style="padding: 5px; color: #569cd6;">${address}</td>
+          <td style="padding: 5px;" class="${resultClass}">${resultText}</td>
+        </tr>
+      `
+    })
+    functionHtml += '</table>'
+    functionDiv.innerHTML = functionHtml
+
+    // 3. 所有链测试
+    const allChainsDiv = document.getElementById('all-chains-test')
+    const allChains = Object.keys(DEPLOYED_CONTRACTS.eventManager)
+    
+    let allChainsHtml = '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px;">'
+    
+    allChains.forEach(chainName => {
+      const hasContract = hasDeployedContract(chainName)
+      const address = DEPLOYED_CONTRACTS.eventManager[chainName]
+      const statusClass = hasContract ? 'success' : 'error'
+      const statusText = hasContract ? '✅ Available' : '❌ Unavailable'
+      
+      allChainsHtml += `
+        <div style="padding: 10px; background: #1e1e1e; border-radius: 3px;">
+          <div style="font-weight: bold; margin-bottom: 5px;">${chainName}</div>
+          <div style="font-size: 0.9em; color: #808080; margin-bottom: 5px;">
+            ${address ? address.substring(0, 10) + '...' : 'No address'}
+          </div>
+          <div class="${statusClass}">${statusText}</div>
+        </div>
+      `
+    })
+    allChainsHtml += '</div>'
+    allChainsDiv.innerHTML = allChainsHtml
+
+    // 输出到控制台
+    console.log('🔍 Contract Status Test Results:')
+    console.log('Available chains:', Object.keys(DEPLOYED_CONTRACTS.eventManager))
+    testCases.forEach(chainName => {
+      console.log(`  ${chainName}:`, hasDeployedContract(chainName))
+    })
+  </script>
+</body>
+</html>

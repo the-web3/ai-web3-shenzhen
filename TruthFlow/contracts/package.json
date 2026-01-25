@@ -1,0 +1,21 @@
+{
+  "name": "trutharena-contracts",
+  "version": "1.0.0",
+  "description": "TruthArena Smart Contracts",
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy:local": "hardhat run deploy.js --network localhost",
+    "deploy:testnet": "hardhat run deploy.js --network hashkeyTestnet",
+    "test": "hardhat test",
+    "node": "hardhat node"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "dotenv": "^16.3.1",
+    "hardhat": "^2.19.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts-upgradeable": "^5.4.0",
+    "@openzeppelin/hardhat-upgrades": "^3.9.1"
+  }
+}

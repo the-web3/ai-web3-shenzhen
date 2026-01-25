@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Primary Colors - Teal/Cyan (科技感青绿色) */
+    --primary: #14B8A6;        /* teal-500 */
+    --primary-dark: #0D9488;   /* teal-600 */
+    --primary-light: #2DD4BF;  /* teal-400 */
+    
+    /* Accent Colors - Cyan (辅助青色) */
+    --accent: #06B6D4;         /* cyan-500 */
+    --accent-dark: #0891B2;    /* cyan-600 */
+    
+    /* Background Colors */
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F8FAFC;
+    --bg-tertiary: #F1F5F9;
+    
+    /* Text Colors */
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    
+    /* Status Colors */
+    --success: #10B981;        /* green-500 */
+    --warning: #F59E0B;        /* amber-500 */
+    --error: #EF4444;          /* red-500 */
+    --info: #06B6D4;           /* cyan-500 */
+  }
+  
+  .dark {
+    --bg-primary: #0F172A;
+    --bg-secondary: #1E293B;
+    --bg-tertiary: #334155;
+    
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+  }
+  
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  .dark body {
+    @apply bg-slate-900 text-slate-50;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 cursor-pointer;
+    @apply hover:from-teal-600 hover:to-cyan-600 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-teal-500/30;
+    @apply focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2;
+    @apply active:translate-y-0;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+  }
+  
+  .btn-secondary {
+    @apply bg-white border-2 border-slate-200 text-slate-700 px-6 py-3 rounded-xl font-semibold transition-all duration-200 cursor-pointer;
+    @apply hover:bg-slate-50 hover:border-slate-300 hover:shadow-md;
+    @apply focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2;
+    @apply dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-700;
+  }
+  
+  .card {
+    @apply bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm;
+    @apply hover:shadow-md transition-shadow duration-200;
+    @apply dark:bg-slate-800 dark:border-slate-700;
+  }
+  
+  .input {
+    @apply w-full border-2 border-slate-200 rounded-xl px-4 py-3 text-base transition-all duration-200;
+    @apply focus:outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/20;
+    @apply hover:border-slate-300;
+    @apply dark:bg-slate-800 dark:border-slate-700 dark:text-slate-50;
+    @apply placeholder:text-slate-400;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-100 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 rounded-full hover:bg-slate-400;
+  }
+  
+  /* Animations */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(
+      to right,
+      #f1f5f9 0%,
+      #e2e8f0 20%,
+      #f1f5f9 40%,
+      #f1f5f9 100%
+    );
+    background-size: 1000px 100%;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  @apply transition-colors duration-150;
+}
+
+button, a, input, textarea, select {
+  @apply transition-all duration-200;
+}
