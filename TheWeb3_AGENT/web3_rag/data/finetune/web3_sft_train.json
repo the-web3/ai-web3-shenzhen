@@ -1,0 +1,122 @@
+[
+  {
+    "instruction": "什么是 Uniswap V3 的集中流动性？",
+    "input": "",
+    "output": "Uniswap V3 的集中流动性 (Concentrated Liquidity) 允许流动性提供者将资金集中在特定价格区间内，而非平均分布在整个价格曲线上。\n\n**工作原理**：\n- 流动性提供者可以选择自定义的价格区间\n- 资金只在选定的价格范围内提供流动性\n- 价格超出区间时，流动性变为单一资产\n\n**主要优势**：\n1. **资本效率提升**: 相同资金可提供更深的流动性，效率最高提升 4000 倍\n2. **更高手续费收益**: 在活跃价格区间内获得更多交易费用\n3. **灵活性**: LP 可自定义价格范围，实施不同策略\n\n**风险**：价格超出区间时，LP 将停止赚取手续费，并面临无常损失。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "解释什么是 MEV（最大可提取价值）",
+    "input": "",
+    "output": "MEV (Maximal Extractable Value，最大可提取价值) 是指区块生产者通过重新排序、插入或审查区块内交易所能获取的额外利润。\n\n**常见 MEV 策略**：\n1. **三明治攻击**: 在大额交易前后插入自己的交易，利用价格变动获利\n2. **套利**: 利用不同 DEX 之间的价差获利\n3. **清算**: 抢先清算抵押不足的借贷仓位\n4. **抢跑 (Front-running)**: 提前执行有利可图的交易\n\n**影响**：\n- 用户交易成本增加\n- 网络拥堵和 Gas 价格波动\n- 推动了 Flashbots、MEV-Boost 等隐私交易解决方案的发展\n\n**解决方案**：Flashbots 提供的 MEV-Protect RPC 可以保护用户交易免受三明治攻击。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是以太坊的 Gas 费用？如何计算？",
+    "input": "",
+    "output": "Gas 是以太坊网络上的计算单位，用于衡量执行交易或智能合约所需的计算资源。\n\n**Gas 费用计算公式**：\n```\nGas 费用 = Gas 数量 × Gas 价格 (Gwei)\n```\n\n**EIP-1559 后的费用结构**：\n- **Base Fee**: 网络自动调整的基础费用，会被销毁\n- **Priority Fee (Tip)**: 给验证者的小费，激励优先处理\n- **Max Fee**: 用户愿意支付的最高费用\n\n**常见操作的 Gas 消耗**：\n- ETH 转账: 21,000 Gas\n- ERC-20 转账: 约 65,000 Gas\n- Uniswap 交换: 约 150,000-300,000 Gas\n\n**节省 Gas 的方法**：\n1. 在网络空闲时段发送交易\n2. 使用 Layer 2 解决方案 (如 Arbitrum, Optimism)\n3. 批量处理多笔交易",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是 DeFi 中的无常损失？",
+    "input": "",
+    "output": "无常损失 (Impermanent Loss, IL) 是流动性提供者在 AMM 中存入资产后，由于资产价格变化而产生的相对损失。\n\n**产生原因**：\n- AMM 池需要维持恒定乘积公式 (x × y = k)\n- 当价格变化时，套利者会调整池中资产比例\n- 导致 LP 持有的资产组合与单纯持有不同\n\n**损失计算示例**：\n假设初始存入等值的 ETH 和 USDC：\n- ETH 价格上涨 100%: 无常损失约 5.7%\n- ETH 价格上涨 200%: 无常损失约 13.4%\n- ETH 价格上涨 500%: 无常损失约 25.5%\n\n**为什么叫\"无常\"**：\n- 如果价格回到初始状态，损失会消失\n- 只有在提取流动性时才会实现损失\n\n**减少无常损失的方法**：\n1. 选择相关性高的交易对 (如稳定币对)\n2. 使用 Uniswap V3 的集中流动性\n3. 确保手续费收益能覆盖无常损失",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "解释什么是智能合约",
+    "input": "",
+    "output": "智能合约 (Smart Contract) 是部署在区块链上的自执行程序，当预设条件满足时自动执行相应操作。\n\n**核心特性**：\n1. **自动执行**: 无需中介，代码即法律\n2. **不可篡改**: 一旦部署，代码无法更改\n3. **透明公开**: 任何人都可以查看合约代码\n4. **确定性**: 相同输入产生相同输出\n\n**常见应用**：\n- **DeFi**: 借贷协议 (Aave)、交易所 (Uniswap)\n- **NFT**: ERC-721 代币标准\n- **DAO**: 去中心化治理\n- **游戏**: 链游资产管理\n\n**主要编程语言**：\n- Solidity: 以太坊主流语言\n- Vyper: Python 风格的安全替代\n- Rust: Solana 生态\n\n**安全风险**：\n- 重入攻击 (Reentrancy)\n- 整数溢出\n- 访问控制漏洞\n- 预言机操纵",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是 Aave 协议？它如何工作？",
+    "input": "",
+    "output": "Aave 是以太坊上最大的去中心化借贷协议，允许用户存入资产赚取利息或抵押借贷。\n\n**核心功能**：\n1. **存款**: 存入资产获得 aToken，自动累积利息\n2. **借贷**: 抵押资产后可借出其他资产\n3. **闪电贷**: 无需抵押的同区块借还贷款\n\n**关键概念**：\n- **LTV (Loan-to-Value)**: 最大借贷比例，如 80% LTV 表示 $100 抵押物可借 $80\n- **清算阈值**: 触发清算的健康因子阈值\n- **健康因子**: 抵押物价值 / 借款价值，低于 1 时触发清算\n\n**利率模式**：\n- **浮动利率**: 根据资金池利用率动态调整\n- **稳定利率**: 短期内保持固定\n\n**创新功能**：\n- **闪电贷**: 首创无抵押贷款，常用于套利\n- **信用委托**: 将信用额度委托给他人\n- **隔离模式**: 限制新资产的风险敞口\n\n**支持的链**: Ethereum, Polygon, Arbitrum, Optimism, Avalanche 等。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是以太坊的权益证明 (PoS)？",
+    "input": "",
+    "output": "权益证明 (Proof of Stake, PoS) 是以太坊在 2022 年 9 月完成的共识机制升级，取代了原来的工作量证明 (PoW)。\n\n**工作原理**：\n- 验证者需要质押 32 ETH 成为节点\n- 系统随机选择验证者提议和验证区块\n- 诚实行为获得奖励，恶意行为会被罚没质押\n\n**与 PoW 的对比**：\n| 方面 | PoW | PoS |\n|------|-----|-----|\n| 能源消耗 | 高 | 低 99.95% |\n| 硬件需求 | 矿机 | 普通服务器 |\n| 参与门槛 | 算力 | 32 ETH |\n| 安全模型 | 算力攻击 | 经济惩罚 |\n\n**关键概念**：\n- **验证者**: 质押 ETH 参与共识\n- **证明**: 验证者对区块的投票\n- **最终性**: 约 15 分钟达成不可逆\n- **Slashing**: 恶意行为的惩罚机制\n\n**Staking 方式**：\n1. Solo Staking: 自己运行节点 (需 32 ETH)\n2. Staking as a Service: 委托节点运营商\n3. Liquid Staking: 使用 Lido, Rocket Pool 等协议",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是 Layer 2 扩容方案？",
+    "input": "",
+    "output": "Layer 2 (L2) 是建立在以太坊主网 (L1) 之上的扩容解决方案，通过将交易处理移至链下来提高吞吐量并降低费用。\n\n**主要类型**：\n\n1. **Optimistic Rollups**:\n   - 代表项目: Arbitrum, Optimism, Base\n   - 原理: 假设交易有效，争议期内可挑战\n   - 提款时间: 7 天挑战期\n   - 兼容性: 完全兼容 EVM\n\n2. **ZK Rollups**:\n   - 代表项目: zkSync, Starknet, Polygon zkEVM\n   - 原理: 使用零知识证明验证交易\n   - 提款时间: 几分钟到几小时\n   - 兼容性: 部分 EVM 兼容\n\n**性能对比**：\n| 方案 | TPS | Gas 费用 |\n|------|-----|----------|\n| 以太坊 L1 | ~15 | $5-50 |\n| Arbitrum | ~4,000 | $0.1-0.5 |\n| zkSync Era | ~2,000 | $0.1-0.3 |\n\n**安全性**：\nL2 继承以太坊的安全性，交易数据锚定在 L1 上。\n\n**如何使用**：\n1. 通过官方桥将资产从 L1 转移到 L2\n2. 在 L2 上进行交易\n3. 需要时将资产桥接回 L1",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是 Compound 协议？",
+    "input": "",
+    "output": "Compound 是以太坊上的去中心化借贷协议，基于算法利率自动调节资金供需。\n\n**核心机制**：\n1. **存款**: 存入资产获得 cToken (如 cETH, cDAI)\n2. **借贷**: 抵押 cToken 借出其他资产\n3. **利率算法**: 根据资金利用率自动调整\n\n**利率模型**：\n```\n借款利率 = 基础利率 + 利用率 × 斜率\n存款利率 = 借款利率 × 利用率 × (1 - 储备因子)\n```\n\n**cToken 机制**：\n- cToken 余额不变，但汇率随时间增长\n- 汇率 = (总供应量 + 累积利息) / cToken 总量\n- 赎回时获得更多底层资产\n\n**治理代币 COMP**：\n- 用于协议治理投票\n- 通过使用协议获得 (流动性挖矿)\n\n**风险参数**：\n- 抵押因子: 80% 表示 $100 抵押物可借 $80\n- 清算激励: 清算者获得 8% 折扣\n- 储备因子: 协议保留的利息比例\n\n**Compound V3 (Comet) 改进**：\n- 单一借贷资产设计\n- 更高的资本效率\n- 改进的风险管理",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是 MakerDAO 和 DAI 稳定币？",
+    "input": "",
+    "output": "MakerDAO 是以太坊上最早的 DeFi 协议之一，通过超额抵押机制铸造去中心化稳定币 DAI。\n\n**核心概念**：\n- **DAI**: 与美元 1:1 软锚定的去中心化稳定币\n- **Vault**: 用户存入抵押品铸造 DAI 的金库\n- **MKR**: 治理代币，用于投票和支付稳定费\n\n**运作机制**：\n1. 用户在 Vault 存入抵押品 (如 ETH)\n2. 根据抵押率铸造 DAI (通常 150%+)\n3. 使用 DAI 后需偿还本金 + 稳定费\n4. 赎回抵押品\n\n**稳定机制**：\n- **DAI > $1**: 降低稳定费，鼓励铸造\n- **DAI < $1**: 提高稳定费，减少供应\n- **PSM (锚定稳定模块)**: 与 USDC 1:1 兑换\n\n**清算机制**：\n- 抵押率低于清算线时触发清算\n- 清算者获得 13% 折扣\n- 清算罚金作为协议收入\n\n**支持的抵押品**：\nETH, WBTC, USDC, stETH, 以及真实世界资产 (RWA)\n\n**DSR (DAI 储蓄率)**：\n持有 DAI 可获得存款利息，由稳定费收入支付。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是预言机？为什么 DeFi 需要预言机？",
+    "input": "",
+    "output": "预言机 (Oracle) 是连接区块链与外部数据的桥梁，为智能合约提供链下信息。\n\n**为什么需要预言机**：\n- 区块链是封闭系统，无法访问外部数据\n- DeFi 需要实时价格数据进行清算、交易\n- 智能合约需要外部事件触发执行\n\n**主要预言机类型**：\n\n1. **价格预言机**:\n   - Chainlink: 最广泛使用，多数据源聚合\n   - Uniswap TWAP: 基于 DEX 的时间加权平均价格\n   - Pyth: 高频金融数据\n\n2. **随机数预言机**:\n   - Chainlink VRF: 可验证随机函数\n   - 用于 NFT 抽奖、链游\n\n3. **跨链预言机**:\n   - LayerZero, Axelar: 跨链消息传递\n\n**Chainlink 工作原理**：\n1. 多个独立节点从不同数据源获取价格\n2. 聚合器合约计算中位数\n3. 定期或价格偏差超阈值时更新\n\n**预言机攻击风险**：\n- 闪电贷操纵 DEX 价格\n- 解决方案: 使用 TWAP, 多源聚合\n\n**成本**: 使用 Chainlink 需要支付 LINK 代币作为费用。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是闪电贷？有什么用途？",
+    "input": "",
+    "output": "闪电贷 (Flash Loan) 是 DeFi 独有的无抵押贷款，借款和还款必须在同一笔交易内完成。\n\n**工作原理**：\n1. 用户在一笔交易中借入大量资金\n2. 使用资金执行操作 (套利、清算等)\n3. 在交易结束前归还本金 + 手续费\n4. 如果无法还款，整笔交易回滚\n\n**为什么可行**：\n- 区块链交易的原子性\n- 要么完全成功，要么完全失败\n- 协议没有违约风险\n\n**主要用途**：\n\n1. **套利**:\n   - 利用不同 DEX 之间的价差\n   - 无需自有资金即可获利\n\n2. **清算**:\n   - 借入资金执行清算操作\n   - 获得清算奖励后归还贷款\n\n3. **抵押品置换**:\n   - 在借贷协议中切换抵押品类型\n   - 无需先偿还债务\n\n4. **自我清算**:\n   - 避免被他人清算的惩罚\n\n**提供闪电贷的协议**：\n- Aave: 0.09% 手续费\n- dYdX: 0 手续费 (但需要有余额)\n- Uniswap V2/V3: Flash Swap\n\n**风险**: 闪电贷也被用于攻击协议漏洞。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "Uniswap V3 的手续费等级有哪些？如何选择？",
+    "input": "",
+    "output": "Uniswap V3 引入了多层手续费结构，允许流动性提供者根据交易对特性选择合适的费率。\n\n**手续费等级**：\n\n| 费率 | 适用场景 | 典型交易对 |\n|------|----------|------------|\n| 0.01% | 稳定币对 | USDC/USDT, DAI/USDC |\n| 0.05% | 稳定资产 | stETH/ETH, WBTC/ETH |\n| 0.30% | 标准交易对 | ETH/USDC, UNI/ETH |\n| 1.00% | 高波动资产 | 小市值代币, 新项目 |\n\n**选择原则**：\n\n1. **低波动资产**: 选择低费率\n   - 稳定币对价格几乎不变\n   - 低手续费吸引更多交易量\n\n2. **高相关性资产**: 0.05%\n   - 如 stETH/ETH，价格紧密挂钩\n   - 无常损失风险低\n\n3. **主流交易对**: 0.30%\n   - 标准配置，适合大多数交易对\n   - 平衡交易量和手续费收益\n\n4. **高波动/低流动性**: 1.00%\n   - 补偿无常损失风险\n   - 适合新代币或小市值项目\n\n**LP 收益计算**：\n```\n预期收益 = 交易量 × 手续费率 × (你的流动性 / 活跃流动性)\n```\n\n**注意**: 同一交易对可能在不同费率池中都有流动性。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是去中心化自治组织 (DAO)？",
+    "input": "",
+    "output": "DAO (Decentralized Autonomous Organization) 是通过智能合约运行的去中心化治理组织，由代币持有者集体决策。\n\n**核心特征**：\n1. **去中心化**: 没有单一控制者\n2. **自治**: 规则由代码执行\n3. **透明**: 所有决策和资金流向公开\n4. **代币治理**: 持币者拥有投票权\n\n**治理流程**：\n1. 提案: 任何人 (或持有足够代币者) 提交提案\n2. 讨论: 社区论坛讨论提案\n3. 投票: 代币持有者投票\n4. 执行: 通过后由合约自动执行或多签执行\n\n**常见 DAO 类型**：\n- **协议 DAO**: Uniswap, Aave, Compound (管理 DeFi 协议)\n- **投资 DAO**: The LAO, MetaCartel (集体投资)\n- **收藏 DAO**: PleasrDAO (收藏 NFT)\n- **社交 DAO**: Friends With Benefits (社区准入)\n\n**治理代币**：\n- UNI (Uniswap), AAVE, COMP, MKR\n- 用于投票和协议参数调整\n\n**挑战**：\n- 投票参与率低\n- 巨鲸主导决策\n- 治理攻击风险\n\n**解决方案**: 委托投票、时间锁、多签保护。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是 NFT？它与普通代币有什么区别？",
+    "input": "",
+    "output": "NFT (Non-Fungible Token，非同质化代币) 是区块链上代表独一无二资产的数字证书。\n\n**与普通代币的区别**：\n\n| 特性 | NFT (ERC-721) | 普通代币 (ERC-20) |\n|------|---------------|-------------------|\n| 可替代性 | 不可替代 | 完全可替代 |\n| 数量 | 每个独一无二 | 可分割任意份数 |\n| 价值 | 各不相同 | 每单位价值相等 |\n| 用途 | 数字收藏品、身份 | 货币、治理 |\n\n**NFT 标准**：\n- **ERC-721**: 基础 NFT 标准\n- **ERC-1155**: 多代币标准，支持批量操作\n- **ERC-6551**: 代币绑定账户 (TBA)\n\n**常见应用**：\n1. **数字艺术**: Bored Apes, CryptoPunks\n2. **游戏资产**: 武器、皮肤、土地\n3. **会员凭证**: 俱乐部准入、福利领取\n4. **身份认证**: ENS 域名、链上简历\n5. **票务**: 活动门票、通行证\n\n**交易市场**：\n- OpenSea: 最大的综合市场\n- Blur: 专业交易者市场\n- Magic Eden: Solana 生态\n\n**元数据存储**：\n通常存储在 IPFS 或 Arweave 上，链上只存储 URI。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是 Curve Finance？为什么它在稳定币交易中很重要？",
+    "input": "",
+    "output": "Curve Finance 是专注于稳定币和同类资产交易的 DEX，以极低的滑点著称。\n\n**核心优势**：\n1. **低滑点**: 专门为价格相近的资产优化\n2. **高效率**: 稳定币交换费用远低于 Uniswap\n3. **深度流动性**: 是稳定币最大的流动性来源\n\n**StableSwap 算法**：\n- 结合恒定乘积和恒定和公式\n- 在价格接近 1:1 时提供极低滑点\n- 价格偏离时恢复到 AMM 特性\n\n**主要池类型**：\n- **稳定币池**: 3pool (DAI/USDC/USDT)\n- **锚定资产池**: stETH/ETH, renBTC/WBTC\n- **工厂池**: 用户自建池\n\n**Curve Wars**：\n- veCRV: 锁定 CRV 获得投票权\n- 投票决定各池的 CRV 奖励分配\n- Convex Finance 聚合了大量 veCRV\n\n**收益来源**：\n1. 交易手续费 (0.04%)\n2. CRV 代币奖励\n3. 额外激励 (项目方贿赂)\n\n**为什么重要**：\n- DeFi 协议的稳定币流动性基础设施\n- 大额稳定币兑换的首选\n- 影响稳定币的锚定稳定性",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "Solidity 中的重入攻击是什么？如何防范？",
+    "input": "",
+    "output": "重入攻击 (Reentrancy Attack) 是智能合约最常见的安全漏洞之一，攻击者通过递归调用合约函数重复提取资金。\n\n**攻击原理**：\n1. 攻击合约调用目标合约的提款函数\n2. 目标合约转账给攻击合约\n3. 攻击合约的 fallback 函数再次调用提款\n4. 由于状态未更新，可重复提款\n\n**经典案例**: The DAO 攻击 (2016年，损失 6000 万美元)\n\n**漏洞代码示例**：\n```solidity\n// 危险: 先转账后更新状态\nfunction withdraw(uint amount) public {\n    require(balances[msg.sender] >= amount);\n    (bool success, ) = msg.sender.call{value: amount}(\"\");\n    require(success);\n    balances[msg.sender] -= amount;  // 状态更新太晚!\n}\n```\n\n**防范措施**：\n\n1. **Checks-Effects-Interactions 模式**:\n```solidity\nfunction withdraw(uint amount) public {\n    require(balances[msg.sender] >= amount);  // Check\n    balances[msg.sender] -= amount;           // Effect\n    (bool success, ) = msg.sender.call{value: amount}(\"\");  // Interaction\n    require(success);\n}\n```\n\n2. **重入锁 (ReentrancyGuard)**:\n```solidity\nbool private locked;\nmodifier nonReentrant() {\n    require(!locked, \"Reentrancy\");\n    locked = true;\n    _;\n    locked = false;\n}\n```\n\n3. **使用 transfer/send** (限制 gas，但不推荐)\n\n**最佳实践**: 使用 OpenZeppelin 的 ReentrancyGuard。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是 ERC-20 代币标准？",
+    "input": "",
+    "output": "ERC-20 是以太坊上同质化代币的技术标准，定义了代币合约必须实现的接口。\n\n**标准接口**：\n```solidity\ninterface IERC20 {\n    // 查询函数\n    function totalSupply() external view returns (uint256);\n    function balanceOf(address account) external view returns (uint256);\n    function allowance(address owner, address spender) external view returns (uint256);\n    \n    // 操作函数\n    function transfer(address to, uint256 amount) external returns (bool);\n    function approve(address spender, uint256 amount) external returns (bool);\n    function transferFrom(address from, address to, uint256 amount) external returns (bool);\n    \n    // 事件\n    event Transfer(address indexed from, address indexed to, uint256 value);\n    event Approval(address indexed owner, address indexed spender, uint256 value);\n}\n```\n\n**核心功能**：\n- **totalSupply**: 代币总供应量\n- **balanceOf**: 查询余额\n- **transfer**: 直接转账\n- **approve + transferFrom**: 授权第三方代转\n\n**为什么重要**：\n1. **互操作性**: 所有 ERC-20 代币接口一致\n2. **钱包兼容**: 任何钱包都能存储\n3. **DEX 集成**: 无需定制即可交易\n\n**常见扩展**：\n- **ERC-20 Permit (EIP-2612)**: 用签名替代 approve 交易\n- **ERC-20 Snapshot**: 支持快照功能\n- **Pausable**: 可暂停转账\n\n**安全注意**：\n- 注意 approve 的 front-running 问题\n- 使用 increaseAllowance/decreaseAllowance",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是流动性挖矿？有什么风险？",
+    "input": "",
+    "output": "流动性挖矿 (Liquidity Mining / Yield Farming) 是通过向 DeFi 协议提供流动性来获取代币奖励的策略。\n\n**工作原理**：\n1. 用户向协议存入资产 (如 LP Token)\n2. 协议按质押比例分发治理代币\n3. 用户可以出售代币或继续质押\n\n**收益来源**：\n1. **交易手续费**: AMM 池的交易费分成\n2. **代币奖励**: 协议发放的激励代币\n3. **借贷利息**: 借贷协议的存款利息\n\n**常见策略**：\n- **单币质押**: 质押单一代币获取奖励\n- **LP 挖矿**: 提供交易对流动性\n- **杠杆挖矿**: 借贷放大本金挖矿\n- **套娃策略**: 多层协议组合\n\n**主要风险**：\n\n1. **无常损失**: 价格波动导致 LP 亏损\n2. **智能合约风险**: 合约漏洞或被黑客攻击\n3. **代币价格下跌**: 奖励代币贬值\n4. **Rug Pull**: 项目方卷款跑路\n5. **清算风险**: 杠杆策略可能被清算\n\n**评估项目**：\n- 审计报告\n- 团队背景\n- TVL 和代币经济模型\n- 解锁时间表\n\n**年化收益 (APY) 警告**：\n超高 APY (>1000%) 通常不可持续。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  },
+  {
+    "instruction": "什么是 Yearn Finance？它如何优化收益？",
+    "input": "",
+    "output": "Yearn Finance 是 DeFi 领域的收益聚合器，自动化地将用户资金部署到最优收益策略中。\n\n**核心产品**：\n\n1. **yVaults (收益金库)**:\n   - 用户存入资产获得 yToken\n   - 金库自动执行最优策略\n   - 收益自动复投\n\n2. **策略 (Strategies)**:\n   - 由专业策略师编写\n   - 跨多个协议寻找最佳收益\n   - 自动化调仓和收割\n\n**收益优化方式**：\n1. 自动寻找最高利率的借贷平台\n2. 参与流动性挖矿并自动售出奖励\n3. 跨协议套利\n4. 杠杆策略增强收益\n\n**费用结构**：\n- 管理费: 2% 年化\n- 绩效费: 20% (仅从收益中收取)\n\n**代币经济**：\n- **YFI**: 治理代币，总量仅 36,666 枚\n- **veYFI**: 锁仓 YFI 获得投票权和收益提升\n\n**知名金库示例**：\n- yvUSDC: 稳定币收益策略\n- yvETH: ETH 收益优化\n- yvCurve: Curve LP 策略\n\n**风险**：\n- 智能合约风险 (多层协议)\n- 策略失败风险\n- 底层协议风险\n\n**创始人**: Andre Cronje，DeFi 领域著名开发者。",
+    "system": "你是一个专业的 Web3 技术专家，擅长解释 DeFi 协议的工作原理。请用清晰、准确的中文回答问题。"
+  }
+]

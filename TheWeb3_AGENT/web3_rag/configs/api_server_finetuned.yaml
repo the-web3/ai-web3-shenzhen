@@ -1,0 +1,6 @@
+model_name_or_path: ./models/qwen3-4b
+adapter_name_or_path: ./saves/qwen3-4b-web3/lora/sft
+template: qwen3_nothink
+finetuning_type: lora
+infer_backend: huggingface
+trust_remote_code: true
