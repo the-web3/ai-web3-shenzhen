@@ -20,6 +20,12 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "INVALID_TOKEN", message: "Invalid or expired token." }, { status: 401 });
     }
 
+    // Check if Supabase env vars are set
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      console.error("Missing Supabase environment variables");
+      return NextResponse.json({ error: "CONFIG_ERROR", message: "Server configuration error." }, { status: 500 });
+    }
+
     const supabase = createAdminClient();
 
     // Get user's joined vendors
@@ -47,14 +53,22 @@ export async function GET(request: NextRequest) {
 
     if (vendorsError) {
       console.error("Error fetching user vendors:", vendorsError);
+      return NextResponse.json(
+        { error: "DB_ERROR", message: "Database error: " + vendorsError.message },
+        { status: 500 },
+      );
     }
 
     // Check if user is admin
-    const { data: adminUser } = await supabase
+    const { data: adminUser, error: adminError } = await supabase
       .from("admin_users")
       .select("role")
       .eq("admin_address", payload.address.toLowerCase())
       .maybeSingle();
+
+    if (adminError) {
+      console.error("Error fetching admin status:", adminError);
+    }
 
     return NextResponse.json({
       address: payload.address,
@@ -64,6 +78,9 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error("Auth me error:", error);
-    return NextResponse.json({ error: "INTERNAL_ERROR", message: "An error occurred." }, { status: 500 });
+    return NextResponse.json(
+      { error: "INTERNAL_ERROR", message: error instanceof Error ? error.message : "An error occurred." },
+      { status: 500 },
+    );
   }
 }

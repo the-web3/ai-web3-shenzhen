@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "~~/lib/auth/jwt";
+import { getTokenFromRequest } from "~~/lib/auth/server";
 import { createAdminClient } from "~~/lib/supabase/server";
 
 // DELETE /api/orders/[orderId] - Cancel order
 export async function DELETE(request: NextRequest, { params }: { params: Promise<{ orderId: string }> }) {
   try {
     const { orderId } = await params;
-    const token = request.cookies.get("auth_token")?.value;
+    const token = getTokenFromRequest(request);
 
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -25,6 +26,17 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
     }
 
     const adminClient = createAdminClient();
+    const { data: userVendor } = await adminClient
+      .from("user_vendors")
+      .select("id")
+      .eq("user_address", payload.address.toLowerCase())
+      .eq("vendor_id", parseInt(vendorId))
+      .eq("status", 1)
+      .maybeSingle();
+
+    if (!userVendor) {
+      return NextResponse.json({ error: "You are not a member of this vendor" }, { status: 403 });
+    }
 
     // Fetch the order
     const { data: order, error: fetchError } = await adminClient
@@ -85,6 +97,17 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
 export async function GET(request: NextRequest, { params }: { params: Promise<{ orderId: string }> }) {
   try {
     const { orderId } = await params;
+    const token = getTokenFromRequest(request);
+
+    if (!token) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const payload = await verifyToken(token);
+    if (!payload) {
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
+
     const searchParams = request.nextUrl.searchParams;
     const vendorId = searchParams.get("vendor_id");
 
@@ -93,6 +116,17 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     }
 
     const adminClient = createAdminClient();
+    const { data: userVendor } = await adminClient
+      .from("user_vendors")
+      .select("id")
+      .eq("user_address", payload.address.toLowerCase())
+      .eq("vendor_id", parseInt(vendorId))
+      .eq("status", 1)
+      .maybeSingle();
+
+    if (!userVendor) {
+      return NextResponse.json({ error: "You are not a member of this vendor" }, { status: 403 });
+    }
 
     const { data: order, error } = await adminClient
       .from("orders")

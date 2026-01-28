@@ -1,4 +1,5 @@
 export const EventPodAbi = [
+  // ============ View Functions ============
   {
     type: "function",
     name: "getEvent",
@@ -15,11 +16,25 @@ export const EventPodAbi = [
           { name: "settlementTime", type: "uint256" },
           { name: "status", type: "uint8" },
           { name: "creator", type: "address" },
-          { name: "outcomeCount", type: "uint8" },
+          {
+            name: "outcomes",
+            type: "tuple[]",
+            components: [
+              { name: "name", type: "string" },
+              { name: "description", type: "string" },
+            ],
+          },
           { name: "winningOutcomeIndex", type: "uint8" },
         ],
       },
     ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getEventStatus",
+    inputs: [{ name: "eventId", type: "uint256" }],
+    outputs: [{ name: "", type: "uint8" }],
     stateMutability: "view",
   },
   {
@@ -41,6 +56,43 @@ export const EventPodAbi = [
     ],
     stateMutability: "view",
   },
+  {
+    type: "function",
+    name: "listActiveEvents",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256[]" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "eventExists",
+    inputs: [{ name: "eventId", type: "uint256" }],
+    outputs: [{ name: "", type: "bool" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "nextEventId",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "vendorId",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "vendorAddress",
+    inputs: [],
+    outputs: [{ name: "", type: "address" }],
+    stateMutability: "view",
+  },
+
+  // ============ Vendor Functions ============
   {
     type: "function",
     name: "createEvent",
@@ -66,7 +118,7 @@ export const EventPodAbi = [
     name: "updateEventStatus",
     inputs: [
       { name: "eventId", type: "uint256" },
-      { name: "status", type: "uint8" },
+      { name: "newStatus", type: "uint8" },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -74,7 +126,10 @@ export const EventPodAbi = [
   {
     type: "function",
     name: "cancelEvent",
-    inputs: [{ name: "eventId", type: "uint256" }],
+    inputs: [
+      { name: "eventId", type: "uint256" },
+      { name: "reason", type: "string" },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -84,17 +139,13 @@ export const EventPodAbi = [
     inputs: [
       { name: "eventId", type: "uint256" },
       { name: "winningOutcomeIndex", type: "uint8" },
+      { name: "proof", type: "bytes" },
     ],
     outputs: [],
     stateMutability: "nonpayable",
   },
-  {
-    type: "function",
-    name: "getEventCount",
-    inputs: [],
-    outputs: [{ name: "", type: "uint256" }],
-    stateMutability: "view",
-  },
+
+  // ============ Events ============
   {
     type: "event",
     name: "EventCreated",
@@ -102,7 +153,7 @@ export const EventPodAbi = [
       { name: "eventId", type: "uint256", indexed: true },
       { name: "title", type: "string", indexed: false },
       { name: "deadline", type: "uint256", indexed: false },
-      { name: "outcomeCount", type: "uint8", indexed: false },
+      { name: "outcomeCount", type: "uint256", indexed: false },
     ],
   },
   {

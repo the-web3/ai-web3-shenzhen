@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "~~/lib/auth/jwt";
-import { createServerClient } from "~~/lib/supabase/server";
+import { getTokenFromRequest } from "~~/lib/auth/server";
+import { createAdminClient, createServerClient } from "~~/lib/supabase/server";
 
 interface PositionRow {
   id: number;
@@ -35,7 +36,7 @@ interface EventInfo {
 // GET /api/portfolio - Get user's portfolio (positions and balances)
 export async function GET(request: NextRequest) {
   try {
-    const token = request.cookies.get("auth_token")?.value;
+    const token = getTokenFromRequest(request);
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -50,6 +51,19 @@ export async function GET(request: NextRequest) {
 
     if (!vendorId) {
       return NextResponse.json({ error: "vendor_id is required" }, { status: 400 });
+    }
+
+    const adminClient = createAdminClient();
+    const { data: userVendor } = await adminClient
+      .from("user_vendors")
+      .select("id")
+      .eq("user_address", payload.address.toLowerCase())
+      .eq("vendor_id", parseInt(vendorId))
+      .eq("status", 1)
+      .maybeSingle();
+
+    if (!userVendor) {
+      return NextResponse.json({ error: "You are not a member of this vendor" }, { status: 403 });
     }
 
     const supabase = await createServerClient();

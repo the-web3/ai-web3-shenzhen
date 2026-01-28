@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(yarn add:*)",
+      "Bash(npx tsc:*)",
+      "Bash(yarn tsc:*)",
+      "Bash(git add:*)",
+      "Bash(git restore:*)",
+      "Bash(git commit:*)",
+      "Bash(yarn check-types:*)",
+      "Bash(git checkout:*)"
+    ]
+  }
+}

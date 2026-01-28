@@ -1,30 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { EventList } from "~~/components/event";
-import { useAuth } from "~~/hooks/useAuth";
+import { useAuth, useUserRole } from "~~/hooks";
 
 type FilterStatus = "all" | "active" | "pending" | "settled";
 
 export default function HomePage() {
   const router = useRouter();
-  const { isAuthenticated, hasJoinedVendors, isLoading, activeVendor } = useAuth();
+  const { isLoading, activeVendor } = useAuth();
+  const { canAccessHome, isVendorOwner } = useUserRole();
   const [filter, setFilter] = useState<FilterStatus>("active");
 
   useEffect(() => {
     if (isLoading) return;
 
-    if (!isAuthenticated) {
+    if (!canAccessHome) {
       router.push("/join");
       return;
     }
-
-    if (!hasJoinedVendors) {
-      router.push("/join");
-      return;
-    }
-  }, [isAuthenticated, hasJoinedVendors, isLoading, router]);
+  }, [canAccessHome, isLoading, router]);
 
   if (isLoading) {
     return (
@@ -34,9 +31,12 @@ export default function HomePage() {
     );
   }
 
-  if (!isAuthenticated || !hasJoinedVendors || !activeVendor) {
+  if (!canAccessHome || !activeVendor) {
     return null;
   }
+
+  // Check if user owns the current vendor
+  const isCurrentVendorOwner = isVendorOwner(activeVendor.vendor_id);
 
   // Map filter to status values
   const getStatusFilter = (): number | null => {
@@ -58,8 +58,17 @@ export default function HomePage() {
       {/* Vendor Welcome Banner */}
       <div className="card bg-primary text-primary-content mb-8">
         <div className="card-body">
-          <h1 className="card-title text-2xl">Welcome to {activeVendor.vendor_name}</h1>
-          <p>Browse and trade on prediction events in this marketplace.</p>
+          <div className="flex justify-between items-start">
+            <div>
+              <h1 className="card-title text-2xl">Welcome to {activeVendor.vendor_name}</h1>
+              <p>Browse and trade on prediction events in this marketplace.</p>
+            </div>
+            {isCurrentVendorOwner && (
+              <Link href="/dapp" className="btn btn-secondary btn-sm">
+                Manage Dapp
+              </Link>
+            )}
+          </div>
         </div>
       </div>
 

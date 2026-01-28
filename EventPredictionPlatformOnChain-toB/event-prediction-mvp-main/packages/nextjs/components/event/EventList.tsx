@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { EventCard } from "./EventCard";
+import { useAuthStore } from "~~/stores";
 import type { EventWithPrices } from "~~/types";
 
 interface EventListProps {
@@ -14,6 +15,7 @@ export function EventList({ vendorId, status = null, refreshInterval = 30000 }: 
   const [events, setEvents] = useState<EventWithPrices[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const token = useAuthStore(state => state.token);
 
   const fetchEvents = useCallback(async () => {
     try {
@@ -25,7 +27,9 @@ export function EventList({ vendorId, status = null, refreshInterval = 30000 }: 
         params.set("status", status.toString());
       }
 
-      const response = await fetch(`/api/events?${params.toString()}`);
+      const response = await fetch(`/api/events?${params.toString()}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      });
       const data = await response.json();
 
       if (!response.ok) {
@@ -40,7 +44,7 @@ export function EventList({ vendorId, status = null, refreshInterval = 30000 }: 
     } finally {
       setLoading(false);
     }
-  }, [vendorId, status]);
+  }, [vendorId, status, token]);
 
   useEffect(() => {
     fetchEvents();

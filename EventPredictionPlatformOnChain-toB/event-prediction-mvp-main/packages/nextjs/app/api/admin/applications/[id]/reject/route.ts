@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "~~/lib/auth/jwt";
+import { getTokenFromRequest } from "~~/lib/auth/server";
 import { createAdminClient } from "~~/lib/supabase/server";
 
 // POST /api/admin/applications/[id]/reject - Reject application
 export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await params;
-    const token = request.cookies.get("auth_token")?.value;
+    const token = getTokenFromRequest(request);
 
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

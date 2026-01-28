@@ -1,8 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useAuth } from "~~/hooks/useAuth";
+import { useAuth, useUserRole } from "~~/hooks";
 import { APPLICATION_STATUS_LABELS, formatAddress, formatRelativeTime } from "~~/lib/utils";
 import type { Vendor } from "~~/types";
 
@@ -20,7 +21,8 @@ interface Application {
 
 export default function AdminPage() {
   const router = useRouter();
-  const { isAuthenticated, isAdmin, isLoading: authLoading } = useAuth();
+  const { isLoading: authLoading, token } = useAuth();
+  const { canAccessAdmin } = useUserRole();
 
   const [activeTab, setActiveTab] = useState<"applications" | "vendors">("applications");
   const [applications, setApplications] = useState<Application[]>([]);
@@ -37,7 +39,9 @@ export default function AdminPage() {
         params.set("status", statusFilter);
       }
 
-      const response = await fetch(`/api/admin/applications?${params.toString()}`);
+      const response = await fetch(`/api/admin/applications?${params.toString()}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      });
       const data = await response.json();
 
       if (!response.ok) {
@@ -52,12 +56,14 @@ export default function AdminPage() {
     } finally {
       setLoading(false);
     }
-  }, [statusFilter]);
+  }, [statusFilter, token]);
 
   const fetchVendors = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/admin/vendors");
+      const response = await fetch("/api/admin/vendors", {
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      });
       const data = await response.json();
 
       if (!response.ok) {
@@ -72,12 +78,12 @@ export default function AdminPage() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     if (authLoading) return;
 
-    if (!isAuthenticated || !isAdmin) {
+    if (!canAccessAdmin) {
       router.push("/");
       return;
     }
@@ -87,7 +93,7 @@ export default function AdminPage() {
     } else {
       fetchVendors();
     }
-  }, [authLoading, isAuthenticated, isAdmin, router, activeTab, fetchApplications, fetchVendors]);
+  }, [authLoading, canAccessAdmin, router, activeTab, fetchApplications, fetchVendors]);
 
   // Approve/Reject handlers
   const [processingId, setProcessingId] = useState<number | null>(null);
@@ -101,6 +107,7 @@ export default function AdminPage() {
     try {
       const response = await fetch(`/api/admin/applications/${id}/approve`, {
         method: "POST",
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
       });
 
       const data = await response.json();
@@ -124,7 +131,10 @@ export default function AdminPage() {
     try {
       const response = await fetch(`/api/admin/applications/${rejectModal.id}/reject`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({ reason: rejectReason }),
       });
 
@@ -152,8 +162,20 @@ export default function AdminPage() {
     );
   }
 
-  if (!isAuthenticated || !isAdmin) {
-    return null;
+  // Not authorized - show friendly message
+  if (!canAccessAdmin) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center py-12">
+          <div className="text-6xl mb-4">🔐</div>
+          <h3 className="text-lg font-semibold">Admin Access Required</h3>
+          <p className="text-base-content/60 mt-2">This page is only accessible to platform administrators.</p>
+          <Link href="/" className="btn btn-primary mt-4">
+            Back to Home
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   return (

@@ -3,20 +3,24 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useAuth } from "~~/hooks/useAuth";
+import { useAuth, useUserRole } from "~~/hooks";
 
 export default function RootPage() {
   const router = useRouter();
-  const { isAuthenticated, hasJoinedVendors, isLoading } = useAuth();
+  const { isLoading } = useAuth();
+  const { isGuest, canAccessHome, isAdmin } = useUserRole();
 
   useEffect(() => {
     if (isLoading) return;
 
-    // If authenticated and has joined vendors, redirect to home
-    if (isAuthenticated && hasJoinedVendors) {
+    // Redirect based on role
+    if (canAccessHome) {
       router.push("/home");
+    } else if (isAdmin && !canAccessHome) {
+      // Admin who hasn't joined any vendor - go to admin panel
+      router.push("/admin");
     }
-  }, [isAuthenticated, hasJoinedVendors, isLoading, router]);
+  }, [canAccessHome, isAdmin, isLoading, router]);
 
   if (isLoading) {
     return (
@@ -26,7 +30,16 @@ export default function RootPage() {
     );
   }
 
-  // Landing page for unauthenticated users
+  // Don't show landing page if already redirecting
+  if (canAccessHome || (isAdmin && !canAccessHome)) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
+
+  // Landing page for guests and authenticated users without vendor membership
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4">
       <div className="text-center max-w-2xl">
@@ -36,9 +49,20 @@ export default function RootPage() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/join" className="btn btn-primary btn-lg">
-            Join with Invite Code
-          </Link>
+          {isGuest ? (
+            <Link href="/join" className="btn btn-primary btn-lg">
+              Connect & Join
+            </Link>
+          ) : (
+            <>
+              <Link href="/join" className="btn btn-primary btn-lg">
+                Join with Invite Code
+              </Link>
+              <Link href="/apply" className="btn btn-outline btn-lg">
+                Apply to Create Dapp
+              </Link>
+            </>
+          )}
         </div>
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">

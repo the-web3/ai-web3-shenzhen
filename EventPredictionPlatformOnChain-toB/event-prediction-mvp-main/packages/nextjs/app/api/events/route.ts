@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "~~/lib/supabase/server";
+import { verifyToken } from "~~/lib/auth/jwt";
+import { getTokenFromRequest } from "~~/lib/auth/server";
+import { createAdminClient, createServerClient } from "~~/lib/supabase/server";
 import type { Event } from "~~/types";
 
 interface EventRow {
@@ -24,6 +26,16 @@ interface EventRow {
 
 export async function GET(request: NextRequest) {
   try {
+    const token = getTokenFromRequest(request);
+    if (!token) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const payload = await verifyToken(token);
+    if (!payload) {
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
+
     const searchParams = request.nextUrl.searchParams;
     const vendorId = searchParams.get("vendor_id");
     const status = searchParams.get("status");
@@ -32,6 +44,19 @@ export async function GET(request: NextRequest) {
 
     if (!vendorId) {
       return NextResponse.json({ error: "vendor_id is required" }, { status: 400 });
+    }
+
+    const adminClient = createAdminClient();
+    const { data: userVendor } = await adminClient
+      .from("user_vendors")
+      .select("id")
+      .eq("user_address", payload.address.toLowerCase())
+      .eq("vendor_id", parseInt(vendorId))
+      .eq("status", 1)
+      .maybeSingle();
+
+    if (!userVendor) {
+      return NextResponse.json({ error: "You are not a member of this vendor" }, { status: 403 });
     }
 
     const supabase = await createServerClient();

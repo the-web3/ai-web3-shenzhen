@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "~~/lib/auth/jwt";
+import { getTokenFromRequest } from "~~/lib/auth/server";
 import { createAdminClient, createServerClient } from "~~/lib/supabase/server";
 
 interface EventRow {
@@ -25,7 +26,7 @@ interface EventRow {
 // GET /api/dapp/events - Get vendor's events
 export async function GET(request: NextRequest) {
   try {
-    const token = request.cookies.get("auth_token")?.value;
+    const token = getTokenFromRequest(request);
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -90,7 +91,7 @@ export async function GET(request: NextRequest) {
 // POST /api/dapp/events - Create event
 export async function POST(request: NextRequest) {
   try {
-    const token = request.cookies.get("auth_token")?.value;
+    const token = getTokenFromRequest(request);
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }

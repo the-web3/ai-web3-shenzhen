@@ -1,10 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BalanceCard, PositionList } from "~~/components/portfolio";
 import { OrderList } from "~~/components/trade";
-import { useAuth } from "~~/hooks/useAuth";
+import { useAuth, useUserRole } from "~~/hooks";
+import { useAuthStore } from "~~/stores";
 
 interface EnrichedPosition {
   id: number;
@@ -34,7 +36,9 @@ interface Balance {
 
 export default function PortfolioPage() {
   const router = useRouter();
-  const { isAuthenticated, hasJoinedVendors, isLoading: authLoading, activeVendor } = useAuth();
+  const { isLoading: authLoading, activeVendor } = useAuth();
+  const { canAccessPortfolio } = useUserRole();
+  const token = useAuthStore(state => state.token);
 
   const [positions, setPositions] = useState<EnrichedPosition[]>([]);
   const [balances, setBalances] = useState<Balance[]>([]);
@@ -46,7 +50,12 @@ export default function PortfolioPage() {
     if (!activeVendor) return;
 
     try {
-      const response = await fetch(`/api/portfolio?vendor_id=${activeVendor.vendor_id}`);
+      const headers: HeadersInit = {};
+      if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
+
+      const response = await fetch(`/api/portfolio?vendor_id=${activeVendor.vendor_id}`, { headers });
       const data = await response.json();
 
       if (!response.ok) {
@@ -62,12 +71,12 @@ export default function PortfolioPage() {
     } finally {
       setLoading(false);
     }
-  }, [activeVendor]);
+  }, [activeVendor, token]);
 
   useEffect(() => {
     if (authLoading) return;
 
-    if (!isAuthenticated || !hasJoinedVendors) {
+    if (!canAccessPortfolio) {
       router.push("/join");
       return;
     }
@@ -77,7 +86,7 @@ export default function PortfolioPage() {
     // Set up polling
     const interval = setInterval(fetchPortfolio, 30000);
     return () => clearInterval(interval);
-  }, [authLoading, isAuthenticated, hasJoinedVendors, router, fetchPortfolio]);
+  }, [authLoading, canAccessPortfolio, router, fetchPortfolio]);
 
   const handleViewEvent = (eventId: number) => {
     if (activeVendor) {
@@ -93,7 +102,23 @@ export default function PortfolioPage() {
     );
   }
 
-  if (!isAuthenticated || !hasJoinedVendors || !activeVendor) {
+  // Not authorized - show friendly message
+  if (!canAccessPortfolio) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center py-12">
+          <div className="text-6xl mb-4">🔐</div>
+          <h3 className="text-lg font-semibold">Join a Dapp First</h3>
+          <p className="text-base-content/60 mt-2">You need to join a Dapp before you can view your portfolio.</p>
+          <Link href="/join" className="btn btn-primary mt-4">
+            Join with Invite Code
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  if (!activeVendor) {
     return null;
   }
 
@@ -129,7 +154,7 @@ export default function PortfolioPage() {
 
       {/* Balance Card */}
       <div className="mb-6">
-        <BalanceCard balances={balances} />
+        <BalanceCard balances={balances} onRefresh={fetchPortfolio} />
       </div>
 
       {/* Tabs */}
